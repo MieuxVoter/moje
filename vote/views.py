@@ -36,4 +36,5 @@ def vote(request):
 def results(request):
     vote    = request.POST
     ranking = majority_judgment(vote)
-    return render(request, 'vote/results.html', {'ranking':ranking})
+    Nvotes  = len(Rating.objects.all())
+    return render(request, 'vote/results.html', {'ranking':ranking, "nvotes":Nvotes})
