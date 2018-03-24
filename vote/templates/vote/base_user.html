@@ -1,0 +1,399 @@
+{% extends 'base.html' %}
+
+{% block  extra_styles %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
+
+    <link rel="stylesheet" href="/static/dashboard/css/profile.css">
+{% endblock extra_styles %}
+
+
+{% block  body %}
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- TOP NAVBAR -->
+    {% block navbar %}
+        {% include "dashboard/base_navbar.html" %}
+    {% endblock navbar %}
+    <!-- /END OF TOP NAVBAR -->
+
+    <!-- SIDE MENU -->
+    {% block side_menu %}
+        {% include "dashboard/base_side_menu.html" %}
+    {% endblock %}
+    <!-- END OF SIDE MENU -->
+    <!-- END OF SIDE MENU -->
+
+
+
+    <!--  PAPER WRAP -->
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+
+
+                        <!-- CONTENT -->
+                        <!--TITLE -->
+                        {% block title %}
+                            {% with title_name="User" %}
+                                {% include 'title.html' %}
+                            {% endwith %}
+                        {% endblock title %}
+                        <!--/ TITLE -->
+
+                        <!-- BREADCRUMB -->
+                        {% block breadcrumb %}
+                            {% with bc_1="Users" link_1="/dashboard/users" bc_2=user.last_name %}
+                                {% include 'breadcrumb.html' %}
+                            {% endwith %}
+                        {% endblock breadcrumb %}
+
+            <!-- END OF BREADCRUMB -->
+
+{% block profile %}
+            <div class="content-wrap">
+                <!-- PROFILE -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="well profile">
+                            <div class="col-sm-12">
+                                <div class="col-xs-12 col-sm-4 text-center">
+
+                                    <ul class="list-group">
+                                        <li class="list-group-item text-left">
+                                            <span class="entypo-user"></span>&nbsp;&nbsp;Profile</li>
+                                        <li class="list-group-item text-center">
+                                            <img src="http://api.randomuser.me/portraits/men/10.jpg" alt="" class="img-circle img-responsive img-profile">
+
+                                        </li>
+                                        <li class="list-group-item text-center">
+                                            <span class="pull-left">
+                                                <strong>Ratings</strong>
+                                            </span>
+
+
+                                            <div class="ratings">
+
+                                                <a href="#">
+                                                    <span class="fa fa-star"></span>
+                                                </a>
+                                                <a href="#">
+                                                    <span class="fa fa-star"></span>
+                                                </a>
+                                                <a href="#">
+                                                    <span class="fa fa-star"></span>
+                                                </a>
+                                                <a href="#">
+                                                    <span class="fa fa-star"></span>
+                                                </a>
+                                                <a href="#">
+                                                    <span class="fa fa-star-o"></span>
+                                                </a>
+
+                                            </div>
+
+
+                                        </li>
+
+                                        <li class="list-group-item text-right">
+                                            <span class="pull-left">
+                                                <strong>Joined</strong>
+                                            </span>2.13.2014</li>
+                                        <li class="list-group-item text-right">
+                                            <span class="pull-left">
+                                                <strong>Last seen</strong>
+                                            </span>Yesterday</li>
+                                        <li class="list-group-item text-right">
+                                            <span class="pull-left">
+                                                <strong>Nickname</strong>
+                                            </span>themesmile</li>
+
+                                    </ul>
+
+                                </div>
+                                <div class="col-xs-12 col-sm-8 profile-name">
+                                    <h2>Dave Mattew
+                                        <span class="pull-right social-profile">
+                                            <i class="entypo-facebook-circled"></i>  <i class="entypo-twitter-circled"></i>  <i class="entypo-linkedin-circled"></i>  <i class="entypo-github-circled"></i>  <i class="entypo-gplus-circled"></i>
+                                        </span>
+                                    </h2>
+                                    <hr>
+
+                                    <dl class="dl-horizontal-profile">
+                                        <dt>User Id</dt>
+                                        <dd>eko.sulis</dd>
+
+                                        <dt>Name</dt>
+                                        <dd>Eko Sulistyo</dd>
+
+                                        <dt>Email</dt>
+                                        <dd>eko.sulistyo@yahoo.com</dd>
+
+                                        <dt>Phone</dt>
+                                        <dd>081 725 xxx</dd>
+
+                                        <dt>Active Periode</dt>
+                                        <dd>02 Dec 2014</dd>
+
+                                        <dt>Last Update</dt>
+                                        <dd>02 Apr 2014</dd>
+
+                                        <dt>About</dt>
+                                        <dd>Web Designer / UI</dd>
+
+                                        <dt>Hobbies</dt>
+                                        <dd>Read, out with friends, listen to music, draw and learn new things</dd>
+
+                                        <dt>Skills</dt>
+                                        <dd>
+                                            <span class="tags">html5</span>
+                                            <span class="tags">css3</span>
+                                            <span class="tags">jquery</span>
+                                            <span class="tags">bootstrap3</span>
+                                        </dd>
+
+                                    </dl>
+
+
+                                    <hr>
+
+                                    <h5>
+                                        <span class="entypo-arrows-ccw"></span>&nbsp;&nbsp;Recent Activities</h5>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-condensed">
+
+                                            <tbody>
+                                                <tr>
+                                                    <td><i class="pull-right fa fa-edit"></i> Today, 1:00 - Jeff Manzi liked your post.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="pull-right fa fa-edit"></i> Today, 12:23 - Mark Friendo liked and shared your post.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="pull-right fa fa-edit"></i> Today, 12:20 - You posted a new blog entry title "Why social media is".</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="pull-right fa fa-edit"></i> Yesterday - Karen P. liked your post.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="pull-right fa fa-edit"></i> 2 Days Ago - Philip W. liked your post.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="pull-right fa fa-edit"></i> 2 Days Ago - Jeff Manzi liked your post.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12 divider text-center">
+                                <div class="col-xs-12 col-sm-4 emphasis">
+                                    <h2>
+                                        <strong>20,7K</strong>
+                                    </h2>
+                                    <p>
+                                        <small>Followers</small>
+                                    </p>
+                                    <button class="btn btn-success btn-block">
+                                        <span class="fa fa-plus-circle"></span>&nbsp;&nbsp;Follow</button>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 emphasis">
+                                    <h2>
+                                        <strong>245</strong>
+                                    </h2>
+                                    <p>
+                                        <small>Following</small>
+                                    </p>
+                                    <button class="btn btn-info btn-block">
+                                        <span class="fa fa-user"></span>&nbsp;&nbsp;View Profile</button>
+                                </div>
+                                <div class="col-sm-4 emphasis">
+                                    <h2>
+                                        <strong>43</strong>
+                                    </h2>
+                                    <p>
+                                        <small>Likes</small>
+                                    </p>
+                                    <button class="btn btn-default btn-block">
+                                        <span class="fa fa-user"></span>&nbsp;&nbsp;Likes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+
+
+                        <div class="col-sm-12">
+                            <!-- BLANK PAGE-->
+
+                            <div style="margin:-20px 15px;" class="nest" id="Blank_PageClose">
+                                <div class="title-alt">
+                                    <h6>
+                                        Edit Profile</h6>
+                                    <div class="titleClose">
+                                        <a class="gone" href="#Blank_PageClose">
+                                            <span class="entypo-cancel"></span>
+                                        </a>
+                                    </div>
+                                    <div class="titleToggle">
+                                        <a class="nav-toggle-alt" href="#Blank_Page_Content">
+                                            <span class="entypo-up-open"></span>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                                <div class="body-nest" id="Blank_Page_Content">
+
+
+
+
+                                    <div class="row">
+
+
+                                        <!-- left column -->
+                                        <div class="col-md-3">
+                                            <div class="text-center">
+                                                <img src="http://placehold.it/150" class="avatar img-circle" alt="avatar">
+                                                <h6>Upload a different photo...</h6>
+
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <span class="btn btn-primary btn-file">
+                                                            Browse
+                                                            <input type="file" multiple="">
+                                                        </span>
+                                                    </span>
+                                                    <input type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- edit form column -->
+                                        <div class="col-md-9 personal-info">
+                                            <div class="alert alert-info alert-dismissable">
+                                                <a class="panel-close close" data-dismiss="alert">×</a>
+                                                <i class="fa fa-coffee"></i>
+                                                This is an
+                                                <strong>.alert</strong>. Use this to show important messages to the user.
+                                            </div>
+                                            <h3>Personal info</h3>
+
+                                            <form class="form-horizontal" role="form">
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">First name:</label>
+                                                    <div class="col-lg-8">
+                                                        <input class="form-control" value="Jane" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Last name:</label>
+                                                    <div class="col-lg-8">
+                                                        <input class="form-control" value="Bishop" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Company:</label>
+                                                    <div class="col-lg-8">
+                                                        <input class="form-control" value="" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Email:</label>
+                                                    <div class="col-lg-8">
+                                                        <input class="form-control" value="janesemail@gmail.com" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Time Zone:</label>
+                                                    <div class="col-lg-8">
+                                                        <div class="ui-select">
+                                                            <select id="user_time_zone" class="form-control">
+                                                                <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                                                <option value="Alaska">(GMT-09:00) Alaska</option>
+                                                                <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                                                <option value="Arizona">(GMT-07:00) Arizona</option>
+                                                                <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                                                <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                                                <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                                                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Username:</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" value="janeuser" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Password:</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" value="11111122333" type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Confirm password:</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" value="11111122333" type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"></label>
+                                                    <div class="col-md-8">
+                                                        <input class="btn btn-primary" value="Save Changes" type="button">
+                                                        <span></span>
+                                                        <input class="btn btn-default" value="Cancel" type="reset">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END OF BLANK PAGE -->
+
+                    </div>
+                </div>
+                <!-- END OF PROFILE -->
+
+
+                <!-- /END OF CONTENT -->
+
+
+                {% endblock profile %}
+                <!-- /END OF CONTENT -->
+
+
+
+                <!-- FOOTER -->
+                {% include 'footer.html' %}
+                <!-- / END OF FOOTER -->
+
+            </div>
+        </div>
+        <!--  END OF PAPER WRAP -->
+
+
+            <!-- RIGHT SLIDER CONTENT -->
+            {% include 'slide_content.html'%}
+            <!-- END OF RIGHT SLIDER CONTENT-->
+
+        <!-- MAIN EFFECT -->
+        <script type="text/javascript" src="/static/dashboard/js/preloader.js"></script>
+        <script type="text/javascript" src="/static/dashboard/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/static/dashboard/js/app.js"></script>
+        <script type="text/javascript" src="/static/dashboard/js/load.js"></script>
+        <script type="text/javascript" src="/static/dashboard/js/main.js"></script>
+
+{% endblock %}

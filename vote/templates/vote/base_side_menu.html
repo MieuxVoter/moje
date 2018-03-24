@@ -1,0 +1,162 @@
+<div id="skin-select">
+    {% include 'logo2.html' %}
+
+    <a id="toggle">
+        <span class="entypo-menu"></span>
+    </a>
+    <div class="dark">
+        <form action="#">
+            <span>
+                <input type="text" name="search" value="" class="search rounded id_search" placeholder="Search Menu..." autofocus />
+            </span>
+        </form>
+    </div>
+
+    <div class="search-hover">
+        <form id="demo-2">
+            <input type="search" placeholder="Search Menu..." class="id_search">
+        </form>
+    </div>
+
+
+
+
+    <div class="skin-part">
+        <div id="tree-wrap">
+            <div class="side-bar">
+                <ul class="topnav menu-left-nest">
+                    <li>
+                        <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                            <span>Supervision</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="tooltip-tip ajax-load" href="/dashboard/" title="Social">
+                            <i class="icon-graph-pie"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="tooltip-tip ajax-load" href="{% url 'robots' %}" title="Social">
+                            <i class="icon-feed"></i>
+                            <span> Robots</span>
+                            {% if robots %}
+                            <div class="noft-blue" style="display: inline-block; float: none;">{{ robots.count }}</div>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip ajax-load" href="/dashboard/missions/" title="Media">
+                            <i class="fa fa-bandcamp"></i>
+                            <span>Missions</span>
+                            {% if missions %}
+                            <div class="noft-blue" style="display: inline-block; float: none;">{{ missions.count }}</div>
+                            {% endif %}
+
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip ajax-load" href="/dashboard/maintenances/" title="Media">
+                            <i class="fa fa-wrench"></i>
+                            <span>Maintenance</span>
+                            {% if maintenances %}
+                            <div class="noft-blue" style="display: inline-block; float: none;">{{ maintenances.count }}</div>
+                            {% endif %}
+
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip-tip ajax-load" href="/dashboard/issues/" title="Media">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <span>Issues</span>
+                            {% if issues_unsolved %}
+                            <div class="noft-blue" style="display: inline-block; float: none;">{{ issues_unsolved }}</div>
+                            {% endif %}
+
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="topnav menu-left-nest">
+                    <li>
+                        <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                            <span>Settings</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="tooltip-tip ajax-load" href="/dashboard/parameters" title="Parameters">
+                            <i class="entypo-cog"></i>
+                            <span>Parameters</span>
+
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="tooltip-tip ajax-load" href="/dashboard/zones" title="Zones">
+                            <i class="icon-window"></i>
+                            <span>Zones</span>
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a class="tooltip-tip ajax-load" href="/dashboard/users/" title="Icons">
+                            <i class="fa fa-users"></i>
+                            <span>Users</span>
+                            <div class="noft-blue" style="display: inline-block; float: none;">{{ users.count }}</div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="tooltip-tip" href="/dashboard/map/" title="Extra Pages">
+                            <i class="fa fa-map-marker"></i>
+                            <span>Map</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+
+                <div class="side-dash">
+                    <h3>
+                        <span>Robots</span>
+                    </h3>
+                    <ul class="side-dashh-list">
+                        <li>Distance per day
+                            <span>1.9km<i style="color:#44BBC1;" class="fa fa-arrow-circle-up"></i>
+                            </span>
+                        </li>
+                        <li>Collected waste per day
+                            <span>5.6kg<i style="color:#AB6DB0;" class="fa fa-arrow-circle-down"></i>
+                            </span>
+                        </li>
+
+                    </ul>
+                    <h3>
+                        <span>Environment</span>
+                    </h3>
+                    <ul class="side-bar-list">
+                        <li>Visitors
+                            <div class="linebar">5,7,8,9,3,5,3,8,5</div>
+                        </li>
+                        <li>Orders
+                            <div class="linebar2">1,3,0,0,4,2,1,0,3</div>
+                        </li>
+                        <li>Active time
+                            <div class="linebar3">5,7,8,9,3,5,3,8,5</div>
+                        </li>
+                    </ul>
+                    <h3>
+                        <span>Missions</span>
+                    </h3>
+                    <div id="g1" style="height:180px" class="gauge"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

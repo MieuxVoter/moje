@@ -1,0 +1,8 @@
+{% for radio in candidate %}
+    <td>
+        label for="{{ radio.id_for_label }}">
+            {{ radio.choice_label }}
+            <span class="radio">{{ radio.tag }}</span>
+        </label>
+    </td>
+{% endfor %}

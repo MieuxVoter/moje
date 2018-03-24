@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<h1>Voter</h1>
+
+
+<form method="POST" action=".">
+{% csrf_token %}
+<table>
+    <tr>
+        <th>Candidats</th>
+        {% for j in judgments %}
+        <th>{{ j.name }}</th>
+        {% endfor %}
+    </tr>
+
+{% for candidate in form %}
+    <tr>
+        <td>{{ candidate.label | title}}</td>
+    {% for radio in candidate %}
+        <td>{{ radio }}</td>
+    {% endfor %}
+    </tr>
+{% endfor %}
+</table>
+  <input type=submit>
+</form>
+
+{% endblock body %}

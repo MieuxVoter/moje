@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+
+    <!-- TOP NAVBAR -->
+    {% block navbar %}
+        {% include "dashboard/base_navbar.html" %}
+    {% endblock navbar %}
+
+
+
+
+    <!-- SIDE MENU -->
+    {% block side_menu %}
+        {% include "dashboard/base_side_menu.html" %}
+    {% endblock %}
+
+
+
+    <!--  PAPER WRAP -->
+    <div class="wrap-fluid" style="margin-left:250px;">
+        <div class="container-fluid paper-wrap bevel tlbr">
+
+
+
+
+
+            <!-- CONTENT -->
+            <!--TITLE -->
+            {% block title %}
+                {% include 'title.html' %}
+            {% endblock %}
+            <!--/ TITLE -->
+
+            <!-- BREADCRUMB -->
+
+            <ul id="breadcrumb">
+                <li>
+                    <span class="entypo-home"></span>
+                </li>
+                <li><i class="fa fa-lg fa-angle-right"></i>
+
+                {% block breadcrumb %}
+
+                {% endblock breadcrumb %}
+                <li class="pull-right">
+                    <div class="input-group input-widget">
+
+                        <input style="border-radius:15px" type="text" placeholder="Search..." class="form-control">
+                    </div>
+                </li>
+            </ul>
+
+            <!-- END OF BREADCRUMB -->
+
+
+            {% block content %}
+            {% endblock %}
+
+
+
+
+                <!-- FOOTER -->
+                {% include 'footer.html' %}
+                <!-- / END OF FOOTER -->
+
+
+            </div>
+        </div>
+    </div>
+    <!--  END OF PAPER WRAP -->
+
+    <!-- RIGHT SLIDER CONTENT -->
+    {% include 'slide_content.html'%}
+    <!-- END OF RIGHT SLIDER CONTENT-->
+
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
+    <script src="{% static 'dashboard/js/progress-bar/src/jquery.velocity.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/progress-bar/number-pb.js' %}"></script>
+    <script src="{% static 'dashboard/js/progress-bar/progress-app.js' %}"></script>
+
+
+
+    <!-- MAIN EFFECT -->
+    <script type="text/javascript" src="{% static 'dashboard/js/preloader.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/load.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/main.js' %}"></script>
+
+
+
+
+    <!-- GAGE -->
+
+
+    <script type="text/javascript" src="{% static 'dashboard/js/chart/jquery.flot.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/chart/jquery.flot.resize.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/chart/realTime.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/speed/canvasgauge-coustom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/countdown/jquery.countdown.js' %}"></script>
+
+
+
+    <script src="{% static 'dashboard/js/jhere-custom.js' %}"></script>
+
+    <script>
+    var gauge4 = new Gauge("canvas4", {
+        'mode': 'needle',
+        'range': {
+            'min': 0,
+            'max': 90
+        }
+    });
+    gauge4.draw(Math.floor(Math.random() * 90));
+    var run = setInterval(function() {
+        gauge4.draw(Math.floor(Math.random() * 90));
+    }, 3500);
+    </script>
+
+
+    <script type="text/javascript">
+    /* Javascript
+     *
+     * See http://jhere.net/docs.html for full documentation
+     */
+    $(window).on('load', function() {
+        $('#mapContainer').jHERE({
+            center: [52.500556, 13.398889],
+            type: 'smart',
+            zoom: 10
+        }).jHERE('marker', [52.500556, 13.338889], {
+            icon: '{% static 'dashboard/img/marker.png' %}',
+            anchor: {
+                x: 12,
+                y: 32
+            },
+            click: function() {
+                alert('Hallo from Berlin!');
+            }
+        })
+            .jHERE('route', [52.711, 13.011], [52.514, 13.453], {
+                color: '#FFA200',
+                marker: {
+                    fill: '#86c440',
+                    text: '#'
+                }
+            });
+    });
+    </script>
+    <script type="text/javascript">
+    var output, started, duration, desired;
+
+    // Constants
+    duration = 5000;
+    desired = '50';
+
+    // Initial setup
+    output = $('#speed');
+    started = new Date().getTime();
+
+    // Animate!
+    animationTimer = setInterval(function() {
+        // If the value is what we want, stop animating
+        // or if the duration has been exceeded, stop animating
+        if (output.text().trim() === desired || new Date().getTime() - started > duration) {
+            console.log('animating');
+            // Generate a random string to use for the next animation step
+            output.text('' + Math.floor(Math.random() * 60)
+
+            );
+
+        } else {
+            console.log('animating');
+            // Generate a random string to use for the next animation step
+            output.text('' + Math.floor(Math.random() * 120)
+
+            );
+        }
+    }, 5000);
+    </script>
+    <script type="text/javascript">
+    $('#getting-started').countdown('2015/01/01', function(event) {
+        $(this).html(event.strftime(
+
+            '<span>%M</span>' + '<span class="start-min">:</span>' + '<span class="start-min">%S</span>'));
+    });
+    </script>
+{% endblock body %}
