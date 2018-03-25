@@ -1,15 +1,98 @@
-{% extends 'base.html' %}
+{% extends 'base_page.html' %}
 {% load static %}
 
-{% block body %}
 
 
-<h1>Les résultats</h1>
+{% block panel-header %}
+<div class="panel-header">
+    <div class="header text-center">
+        <h2 class="title">Résultats du vote</h2>
+        <p class="category">
 
-Déjà {{ nvotes }} jugements ont été prononcés !
+            <a target="_blank" href="https://github.com/plguhur/jm-django">Projet open source</a> réalisé depuis le
+            <a href="https://sites.google.com/site/ridalaraki/majority-judgment" target="_blank">jugement majoritaire.</a>
+        </p>
+    </div>
+</div>
+{% endblock panel-header %}
 
-<img src="/mj/charts/results.png" alt="Results from Majority Judgment" />
+
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Les scores</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info alert-with-icon" data-notify="container">
+                        <button type="button" aria-hidden="true" class="close">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button>
+                        <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+                        <span data-notify="message">Déjà {{ nvotes }} jugements ont été prononcés !</span>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <button type="button" aria-hidden="true" class="close">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button>
+                        <span>
+                            <b> Attention - </b> Le vote se terminera dans 5 jours !</span>
+                    </div>
+
+                    <p>
+                    <img src="/mj/charts/results.png" alt="Results from Majority Judgment" />
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Le classement</h4>
+                </div>
+                <div class="card-body">
+                    {% if ranking == None %}
+                    <div class="alert alert-warning">
+                        <button type="button" aria-hidden="true" class="close">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button>
+                        <span>
+                            <b> Attention - </b> Il n'y a pas encore de classement disponible. Revenez plus tard !</span>
+                    </div>
+                    {% endif %}
+                    {% for candidate in ranking  %}
+                        {% if forloop.first %}
+                        <div class="alert alert-success">
+                            <button type="button" aria-hidden="true" class="close">
+                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                            </button>
+                            <span>
+                                <b> #1 - {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}</b>
+                            </span>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info">
+                            <button type="button" aria-hidden="true" class="close">
+                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                            </button>
+                            <span>
+                                <b> #{{ forloop.counter|add:"1" }} - </b> {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}} </span>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
 
-{% endblock body %}
+{% endblock content %}

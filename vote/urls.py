@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from vote import views
 
 urlpatterns = [
-     url(r'^$', views.vote, name='index'),
+     url(r'^$', views.vote, name='vote'),
      url(r'^candidates/$', views.CandidateList.as_view(), name='candidates'),
      url(r'^results/$', views.results, name='results'),
      url(r'^candidate/(?P<pk>\d+)$',

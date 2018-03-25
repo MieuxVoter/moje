@@ -34,7 +34,18 @@ def vote(request):
 
 
 def results(request):
-    vote    = request.POST
-    ranking = majority_judgment(vote)
+    # read database
+    grades  = [g.name for g in Grade.objects.all()]
+    ratings = get_ratings()
+    results = []
+    cs      = Candidate.objects.all()
     Nvotes  = len(Rating.objects.all())
+
+    for i in range(len(cs)):
+        result = Result(candidate = cs[i], ratings = ratings[i, :], grades = grades)
+        results.append(result)
+
+    # ranking according to the majority judgment
+    ranking = [r.candidate for r in majority_judgment(results)]
+
     return render(request, 'vote/results.html', {'ranking':ranking, "nvotes":Nvotes})

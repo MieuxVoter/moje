@@ -1,32 +1,67 @@
-{% extends 'base.html' %}
+{% extends 'base_page.html' %}
 {% load static %}
 
-{% block body %}
+
+{% block panel-header %}
+<div class="panel-header">
+    <div class="header text-center">
+        <h2 class="title">Voter</h2>
+        <p class="category">
+            Vote initié par <a href="#">Mieux Voter</a> le 1er avril 2018.
+        </p>
+    </div>
+</div>
+{% endblock panel-header %}
 
 
-<h1>Voter</h1>
 
 
-<form method="POST" action=".">
-{% csrf_token %}
-<table>
-    <tr>
-        <th>Candidats</th>
-        {% for j in judgments %}
-        <th>{{ j.name }}</th>
-        {% endfor %}
-    </tr>
+{% block content %}
 
-{% for candidate in form %}
-    <tr>
-        <td>{{ candidate.label | title}}</td>
-    {% for radio in candidate %}
-        <td>{{ radio }}</td>
-    {% endfor %}
-    </tr>
-{% endfor %}
-</table>
-  <input type=submit>
-</form>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Voter avec le jugement majoritaire</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
 
-{% endblock body %}
+                        <form method="POST" action=".">
+                        {% csrf_token %}
+
+
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>Candidats</th>
+                                {% for g in grades %}
+                                <th {% if forloop.last %}class="text-right"{% endif %}>{{ g.name }}</th>
+                                {% endfor %}
+
+                                <!--    <th >
+                                    Salary
+                                </th> -->
+                            </thead>
+                            <tbody>
+                                {% for candidate in form %}
+                                    <tr>
+                                        <td>{{ candidate.label | title}}</td>
+                                    {% for radio in candidate %}
+                                        <td {% if forloop.last %}class="text-right"{% endif %}>{{ radio }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <input type=submit>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+{% endblock content %}

@@ -42,8 +42,8 @@ def plot_scores(scores, grades=[], names=[], height = 0.8, color = [], figure=No
         matplotlib.use('Agg')
     import matplotlib.pyplot as plt
 
-    Ncandidates = len(scores)
-    Ngrades     = len(grades)
+    Ncandidates, Ngrades = scores.shape
+    # Ngrades     = len(grades)
     ind         = np.arange(Ncandidates)  # the x-axis locations for the novels
     plots       = []
     width_cumulative = np.zeros(Ncandidates)
@@ -51,10 +51,10 @@ def plot_scores(scores, grades=[], names=[], height = 0.8, color = [], figure=No
     if color == []:
         color = [plt.cm.plasma(1-k/Ngrades, 1) for k in range(Ngrades)]
     if figure == None:
-        fig = plt.figure()
+        figure = plt.figure()
 
     # Move the figure to the right
-    ax = fig.add_subplot(111)
+    ax = figure.add_subplot(111)
     pos1 = ax.get_position() # get the original position
     pos2 = [pos1.x0 + 0.1, pos1.y0,  pos1.width - 0.01, pos1.height]
     ax.set_position(pos2)
@@ -93,3 +93,46 @@ def get_scores():
         scores[i]/= Nratings
 
     return scores
+
+
+def get_ratings():
+    """ Compute a 2D array with all the ratings from the candidates
+    FIXME: select only candidates from an election
+    """
+
+    grades     = Grade.objects.all()
+    candidates = Candidate.objects.all()
+    ratings    = np.zeros( (len(candidates), len(grades)) )
+
+    for i in range(len(candidates)):
+        rating    = Rating.objects.filter(candidate=candidates[i])
+        rating    = rating.values('grade').annotate(dcount=Count('grade'))
+        ratings[i] = [r['dcount'] for r in rating]
+
+    return ratings
+
+
+
+class Result():
+    """ Store a candidate with one's ratings """
+    def __init__(self, name = "", ratings = np.array([]), scores = None, grades = [], candidate = None):
+        self.name      = name
+        self.ratings   = ratings
+        self.grades    = grades
+        self.scores    = scores
+        self.candidate = candidate
+
+        if name == "" and candidate is not None:
+            self.name = candidate.user.first_name.title() + " " + candidate.user.last_name.title()
+        if not ratings.size and scores is None:
+            self.scores    = sorted_scores(ratings, len(grades))
+
+
+    def __lt__(self, other):
+        return tie_breaking(self.ratings, other.ratings)
+
+    def __repr__(self):
+        return str(self.name)
+
+    def __str__(self):
+        return str(self.name)
