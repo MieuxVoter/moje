@@ -1,0 +1,63 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+
+{% block panel-header %}
+<div class="panel-header panel-header-sm">
+</div>
+{% endblock panel-header %}
+
+
+
+
+{% block content %}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Liste des candidats à l'élection</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+
+
+
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>Candidats</th>
+                                <th>
+                                    Photo
+                                </th>
+                                <th>
+                                    Adresse
+                                </th>
+                                <th>
+                                    Date de naissance
+                                </th>
+                            </thead>
+                            <tbody>
+                                {% for candidate in candidate_list %}
+                                    <tr>
+                                        <td>{{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}</td>
+                                        <td>
+                                        <a href="/candidate/{{ candidate.id }}" >
+                                            <img src="{{ candidate.picture }}"  class="zone-pic" />
+                                        </a>
+                                        </td>
+                                        <td>{{ candidate.street | title}}, {{ candidate.city | title}}, {{ candidate.postcode | title}}, {{ candidate.state | title}}</td>
+                                        <td>{{ candidate.birth_date }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+{% endblock content %}

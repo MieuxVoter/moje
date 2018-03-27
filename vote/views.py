@@ -13,6 +13,8 @@ class CandidateList(generic.ListView):
 class CandidateDetail(generic.DetailView):
     model = Candidate
 
+class VoterDetail(generic.DetailView):
+    model = Voter
 
 
 def vote(request):
@@ -32,6 +34,24 @@ def vote(request):
     return render(request, 'vote/vote.html', {'form': form,
                                             'grades': gs})
 
+
+
+def set_voter(request):
+    form = UserForm(request.POST or None)
+
+    if form.is_valid():
+        # FIXME: use the real voter
+        voter = Voter.objects.first()
+
+        # FIXME: check whether the voter has already casted a vote
+        for c, g in form_grades(form).items():
+            r = Rating(candidate=c, grade=g, voter=voter)
+            r.save()
+        return HttpResponseRedirect('/results/')
+
+    gs = Grade.objects.all()
+    return render(request, 'vote/vote.html', {'form': form,
+                                            'grades': gs})
 
 def results(request):
     # read database

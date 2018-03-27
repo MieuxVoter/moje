@@ -72,7 +72,7 @@
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
                             <span>
-                                <b> #1 - {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}</b>
+                                <a style="color:white;"  href="/candidate/{{ candidate.id }}"><b> #1 - {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}</b></a>
                             </span>
                         </div>
                         {% else %}
@@ -81,7 +81,10 @@
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </button>
                             <span>
-                                <b> #{{ forloop.counter|add:"1" }} - </b> {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}} </span>
+                                <a style="color:white;" href="/candidate/{{ candidate.id }}">
+                                    <b> #{{ forloop.counter|add:"1" }} - </b> {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}
+                                </a>
+                            </span>
                         </div>
                         {% endif %}
                     {% endfor %}
