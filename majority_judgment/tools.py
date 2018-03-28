@@ -70,7 +70,6 @@ def plot_scores(scores, grades=[], names=[], height = 0.8, color = [], figure=No
     plt.xlim((0, 1))
     plt.xlabel('Mentions')
     plt.ylabel('Candidats')
-    plt.title('Jugement Majoritaire')
     plt.yticks(ind, names)
     plt.xticks([],[])
     plt.legend([p[0] for p in plots], grades, loc="best")
