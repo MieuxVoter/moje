@@ -4,12 +4,15 @@ from django.http import HttpResponseRedirect, HttpResponse
 import matplotlib as pl
 pl.use('Agg')
 import matplotlib.pyplot as plt
-from PIL import Image
 import os
 
 from majority_judgment.tools import *
 from vote.models import Grade
 
+
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+from matplotlib.figure import Figure
+import io
 
 def chart_results(request):
     # read database
@@ -23,10 +26,12 @@ def chart_results(request):
     # display figure
     plot_scores(scores, grades=grades,  names=names, output=False)
     plt.savefig("static/img/results.png", format="png", frameon=False, transparent=True )
-    
-    response = HttpResponse(content_type='image/png') 
-    Image.init()
-    i = Image.open('static/img/results.png')
-    i.save(response,'PNG')
+    f = Figure()
+    canvas = FigureCanvasAgg(f)
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    plt.close(f)
+    response = HttpResponse(buf.getvalue(), content_type='image/png')
     return response
+
      
