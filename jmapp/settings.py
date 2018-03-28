@@ -33,6 +33,7 @@ ALLOWED_HOSTS = parameters['allowed_hosts']
 
 INSTALLED_APPS = [
     'vote.apps.VoteConfig',
+    'majority_judgment.apps.MajorityJudgmentConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

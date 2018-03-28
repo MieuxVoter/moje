@@ -1,6 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+
+
+class Election(models.Model):
+    """
+    Manage an Election
+    """
+    name        = models.CharField(max_length=200, default="")
+    picture     = models.FilePathField(path="/static/dashboard/img/user/", default='blank.png')
+
+
 class User(AbstractUser):
     pass
 
@@ -9,6 +19,7 @@ class Candidate(models.Model):
     """
     This model represents a candidate in the election.
     """
+    election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
     user        = models.OneToOneField(User, on_delete=models.CASCADE)
     picture     = models.FilePathField(path="/static/dashboard/img/user/", default='blank.png')
     bio         = models.TextField(max_length=500, blank=True)
@@ -36,6 +47,7 @@ class Grade(models.Model):
     """
     A grade is a judgment
     """
+    election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
     name        = models.CharField(max_length=200, default="")
     code        = models.CharField(max_length=10, default="")
 

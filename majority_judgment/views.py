@@ -20,6 +20,7 @@ def chart_results(request):
     # display figure
     plot_scores(scores, grades=grades,  names=names, output=False)
     response = HttpResponse(content_type="image/jpeg")
-    plt.savefig(response, format="png")
+    # plt.savefig("results.png", format="png")
+    plt.savefig(response, format="png", frameon=False, transparent=True)
 
     return response
