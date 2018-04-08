@@ -34,6 +34,7 @@ ALLOWED_HOSTS = parameters['allowed_hosts']
 INSTALLED_APPS = [
     'vote.apps.VoteConfig',
     'majority_judgment.apps.MajorityJudgmentConfig',
+    'election.apps.ElectionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,6 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jmapp.wsgi.application'
 
+ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

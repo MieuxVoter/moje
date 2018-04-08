@@ -1,0 +1,135 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+
+{% block panel-header %}
+<div class="panel-header panel-header-sm">
+</div>
+{% endblock panel-header %}
+
+
+
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Editer votre compte d'utilisateur</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-5 pr-1">
+                                <div class="form-group">
+                                    <label>Organisation</label>
+                                    <input type="text" class="form-control" disabled="" placeholder="Company" value="Mieux Voter">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Nom d'utilisateur</label>
+                                    <input type="text" class="form-control" placeholder="Username" value="{{ voter.user.username }}">
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-1">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Adresse email </label>
+                                    <input type="email" class="form-control" placeholder="Email" value="{{ voter.user.email }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Prénom</label>
+                                    <input type="text" class="form-control" placeholder="Company" value="{{ voter.user.first_name }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label>Nom de famille</label>
+                                    <input type="text" class="form-control" placeholder="Last Name" value="{{ voter.user.last_name }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Rue</label>
+                                    <input type="text" class="form-control" placeholder="Home Address" value="{{ voter.street | title }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>Ville</label>
+                                    <input type="text" class="form-control" placeholder="City" value="{{ voter.city }}">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Pays</label>
+                                    <input type="text" class="form-control" placeholder="Country" value="{{ voter.state }}">
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-1">
+                                <div class="form-group">
+                                    <label>Code postal</label>
+                                    <input type="number" class="form-control" placeholder="ZIP Code" value="{{ voter.postcode }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Biographie</label>
+                                    <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="{{ voter.id }}">{{ voter.bio }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <!-- <img src="" alt="..."> -->
+                </div>
+                <div class="card-body">
+                    <div class="author">
+                        <a href="#">
+                            <img class="avatar border-gray" src="{{ voter.picture }}" alt="...">
+                            <h5 class="title">{{ voter.user.first_name | title}} {{ voter.user.last_name | title}}</h5>
+                        </a>
+                        <p class="description">
+                            {{ voter.user.username }}
+                        </p>
+                    </div>
+                    <p class="description text-center">
+                        {{ voter.bio }}
+                    </p>
+                </div>
+                <hr>
+                <div class="button-container">
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                        <i class="fab fa-google-plus-g"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

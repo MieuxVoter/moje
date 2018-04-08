@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.http import HttpResponseRedirect
 
 from vote.models import *
-from vote.forms import VoteForm, form_grades
+from vote.forms import *
 from majority_judgment.tools import *
 
 
@@ -17,55 +17,60 @@ class VoterDetail(generic.DetailView):
     model = Voter
 
 
-def vote(request):
-    form = VoteForm(request.POST or None)
+def vote(request, id_election):
+    election    = get_object_or_404(Election, pk=id_election)
+    form = VoteForm(request.POST or None, election=election)
 
     if form.is_valid():
         # FIXME: use the real voter
         voter = Voter.objects.first()
 
         # FIXME: check whether the voter has already casted a vote
-        for c, g in form_grades(form).items():
-            r = Rating(candidate=c, grade=g, voter=voter)
+        for c, g in form_grades(form, election).items():
+            r = Rating(candidate=c, grade=g, voter=voter, election=election)
             r.save()
-        return HttpResponseRedirect('/results/')
+        return HttpResponseRedirect('/results/{:d}'.format(id_election))
 
-    gs = Grade.objects.all()
+    gs          = Grade.objects.filter(election=election)
     return render(request, 'vote/vote.html', {'form': form,
                                             'grades': gs})
 
 
 
 def set_voter(request):
+    """
+    View for updating voter profile (referred as user profile)
+    """
     form = UserForm(request.POST or None)
 
-    if form.is_valid():
-        # FIXME: use the real voter
-        voter = Voter.objects.first()
+    #TODO
 
-        # FIXME: check whether the voter has already casted a vote
-        for c, g in form_grades(form).items():
-            r = Rating(candidate=c, grade=g, voter=voter)
-            r.save()
-        return HttpResponseRedirect('/results/')
 
-    gs = Grade.objects.all()
-    return render(request, 'vote/vote.html', {'form': form,
-                                            'grades': gs})
+def results(request, pk):
+    election = get_object_or_404(Election, pk=pk)
 
-def results(request):
+    if election.state != Election.OVER:
+        render(request, 'error.html', {'message':"L'élection n'est pas terminée"})
+
+
     # read database
-    grades  = [g.name for g in Grade.objects.all()]
-    ratings = get_ratings()
+    grades  = [g.name for g in Grade.objects.filter(election=election)]
+    ratings = get_ratings(election)
     results = []
-    cs      = Candidate.objects.all()
-    Nvotes  = len(Rating.objects.all())
+    cs      = Candidate.objects.filter(election=election)
+    Nvotes  = len(Rating.objects.filter(election=election))
+
+    if not Nvotes:
+        render(request, 'error.html', {'message':"Aucun vote n'a été trouvé"})
 
     for i in range(len(cs)):
-        result = Result(candidate = cs[i], ratings = ratings[i, :], grades = grades)
+        result = Result(candidate=cs[i],
+                        ratings=ratings[i, :],
+                        grades=grades)
         results.append(result)
 
     # ranking according to the majority judgment
     ranking = [r.candidate for r in majority_judgment(results)]
 
-    return render(request, 'vote/results.html', {'ranking':ranking, "nvotes":Nvotes})
+    params = {'ranking':ranking, "nvotes":Nvotes, "id_election":pk}
+    return render(request, 'vote/results.html', params)

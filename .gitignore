@@ -2,3 +2,5 @@
 __pycache__/
 .DS_Store
 keys.local.json
+theme/
+results*.png

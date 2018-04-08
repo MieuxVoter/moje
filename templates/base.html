@@ -12,8 +12,8 @@
 <meta name="author" content="">
 
 <!--     Fonts and icons     -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> -->
+<!-- <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"> -->
     <!-- CSS Files -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
     <link href="{% static 'css/now-ui-dashboard.css' %}" rel="stylesheet" />
@@ -36,28 +36,20 @@
     </div>
 
 
-    <!--   Core JS Files   -->
-    <script src="{% static 'js/core/jquery.min.js' %}"></script>
+
     <script src="{% static 'js/core/popper.min.js' %}"></script>
     <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
-    <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <!-- Chart JS -->
-    <script src="{% static 'js/plugins/chartjs.min.js' %}"></script>
-    <!--  Notifications Plugin    -->
-    <script src="{% static 'js/plugins/bootstrap-notify.js' %}"></script>
-    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{% static 'js/now-ui-dashboard.js?v=1.0.1' %}"></script>
-    <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-    <!-- <script src="../assets/demo/demo.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Javascript method's body can be found in assets/js/demos.js
-            demo.initDashboardPageCharts();
-        });
-    </script> -->
 
+    <!-- Chart JS -->
+    <!-- <script src="{% static 'js/plugins/chartjs.min.js' %}"></script> -->
+    <!--  Notifications Plugin    -->
+    <!-- <script src="{% static 'js/plugins/bootstrap-notify.js' %}"></script> -->
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <!-- <script src="{% static 'js/now-ui-dashboard.js' %}"></script> -->
+
+
+{% block javascript %}{% endblock %}
 </body>
 
 </html>

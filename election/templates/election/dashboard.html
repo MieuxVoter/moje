@@ -1,0 +1,161 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+
+
+{% block panel-header %}
+<div class="panel-header">
+    <div class="header text-center">
+        <h2 class="title">Mes élections</h2>
+        <!-- <p class="category">
+
+            <a target="_blank" href="https://github.com/plguhur/jm-django">Projet open source</a> réalisé depuis le
+            <a href="https://sites.google.com/site/ridalaraki/majority-judgment" target="_blank">jugement majoritaire.</a>
+        </p> -->
+    </div>
+</div>
+{% endblock panel-header %}
+
+
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-lg">
+            <div class="card card-tasks">
+                <div class="card-header">
+                    <h5 class="card-category">Gestion des élections</h5>
+                    <h4 class="card-title">Statuts</h4>
+                </div>
+                <div class="card-body">
+                    {% if election_list == None %}
+                    Vous n'avez pas encore créé d'élections.
+                    {% else %}
+                    <table class="table">
+                        <thead>
+                            <th>
+                                    Nom
+                            </th>
+                            <th>
+                                Statut
+                            </th>
+                            <th>
+                                Nombre d'électeurs
+                            </th>
+                            <th>
+                                Nombre de candidats
+                            </th>
+                            <th class="td-actions text-right">
+                                Action
+                            </th>
+                        </thead>
+                      <tbody>
+
+
+                          {% for election in election_list %}
+                          <tr>
+                              <td>
+                                {{ election.name }}
+                              </td>
+
+                              <td>
+                                {{ election.get_state_display }}
+                              </td>
+
+                              <td>
+                                <!-- <div class="progress">
+                                      <div class="progress-bar bg-success" role="progressbar" style="width: {{ election.progress }}%" aria-valuenow="{{ election.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div> -->
+                                {{ election.num_voters}}
+                            </td>
+                            <td>
+                              <!-- <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ election.progress }}%" aria-valuenow="{{ election.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div> -->
+                              {{ election.num_candidates }}
+                          </td>
+
+                            <td class="td-actions text-right">
+                                  <a href="/election/manage/general/{{ election.id }}/" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                      <i class="now-ui-icons ui-2_settings-90"></i>
+                                  </a>
+                                  <a href="/election/manage/delete_election/{{ election.id }}/" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                                  </a>
+                              </td>
+                          </tr>
+                         {% endfor %}
+                      </tbody>
+                    </table>
+                    {% endif %}
+                    <hr/>
+                    <a class="btn btn-success" href="/election/manage/general/" role="button">Créer une élection</a>
+                    <!-- <div class="stats">
+                      <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- <div class="row">
+      <div class="col-md-6">
+        <div class="card card-tasks">
+          <div class="card-header">
+            <h5 class="card-category">Tous les électeurs</h5>
+            <h4 class="card-title">Statistiques des électeurs</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-full-width table-responsive">
+
+            </div>
+          </div>
+          <div class="card-footer">
+            <hr>
+            <div class="stats">
+              <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+            </div>
+          </div>
+      </div>
+      </div>
+      <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+                <h5 class="card-category">Tous les candidats</h5>
+                <h4 class="card-title"> Statistiques des candidats</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th >
+                        Nom
+                      </th>
+                      <th >
+                        Image
+                      </th>
+                      <th >
+                        Élection
+                      </th>
+                      <th  class="text-right" >
+                        Classement
+                      </th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          Vous n'avez pas encore créé de candidats
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div> -->
+</div>
+
+
+
+{% endblock content %}

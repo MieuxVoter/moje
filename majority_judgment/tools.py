@@ -1,5 +1,5 @@
 import numpy as np
-from vote.models import Candidate, Grade, Rating
+from vote.models import *
 from django.db.models import Count
 
 
@@ -12,9 +12,9 @@ def tie_breaking(A, B):
     while medA == medB:
         Ac[medA] -= 1
         Bc[medB] -= 1
-        if not any(Ac):
+        if Ac[medA] < 0:
             return True
-        if not any(Bc):
+        if Bc[medB] < 0:
             return False
         medA = arg_median(Ac)
         medB = arg_median(Bc)
@@ -75,46 +75,65 @@ def plot_scores(scores, grades=[], names=[], height = 0.8, color = [], figure=No
     plt.legend([p[0] for p in plots], grades, loc="best")
 
 
-def get_scores():
+def get_scores(election):
     """ Compute a 2D array with all the ratings from the candidates
     FIXME: select only candidates from an election
     """
+    scores = get_ratings(election)
+    for i in range(len(scores)):
+        scores[i] /= len(scores[i])
 
-    grades     = Grade.objects.all()
-    candidates = Candidate.objects.all()
-    scores     = np.zeros( (len(candidates), len(grades)) )
-
-    for i in range(len(candidates)):
-        ratings   = Rating.objects.filter(candidate=candidates[i])
-        Nratings  = len(ratings)
-        rates     = ratings.values('grade').annotate(dcount=Count('grade'))
-        scores[i] = [r['dcount'] for r in rates]
-        scores[i]/= Nratings
+    # grades     = Grade.objects.filter(election=election)
+    # candidates = Candidate.objects.filter(election=election)
+    # scores     = np.zeros( (len(candidates), len(grades)) )
+    # ratings    = Rating.objects.filter(election=election)
+    #
+    # for i in range(len(candidates)):
+    #     for j in range(len(grades)):
+    #         rating = rating.filter(candidate=candidates[i], grade=grades[j])
+    #         ratings[i,j] = len(rating)
+    #     ratings[i] /= len(ratings[i])
+    #
+    # return ratings
+    #
+    # for i in range(len(candidates)):
+    #     ratings   = Rating.objects.filter(candidate=candidates[i], election=election)
+    #     Nratings  = len(ratings)
+    #     rates     = ratings.values('grade').annotate(dcount=Count('grade'))
+    #     scores[i] = [r['dcount'] for r in rates]
+    #     scores[i]/= Nratings
 
     return scores
 
 
-def get_ratings():
+def get_ratings(election):
     """ Compute a 2D array with all the ratings from the candidates
-    FIXME: select only candidates from an election
     """
 
-    grades     = Grade.objects.all()
-    candidates = Candidate.objects.all()
-    ratings    = np.zeros( (len(candidates), len(grades)) )
+    grades     = Grade.objects.filter(election=election)
+    candidates = Candidate.objects.filter(election=election)
+    scores     = np.zeros( (len(candidates), len(grades)) )
+
+    # order in the grades is defined by their increasing id
+    # could it be better?
+
+    # order_grades = [grade.id for grade in grades]
+    ratings    = Rating.objects.filter(election=election)
 
     for i in range(len(candidates)):
-        rating    = Rating.objects.filter(candidate=candidates[i])
-        rating    = rating.values('grade').annotate(dcount=Count('grade'))
-        ratings[i] = [r['dcount'] for r in rating]
+        for j in range(len(grades)):
+            rating = ratings.filter(candidate=candidates[i], grade=grades[j])
+            scores[i,j] = len(rating)
 
-    return ratings
+    return scores
 
 
 
 class Result():
     """ Store a candidate with one's ratings """
+
     def __init__(self, name = "", ratings = np.array([]), scores = None, grades = [], candidate = None):
+
         self.name      = name
         self.ratings   = ratings
         self.grades    = grades

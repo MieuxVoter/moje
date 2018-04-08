@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 
 import matplotlib as pl
@@ -7,19 +7,20 @@ import matplotlib.pyplot as plt
 import os
 
 from majority_judgment.tools import *
-from vote.models import Grade
+from vote.models import Grade, Election
 
 
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
 import io
 
-def chart_results(request):
+def chart_results(request, id_election):
     # read database
-    grades  = [g.name for g in Grade.objects.all()]
-    scores  = get_scores()
+    election = get_object_or_404(Election, pk=id_election)
+    grades  = [g.name for g in Grade.objects.filter(election=election)]
+    scores  = get_scores(election)
     names   = []
-    for c in Candidate.objects.all():
+    for c in Candidate.objects.filter(election=election):
         name = c.user.first_name.title() + " " + c.user.last_name.title()
         names.append(name)
 
@@ -33,5 +34,3 @@ def chart_results(request):
     plt.close(f)
     response = HttpResponse(buf.getvalue(), content_type='image/png')
     return response
-
-     

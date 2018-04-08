@@ -14,14 +14,20 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
         <ul class="nav">
             <li {% if request.resolver_match.url_name == "vote" %}class="active"{% endif %}>
                 <a href="/vote/">
+                    <i class="now-ui-icons ui-1_email-85"></i>
+                    <p>Voter</p>
+                </a>
+            </li>
+            <li {% if request.resolver_match.url_name == "manage" %}class="active"{% endif %}>
+                <a href="/election/dashboard/">
                     <i class="now-ui-icons files_box"></i>
-                    <p>Vote</p>
+                    <p>Élections</p>
                 </a>
             </li>
             <li {% if request.resolver_match.url_name == "results" %}class="active"{% endif %}>
                 <a href="/results/">
                     <i class="now-ui-icons sport_trophy"></i>
-                    <p>Results</p>
+                    <p>Résultats</p>
                 </a>
             </li>
             <li {% if request.resolver_match.url_name == "candidates" %}class="active"{% endif %}>
@@ -33,7 +39,7 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
             <li {% if request.resolver_match.url_name == "user" %}class="active"{% endif %}>
                 <a href="/voter/2">
                     <i class="now-ui-icons users_single-02"></i>
-                    <p>User Profile</p>
+                    <p>Profil d'utilisateur</p>
                 </a>
             </li>
 

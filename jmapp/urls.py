@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('vote/', include('vote.urls')),
     path('mj/', include('majority_judgment.urls')),
+    path('election/', include('election.urls')),
     re_path(r'^', include('vote.urls')),
 ]
