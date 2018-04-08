@@ -7,8 +7,8 @@ The code is assuming you are using `python > 3.5` and `django > 2.0`.
 
 1. Install dependancies:
 
-    pip install django django-extensions numpy matplotlib
-    
+    pip install -r requirements.txt
+
 1. Copy `keys.json` to `keys.local.json` and update parameters. To create a secret key, you can execute the script `./new_private_key.py` and copy the given key.
 
 2. [Connect to your database](https://docs.djangoproject.com/en/2.0/ref/databases/).
@@ -17,4 +17,4 @@ The code is assuming you are using `python > 3.5` and `django > 2.0`.
 
 # Run server
 
-`python manage.py runserver`
+`./manage.py runserver`

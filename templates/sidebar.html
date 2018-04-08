@@ -37,7 +37,7 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
                 </a>
             </li>
             <li {% if request.resolver_match.url_name == "user" %}class="active"{% endif %}>
-                <a href="/voter/2">
+                <a href="/voter/{{ user.pk }}">
                     <i class="now-ui-icons users_single-02"></i>
                     <p>Profil d'utilisateur</p>
                 </a>

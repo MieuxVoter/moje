@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+    <div class="main-panel" style="width:100%;">
+
+
+        {% block panel-header %}
+        <div class="panel-header">
+            <div class="header text-center">
+                <h2 class="title">Se connecter</h2>
+                <p class="category">
+
+                    <a target="_blank" href="https://github.com/plguhur/jm-django">Projet open source</a> réalisé depuis le
+                    <a href="https://sites.google.com/site/ridalaraki/majority-judgment" target="_blank">jugement majoritaire.</a>
+                </p>
+            </div>
+        </div>
+        {% endblock panel-header %}
+
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Se connecter</h4>
+                </div>
+                <div class="card-body">
+
+                    <form role="form" method="post" action=".">
+                    {% csrf_token %}
+
+                    {% if form.errors %}
+                    <p class="alert alert-danger">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                        Le nom de compte et le mot de passe ne correspondent pas.
+                    </p>
+                    {% endif %}
+
+                    {% if next %}
+                    {% if user.is_authenticated %}
+                    <p>Vous n'avez pas accès à cette page.
+                    Pour procéder, merci de vous connecter avec un compte ayant droit.</p>
+                    {% else %}
+                    <p>Merci de vous connecter pour accéder à cette page.</p>
+                    {% endif %}
+
+                    {% endif %}
+
+                    <div class="form-group">
+                        <a href="#" class="pull-right label-forgot">Email oublié?</a>
+                        <label for="inputUsernameEmail">Email</label>
+                        <input type="text" name="username" id="inputUsernameEmail" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <a href="" class="pull-right label-forgot">Mot de passe oublié?</a>
+                        <label for="inputPassword">Mot de passe</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control">
+                    </div>
+
+        			<div class="form-group">
+        		                        <div class="checkbox">
+                        		            <label><input type="checkbox">Se souvenir de moi</label>
+                                		</div>
+        			</div>
+
+                            <div class="row-block">
+        			<div class="row">
+        				<div class="col-md-12 row-block">
+                                             <button class="btn btn-block btn-primary" type="submit" type="hidden" name="next" value="{{ next }}">
+                                                   Se connecter
+                                              </button>
+        				</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 row-block">
+                                        <a href="index.html" class="btn btn-secondary btn-block">Créer un nouveau compte</a>
+                                    </div>
+                                </div>
+                            </div>
+        			</form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
+{% endblock %}

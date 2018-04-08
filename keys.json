@@ -1,5 +1,11 @@
 {
     "allowed_hosts":["localhost", "127.0.0.1", "[::1]"],
     "debug":"true",
-    "secret_key":"execute ./new_private_key.py"
+    "secret_key":"execute ./new_private_key.py",
+    "email": {
+            "host": "",
+            "host_user": "",
+            "host_password": "",
+            "default_from_email": "Admin<admin@domain.com>"
+        }
 }

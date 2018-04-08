@@ -1,22 +1,61 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import available_attrs, method_decorator
 
 from vote.models import *
 from vote.forms import *
+from vote.tools import *
 from majority_judgment.tools import *
 
 
-class CandidateList(generic.ListView):
+## TODO: grant access only the election of the voter
+
+class CandidateList(LoginRequiredMixin, generic.ListView):
     model = Candidate
 
-class CandidateDetail(generic.DetailView):
+    def get_queryset(self):
+        election = Election.objects.get(pk=self.kwargs['id_election'])
+        return Candidate.objects.filter(election=election)
+
+class CandidateDetail(LoginRequiredMixin, generic.DetailView):
     model = Candidate
 
-class VoterDetail(generic.DetailView):
-    model = Voter
 
 
+
+@login_required
+def voter_detail(request, pk):
+    user = User.objects.get(pk=pk)
+    voter =  Voter.objects.filter(user=user)
+    return render(request, 'vote/voter_detail.html', {"voter":voter})
+
+
+@login_required
+def redirect_vote(request):
+    voter       = Voter.objects.get(user=request.user)
+    id_election = voter.election.pk
+    return HttpResponseRedirect('/vote/{:d}/'.format(id_election))
+
+
+@login_required
+def redirect_results(request):
+    voter       = Voter.objects.get(user=request.user)
+    id_election = voter.election.pk
+    return HttpResponseRedirect('/results/{:d}/'.format(id_election))
+
+
+
+@login_required
+def redirect_candidates(request):
+    voter       = Voter.objects.get(user=request.user)
+    id_election = voter.election.pk
+    return HttpResponseRedirect('/candidates/{:d}/'.format(id_election))
+
+
+@login_required
 def vote(request, id_election):
     election    = get_object_or_404(Election, pk=id_election)
     form = VoteForm(request.POST or None, election=election)
@@ -29,7 +68,7 @@ def vote(request, id_election):
         for c, g in form_grades(form, election).items():
             r = Rating(candidate=c, grade=g, voter=voter, election=election)
             r.save()
-        return HttpResponseRedirect('/results/{:d}'.format(id_election))
+        return HttpResponseRedirect('/results/{:d}/'.format(id_election))
 
     gs          = Grade.objects.filter(election=election)
     return render(request, 'vote/vote.html', {'form': form,
@@ -37,6 +76,8 @@ def vote(request, id_election):
 
 
 
+
+@login_required
 def set_voter(request):
     """
     View for updating voter profile (referred as user profile)
@@ -46,8 +87,9 @@ def set_voter(request):
     #TODO
 
 
-def results(request, pk):
-    election = get_object_or_404(Election, pk=pk)
+@login_required
+def results(request, id_election):
+    election = get_object_or_404(Election, pk=id_election)
 
     if election.state != Election.OVER:
         render(request, 'error.html', {'message':"L'élection n'est pas terminée"})
@@ -72,5 +114,5 @@ def results(request, pk):
     # ranking according to the majority judgment
     ranking = [r.candidate for r in majority_judgment(results)]
 
-    params = {'ranking':ranking, "nvotes":Nvotes, "id_election":pk}
+    params = {'ranking':ranking, "nvotes":Nvotes, "id_election":id_election}
     return render(request, 'vote/results.html', params)

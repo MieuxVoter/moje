@@ -1,0 +1,5 @@
+django
+django-extensions
+django-sesame
+numpy
+matplotlib

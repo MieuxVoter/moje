@@ -2,25 +2,18 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.views.generic.edit import DeleteView, CreateView
 from django.http import HttpResponseRedirect, JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
 from django.db import IntegrityError
 
 from vote.models import *
 from election.forms import *
+from election.tools import *
 
 
 
-
-def find_election(id_election):
-    """
-    find election given its id or create a new one
-    """
-
-    # FIXME check whether the user is allowed or not to manage the election
-    election = get_object_or_404(Election, pk=id_election)
-    return election
-
-
+@login_required
 def create_election(request):
     election = Election()
     election.save()
@@ -36,17 +29,17 @@ def create_election(request):
     return HttpResponseRedirect('/election/manage/general/{:d}/'.format(election.pk))
 
 
-
+@login_required
 def general_step(request, id_election=-1):
     """
-    First step to create an election.
+    General parameters of an election.
     """
-
+    print(id_election)
     election = find_election(id_election)
 
     # manage form
     initial = { "name":  election.name,
-                "note":  election.note,
+                # "note":  election.note,
                 "start": election.start,
                 "end":   election.end,
                 # "state": election.state
@@ -60,14 +53,14 @@ def general_step(request, id_election=-1):
         start = form.cleaned_data['start']
         end   = form.cleaned_data['end']
         name  = form.cleaned_data['name']
-        note  = form.cleaned_data['note']
+        # note  = form.cleaned_data['note']
 
         # record the election
         election.voter  = voter
         election.start  = end
         election.end    = end
         election.name   = name
-        election.note   = note
+        # election.note   = note
         election.save()
 
         return HttpResponseRedirect('/election/manage/general/{:d}/'.format(election.pk))
@@ -114,12 +107,22 @@ def general_step(request, id_election=-1):
 #
 #     return render(request, 'election/manage_config.html', params)
 
-
+@login_required
 def launch_election(request, pk=-1):
+    """
+    Launch an election: send mail to all voters and change the state of the election
+    """
+
     election = find_election(pk)
+
+    voters = Voter.objects.filter(election=election)
+    for v in voters:
+        send_invite(v)
+
     election.state = Election.START
     election.save()
     return render(request, 'election/start.html')
+
 
 def close_election(request, pk=-1):
     election = find_election(pk)
@@ -127,6 +130,7 @@ def close_election(request, pk=-1):
     election.save()
     return render(request, 'election/closed.html')
 
+@login_required
 def candidates_step(request, id_election=-1):
     """
     Manage candidates pool in the election
@@ -149,7 +153,7 @@ def candidates_step(request, id_election=-1):
 
 
 
-
+@login_required
 def dashboard(request):
     # FIXME: use the real voter
     voter       = Voter.objects.first()
@@ -157,16 +161,16 @@ def dashboard(request):
     return render(request, 'election/dashboard.html', {'elections':elections})
 
 
-class ElectionDetail(generic.DetailView):
+class ElectionDetail(LoginRequiredMixin, generic.DetailView):
     model = Election
 
-class ElectionList(generic.ListView):
+class ElectionList(LoginRequiredMixin, generic.ListView):
     model           = Election
     template_name   = "election/dashboard.html"
     queryset        = Election.objects.annotate(num_voters=Count('voter'),
                                                 num_candidates=Count('candidate'))
 
-class ElectionDelete(DeleteView):
+class ElectionDelete(LoginRequiredMixin, DeleteView):
     """
     #FIXME check whether user is allowed to delete this election
     """
@@ -180,7 +184,7 @@ class ElectionDelete(DeleteView):
 
 
 
-
+@login_required
 def create_candidate(request):
     """
     Ajax request to create a candidate
@@ -227,7 +231,7 @@ def create_candidate(request):
 
 
 
-class CandidateDelete(DeleteView):
+class CandidateDelete(LoginRequiredMixin, DeleteView):
     """
     #FIXME check whether user is allowed to delete a candidate to this election
     """
@@ -245,7 +249,7 @@ class CandidateDelete(DeleteView):
 # ================
 ## Managing voters
 # ================
-
+@login_required
 def voters_step(request, id_election=-1):
     """
     Manage voters pool in the election
@@ -266,6 +270,7 @@ def voters_step(request, id_election=-1):
     return render(request, 'election/manage_voters.html', params)
 
 
+@login_required
 def create_voter(request):
     """
     Ajax request to create a voter
@@ -305,7 +310,7 @@ def create_voter(request):
 
 
 
-class VoterDelete(DeleteView):
+class VoterDelete(LoginRequiredMixin, DeleteView):
     """
     #FIXME check whether user is allowed to delete a voter to this election
     """

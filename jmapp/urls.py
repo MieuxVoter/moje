@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path, re_path
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,4 +23,5 @@ urlpatterns = [
     path('mj/', include('majority_judgment.urls')),
     path('election/', include('election.urls')),
     re_path(r'^', include('vote.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'sesame.middleware.AuthenticationMiddleware'
 ]
 
 ROOT_URLCONF = 'jmapp.urls'
@@ -131,3 +132,20 @@ STATICFILES_DIRS = [
 INSTALLED_APPS += ['django_extensions']
 
 AUTH_USER_MODEL = 'vote.User'
+
+AUTHENTICATION_BACKENDS = [
+        'django.contrib.auth.backends.ModelBackend',
+        'sesame.backends.ModelBackend'
+    ]
+
+LOGIN_REDIRECT_URL = "/vote/"
+SESAME_TOKEN_NAME = "url_auth_token"
+SESAME_MAX_AGE = 7 * 24 * 60 * 60
+
+# Sending mail with a SMTP server
+# EMAIL_HOST = parameters['email']['host']
+# EMAIL_PORT = parameters['email']['port'] if "port" in parameters['email'] else 465
+# EMAIL_HOST_USER = parameters['email']['host_user']
+# EMAIL_HOST_PASSWORD = parameters['email']['host_password']
+# EMAIL_USE_TLS = parameters['email']['use_tls'] if "use_tls" in parameters['email'] else True
+# DEFAULT_FROM_EMAIL = parameters['email']['default_from']
