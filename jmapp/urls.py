@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django.contrib.auth import views as auth_views
 
+from election import views as election_views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vote/', include('vote.urls')),
     path('mj/', include('majority_judgment.urls')),
     path('election/', include('election.urls')),
-    re_path(r'^', include('vote.urls')),
+    path('', election_views.dashboard, name='index'),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
