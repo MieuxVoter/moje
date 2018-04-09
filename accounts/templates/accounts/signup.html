@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+    <div class="main-panel" style="width:100%;">
+
+
+        {% block panel-header %}
+        <div class="panel-header">
+            <div class="header text-center">
+                <h2 class="title">Se déconnecter</h2>
+                <p class="category">
+
+                    <a target="_blank" href="https://github.com/plguhur/jm-django">Projet open source</a> réalisé depuis le
+                    <a href="https://sites.google.com/site/ridalaraki/majority-judgment" target="_blank">jugement majoritaire.</a>
+                </p>
+            </div>
+        </div>
+        {% endblock panel-header %}
+
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Créer un compte</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="account-box">
+                        <form method="post">
+                          {% csrf_token %}
+                          {{ form.as_p }}
+                          <button type="submit">Sign up</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
+{% endblock %}

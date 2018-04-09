@@ -23,5 +23,6 @@ urlpatterns = [
     path('mj/', include('majority_judgment.urls')),
     path('election/', include('election.urls')),
     re_path(r'^', include('vote.urls')),
+    path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'vote.apps.VoteConfig',
     'majority_judgment.apps.MajorityJudgmentConfig',
     'election.apps.ElectionConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
@@ -138,7 +139,11 @@ AUTHENTICATION_BACKENDS = [
         'sesame.backends.ModelBackend'
     ]
 
-LOGIN_REDIRECT_URL = "/vote/"
+
+
+LOGIN_REDIRECT_URL = "/election/dashboard/"
+
+# token to log with mail link
 SESAME_TOKEN_NAME = "url_auth_token"
 SESAME_MAX_AGE = 7 * 24 * 60 * 60
 
@@ -149,10 +154,3 @@ EMAIL_HOST_USER = parameters['email']['host_user']
 EMAIL_HOST_PASSWORD = parameters['email']['host_password']
 EMAIL_USE_SSL = parameters['email']['use_tls'] if "use_tls" in parameters['email'] else True
 DEFAULT_FROM_EMAIL = parameters['email']['default_from']
-
-print(EMAIL_HOST)
-print(EMAIL_PORT)
-print(EMAIL_HOST_USER)
-print(EMAIL_HOST_PASSWORD)
-print(EMAIL_USE_SSL)
-print(DEFAULT_FROM_EMAIL)

@@ -4,3 +4,4 @@ __pycache__/
 keys.local.json
 theme/
 results*.png
+*.swp
