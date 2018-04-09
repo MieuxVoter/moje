@@ -35,24 +35,35 @@ def voter_detail(request, pk):
 
 @login_required
 def redirect_vote(request):
-    voter       = Voter.objects.get(user=request.user)
-    id_election = voter.election.pk
-    return HttpResponseRedirect('/vote/{:d}/'.format(id_election))
+    try:
+        voter       = Voter.objects.get(user=request.user)
+        id_election = voter.election.pk
+        return HttpResponseRedirect('/vote/{:d}/'.format(id_election))
+    except Voter.DoesNotExist:
+        return render(request, 'error.html', {"message":"Nous n'avons pas trouvé d'élections pour vous..."})
 
 
 @login_required
 def redirect_results(request):
-    voter       = Voter.objects.get(user=request.user)
-    id_election = voter.election.pk
-    return HttpResponseRedirect('/results/{:d}/'.format(id_election))
+    try:
+        voter       = Voter.objects.get(user=request.user)
+        id_election = voter.election.pk
+        return HttpResponseRedirect('/results/{:d}/'.format(id_election))
+    except Voter.DoesNotExist:
+        return render(request, 'error.html', {"message":"Nous n'avons pas trouvé d'élections pour vous..."})
+
 
 
 
 @login_required
 def redirect_candidates(request):
-    voter       = Voter.objects.get(user=request.user)
-    id_election = voter.election.pk
-    return HttpResponseRedirect('/candidates/{:d}/'.format(id_election))
+    try:
+        voter       = Voter.objects.get(user=request.user)
+        id_election = voter.election.pk
+        return HttpResponseRedirect('/candidates/{:d}/'.format(id_election))
+    except Voter.DoesNotExist:
+        return render(request, 'error.html', {"message":"Nous n'avons pas trouvé d'élections pour vous..."})
+
 
 
 @login_required

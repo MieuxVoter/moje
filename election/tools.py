@@ -4,7 +4,7 @@ from sesame import utils
 
 from vote.models import *
 from election.forms import *
-
+from jmapp.settings import DEFAULT_FROM_EMAIL
 
 
 
@@ -25,7 +25,7 @@ def send_invite(voter):
 
     email = voter.user.email
     login_token = utils.get_parameters(voter.user)
-    login_link = "http://127.0.0.1:8000/vote/{}&url_auth_token={}".format(voter.election.id, login_token['url_auth_token'] )
+    login_link = "http://127.0.0.1:8000/vote/{}/?url_auth_token={}".format(voter.election.id, login_token['url_auth_token'] )
 
     html_message = """
     <p>Hello {},</p>
@@ -38,8 +38,8 @@ def send_invite(voter):
     send_mail(
         'Mieux Voter',
         html_message,
-        'webmaster@mieux-voter.org',
+        DEFAULT_FROM_EMAIL,
         [email],
-        fail_silently=True,
+        fail_silently=False,
         html_message = html_message
     )
