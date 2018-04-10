@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <!-- sidebar -->
+    {% block sidebar %}
+        {% include "sidebar.html" %}
+    {% endblock sidebar %}
+
+    <div class="main-panel">
+
+        <!-- TOP NAVBAR -->
+        {% block navbar %}
+            {% include "navbar.html" %}
+        {% endblock navbar %}
+
+        <!-- panel header -->
+        {% block panel-header %}
+            {% include "panel-header.html" %}
+        {% endblock panel-header %}
+
+
+        <!-- content of page -->
+        {% block content %}
+        {% endblock %}
+
+
+
+
+        <!-- FOOTER -->
+        {% block footer %}
+            {% include 'footer.html' %}
+        {% endblock footer %}
+        <!-- / END OF FOOTER -->
+
+
+    </div>
+    <!--  END OF MAIN PANEL -->
+{% endblock body %}

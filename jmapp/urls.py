@@ -22,10 +22,11 @@ from election import views as election_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('vote/', include('vote.urls')),
+    path('vote', include('vote.urls')),
+    path('', include('vote.urls')),
     path('mj/', include('majority_judgment.urls')),
     path('election/', include('election.urls')),
-    path('', election_views.dashboard, name='index'),
+    path('/', election_views.dashboard, name='index'),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
