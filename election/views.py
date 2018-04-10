@@ -114,8 +114,17 @@ def launch_election(request, pk=-1):
     """
 
     election = find_election(pk)
+    voters   = Voter.objects.filter(election=election)
 
-    voters = Voter.objects.filter(election=election)
+    Ncandidates = Candidate.objects.filter(election=election).count()
+    Nvoters     = voters.count()
+    if Nvoters == 0:
+        return render(request, 'error.html', {"message":"Il n'y pas d'électeurs."})
+    if Ncandidates == 0:
+        return render(request, 'error.html', {"message":"Il n'y pas de candidats."})
+    if election.name == "":
+        return render(request, 'error.html', {"message":"L'élection n'a pas de nom."})
+
     for v in voters:
         send_invite(v)
 
