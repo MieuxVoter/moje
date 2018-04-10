@@ -26,7 +26,8 @@ SECRET_KEY = parameters['secret_key']
 DEBUG = True if parameters['debug'] == "true" else False
 
 ALLOWED_HOSTS = parameters['allowed_hosts']
-
+PORT = parameters['port']
+DOMAIN = parameters['domain']
 
 
 # Application definition

@@ -4,7 +4,7 @@ from sesame import utils
 
 from vote.models import *
 from election.forms import *
-from jmapp.settings import DEFAULT_FROM_EMAIL
+from jmapp.settings import DEFAULT_FROM_EMAIL, PORT, DOMAIN
 
 
 
@@ -25,14 +25,21 @@ def send_invite(voter):
 
     email = voter.user.email
     login_token = utils.get_parameters(voter.user)
-    login_link = "http://127.0.0.1:8000/vote/{}/?url_auth_token={}".format(voter.election.id, login_token['url_auth_token'] )
+    login_link = "http://{}:{:d}/vote/{}/?url_auth_token={}".format(
+                            PORT,
+                            DOMAIN,
+                            voter.election.id,
+                            login_token['url_auth_token']
+                          )
 
     html_message = """
     <p>Hello {},</p>
-    <p>Vous avez été invité(e) à participer au vote <a href="{}">{}</a> </p>
+    <p>Vous avez été invité(e) à participer <a href="{}">au vote {}</a>. </p>
+    <p>Si le lien ne fonctionne pas, vous pouvez copier-coller le lien suivant :</p>
+    <p><a href="{}">{}</a></p>
     <p>Merci,</p>
     <p>Mieux Voter</p>
-    """.format(voter.user.last_name, login_link, voter.election.name)
+    """.format(voter.user.last_name, login_link, voter.election.name, login_link, login_link)
 
 
     send_mail(
