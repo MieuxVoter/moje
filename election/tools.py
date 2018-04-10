@@ -26,8 +26,8 @@ def send_invite(voter):
     email = voter.user.email
     login_token = utils.get_parameters(voter.user)
     login_link = "http://{}:{:d}/vote/{}/?url_auth_token={}".format(
-                            PORT,
                             DOMAIN,
+                            PORT,
                             voter.election.id,
                             login_token['url_auth_token']
                           )
