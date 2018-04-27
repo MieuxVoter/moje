@@ -19,7 +19,7 @@
         var first_name        = $("#first_name").val();
         var last_name         = $("#last_name").val();
         var email             = $("#email").val();
-        var id_election       = $("#id-election").val();
+        var election_id       = $("#id-election").val();
 
         $.ajax({
             url: '/election/ajax/create_voter/',
@@ -27,7 +27,7 @@
                 'first_name' :        first_name,
                 'last_name'  :        last_name,
                 'email'      :        email,
-                'id_election':        id_election
+                'election_id':        election_id
                 },
             dataType: 'json',
             // success: function(result){
@@ -93,8 +93,8 @@
                                 </tr>
                             {% endfor %}
                             <tr id="tr-create-voter">
-                                <form id="form-create-voter" method="post"  data-id-election="{{ id_election }}">
-                                    <input type="hidden" id="id-election" name="id-election" value="{{ id_election }}">
+                                <form id="form-create-voter" method="post"  data-id-election="{{ election_id }}">
+                                    <input type="hidden" id="id-election" name="id-election" value="{{ election_id }}">
                                     {% csrf_token %}
                                 <td>
                                     <div class="form-group">
@@ -120,11 +120,11 @@
                     </table>
 
                     
-                    <a href="/election/manage/general/{{ id_election }}" class="btn btn-primary">
+                    <a href="/election/manage/general/{{ election_id }}" class="btn btn-primary">
                         Gestion de l'élection
                     </a>
 
-                    <a href="/election/manage/candidates/{{ id_election }}" class="btn btn-info">
+                    <a href="/election/manage/candidates/{{ election_id }}" class="btn btn-info">
                         Liste des candidats
                     </a>
 

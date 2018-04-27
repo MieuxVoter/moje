@@ -2,11 +2,26 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+class Organisation(models.Model):
+    name        = models.CharField(max_length=200, blank=True)
+    site        = models.URLField(max_length=200, blank=True)
 
 class User(AbstractUser):
-    pass
+    picture     = models.FilePathField(path="/static/dashboard/img/user/", default='blank.png')
+    bio         = models.TextField(max_length=500, blank=True)
+    street      = models.TextField(max_length=200, blank=True)
+    city        = models.CharField(max_length=30, blank=True)
+    state       = models.CharField(max_length=30, blank=True)
+    postcode    = models.CharField(max_length=30, blank=True)
+    birth_date  = models.DateField(null=True, blank=True)
 
 
+class Supervisor(models.Model):
+    """
+    A supervisor is an extended user. A supervisor is in charge of one or several elections.
+    """
+    user         = models.OneToOneField(User, on_delete=models.CASCADE)
+    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE, default=None, null=True)
 
 class Election(models.Model):
     """
@@ -24,7 +39,7 @@ class Election(models.Model):
 
     name        = models.CharField(max_length=200, default="")
     note        = models.TextField(default="")
-    picture     = models.FilePathField(path="/static/dashboard/img/user/", default='blank.png')
+    picture     = models.FilePathField(path="/static/dashboard/img/election/", default='blank.png')
     start       = models.DateField(null=True, blank=True)
     end         = models.DateField(null=True, blank=True)
     state       = models.CharField(
@@ -32,20 +47,14 @@ class Election(models.Model):
                             choices=STATE_ELECTION,
                             default=DRAFT,
                         )
+    supervisor  = models.ForeignKey(Supervisor, on_delete=models.CASCADE, default=None, null=True)
 
 
 class Voter(models.Model):
     """
     A voter is an extended user
     """
-    user        = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture     = models.FilePathField(path="/static/dashboard/img/user/", default='blank.png')
-    bio         = models.TextField(max_length=500, blank=True)
-    street      = models.TextField(max_length=200, blank=True)
-    city        = models.CharField(max_length=30, blank=True)
-    state       = models.CharField(max_length=30, blank=True)
-    postcode    = models.CharField(max_length=30, blank=True)
-    birth_date  = models.DateField(null=True, blank=True)
+    user        = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
     election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
 
 
@@ -55,14 +64,8 @@ class Candidate(models.Model):
     This model represents a candidate in the election.
     """
     election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
-    user        = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture     = models.FilePathField(path="/static/dashboard/img/user/", default='blank.png')
-    bio         = models.TextField(max_length=500, blank=True)
-    street      = models.TextField(max_length=200, blank=True)
-    city        = models.CharField(max_length=30, blank=True)
-    state       = models.CharField(max_length=30, blank=True)
-    postcode    = models.CharField(max_length=30, blank=True)
-    birth_date  = models.DateField(null=True, blank=True)
+    user        = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
+    program     = models.TextField(default="")
 
 
 class Grade(models.Model):
@@ -72,6 +75,7 @@ class Grade(models.Model):
     election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
     name        = models.CharField(max_length=200, default="")
     code        = models.CharField(max_length=10, default="")
+
 
 class Rating(models.Model):
     """

@@ -1,17 +1,18 @@
 {% extends 'base_page.html' %}
 {% load static %}
 
-
+{% block extra_styles %}
+<style>
+.main-panel {
+    width:100%;
+}
+</style>
+{% endblock extra_styles %}
 
 {% block panel-header %}
 <div class="panel-header">
     <div class="header text-center">
-        <h2 class="title">Mes élections</h2>
-        <!-- <p class="category">
-
-            <a target="_blank" href="https://github.com/plguhur/jm-django">Projet open source</a> réalisé depuis le
-            <a href="https://sites.google.com/site/ridalaraki/majority-judgment" target="_blank">jugement majoritaire.</a>
-        </p> -->
+        <h2 class="title">Tableau de bord</h2>
     </div>
 </div>
 {% endblock panel-header %}
@@ -24,8 +25,7 @@
         <div class="col-lg">
             <div class="card card-tasks">
                 <div class="card-header">
-                    <h5 class="card-category">Gestion des élections</h5>
-                    <h4 class="card-title">Statuts</h4>
+                    <h4 class="card-title">Élections en cours</h4>
                 </div>
                 <div class="card-body">
                     {% if election_list == None %}
@@ -90,10 +90,56 @@
                     {% endif %}
                     <hr/>
                     <a class="btn btn-success" href="/election/manage/general/" role="button">Créer une élection</a>
-                    <!-- <div class="stats">
-                      <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                    </div> -->
+                <!-- END CARD BODY -->
                 </div>
+
+                <div class="card-header">
+                    <h4 class="card-title">Vote en cours</h4>
+                </div>
+                <div class="card-body">
+                {% if user_voters %}
+                    {% for voter in user_voters %}
+                    <table class="table">
+                        <thead>
+                            <th>    Nom </th>
+                            <th> Statut </th>
+                            <th> Début du vote </th>
+                            <th> Fin du vote </th>
+                            <th class="td-actions text-right"> Action </th>
+                        </thead>
+                      <tbody>
+
+
+                      <tr>
+                          <td> {{ voter.election.name }}</td>
+                          <td> {{ voter.election.get_state_display }} </td>
+                          <td> {{ voter.election.start }}</td>
+                          <td> {{ voter.election.end }}</td>
+                        <td class="td-actions text-right">
+                            <a href="/candidates/{{ voter.election.pk }}/" rel="tooltip" title=""  data-original-title="Candidats">
+                                  <i class="now-ui-icons business_badge"></i> Candidats
+                              </a>
+                            {% if not voter.has_voted %}
+                              <a href="/vote/{{ voter.election.pk }}/" rel="tooltip" title="" data-original-title="Voter">
+                                  <i class="now-ui-icons ui-1_email-85">Voter</i>
+                              </a>
+                            {% elif voter.ended %}
+                            <a href="/results/{{ voter.election.pk }}/" rel="tooltip" title=""  data-original-title="Results">
+                                <i class="now-ui-icons ui-1_email-85">Résultats</i>
+                            </a>
+                            {% endif %}
+                          </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    {% endfor %}
+                {% else %}
+                    Vous ne figurez dans la liste électorale d'aucun vote en cours ou terminé.
+                {% endif %}
+
+                <!-- END CARD BODY -->
+                </div>
+
             </div>
         </div>
 

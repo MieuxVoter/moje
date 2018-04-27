@@ -4,10 +4,17 @@
 {% block body %}
     <!-- sidebar -->
     {% block sidebar %}
-        {% include "sidebar.html" %}
+        {% if request.resolver_match.url_name == "dashboard" %}
+            {% include "no-sidebar.html" %}
+        {% elif voter %}
+            {% include "vote/sidebar.html" %}
+        {% elif supervisor %}
+            {% include "election/sidebar.html" %}
+        {% endif %}
     {% endblock sidebar %}
 
-    <div class="main-panel">
+    <div id="content" class="main-panel
+        {% if voter or supervisor or error %} slide-right {% endif %}">
 
         <!-- TOP NAVBAR -->
         {% block navbar %}
@@ -18,7 +25,7 @@
         {% block panel-header %}
             {% include "panel-header.html" %}
         {% endblock panel-header %}
-        
+
 
         <!-- content of page -->
         {% block content %}

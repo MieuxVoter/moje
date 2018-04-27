@@ -1,4 +1,4 @@
-This is a django application for launching a majority judgment experiment.
+This is a VoTe with [Majority Judgment](https://en.wikipedia.org/wiki/Majority_judgment).
 
 
 # Installation
@@ -9,11 +9,11 @@ The code is assuming you are using `python > 3.5` and `django > 2.0`.
 
     pip install -r requirements.txt
 
-1. Copy `keys.json` to `keys.local.json` and update parameters. To create a secret key, you can execute the script `./new_private_key.py` and copy the given key.
+2. Copy `keys.json` to `keys.local.json` and update parameters. To create a secret key, you can execute the script `./new_private_key.py` and copy the given key.
 
-2. [Connect to your database](https://docs.djangoproject.com/en/2.0/ref/databases/).
+3. [Connect to your database](https://docs.djangoproject.com/en/2.0/ref/databases/).
 
-3. For deployment to production, always think to the [django checklist](https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/).
+4. For deployment to production, always think to the [django checklist](https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/).
 
 # Run server
 

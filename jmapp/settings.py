@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'majority_judgment.apps.MajorityJudgmentConfig',
     'election.apps.ElectionConfig',
     'accounts.apps.AccountsConfig',
+    'result.apps.ResultConfig',
+    'candidate.apps.CandidateConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,6 +67,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                # 'election.context.context_processors.get_election',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -140,7 +143,7 @@ AUTHENTICATION_BACKENDS = [
         'sesame.backends.ModelBackend'
     ]
 
-
+APPEND_SLASH = True
 
 LOGIN_REDIRECT_URL = "/election/dashboard/"
 

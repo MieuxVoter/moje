@@ -11,119 +11,57 @@ from vote.tools import *
 from majority_judgment.tools import *
 
 
-## TODO: grant access only the election of the voter
-
-class CandidateList(LoginRequiredMixin, generic.ListView):
-    model = Candidate
-
-    def get_queryset(self):
-        election = Election.objects.get(pk=self.kwargs['id_election'])
-        return Candidate.objects.filter(election=election)
-
-class CandidateDetail(LoginRequiredMixin, generic.DetailView):
-    model = Candidate
-
-
-
-
-@login_required
-def voter_detail(request, pk):
-    user = User.objects.get(pk=pk)
-    voter =  Voter.objects.filter(user=user)
-    return render(request, 'vote/voter_detail.html', {"voter":voter})
-
 
 @login_required
 def redirect_vote(request):
     try:
-        voter       = Voter.objects.get(user=request.user)
-        id_election = voter.election.pk
-        return HttpResponseRedirect('/vote/{:d}/'.format(id_election))
+        voter = Voter.objects.filter(user=request.user).first()
+        election_id = voter.election.pk
+        return HttpResponseRedirect('/vote/{:d}/'.format(election_id))
     except Voter.DoesNotExist:
-        return render(request, 'error.html', {"message":"Nous n'avons pas trouvé d'élections pour vous..."})
+        return render(request, 'vote/error.html', {"error":"Nous n'avons pas trouvé d'élections pour vous..."})
 
 
 @login_required
-def redirect_results(request):
+def vote(request, election_id):
     try:
-        voter       = Voter.objects.get(user=request.user)
-        id_election = voter.election.pk
-        return HttpResponseRedirect('/results/{:d}/'.format(id_election))
+        election = Election.objects.get(pk=election_id)
+        voter = Voter.objects.get(election=election, user=request.user)
+    except Election.DoesNotExist:
+        return render(request, 'vote/error.html', {"error":"L'élection n'existe pas."})
     except Voter.DoesNotExist:
-        return render(request, 'error.html', {"message":"Nous n'avons pas trouvé d'élections pour vous..."})
+        return render(request, 'vote/error.html', {"error":"Vous n'êtes pas sur les listes électorales de cette élection !"})
 
-
-
-
-@login_required
-def redirect_candidates(request):
-    try:
-        voter       = Voter.objects.get(user=request.user)
-        id_election = voter.election.pk
-        return HttpResponseRedirect('/candidates/{:d}/'.format(id_election))
-    except Voter.DoesNotExist:
-        return render(request, 'error.html', {"message":"Nous n'avons pas trouvé d'élections pour vous..."})
-
-
-
-@login_required
-def vote(request, id_election):
-    election    = get_object_or_404(Election, pk=id_election)
     form = VoteForm(request.POST or None, election=election)
-
     if form.is_valid():
-        # FIXME: use the real voter
-        voter = Voter.objects.first()
+        # check whether the voter has already casted a vote
+        if Rating.objects.filter(voter=voter, election=election).exists():
+            return render(request, 'vote/error.html',
+                {"error":"Vous ne pouvez voter qu'une seule fois."})
 
-        # FIXME: check whether the voter has already casted a vote
         for c, g in form_grades(form, election).items():
             r = Rating(candidate=c, grade=g, voter=voter, election=election)
             r.save()
-        return HttpResponseRedirect('/results/{:d}/'.format(id_election))
 
-    gs          = Grade.objects.filter(election=election)
-    return render(request, 'vote/vote.html', {'form': form,
-                                            'grades': gs})
+        return HttpResponseRedirect('/vote/success/'.format(election_id))
 
+    params = {'form': form,
+              'election': election,
+              'grades': Grade.objects.filter(election=election),
+              'voter': voter }
+    return render(request, 'vote/vote.html', params)
 
-
-
-@login_required
-def set_voter(request):
-    """
-    View for updating voter profile (referred as user profile)
-    """
-    form = UserForm(request.POST or None)
-
-    #TODO
 
 
 @login_required
-def results(request, id_election):
-    election = get_object_or_404(Election, pk=id_election)
-
-    if election.state != Election.OVER:
-        render(request, 'error.html', {'message':"L'élection n'est pas terminée"})
-
-
-    # read database
-    grades  = [g.name for g in Grade.objects.filter(election=election)]
-    ratings = get_ratings(election)
-    results = []
-    cs      = Candidate.objects.filter(election=election)
-    Nvotes  = len(Rating.objects.filter(election=election))
-
-    if not Nvotes:
-        render(request, 'error.html', {'message':"Aucun vote n'a été trouvé"})
-
-    for i in range(len(cs)):
-        result = Result(candidate=cs[i],
-                        ratings=ratings[i, :],
-                        grades=grades)
-        results.append(result)
-
-    # ranking according to the majority judgment
-    ranking = [r.candidate for r in majority_judgment(results)]
-
-    params = {'ranking':ranking, "nvotes":Nvotes, "id_election":id_election}
-    return render(request, 'vote/results.html', params)
+def success(request, pk):
+    try:
+        election = Election.objects.get(pk=pk)
+        voter = Voter.objects.get(election=election, user=request.user)
+    except Election.DoesNotExist:
+        return render(request, 'vote/error.html', {"error":"L'élection n'existe pas."})
+    except Voter.DoesNotExist:
+        return render(request, 'vote/error.html', {"error":"Vous n'êtes pas sur les listes électorales de cette élection !"})
+    params = {'election': election,
+              'voter': voter }
+    return render(request, 'vote/success.html', params)

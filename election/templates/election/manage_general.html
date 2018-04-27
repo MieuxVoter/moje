@@ -3,9 +3,17 @@
 
 {% block extra_styles %}
 <link rel="stylesheet" href="{% static 'js/jquery-ui-1.12.1.custom/jquery-ui.min.css' %}">
-<script src="{% static 'js/jquery-ui-1.12.1.custom/external/jquery/jquery.js' %}"></script>
   <script src="{% static 'js/jquery-ui-1.12.1.custom/jquery-ui.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-ui-1.12.1.custom/jquery.ui.datepicker-fr.js' %}"></script>
   <script>
+  $.datepicker.setDefaults(
+  $.extend(
+    {'dateFormat':'dd/mm/yy'},
+    $.datepicker.regional['fr']
+  )
+);
+
+
   $( function() {
     $( "#id_start" ).datepicker();
     $( "#id_end" ).datepicker();
@@ -84,21 +92,21 @@
                     <button type="submit" class="btn btn-primary">
                         Enregistrer
                     </button>
-                    {% if state == "DR" %}
-                    <a href="/election/launch/{{ id_election }}" class="btn btn-primary">
+                    <!-- {% if state == "DR" %}
+                    <a href="/election/launch/{{ election_id }}" class="btn btn-primary">
                         Lancer l'élection
                     </a>
                     {% elif state == "ST" %}
-                    <a href="/election/close/{{ id_election }}" class="btn btn-primary">
+                    <a href="/election/close/{{ election_id }}" class="btn btn-primary">
                         Terminer l'élection
                     </a>
                     {% endif %}
-                    <a  href="/election/manage/candidates/{{ id_election }}" class="btn btn-info">
+                    <a  href="/election/manage/candidates/{{ election_id }}" class="btn btn-info">
                         Liste des candidats
                     </a>
-                    <a  href="/election/manage/voters/{{ id_election }}" class="btn btn-info">
+                    <a  href="/election/manage/voters/{{ election_id }}" class="btn btn-info">
                         Liste des électeurs
-                    </a>
+                    </a> -->
 
                     </form>
                 </div>

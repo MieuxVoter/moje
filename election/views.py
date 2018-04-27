@@ -3,43 +3,45 @@ from django.views import generic
 from django.views.generic.edit import DeleteView, CreateView
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Count
 from django.db import IntegrityError
+
+from datetime import datetime
 
 from vote.models import *
 from election.forms import *
 from election.tools import *
+from utils.mixins import SupervisorTestMixin, SupervisorFetchMixin
 
 
 
 @login_required
 def create_election(request):
-    election = Election()
-    election.save()
+    supervisor = Supervisor.objects.get_or_create(user=request.user)[0]
+    election   = Election.objects.create(supervisor=supervisor)
 
     # default grades
-    Grade(name="Très bien", election=election, code="tb").save()
-    Grade(name="Bien", election=election, code="b").save()
-    Grade(name="Passable", election=election, code="p").save()
-    Grade(name="Insuffisant", election=election, code="ins").save()
-    Grade(name="À rejeter", election=election, code="rej").save()
-    grades = Grade.objects.filter(election=election)
+    Grade.objects.create(name="Très bien",  election=election, code="tb")
+    Grade.objects.create(name="Bien",       election=election, code="b")
+    Grade.objects.create(name="Passable",   election=election, code="p")
+    Grade.objects.create(name="Insuffisant",election=election, code="ins")
+    Grade.objects.create(name="À rejeter",  election=election, code="rej")
 
     return HttpResponseRedirect('/election/manage/general/{:d}/'.format(election.pk))
 
 
 @login_required
-def general_step(request, id_election=-1):
+def general_step(request, election_id=-1):
     """
     General parameters of an election.
     """
-    print(id_election)
-    election = find_election(id_election)
+
+    election = find_election(election_id, check_user=request.user)
 
     # manage form
     initial = { "name":  election.name,
-                # "note":  election.note,
+                "note":  election.note,
                 "start": election.start,
                 "end":   election.end,
                 # "state": election.state
@@ -47,65 +49,30 @@ def general_step(request, id_election=-1):
 
     form = GeneralStepForm(request.POST or None, initial=initial)
     if form.is_valid():
-        # FIXME: use the real voter
-        voter = Voter.objects.first()
-
         start = form.cleaned_data['start']
         end   = form.cleaned_data['end']
         name  = form.cleaned_data['name']
-        # note  = form.cleaned_data['note']
+        note  = form.cleaned_data['note']
 
         # record the election
-        election.voter  = voter
         election.start  = end
         election.end    = end
         election.name   = name
-        # election.note   = note
+        election.note   = note
         election.save()
 
         return HttpResponseRedirect('/election/manage/general/{:d}/'.format(election.pk))
 
     params =   {'form': form,
-                "id_election": election.pk,
+                "election_id": election.pk,
+                "election": election,
                 'grades':Grade.objects.filter(election=election),
                 "state":  election.state,
-
+                "supervisor": election.supervisor
                 }
 
     return render(request, 'election/manage_general.html', params)
 
-# def config_step(request, id_election=-1):
-#     """
-#     Configuration step on the voting system in an election.
-#     """
-#
-#     # find election given its id or create a new one
-#     election = find_election(id_election)
-#     if not election:
-#         return HttpResponseRedirect('/election/manage/general/')
-#
-#     # TODO modify grades in JM
-#     # TODO select JM or VM
-#     # FIXME this is only done with default grades
-#
-#     grades = Grade.objects.filter(election=election)
-#
-#     if not grades:
-#         Grade(name="Très bien", election=election, code="tb").save()
-#         Grade(name="Bien", election=election, code="b").save()
-#         Grade(name="Passable", election=election, code="p").save()
-#         Grade(name="Insuffisant", election=election, code="ins").save()
-#         Grade(name="À rejeter", election=election, code="rej").save()
-#         grades = Grade.objects.filter(election=election)
-#
-#
-#     params = {
-#
-#                 "id_election":  id_election,
-#                 "grades":      grades
-#             }
-#
-#     return render(request, 'election/manage_config.html', params)
 
 @login_required
 def launch_election(request, pk=-1):
@@ -113,49 +80,71 @@ def launch_election(request, pk=-1):
     Launch an election: send mail to all voters and change the state of the election
     """
 
-    election = find_election(pk)
-    voters   = Voter.objects.filter(election=election)
-
+    election    = find_election(pk, check_user=request.user)
+    voters      = Voter.objects.filter(election=election)
     Ncandidates = Candidate.objects.filter(election=election).count()
     Nvoters     = voters.count()
+
+    if election.state != Election.DRAFT:
+        return render(request, 'election/error.html', {
+            "election": election,
+            "error": "L'élection a déjà commencée."})
     if Nvoters == 0:
-        return render(request, 'error.html', {"message":"Il n'y pas d'électeurs."})
+        return render(request, 'election/error.html', {
+            "election": election,
+            "error": "Il n'y pas d'électeurs."})
     if Ncandidates == 0:
-        return render(request, 'error.html', {"message":"Il n'y pas de candidats."})
+        return render(request, 'election/error.html', {
+            "election": election,
+            "error": "Il n'y pas de candidats."})
     if election.name == "":
-        return render(request, 'error.html', {"message":"L'élection n'a pas de nom."})
+        return render(request, 'election/error.html', {
+            "election": election,
+            "error": "L'élection n'a pas de nom."})
+    if election.start < datetime.now().date():
+        return render(request, 'election/error.html', {
+            "election": election,
+            "error": "Le début de l'élection est déjà passé."})
+    if election.end < datetime.now().date():
+        return render(request, 'election/error.html', {
+            "election": election,
+            "error": "La fin de l'élection est déjà passée."})
 
     for v in voters:
         send_invite(v)
 
     election.state = Election.START
     election.save()
-    return render(request, 'election/start.html')
+
+    params={'supervisor':election.supervisor,
+            "election":election}
+
+    return render(request, 'election/start.html', params)
 
 
 def close_election(request, pk=-1):
-    election = find_election(pk)
+    election = find_election(election_id, check_user=request.user)
     election.state = Election.OVER
     election.save()
-    return render(request, 'election/closed.html')
+
+    return render(request, 'election/closed.html', params={'supervisor':election.supervisor,'election':election})
+
 
 @login_required
-def candidates_step(request, id_election=-1):
+def candidates_step(request, election_id=-1):
     """
     Manage candidates pool in the election
     """
 
     # find election given its id or create a new one
-    election = find_election(id_election)
-    if not election:
-        return HttpResponseRedirect('/election/manage/general/')
+    election = find_election(election_id, check_user=request.user)
 
     candidates = Candidate.objects.filter(election=election)
 
     params = {
-
-                "id_election": id_election,
-                "candidates": candidates
+                "candidates": candidates,
+                "election": election,
+                "supervisor": election.supervisor
             }
 
     return render(request, 'election/manage_candidates.html', params)
@@ -164,25 +153,71 @@ def candidates_step(request, id_election=-1):
 
 @login_required
 def dashboard(request):
-    # FIXME: use the real voter
-    voter       = Voter.objects.first()
-    elections   = Election.objects.all()
-    return render(request, 'election/dashboard.html', {'elections':elections})
+    supervisor  = Supervisor.objects.get_or_create(user=request.user)[0]
+    elections   = Election.objects.filter(supervisor=supervisor)
+    #FIXME annotate user_voters with has_voted and ended
+    user_voters = Voter.objects.filter(user=request.user)
+    return render(request, 'election/dashboard.html',
+                    {'election_list': elections,
+                     'user_voters': user_voters})
 
 
-class ElectionDetail(LoginRequiredMixin, generic.DetailView):
-    model = Election
+@login_required
+def election_detail(request, election_id):
+    template_name = "election/election_detail.html"
+    supervisor    = None
+    voter         = None
 
-class ElectionList(LoginRequiredMixin, generic.ListView):
-    model           = Election
+    try:
+        election = Election.objects.get(pk=election_id)
+        if election.supervisor and election.supervisor.user == request.user:
+            supervisor = election.supervisor
+        else:
+            voter = Voter.objects.get(election=election, user=request.user)
+
+    except Election.DoesNotExist:
+        return render(request, 'election/error.html',
+                        {"election": election,
+                         "error":"L'élection demandée n'existe pas."})
+    except Voter.DoesNotExist:
+        return render(request, 'election/error.html',
+                {"election": election,
+                "error":"Vous n'avez pas les droits d'accès à cette élection."})
+
+    params = {"voter": voter,
+              "election": election,
+              "supervisor": supervisor,
+              'election_id':election_id}
+
+    return render(request, template_name, params)
+
+
+
+@login_required
+def redirect_election(request):
+    try:
+        voter       = Voter.objects.get(user=request.user)
+        election_id = voter.election.pk
+        return HttpResponseRedirect('/election/{:d}/'.format(election_id))
+    except Voter.DoesNotExist:
+        return render(request, 'election/error.html', {
+                    "election": election,
+                    "error":"Nous n'avons pas trouvé d'élections pour vous..."})
+
+
+class ElectionList(LoginRequiredMixin, SupervisorFetchMixin, generic.ListView):
     template_name   = "election/dashboard.html"
-    queryset        = Election.objects.annotate(num_voters=Count('voter'),
-                                                num_candidates=Count('candidate'))
 
-class ElectionDelete(LoginRequiredMixin, DeleteView):
-    """
-    #FIXME check whether user is allowed to delete this election
-    """
+    def get_queryset(self):
+        self.supervisor      = Supervisor.objects.get_or_create(user=self.request.user)[0]
+        elections       = Election.objects.filter(supervisor=self.supervisor)
+        queryset        = elections.annotate(num_voters=Count('voter'),
+                                        num_candidates=Count('candidate'))
+        return queryset
+
+
+class ElectionDelete(SupervisorTestMixin, DeleteView):
+
     model       = Election
     success_url = "/election/dashboard/"
 
@@ -190,7 +225,6 @@ class ElectionDelete(LoginRequiredMixin, DeleteView):
     # It is not good practice : https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
-
 
 
 @login_required
@@ -202,21 +236,24 @@ def create_candidate(request):
     + `ajax request <https://stackoverflow.com/questions/8059160/django-apps-using-class-based-views-and-ajax>`_.
 
     https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
-
-    #FIXME check whether user is allowed to create a candidate to this election
     """
 
 
-    name        = request.GET.get('name', "")
-    bio         = request.GET.get('bio', "")
-    id_election = int(request.GET.get('id_election', -1))
-    username    = "{}_{:d}".format(name, id_election)
-
-    # FIXME check whether the id_election belongs to the user
-    election = find_election(id_election)
-    if not election or id_election < 0:
+    name        = request.GET.get('name')
+    program     = request.GET.get('program')
+    election_id = request.GET.get('election_id', -1)
+    if not election_id:
         data = {'election':      False,
                 'error':         'Election id is not valid.'
+                }
+        return JsonResponse(data)
+
+    election_id = int(election_id)
+    username    = "{}_{:d}".format(name, election_id)
+    election = find_election(election_id, check_user=request.user)
+    if not election:
+        data = {'election':      False,
+                'error':         'Election does not seem to exist.'
                 }
         return JsonResponse(data)
 
@@ -229,7 +266,7 @@ def create_candidate(request):
                 }
         return JsonResponse(data)
 
-    c = Candidate(bio=bio, election=election, user=user)
+    c = Candidate(program=program, election=election, user=user)
     c.save()
 
     data = {
@@ -240,9 +277,9 @@ def create_candidate(request):
 
 
 
-class CandidateDelete(LoginRequiredMixin, DeleteView):
+class CandidateDelete(UserPassesTestMixin, DeleteView):
     """
-    #FIXME check whether user is allowed to delete a candidate to this election
+    delete a candidate from ajax request
     """
     model       = Candidate
     success_url = "/election/manage/candidates/{election_id}/"
@@ -252,6 +289,12 @@ class CandidateDelete(LoginRequiredMixin, DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+    def test_func(self):
+        id_candidate    = self.kwargs['pk']
+        candidate       = get_object_or_404(Candidate, pk=id_candidate)
+        supervisor      = candidate.election.supervisor
+        return supervisor and self.request.user == supervisor.user
+
 
 
 
@@ -259,21 +302,22 @@ class CandidateDelete(LoginRequiredMixin, DeleteView):
 ## Managing voters
 # ================
 @login_required
-def voters_step(request, id_election=-1):
+def voters_step(request, election_id=-1):
     """
     Manage voters pool in the election
     """
 
-    election = find_election(id_election)
+    election = find_election(election_id)
     if not election:
         return HttpResponseRedirect('/election/manage/general/')
 
     voters = Voter.objects.filter(election=election)
 
     params = {
-
-                "id_election": id_election,
-                "voters":  voters
+                "election": election,
+                "election_id": election_id,
+                "voters":  voters,
+                "supervisor": election.supervisor
             }
 
     return render(request, 'election/manage_voters.html', params)
@@ -284,8 +328,6 @@ def create_voter(request):
     """
     Ajax request to create a voter
 
-    #FIXME check whether user is allowed to create a voter to this election
-
     #TODO catch is voter already exist
     """
 
@@ -293,22 +335,23 @@ def create_voter(request):
     first_name    = request.GET.get('first_name', "")
     last_name     = request.GET.get('last_name', "")
     email         = request.GET.get('email', "")
-    id_election   = int(request.GET.get('id_election', -1))
-    username      = "{}_{}_{:d}".format(first_name,last_name, id_election)
+    election_id   = int(request.GET.get('election_id', -1))
+    username      = "{}_{}_{:d}".format(first_name,last_name, election_id)
 
-    # FIXME check whether the id_election belongs to the user
-    election = find_election(id_election)
-    if not election or id_election < 0:
+    election = find_election(election_id, check_user=request.user)
+    if not election or election_id < 0:
         data = {'election':      False,
                 'error':         'Election id is not valid.'
                 }
         return JsonResponse(data)
 
 
-    user = User(last_name=last_name, first_name=first_name, username=username, email=email)
-    user.save()
-    v = Voter(election=election, user=user)
-    v.save()
+    user = User.objects.create( last_name=last_name,
+                        first_name=first_name,
+                        username=username,
+                        email=email
+                      )
+    v   = Voter.objects.create(election=election, user=user)
 
     data = {
         'success': True,
@@ -319,9 +362,9 @@ def create_voter(request):
 
 
 
-class VoterDelete(LoginRequiredMixin, DeleteView):
+class VoterDelete(UserPassesTestMixin, DeleteView):
     """
-    #FIXME check whether user is allowed to delete a voter to this election
+    delete a voter to this election
     """
     model       = Voter
     success_url = "/election/manage/voters/{election_id}/"
@@ -330,3 +373,10 @@ class VoterDelete(LoginRequiredMixin, DeleteView):
     # It is not good practice : https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
+    # ensure the user is allowed to delete this voter
+    def test_func(self):
+        id_candidate    = self.kwargs['pk']
+        candidate       = get_object_or_404(Candidate, pk=id_candidate)
+        supervisor      = candidate.election.supervisor
+        return supervisor and self.request.user == supervisor.user

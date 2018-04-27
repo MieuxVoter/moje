@@ -1,0 +1,59 @@
+<div class="sidebar" id="sidebar" data-color="red">
+    <!--
+Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+-->
+    <div class="logo">
+        <a href="http://www.mieux-voter.org" class="simple-text logo-mini">
+            MV
+        </a>
+        <a href="http://www.mieux-voter.org" class="simple-text logo-normal">
+            Mieux Voter
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li {% if request.resolver_match.url_name == "general" %}class="active"{% endif %}>
+                <a href="/election/manage/general/{{ election.pk }}/">
+                    <i class="now-ui-icons ui-1_email-85"></i>
+                    <p>Général</p>
+                </a>
+            </li>
+            <li {% if request.resolver_match.url_name == "candidates" %}class="active"{% endif %}>
+                <a href="/election/manage/candidates/{{ election.pk }}/">
+                    <i class="now-ui-icons files_box"></i>
+                    <p>Candidats</p>
+                </a>
+            </li>
+            <li {% if request.resolver_match.url_name == "voters" %}class="active"{% endif %}>
+                <a href="/election/manage/voters/{{ election.pk }}/">
+                    <i class="now-ui-icons files_box"></i>
+                    <p>Électeurs</p>
+                </a>
+            </li>
+            <li {% if request.resolver_match.url_name == "results" %}class="active"{% endif %}>
+                <a href="/results/{{ election.pk }}/">
+                    <i class="now-ui-icons sport_trophy"></i>
+                    <p>Résultats</p>
+                </a>
+            </li>
+            {% if election.state == "DR" %}
+            <li {% if request.resolver_match.url_name == "launch_election" %}class="active"{% endif %}>
+                <a href="/election/launch/{{ election.pk }}">
+                    <i class="now-ui-icons media-1_button-play"></i>
+                    <p>Démarrer</p>
+                </a>
+            </li>
+            {% elif election.state == "ST" %}
+            <li {% if request.resolver_match.url_name == "close_election" %}class="active"{% endif %}>
+                <a href="/election/close/{{ election.pk }}">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                    <p>Terminer</p>
+                </a>
+            </li>
+            {% endif %}
+
+
+
+        </ul>
+    </div>
+</div>

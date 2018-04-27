@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.core.mail import send_mail
+from django.core.exceptions import PermissionDenied
 from sesame import utils
 
 from vote.models import *
@@ -8,13 +9,16 @@ from jmapp.settings import DEFAULT_FROM_EMAIL, PORT, DOMAIN
 
 
 
-def find_election(id_election):
+def find_election(election_id, check_user=None):
     """
     find election given its id or create a new one
     """
 
-    # FIXME check whether the user is allowed or not to manage the election
-    election = get_object_or_404(Election, pk=id_election)
+    election = get_object_or_404(Election, pk=election_id)
+
+    if check_user and (not election.supervisor or election.supervisor.user != check_user):
+        raise PermissionDenied("Vous ne gérez pas ce vote.")
+
     return election
 
 
@@ -31,7 +35,7 @@ def send_invite(voter):
                             voter.election.id,
                             login_token['url_auth_token']
                           )
-
+    name = voter.user.first_name.title() + " " + voter.user.last_name.title()
     html_message = """
     <p>Hello {},</p>
     <p>Vous avez été invité(e) à participer <a href="{}">au vote {}</a>. </p>
@@ -39,7 +43,7 @@ def send_invite(voter):
     <p><a href="{}">{}</a></p>
     <p>Merci,</p>
     <p>Mieux Voter</p>
-    """.format(voter.user.last_name, login_link, voter.election.name, login_link, login_link)
+    """.format(name, login_link, voter.election.name, login_link, login_link)
 
 
     send_mail(

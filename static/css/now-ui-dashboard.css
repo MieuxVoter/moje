@@ -3567,4 +3567,85 @@ Created using IcoMoon - icomoon.io
   .page-header .container h6.category-absolute {
     width: 90%; } }
 
+/* ========================================================================== */
+/* .collapse.show {
+    right: 0px;
+    position: absolute;
+    top: 40px;
+    background-color: red;
+} */
+
+/* :root {
+    --widthSidebar: 260px;
+} */
+/* .main-panel {
+    width: 100%;
+} */
+/* .sidebar {
+    width: --widthSidebar;
+} */
+/*. {
+    float: right;
+    width: calc(100% - 260px);
+} */
+/* #content {
+    width: calc(100% - 260px);
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#sidebar {
+    width: 260px;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+
+
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+a[aria-expanded="true"]::before {
+    content: '\e260';
+} */
+
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+/* @media (max-width: 768px) {
+    .full-panel {
+        width: 100%;
+    }
+
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content.active {
+        width: 100%;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+} */
+
 /*# sourceMappingURL=now-ui-dashboard.css.map */

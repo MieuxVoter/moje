@@ -18,14 +18,14 @@
     $("#form-btn").click(function () {
         var name        = $("#name").val();
         var program     = $("#program").val();
-        var id_election = $("#id-election").val();
+        var election_id = $("#election-id").val();
 
         $.ajax({
             url: '/election/ajax/create_candidate/',
             data: {
                 'name':           name,
-                'bio':        program,
-                'id_election':    id_election
+                'program':        program,
+                'election_id':    election_id
                 },
             dataType: 'json',
             success: function (data) {
@@ -112,13 +112,13 @@
                                         <img src="{{ candidate.picture }}"  class="zone-pic" />
                                     </a>
                                     </td> -->
-                                    <td>{{ candidate.bio }}</td>
+                                    <td>{{ candidate.program }}</td>
                                     <td><a href="/election/manage/delete_candidate/{{ candidate.id }}/" class="btn btn-info">Supprimer</a></td>
                                 </tr>
                             {% endfor %}
                             <tr id="tr-create-candidate">
-                                <form id="form-create-candidate" method="post"  data-id-election="{{ id_election }}">
-                                    <input type="hidden" id="id-election" name="id-election" value="{{ id_election }}">
+                                <form id="form-create-candidate" method="post"  data-id-election="{{ election_id }}">
+                                    <input type="hidden" id="election-id" name="election-id" value="{{ election.pk }}">
                                     {% csrf_token %}
                                 <td>
                                     <div class="form-group">
@@ -140,8 +140,8 @@
                     </table>
 
 
-                    <a href="/election/manage/general/{{ id_election }}" class="btn btn-primary">Gestion de l'élection</a>
-                    <a href="/election/manage/voters/{{ id_election }}" class="btn btn-info">Liste des électeurs</a>
+                    <a href="/election/manage/general/{{ election_id }}" class="btn btn-primary">Gestion de l'élection</a>
+                    <a href="/election/manage/voters/{{ election_id }}" class="btn btn-info">Liste des électeurs</a>
 
 
 

@@ -4,13 +4,15 @@ from election import views
 
 urlpatterns = [
     path(r'manage/general/', views.create_election, name="general"),
-    path(r'manage/general/<int:id_election>/', views.general_step, name="general"),
-    # path(r'manage/config/<int:id_election>/', views.config_step, name="config"),
-    path(r'manage/voters/<int:id_election>/', views.voters_step, name="voters"),
-    path(r'manage/<int:pk>/', views.ElectionDetail.as_view(), name='election'),
+    path(r'manage/general/<int:election_id>/', views.general_step, name="general"),
+    # path(r'manage/config/<int:election_id>/', views.config_step, name="config"),
+    path(r'manage/voters/<int:election_id>/', views.voters_step, name="voters"),
+    path(r'<int:election_id>/', views.election_detail, name='election'),
+    path(r'<int:election_id>', views.election_detail, name='election'),
+    path(r'', views.redirect_election, name='vote'),
 
     # candidate
-    path(r'manage/candidates/<int:id_election>/',
+    path(r'manage/candidates/<int:election_id>/',
             views.candidates_step,
             name="candidates"
         ),
@@ -25,7 +27,7 @@ urlpatterns = [
 
 
     # voter
-    path(r'manage/voters/<int:id_election>/',
+    path(r'manage/voters/<int:election_id>/',
             views.candidates_step,
             name="voters"
         ),
@@ -38,7 +40,7 @@ urlpatterns = [
                 name="delete_voter"
         ),
 
-    path(r'dashboard/', views.ElectionList.as_view(), name='manage'),
+    path(r'dashboard/', views.ElectionList.as_view(), name='dashboard'),
     path(r'manage/delete_election/<int:pk>/',
                 views.ElectionDelete.as_view(),
                 name="delete_election"
@@ -49,7 +51,7 @@ urlpatterns = [
                 name="launch_election"
         ),
 
-        path(r'close/<int:pk>/',
+    path(r'close/<int:pk>/',
                 views.close_election,
                 name="close_election"
         ),

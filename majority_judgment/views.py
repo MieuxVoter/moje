@@ -14,9 +14,9 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
 import io
 
-def chart_results(request, id_election):
+def chart_results(request, election_id):
     # read database
-    election = get_object_or_404(Election, pk=id_election)
+    election = get_object_or_404(Election, pk=election_id)
     grades  = [g.name for g in Grade.objects.filter(election=election)]
     scores  = get_scores(election)
     names   = []
