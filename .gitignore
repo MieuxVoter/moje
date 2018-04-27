@@ -5,3 +5,4 @@ keys.local.json
 theme/
 results*.png
 *.swp
+db.sqlite3

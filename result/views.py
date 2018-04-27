@@ -28,7 +28,7 @@ def results(request, election_id):
     params = {}
 
     # close election according to date
-    if election.end < datetime.now().date():
+    if election.end and election.end < datetime.now().date():
         election.state = Election.OVER
         election.save()
 
@@ -38,10 +38,10 @@ def results(request, election_id):
         params["supervisor"] = supervisor
     elif not Voter.objects.filter(user=request.user, election=election).exists():
         return render(request, 'vote/error.html',
-                {'error': "Vous n'avez pas accès à cette élection."})
+                {'error': "Vous n'avez pas accès à cette élection.", "election":election})
     elif election.state != Election.OVER:
         return render(request, 'vote/error.html',
-                {'error': "L'élection n'est pas terminée"})
+                {'error': "L'élection n'est pas terminée", "election":election})
     else:
         voter = Voter.objects.get(user=request.user, election=election)
         params["voter"] = voter
@@ -56,7 +56,7 @@ def results(request, election_id):
 
     if Nvotes == 0:
         template = "election" if supervisor else "vote"
-        return render(request, template + "/error.html", {'error':"Les urnes sont vides."})
+        return render(request, template + "/error.html", {'error':"Les urnes sont vides.", "election":election})
 
     for i in range(len(cs)):
         result = Result(candidate=cs[i],

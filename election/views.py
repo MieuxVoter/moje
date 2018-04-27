@@ -123,11 +123,11 @@ def launch_election(request, pk=-1):
 
 
 def close_election(request, pk=-1):
-    election = find_election(election_id, check_user=request.user)
+    election = find_election(pk, check_user=request.user)
     election.state = Election.OVER
     election.save()
 
-    return render(request, 'election/closed.html', params={'supervisor':election.supervisor,'election':election})
+    return render(request, 'election/closed.html', {'supervisor':election.supervisor, 'election':election})
 
 
 @login_required
