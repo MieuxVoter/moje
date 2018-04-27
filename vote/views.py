@@ -50,7 +50,7 @@ def vote(request, election_id):
             r = Rating(candidate=c, grade=g, voter=voter, election=election)
             r.save()
 
-        return HttpResponseRedirect('/vote/success/'.format(election_id))
+        return HttpResponseRedirect('/vote/success/%d'.format(election_id))
 
     params = {'form': form,
               'election': election,
