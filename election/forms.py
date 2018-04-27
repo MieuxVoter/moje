@@ -3,8 +3,7 @@ from django.forms.widgets import RadioSelect
 from django.contrib.admin.widgets import AdminDateWidget
 from django.forms.fields import DateField
 from django.core.exceptions import ValidationError
-
-from datetime import datetime
+from django.utils import timezone
 
 from vote.models import *
 
@@ -14,7 +13,7 @@ class FutureDateField(forms.DateField):
 
     def validate(self, value):
         super().validate(value)
-        if value < datetime.now().date():
+        if value < timezone.now().date():
             raise ValidationError("La date n'est pas postérieure à aujourd'hui.")
 
 

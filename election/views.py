@@ -6,8 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Count
 from django.db import IntegrityError
-
-from datetime import datetime
+from django.utils import timezone
 
 from vote.models import *
 from election.forms import *
@@ -55,7 +54,7 @@ def general_step(request, election_id=-1):
         note  = form.cleaned_data['note']
 
         # record the election
-        election.start  = end
+        election.start  = start
         election.end    = end
         election.name   = name
         election.note   = note
@@ -101,11 +100,11 @@ def launch_election(request, pk=-1):
         return render(request, 'election/error.html', {
             "election": election,
             "error": "L'élection n'a pas de nom."})
-    if election.start < datetime.now().date():
+    if election.start < timezone.now().date():
         return render(request, 'election/error.html', {
             "election": election,
             "error": "Le début de l'élection est déjà passé."})
-    if election.end < datetime.now().date():
+    if election.end < timezone.now().date():
         return render(request, 'election/error.html', {
             "election": election,
             "error": "La fin de l'élection est déjà passée."})
