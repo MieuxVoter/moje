@@ -27,14 +27,12 @@ class GeneralStepForm(forms.Form):
     start   = FutureDateField(
                     label="Date de début",
                     widget=forms.DateInput(attrs={'class': "form-control"}),
-                    input_formats=['%d/%m/%Y'],
-                    localize=True
+                    input_formats=['%d/%m/%Y']
                                 )
     end     = FutureDateField(
                     label="Date de fin",
                     widget=forms.DateInput(attrs={'class': "form-control"}),
-                    input_formats=['%d/%m/%Y'],
-                    localize=True
+                    input_formats=['%d/%m/%Y']
                                 )
 
     # state   = forms.ChoiceField(

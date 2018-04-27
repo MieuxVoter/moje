@@ -117,7 +117,7 @@
                                 </tr>
                             {% endfor %}
                             <tr id="tr-create-candidate">
-                                <form id="form-create-candidate" method="post"  data-id-election="{{ election_id }}">
+                                <form id="form-create-candidate" method="post"  data-id-election="{{ election.pk }}">
                                     <input type="hidden" id="election-id" name="election-id" value="{{ election.pk }}">
                                     {% csrf_token %}
                                 <td>
@@ -140,8 +140,8 @@
                     </table>
 
 
-                    <a href="/election/manage/general/{{ election_id }}" class="btn btn-primary">Gestion de l'élection</a>
-                    <a href="/election/manage/voters/{{ election_id }}" class="btn btn-info">Liste des électeurs</a>
+                    <a href="/election/manage/general/{{ election.pk }}" class="btn btn-primary">Gestion de l'élection</a>
+                    <a href="/election/manage/voters/{{ election.pk }}" class="btn btn-info">Liste des électeurs</a>
 
 
 
