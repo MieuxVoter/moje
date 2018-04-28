@@ -47,6 +47,11 @@ urlpatterns = [
         ),
 
     path(r'launch/<int:pk>/',
+                views.confirm_launch_election,
+                name="launch_election"
+        ),
+
+    path(r'success/<int:pk>/',
                 views.launch_election,
                 name="launch_election"
         ),

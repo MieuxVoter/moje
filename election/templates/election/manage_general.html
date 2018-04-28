@@ -44,6 +44,12 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    {% if election.state != "DR" %}
+                    <div class="alert alert-warning" role="alert">
+                        L'élection a déjà commencée, il est trop tard pour modifier les paramètres du vote.
+                    </div>
+                    {% endif %}
+
                     <form method="POST" action=".">
                     {% csrf_token %}
 
@@ -90,7 +96,7 @@
 
 
                     <button type="submit" class="btn btn-primary">
-                        Enregistrer
+                        Enregistrer et passer aux candidats
                     </button>
                     <!-- {% if state == "DR" %}
                     <a href="/election/launch/{{ election_id }}" class="btn btn-primary">

@@ -18,32 +18,32 @@ class FutureDateField(forms.DateField):
 
 
 class GeneralStepForm(forms.Form):
+    def __init__(self,*args,**kwargs):
+        self.disabled = kwargs.pop('disabled') if 'disabled' in kwargs else False
+        super(GeneralStepForm,self).__init__(*args,**kwargs)
+        self.fields['name'].disabled = self.disabled
+        self.fields['note'].disabled = self.disabled
 
     name    = forms.CharField(
                     label="Nom de l'élection",
                     max_length=200,
-                    widget=forms.TextInput(attrs={'class': 'form-control'})
-                            )
-    start   = FutureDateField(
-                    label="Date de début",
-                    widget=forms.DateInput(attrs={'class': "form-control"}),
-                    input_formats=['%d/%m/%Y']
-                                )
-    end     = FutureDateField(
-                    label="Date de fin",
-                    widget=forms.DateInput(attrs={'class': "form-control"}),
-                    input_formats=['%d/%m/%Y']
-                                )
+                    widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    # state   = forms.ChoiceField(
-    #                     label="État de l'élection",
-    #                     choices=Election.STATE_ELECTION,
-    #                     widget=forms.RadioSelect()
-    #                 )
-    note    = forms.CharField(
-                    label="Ajouter une note",
-                    widget=forms.Textarea(attrs={'class': "form-control"})
-                            )
+    # start   = FutureDateField(
+    #                 label="Date de début",
+    #                 widget=forms.DateInput(attrs={'class': "form-control"}),
+    #                 input_formats=['%d/%m/%Y'],
+                        # disabled=self.disabled
+    #                             )
+    # end     = FutureDateField(
+    #                 label="Date de fin",
+    #                 widget=forms.DateInput(attrs={'class': "form-control"}),
+    #                 input_formats=['%d/%m/%Y'],
+    # disabled=self.disabled
+    #                             )
+
+    note    = forms.CharField(label="Description",
+                        widget=forms.Textarea(attrs={'class': "form-control"}))
 
 
 
@@ -57,15 +57,24 @@ class ConfigStepForm(forms.Form):
                             )
 
 
+class ConfirmStepForm(forms.Form):
+    pass
+
+
 class CreateCandidateForm(forms.Form):
-    name    = forms.CharField(
+    first_name    = forms.CharField(label="Prénom",
+                                    max_length=200,
+                                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Prénom'})
+                                    )
+
+    last_name    = forms.CharField(
                     label="Nom",
                     max_length=200,
-                    widget=forms.TextInput(attrs={'class': 'form-control'})
+                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Nom'})
                             )
 
     program    = forms.CharField(
                     label="Programme",
                     max_length=200,
-                    widget=forms.TextInput(attrs={'class': 'form-control'})
+                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Programme'})
                             )
