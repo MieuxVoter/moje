@@ -16,14 +16,16 @@
 <script src="{% static 'js/jquery-ui-1.12.1.custom/external/jquery/jquery.js' %}"></script>
   <script>
     $("#form-btn").click(function () {
-        var name        = $("#name").val();
-        var program     = $("#program").val();
-        var election_id = $("#election-id").val();
+        var first_name        = $("#id_first_name").val();
+        var last_name         = $("#id_last_name").val();
+        var program           = $("#id_program").val();
+        var election_id       = $("#election-id").val();
 
         $.ajax({
             url: '/election/ajax/create_candidate/',
             data: {
-                'name':           name,
+                'first_name':     first_name,
+                'last_name':      last_name,
                 'program':        program,
                 'election_id':    election_id
                 },
@@ -35,7 +37,7 @@
                     $("#error").innerHTML = data.error;
                 } else {
                     tr = $("#tr-create-candidate");
-                    $("<tr><td>"+name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete_candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">Supprimer</a></td></tr>").insertBefore(tr);
+                    $("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete_candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">Supprimer</a></td></tr>").insertBefore(tr);
                     $("#form-create-candidate").trigger("reset");
                 }
             }
@@ -84,64 +86,65 @@
                 <div class="card-header">
                     <h4 class="card-title">Les candidats</h4>
                     <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25 %</div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50 %</div>
                     </div>
                 </div>
                 <div class="card-body">
 
-
+                {% if election.state != "DR" %}
+                <div class="alert alert-warning" role="alert">
+                    L'élection a déjà commencée, il est trop tard pour modifier les candidats.
+                </div>
+                {% endif %}
                     <table class="table" id="table">
                         <thead class=" text-primary">
+                            <th>Prénom</th>
                             <th>Nom</th>
-                            <!-- <th>
-                                Photo
-                            </th> -->
                             <th>
                                 Programme
                             </th>
-                            <th>
-                                Action
-                            </th>
+                            {% if election.state == "DR" %}
+                            <th> Action </th>
+                            {% endif %}
                         </thead>
                         <tbody>
                             {% for candidate in candidates %}
                                 <tr>
-                                    <td>{{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}</td>
-                                    <!-- <td>
-                                    <a href="/candidate/{{ candidate.id }}" >
-                                        <img src="{{ candidate.picture }}"  class="zone-pic" />
-                                    </a>
-                                    </td> -->
+                                    <td>{{ candidate.user.first_name | title}}</td>
+                                    <td> {{ candidate.user.last_name | title}}</td>
                                     <td>{{ candidate.program }}</td>
-                                    <td><a href="/election/manage/delete_candidate/{{ candidate.id }}/" class="btn btn-info">Supprimer</a></td>
+                                    {% if election.state == "DR" %}
+                                    <td><a href="/election/manage/delete_candidate/{{ candidate.pk }}/" class="btn btn-info">Supprimer</a></td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
+                            {% if election.state == "DR" %}
                             <tr id="tr-create-candidate">
                                 <form id="form-create-candidate" method="post"  data-id-election="{{ election.pk }}">
                                     <input type="hidden" id="election-id" name="election-id" value="{{ election.pk }}">
                                     {% csrf_token %}
-                                <td>
-                                    <div class="form-group">
-                                        <input id="name" type="text" class="form-control" placeholder="Nom" value="">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-
-                                        <input id="program" type="text" class="form-control"  placeholder="Programme">
-                                    </div>
-                                </td>
+                                    {% for field in form %}
+                                         <td>
+                                             <div class="form-group">
+                                            {{ field }}
+                                            {% if field.help_text %}
+                                            <p class="help">{{ field.help_text|safe }}</p>
+                                            {% endif %}
+                                            </div>
+                                        </td>
+                                    {% endfor %}
                                 <td>
                                     <a href="#" id="form-btn" class="btn btn-info">Ajouter</a>
                                 </td>
                                 </form>
                             </tr>
+                            {% endif %}
                         </tbody>
                     </table>
 
 
-                    <a href="/election/manage/general/{{ election.pk }}" class="btn btn-primary">Gestion de l'élection</a>
-                    <a href="/election/manage/voters/{{ election.pk }}" class="btn btn-info">Liste des électeurs</a>
+                    <a href="/election/manage/voters/{{ election.pk }}" class="btn btn-primary">Gérer les électeurs</a>
+                    <a href="/election/manage/general/{{ election.pk }}" class="btn btn-info">Revenir aux options générales</a>
 
 
 

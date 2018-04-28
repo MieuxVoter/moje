@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Count
 from django.db import IntegrityError
 from django.utils import timezone
+from django.core.validators import validate_email
 
 from vote.models import *
 from election.forms import *
@@ -36,38 +37,44 @@ def general_step(request, election_id=-1):
     General parameters of an election.
     """
 
-    election = find_election(election_id, check_user=request.user)
+    try:
+        election = find_election(election_id, check_user=request.user)
+    except (Election.DoesNotExist, PermissionDenied) as e:
+        return render("error.html", {"error":"L'élection n'existe pas."})
 
     # manage form
     initial = { "name":  election.name,
                 "note":  election.note,
                 "start": election.start,
-                "end":   election.end,
-                # "state": election.state
+                "end":   election.end
                 }
+    disabled = election.state != Election.DRAFT
+    form = GeneralStepForm(request.POST or None,
+                           initial=initial,
+                           disabled=disabled)
 
-    form = GeneralStepForm(request.POST or None, initial=initial)
     if form.is_valid():
-        start = form.cleaned_data['start']
-        end   = form.cleaned_data['end']
+        # start = form.cleaned_data['start']
+        # end   = form.cleaned_data['end']
         name  = form.cleaned_data['name']
         note  = form.cleaned_data['note']
 
         # record the election
-        election.start  = start
-        election.end    = end
+        # election.start  = start
+        # election.end    = end
         election.name   = name
         election.note   = note
         election.save()
 
-        return HttpResponseRedirect('/election/manage/general/{:d}/'.format(election.pk))
+        return HttpResponseRedirect('/election/manage/candidates/{:d}/'.format(election.pk))
 
     params =   {'form': form,
                 "election_id": election.pk,
                 "election": election,
                 'grades':Grade.objects.filter(election=election),
                 "state":  election.state,
-                "supervisor": election.supervisor
+                "supervisor": election.supervisor,
+                "disabled": disabled
                 }
 
     return render(request, 'election/manage_general.html', params)
@@ -75,6 +82,21 @@ def general_step(request, election_id=-1):
 
 @login_required
 def launch_election(request, pk=-1):
+
+    form = ConfirmStepForm(request.POST)
+    if form.is_valid():
+        return HttpResponseRedirect("/election/success/{:d}".format(pk))
+
+    election = find_election(pk, check_user=request.user)
+    params = {"supervisor": election.supervisor,
+              "election": election,
+              "form":form}
+
+    return render(request, 'election/start.html', params)
+
+
+@login_required
+def confirm_launch_election(request, pk=-1):
     """
     Launch an election: send mail to all voters and change the state of the election
     """
@@ -118,7 +140,7 @@ def launch_election(request, pk=-1):
     params={'supervisor':election.supervisor,
             "election":election}
 
-    return render(request, 'election/start.html', params)
+    return render(request, 'election/success_start.html', params)
 
 
 def close_election(request, pk=-1):
@@ -139,11 +161,12 @@ def candidates_step(request, election_id=-1):
     election = find_election(election_id, check_user=request.user)
 
     candidates = Candidate.objects.filter(election=election)
-
+    form = CreateCandidateForm()
     params = {
                 "candidates": candidates,
                 "election": election,
-                "supervisor": election.supervisor
+                "supervisor": election.supervisor,
+                "form": form
             }
 
     return render(request, 'election/manage_candidates.html', params)
@@ -237,40 +260,59 @@ def create_candidate(request):
     https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
     """
 
-
-    name        = request.GET.get('name')
-    program     = request.GET.get('program')
-    election_id = request.GET.get('election_id', -1)
-    if not election_id:
+    try:
+        first_name = request.GET.get('first_name', "")
+        last_name = request.GET.get('last_name', "")
+        program = request.GET.get('program', "")
+        election_id = int(request.GET.get('election_id', -1))
+        election = Election.objects.get(pk=election_id)
+        username = "{}_{}_{:d}".format(first_name, last_name, election_id)
+        print(username)
+        user = User.objects.create(last_name=last_name, username=username)
+    except forms.ValidationError:
+        data = {'election':      False,
+                'error':         'Email address is not valid.'
+                }
+        return JsonResponse(data)
+    except ValueError:
         data = {'election':      False,
                 'error':         'Election id is not valid.'
                 }
         return JsonResponse(data)
-
-    election_id = int(election_id)
-    username    = "{}_{:d}".format(name, election_id)
-    election = find_election(election_id, check_user=request.user)
-    if not election:
+    except forms.ValidationError:
         data = {'election':      False,
-                'error':         'Election does not seem to exist.'
+                'error':         'Email address is not valid.'
                 }
         return JsonResponse(data)
-
-    try:
-        user = User(last_name=name, username=username)
-        user.save()
+    except Election.DoesNotExist:
+        data = {'election': False,
+                'error': "L'élection n'existe pas."
+                }
+        return JsonResponse(data)
     except IntegrityError as e:
         data = {'user':      False,
-                'error':     "The user name is already taken."
+                'error':     "Le nom est déjà pris."
                 }
         return JsonResponse(data)
 
-    c = Candidate(program=program, election=election, user=user)
-    c.save()
+    if not election.supervisor or election.supervisor.user != request.user:
+        data = {'election':      False,
+                'error': "Vous n'avez pas le droit de modifier cette élection."
+                }
+        return JsonResponse(data)
+
+    if election.state != Election.DRAFT:
+        data = {'election':      False,
+                'error': "L'élection a déjà commencée."
+                }
+        return JsonResponse(data)
+        
+    c = Candidate.objects.create(program=program, election=election, user=user)
 
     data = {
         'success': True,
-        'id_candidate':c.pk
+        'id_candidate':c.pk,
+        'id_candidate_user':c.user.pk
     }
     return JsonResponse(data)
 
@@ -278,21 +320,45 @@ def create_candidate(request):
 
 class CandidateDelete(UserPassesTestMixin, DeleteView):
     """
-    delete a candidate from ajax request
+    delete a candidate from a link
+    #TODO do it from ajax request
+
+    for the success_url, see https://docs.djangoproject.com/en/2.0/ref/class-based-views/mixins-editing/#django.views.generic.edit.DeletionMixin.success_url
     """
-    model       = Candidate
+
+    model = Candidate
     success_url = "/election/manage/candidates/{election_id}/"
 
-    # Delete the confirmation
+    # Delete without confirmation
     # It is not good practice : https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+
+    def delete(self, request, *args, **kwargs):
+        """ Delete also the user if no account is related to it """
+        success_url = self.get_success_url()
+
+        # check if election is still in DRAFT
+        if self.object.election.state != Election.DRAFT:
+            return HttpResponseRedirect(success_url)
+
+        user = self.object.user
+        self.object.delete()
+
+        if not Candidate.objects.filter(user=user).exists() and \
+             not Voter.objects.filter(user=user).exists() and \
+             not Supervisor.objects.filter(user=user).exists():
+            user.delete()
+
+        return HttpResponseRedirect(success_url)
+
     def test_func(self):
-        id_candidate    = self.kwargs['pk']
-        candidate       = get_object_or_404(Candidate, pk=id_candidate)
-        supervisor      = candidate.election.supervisor
+        candidate_id = self.kwargs['pk']
+        self.object = get_object_or_404(Candidate, pk=candidate_id)
+        supervisor = self.object.election.supervisor
         return supervisor and self.request.user == supervisor.user
+
 
 
 
@@ -326,31 +392,53 @@ def voters_step(request, election_id=-1):
 def create_voter(request):
     """
     Ajax request to create a voter
-
-    #TODO catch is voter already exist
     """
 
-
-    first_name    = request.GET.get('first_name', "")
-    last_name     = request.GET.get('last_name', "")
-    email         = request.GET.get('email', "")
-    election_id   = int(request.GET.get('election_id', -1))
-    username      = "{}_{}_{:d}".format(first_name,last_name, election_id)
-
-    election = find_election(election_id, check_user=request.user)
-    if not election or election_id < 0:
+    try:
+        first_name = request.GET.get('first_name', "")
+        last_name = request.GET.get('last_name', "")
+        email = request.GET.get('email', "")
+        election_id = int(request.GET.get('election_id', -1))
+        validate_email(email)
+        election = Election.objects.get(pk=election_id)
+    except forms.ValidationError:
+        data = {'election':      False,
+                'error':         'Email address is not valid.'
+                }
+        return JsonResponse(data)
+    except ValueError:
         data = {'election':      False,
                 'error':         'Election id is not valid.'
                 }
         return JsonResponse(data)
+    except forms.ValidationError:
+        data = {'election':      False,
+                'error':         'Email address is not valid.'
+                }
+        return JsonResponse(data)
+    except Election.DoesNotExist:
+        data = {'election': False,
+                'error': "L'élection n'existe pas."
+                }
+        return JsonResponse(data)
 
+    if not election.supervisor or election.supervisor.user != request.user:
+        data = {'election':      False,
+                'error': "Vous n'avez pas le droit de modifier cette élection."
+                }
+        return JsonResponse(data)
 
-    user = User.objects.create( last_name=last_name,
-                        first_name=first_name,
-                        username=username,
-                        email=email
-                      )
-    v   = Voter.objects.create(election=election, user=user)
+    if election.state != Election.DRAFT:
+        data = {'election':      False,
+                'error': "L'élection a déjà commencée."
+                }
+        return JsonResponse(data)
+
+    user = User.objects.get_or_create(email=email,
+                                      defaults={'last_name': last_name,
+                                                'first_name': first_name,       'username': username})
+    username = "{}_{}_{:d}".format(first_name,last_name, election_id)
+    v = Voter.objects.create(election=election, user=user)
 
     data = {
         'success': True,
@@ -365,17 +453,36 @@ class VoterDelete(UserPassesTestMixin, DeleteView):
     """
     delete a voter to this election
     """
-    model       = Voter
+    model = Voter
     success_url = "/election/manage/voters/{election_id}/"
 
-    # Delete the confirmation
-    # It is not good practice : https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template
+
+    def delete(self, request, *args, **kwargs):
+        """ Delete also the user if no account is related to it """
+        success_url = self.get_success_url()
+
+        # check if election is still in DRAFT
+        if self.object.election.state != Election.DRAFT:
+            return HttpResponseRedirect(success_url)
+
+        user = self.object.user
+        self.object.delete()
+
+        if not Candidate.objects.filter(user=user).exists() and \
+             not Voter.objects.filter(user=user).exists() and \
+             not Supervisor.objects.filter(user=user).exists():
+            user.delete()
+
+        return HttpResponseRedirect(success_url)
+
+
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
-    # ensure the user is allowed to delete this voter
+
     def test_func(self):
-        id_candidate    = self.kwargs['pk']
-        candidate       = get_object_or_404(Candidate, pk=id_candidate)
-        supervisor      = candidate.election.supervisor
+        """ ensure the user is allowed to delete this voter. """
+        id_voter = self.kwargs['pk']
+        self.object = get_object_or_404(Voter, pk=id_voter)
+        supervisor = self.object.election.supervisor
         return supervisor and self.request.user == supervisor.user

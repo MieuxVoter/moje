@@ -30,12 +30,6 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
                     <p>Électeurs</p>
                 </a>
             </li>
-            <li {% if request.resolver_match.url_name == "results" %}class="active"{% endif %}>
-                <a href="/results/{{ election.pk }}/">
-                    <i class="now-ui-icons sport_trophy"></i>
-                    <p>Résultats</p>
-                </a>
-            </li>
             {% if election.state == "DR" %}
             <li {% if request.resolver_match.url_name == "launch_election" %}class="active"{% endif %}>
                 <a href="/election/launch/{{ election.pk }}">
@@ -51,7 +45,12 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
                 </a>
             </li>
             {% endif %}
-
+            <li {% if request.resolver_match.url_name == "results" %}class="active"{% endif %}>
+                <a href="/results/{{ election.pk }}/">
+                    <i class="now-ui-icons sport_trophy"></i>
+                    <p>Résultats</p>
+                </a>
+            </li>
 
 
         </ul>
