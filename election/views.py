@@ -122,14 +122,14 @@ def confirm_launch_election(request, pk=-1):
         return render(request, 'election/error.html', {
             "election": election,
             "error": "L'élection n'a pas de nom."})
-    if election.start < timezone.now().date():
-        return render(request, 'election/error.html', {
-            "election": election,
-            "error": "Le début de l'élection est déjà passé."})
-    if election.end < timezone.now().date():
-        return render(request, 'election/error.html', {
-            "election": election,
-            "error": "La fin de l'élection est déjà passée."})
+    # if election.start < timezone.now().date():
+    #     return render(request, 'election/error.html', {
+    #         "election": election,
+    #         "error": "Le début de l'élection est déjà passé."})
+    # if election.end < timezone.now().date():
+    #     return render(request, 'election/error.html', {
+    #         "election": election,
+    #         "error": "La fin de l'élection est déjà passée."})
 
     for v in voters:
         send_invite(v)

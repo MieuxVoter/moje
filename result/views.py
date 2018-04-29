@@ -28,9 +28,9 @@ def results(request, election_id):
     params = {}
 
     # close election according to date
-    if election.end and election.end < datetime.now().date():
-        election.state = Election.OVER
-        election.save()
+    # if election.end and election.end < datetime.now().date():
+    #     election.state = Election.OVER
+    #     election.save()
 
     # check access rights
     if election.supervisor.user == request.user:
