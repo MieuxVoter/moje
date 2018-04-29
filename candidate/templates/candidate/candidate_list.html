@@ -26,28 +26,17 @@
 
                         <table class="table">
                             <thead class=" text-primary">
-                                <th>Candidats</th>
-                                <th>
-                                    Photo
-                                </th>
-                                <th>
-                                    Adresse
-                                </th>
-                                <th>
-                                    Date de naissance
-                                </th>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                                <th>Programme</th>
                             </thead>
                             <tbody>
                                 {% for candidate in candidate_list %}
                                     <tr>
-                                        <td>{{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}</td>
-                                        <td>
-                                        <a href="/candidates/detail/{{ candidate.id }}" >
-                                            <img src="{{ candidate.picture }}"  class="zone-pic" />
-                                        </a>
+                                        <td>{{ candidate.user.first_name | title}}
                                         </td>
-                                        <td>{{ candidate.street | title}}, {{ candidate.city | title}}, {{ candidate.postcode | title}}, {{ candidate.state | title}}</td>
-                                        <td>{{ candidate.birth_date }}</td>
+                                        <td> {{ candidate.user.last_name | title}}</td>
+                                        <td>{{ candidate.program }}</td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

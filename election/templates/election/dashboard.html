@@ -34,6 +34,7 @@
                     {% if election_list == None %}
                     Vous n'avez pas encore créé d'élections.
                     {% else %}
+                    <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <th>
@@ -90,6 +91,7 @@
                          {% endfor %}
                       </tbody>
                     </table>
+                </div>
                     {% endif %}
                     <hr/>
                     <a class="btn btn-success" href="/election/manage/general/" role="button">Créer une élection</a>
@@ -121,17 +123,17 @@
                           <td> {{ voter.election.end }}</td> -->
 
                         <td>
-                            <a href="/candidates/{{ voter.election.pk }}/" rel="tooltip" title=""  data-original-title="Candidats">
+                            <a href="/candidates/{{ election.pk }}/" rel="tooltip" title=""  data-original-title="Candidats">
                                   <i class="now-ui-icons design_bullet-list-67"></i> Voir
                               </a>
                         </td>
                         <td>
-                            {% if not voter.has_voted %}
-                              <a href="/vote/{{ voter.election.pk }}/" rel="tooltip" title="" data-original-title="Voter">
+                            {% if not election.has_voted %}
+                              <a href="/vote/{{ election.pk }}/" rel="tooltip" title="" data-original-title="Voter">
                                   <i class="now-ui-icons ui-1_email-85">Voter</i>
                               </a>
-                            {% elif voter.ended %}
-                            <a href="/results/{{ voter.election.pk }}/" rel="tooltip" title=""  data-original-title="Results">
+                            {% elif election.state == "OV" %}
+                            <a href="/results/{{ election.pk }}/" rel="tooltip" title=""  data-original-title="Results">
                                 <i class="now-ui-icons ui-1_email-85">Résultats</i>
                             </a>
                             {% endif %}
