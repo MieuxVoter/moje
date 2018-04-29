@@ -40,7 +40,7 @@ def general_step(request, election_id=-1):
     try:
         election = find_election(election_id, check_user=request.user)
     except (Election.DoesNotExist, PermissionDenied) as e:
-        return render("error.html", {"error":"L'élection n'existe pas."})
+        return render(request, "error.html", {"error":"L'élection n'existe pas."})
 
     # manage form
     initial = { "name":  election.name,
@@ -176,9 +176,11 @@ def candidates_step(request, election_id=-1):
 @login_required
 def dashboard(request):
     supervisor  = Supervisor.objects.get_or_create(user=request.user)[0]
-    elections   = Election.objects.filter(supervisor=supervisor)
+    elections   = Election.objects.filter(supervisor=supervisor) 
+                    # .annotate(num_voters=Count('answer')) )
     #FIXME annotate user_voters with has_voted and ended
     user_voters = Voter.objects.filter(user=request.user)
+
     return render(request, 'election/dashboard.html',
                     {'election_list': elections,
                      'user_voters': user_voters})
@@ -383,7 +385,7 @@ def create_voter(request):
     """
     Ajax request to create a voter
     """
-
+    print("foo")
     try:
         first_name = request.GET.get('first_name', "")
         last_name = request.GET.get('last_name', "")

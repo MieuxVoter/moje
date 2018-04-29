@@ -6,6 +6,9 @@
 .main-panel {
     width:100%;
 }
+.navbar-toggle {
+    display: none;
+}
 </style>
 {% endblock extra_styles %}
 
@@ -66,13 +69,13 @@
                                 <!-- <div class="progress">
                                       <div class="progress-bar bg-success" role="progressbar" style="width: {{ election.progress }}%" aria-valuenow="{{ election.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div> -->
-                                {{ election.num_voters}}
+                                {{ election.voter_set.all|length }}
                             </td>
                             <td>
                               <!-- <div class="progress">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: {{ election.progress }}%" aria-valuenow="{{ election.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
                               </div> -->
-                              {{ election.num_candidates }}
+                              {{ election.candidate_set.all|length }}
                           </td>
 
                             <td class="td-actions text-right">

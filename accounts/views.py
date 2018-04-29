@@ -36,11 +36,11 @@ def redirect_login(request):
 
 @login_required
 def user_detail(request, pk):
-    template_name = "accounts/user_detail"
-    
-    user = User.objects.get(pk=pk)
-    voter =  Voter.objects.filter(user=user)
-    return render(request, 'accounts/voter_detail.html', {"voter":voter})
+    template_name = "accounts/user_detail.html"
+
+    # user = User.objects.get(pk=pk)
+    voter =  Voter.objects.filter(user__pk=pk)
+    return render(request, template_name, {"voter":voter})
 
 
 @login_required

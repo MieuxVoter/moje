@@ -43,7 +43,7 @@
                                 {% if request.user %}
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/accounts/profile/">Profile</a>
+                                    <a class="dropdown-item" href="/accounts/profile/{{ request.user.pk }}">Profile</a>
                                     <a class="dropdown-item" href="/accounts/logout">Se déconnecter</a>
                                 </div>
                                 {% endif %}
@@ -53,5 +53,5 @@
                 </div>
             </nav>
 
-        
+
 <!-- End Navbar -->
