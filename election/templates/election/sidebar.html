@@ -20,7 +20,7 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
             </li>
             <li {% if request.resolver_match.url_name == "candidates" %}class="active"{% endif %}>
                 <a href="/election/manage/candidates/{{ election.pk }}/">
-                    <i class="now-ui-icons files_box"></i>
+                    <i class="now-ui-icons design_bullet-list-67"></i>
                     <p>Candidats</p>
                 </a>
             </li>
@@ -51,8 +51,12 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
                     <p>Résultats</p>
                 </a>
             </li>
-
-
+            <li {% if request.resolver_match.url_name == "dashboard" %}class="active"{% endif %}>
+                <a href="/">
+                    <i class="now-ui-icons business_chart-pie-36"></i>
+                    <p>Tableau de bord</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
