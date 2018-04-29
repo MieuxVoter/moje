@@ -9,9 +9,8 @@ from django.forms.fields import DateField
 
 def get_grades(election):
     ret = []
-    election = Election.objects.first()
     for g in Grade.objects.filter(election=election):
-        ret.append( (g.id, "") )
+        ret.append( (g.id, g.name) )
     return ret
 
 def form_grades(form, election):
@@ -46,12 +45,11 @@ class VoteForm(forms.Form):
         super(VoteForm, self).__init__(*args, **kwargs)
 
         grades    = get_grades(self.election)
-        attrs     = {'template_name': 'vote/radio.html'}
         candidates = Candidate.objects.filter(election=self.election)
 
         for c in candidates:
             name = c.user.first_name + " " + c.user.last_name
             form = forms.ChoiceField(label=name,
                                     choices=grades,
-                                    widget=RadioSelect(attrs=attrs))
+                                    widget=RadioSelect())
             self.fields["c." + str(c.id)] = form
