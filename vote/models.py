@@ -1,20 +1,28 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django.utils.translation import gettext_lazy as _
 
 class Organisation(models.Model):
     name        = models.CharField(max_length=200, blank=True)
     site        = models.URLField(max_length=200, blank=True)
 
-class User(AbstractUser):
-    picture     = models.FilePathField(path="/static/dashboard/img/user/", default='blank.png')
-    bio         = models.TextField(max_length=500, blank=True)
-    street      = models.TextField(max_length=200, blank=True)
-    city        = models.CharField(max_length=30, blank=True)
-    state       = models.CharField(max_length=30, blank=True)
-    postcode    = models.CharField(max_length=30, blank=True)
-    birth_date  = models.DateField(null=True, blank=True)
 
+class User(AbstractUser):
+    picture = models.FilePathField(path="/static/dashboard/img/user/", default='blank.png')
+    bio = models.TextField(max_length=500, blank=True)
+    street = models.TextField(max_length=200, blank=True)
+    city = models.CharField(max_length=30, blank=True)
+    state = models.CharField(max_length=30, blank=True)
+    postcode = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    email = models.EmailField(_('email address'), blank=True, null=True, unique=True)
+
+    def clean(self):
+        """
+        Clean up blank fields to null
+        """
+        if self.email == "":
+            self.email = None
 
 class Supervisor(models.Model):
     """
@@ -22,6 +30,7 @@ class Supervisor(models.Model):
     """
     user         = models.OneToOneField(User, on_delete=models.CASCADE)
     organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE, default=None, null=True)
+
 
 class Election(models.Model):
     """
