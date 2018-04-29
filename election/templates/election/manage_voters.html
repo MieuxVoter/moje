@@ -76,7 +76,7 @@
                         L'élection a déjà commencée, il est trop tard pour modifier les électeurs.
                     </div>
                     {% endif %}
-
+                <div class="table-responsive">
                     <table class="table" id="table">
                         <thead class=" text-primary">
                             <th>Prénom</th>
@@ -125,7 +125,7 @@
                             {% endif %}
                         </tbody>
                     </table>
-
+                </div>
                     {% if election.state == "DR" %}
                     <a href="/election/launch/{{ election_id }}" class="btn btn-primary">
                         Démarrer l'élection

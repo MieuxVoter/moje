@@ -16,10 +16,10 @@
 {% block content %}
 <div class="content">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Les scores</h4>
+                    <h4 class="card-title">Les résultats</h4>
                 </div>
                 <div class="card-body">
                     <div class="alert alert-info alert-with-icon" data-notify="container">
@@ -27,7 +27,7 @@
                             <i class="now-ui-icons ui-1_simple-remove"></i>
                         </button>
                         <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
-                        <span data-notify="message">Déjà {{ nvotes }} jugements ont été prononcés !</span>
+                        <span data-notify="message">{{ nvotes }} votes ont été enregistrés !</span>
                     </div>
 
                     <!-- <div class="alert alert-warning">
@@ -45,50 +45,56 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+
+        <!-- display vote details -->
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Le classement</h4>
+                    <h4 class="card-title">Le détail des votes</h4>
                 </div>
                 <div class="card-body">
-                    {% if ranking == None %}
-                    <div class="alert alert-warning">
-                        <button type="button" aria-hidden="true" class="close">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                        </button>
-                        <span>
-                            <b> Attention - </b> Il n'y a pas encore de classement disponible. Revenez plus tard !</span>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>Rang</th>
+                                    <th>Nom</th>
+                                {% for grade in grades %}
+                                <th>
+                                    {{ grade }}
+                                </th>
+                                {% endfor %}
+                                <th class="text-right">Mention médiane</th>
+                            </tr></thead>
+                            <tbody>
+                                {% for candidate in ranking  %}
+                                <tr>
+                                    <td>{{ forloop.counter }}. </td>
+                                    <td>
+                                        {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}
+                                    </td>
+                                    {% for rating in candidate.ratings %}
+                                    <td>
+                                        {{ rating }}
+                                    </td>
+                                    {% endfor %}
+                                    <td class="text-right">
+                                        {{ candidate.median  }}
+                                    </td>
+
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-                    {% endif %}
-                    {% for candidate in ranking  %}
-                        {% if forloop.first %}
-                        <div class="alert alert-success">
-                            <button type="button" aria-hidden="true" class="close">
-                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                            </button>
-                            <span>
-                                <a style="color:white;"  href="/candidate/{{ candidate.id }}"><b> #1 - {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}</b></a>
-                            </span>
-                        </div>
-                        {% else %}
-                        <div class="alert alert-info">
-                            <button type="button" aria-hidden="true" class="close">
-                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                            </button>
-                            <span>
-                                <a style="color:white;" href="/candidate/{{ candidate.id }}">
-                                    <b> #{{ forloop.counter|add:"1" }} - </b> {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}
-                                </a>
-                            </span>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
 
                 </div>
             </div>
         </div>
+        <!-- end display vote details -->
 
     </div>
+<!-- end content -->
 </div>
 
 

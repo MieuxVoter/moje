@@ -14,7 +14,7 @@ from majority_judgment.tools import *
 @login_required
 def redirect_results(request):
     try:
-        voter       = Voter.objects.get(user=request.user)
+        voter = Voter.objects.get(user=request.user)
         election_id = voter.election.pk
         return HttpResponseRedirect('/results/{:d}/'.format(election_id))
     except Voter.DoesNotExist:
@@ -36,7 +36,8 @@ def results(request, election_id):
     if election.supervisor.user == request.user:
         supervisor = election.supervisor
         params["supervisor"] = supervisor
-    elif not Voter.objects.filter(user=request.user, election=election).exists():
+    elif not Voter.objects.filter(user=request.user,
+                                  election=election).exists():
         return render(request, 'vote/error.html',
                 {'error': "Vous n'avez pas accès à cette élection.", "election":election})
     elif election.state != Election.OVER:
@@ -47,28 +48,36 @@ def results(request, election_id):
         params["voter"] = voter
 
 
-    # read database
-    grades  = [g.name for g in Grade.objects.filter(election=election)]
+    # fetch results
+    grades = [g.name for g in Grade.objects.filter(election=election)]
     ratings = get_ratings(election)
+    ratings = np.array(ratings, dtype=int)
     results = []
-    cs      = Candidate.objects.filter(election=election)
-    Nvotes  = len(Rating.objects.filter(election=election))
+    candidates = Candidate.objects.filter(election=election)
+    Nvotes = len(Rating.objects.filter(election=election))
 
     if Nvotes == 0:
         template = "election" if supervisor else "vote"
-        return render(request, template + "/error.html", {'error':"Les urnes sont vides.", "election":election})
+        return render(request, template + "/error.html",
+                        {'error':"Les urnes sont vides.", "election":election})
 
-    for i in range(len(cs)):
-        result = Result(candidate=cs[i],
+    for i, candidate in enumerate(candidates):
+        result = Result(candidate=candidate,
                         ratings=ratings[i, :],
                         grades=grades)
         results.append(result)
 
     # ranking according to the majority judgment
-    ranking = [r.candidate for r in majority_judgment(results)]
+    ranking = []
+    for r in majority_judgment(results):
+        candidate = r.candidate
+        candidate.ratings = r.ratings
+        candidate.median = grades[arg_median(ratings[i,:])]
+        ranking.append(candidate)
 
     params['ranking'] = ranking
     params["nvotes"] = Nvotes
     params["election_id"] = election_id
     params["election"] = election
+    params["grades"] = grades
     return render(request, 'vote/results.html', params)
