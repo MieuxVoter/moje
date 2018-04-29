@@ -14,37 +14,7 @@
 
 {% block javascript %}
 <script src="{% static 'js/jquery-ui-1.12.1.custom/external/jquery/jquery.js' %}"></script>
-  <script>
-    $("#form-btn").click(function () {
-        var first_name        = $("#id_first_name").val();
-        var last_name         = $("#id_last_name").val();
-        var program           = $("#id_program").val();
-        var election_id       = $("#election-id").val();
 
-        $.ajax({
-            url: '/election/manage/create/candidate/ajax/',
-            data: {
-                'first_name':     first_name,
-                'last_name':      last_name,
-                'program':        program,
-                'election_id':    election_id
-                },
-            dataType: 'json',
-            success: function (data) {
-                if (data.error) {
-                    alert(data.error);
-                    $("#error").display   = "block";
-                    $("#error").innerHTML = data.error;
-                } else {
-                    tr = $("#tr-create-candidate");
-                    $("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete/candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">Supprimer</a></td></tr>").insertBefore(tr);
-                    $("#form-create-candidate").trigger("reset");
-                }
-            }
-        });
-
-    });
-  </script>
 {% endblock %}
 
 
@@ -136,5 +106,35 @@
 </div>
 
 
+<script>
+  $("#form-btn").click(function () {
+      var first_name        = $("#id_first_name").val();
+      var last_name         = $("#id_last_name").val();
+      var program           = $("#id_program").val();
+      var election_id       = $("#election-id").val();
 
+      $.ajax({
+          url: '/election/manage/create/candidate/ajax/',
+          data: {
+              'first_name':     first_name,
+              'last_name':      last_name,
+              'program':        program,
+              'election_id':    election_id
+              },
+          dataType: 'json',
+          success: function (data) {
+              if (data.error) {
+                  alert(data.error);
+                  $("#error").display   = "block";
+                  $("#error").innerHTML = data.error;
+              } else {
+                  tr = $("#tr-create-candidate");
+                  $("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete/candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">Supprimer</a></td></tr>").insertBefore(tr);
+                  $("#form-create-candidate").trigger("reset");
+              }
+          }
+      });
+
+  });
+</script>
 {% endblock content %}

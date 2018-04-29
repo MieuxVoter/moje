@@ -194,6 +194,7 @@ def dashboard(request):
                                             voter__in=user_voters)  \
                                      .exists()
 
+
     return render(request, 'election/dashboard.html',
                     {'election_list': elections,
                      'votes': votes})
@@ -283,7 +284,7 @@ def create_candidate(request):
         election = Election.objects.get(pk=election_id)
         username = "{}_{}_{:d}".format(first_name, last_name, election_id)
         print(username)
-        user = User.objects.create(last_name=last_name, username=username)
+        user = User.objects.create(first_name=first_name, last_name=last_name, username=username)
     except ValueError:
         data = {'election':      False,
                 'error':         'Election id is not valid.'
