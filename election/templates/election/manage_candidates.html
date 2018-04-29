@@ -22,7 +22,7 @@
         var election_id       = $("#election-id").val();
 
         $.ajax({
-            url: '/election/ajax/create_candidate/',
+            url: '/election/manage/create/candidate/ajax/',
             data: {
                 'first_name':     first_name,
                 'last_name':      last_name,
@@ -37,38 +37,13 @@
                     $("#error").innerHTML = data.error;
                 } else {
                     tr = $("#tr-create-candidate");
-                    $("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete_candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">Supprimer</a></td></tr>").insertBefore(tr);
+                    $("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete/candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">Supprimer</a></td></tr>").insertBefore(tr);
                     $("#form-create-candidate").trigger("reset");
                 }
             }
         });
 
     });
-
-
-    // $(".delete-btn").click(function () {
-    //     var row = $(this).closest("tr");
-    //     var id  = $(this).attr("id-candidate");
-    //
-    //     $.ajax({
-    //         url: '/election/ajax/delete_candidate/' + id_candidate,
-    //         data: {
-    //             :   id,
-    //             },
-    //         dataType: 'json',
-    //         success: function (data) {
-    //             if (data.error) {
-    //                 alert(data.error);
-    //                 $("#error").display   = "block";
-    //                 $("#error").innerHTML = data.error;
-    //             } else {
-    //                 form = $("#form-create-candidate")
-    //                 $("<tr><td>"+name+"</td><td>"+program+"</td></tr>").insertBefore(form)
-    //             }
-    //         }
-    //     });
-    //
-    // });
   </script>
 {% endblock %}
 
@@ -114,7 +89,7 @@
                                     <td> {{ candidate.user.last_name | title}}</td>
                                     <td>{{ candidate.program }}</td>
                                     {% if election.state == "DR" %}
-                                    <td><a href="/election/manage/delete_candidate/{{ candidate.pk }}/" class="btn btn-info">Supprimer</a></td>
+                                    <td><a href="/election/manage/delete/candidate/{{ candidate.pk }}/" class="btn btn-info">Supprimer</a></td>
                                     {% endif %}
                                 </tr>
                             {% endfor %}

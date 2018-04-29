@@ -269,19 +269,9 @@ def create_candidate(request):
         username = "{}_{}_{:d}".format(first_name, last_name, election_id)
         print(username)
         user = User.objects.create(last_name=last_name, username=username)
-    except forms.ValidationError:
-        data = {'election':      False,
-                'error':         'Email address is not valid.'
-                }
-        return JsonResponse(data)
     except ValueError:
         data = {'election':      False,
                 'error':         'Election id is not valid.'
-                }
-        return JsonResponse(data)
-    except forms.ValidationError:
-        data = {'election':      False,
-                'error':         'Email address is not valid.'
                 }
         return JsonResponse(data)
     except Election.DoesNotExist:
@@ -306,7 +296,7 @@ def create_candidate(request):
                 'error': "L'élection a déjà commencée."
                 }
         return JsonResponse(data)
-        
+
     c = Candidate.objects.create(program=program, election=election, user=user)
 
     data = {
@@ -401,11 +391,6 @@ def create_voter(request):
         election_id = int(request.GET.get('election_id', -1))
         validate_email(email)
         election = Election.objects.get(pk=election_id)
-    except forms.ValidationError:
-        data = {'election':      False,
-                'error':         'Email address is not valid.'
-                }
-        return JsonResponse(data)
     except ValueError:
         data = {'election':      False,
                 'error':         'Election id is not valid.'
@@ -434,15 +419,22 @@ def create_voter(request):
                 }
         return JsonResponse(data)
 
-    user = User.objects.get_or_create(email=email,
-                                      defaults={'last_name': last_name,
-                                                'first_name': first_name,       'username': username})
-    username = "{}_{}_{:d}".format(first_name,last_name, election_id)
-    v = Voter.objects.create(election=election, user=user)
+    username = "{}_{:d}".format(email, election_id)
+    user, _ = User.objects.get_or_create(email=email,
+                                         defaults={'last_name': last_name,
+                                                   'first_name': first_name,
+                                                   'username': username})
+    voter, created = Voter.objects.get_or_create(election=election, user=user)
+
+    if not created:
+        data = {'election': False,
+                'error': "L'électeur a déjà été ajouté."
+                }
+        return JsonResponse(data)
 
     data = {
         'success': True,
-        'id_voter':v.pk
+        'id_voter':voter.pk
     }
 
     return JsonResponse(data)
@@ -484,5 +476,84 @@ class VoterDelete(UserPassesTestMixin, DeleteView):
         """ ensure the user is allowed to delete this voter. """
         id_voter = self.kwargs['pk']
         self.object = get_object_or_404(Voter, pk=id_voter)
+        supervisor = self.object.election.supervisor
+        return supervisor and self.request.user == supervisor.user
+
+
+
+# ================
+# Grade management
+# ================
+
+@login_required
+def create_grade(request):
+    """
+    Ajax request to create a grade
+    """
+
+    try:
+        name = request.GET.get('name', "")
+        code = name.upper()[:3]
+        election_id = int(request.GET.get('election_id', -1))
+        election = Election.objects.get(pk=election_id)
+    except ValueError:
+        data = {'election':      False,
+                'error':         'Election id is not valid.'
+                }
+        return JsonResponse(data)
+    except Election.DoesNotExist:
+        data = {'election': False,
+                'error': "L'élection n'existe pas."
+                }
+        return JsonResponse(data)
+
+    if not election.supervisor or election.supervisor.user != request.user:
+        data = {'election':      False,
+                'error': "Vous n'avez pas le droit de modifier cette élection."
+                }
+        return JsonResponse(data)
+
+    if election.state != Election.DRAFT:
+        data = {'election':      False,
+                'error': "L'élection a déjà commencée."
+                }
+        return JsonResponse(data)
+
+    grade = Grade.objects.create(name=name, code=code, election=election)
+
+    data = {
+        'success': True,
+        'id_grade': grade.pk
+    }
+
+    return JsonResponse(data)
+
+
+
+class GradeDelete(UserPassesTestMixin, DeleteView):
+    """
+    delete a grade to this election
+    """
+    model = Grade
+    success_url = "/election/manage/general/{election_id}/"
+
+
+    def delete(self, request, *args, **kwargs):
+        # check if election is still in DRAFT
+        if self.object.election.state != Election.DRAFT:
+            return HttpResponseRedirect(success_url)
+
+        return super(GradeDelete, self).delete(request, *args, **kwargs)
+
+
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+
+
+    def test_func(self):
+        """ ensure the user is allowed to delete this grade. """
+        id_grade = self.kwargs['pk']
+        self.object = get_object_or_404(Grade, pk=id_grade)
         supervisor = self.object.election.supervisor
         return supervisor and self.request.user == supervisor.user
