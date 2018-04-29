@@ -176,14 +176,27 @@ def candidates_step(request, election_id=-1):
 @login_required
 def dashboard(request):
     supervisor  = Supervisor.objects.get_or_create(user=request.user)[0]
-    elections   = Election.objects.filter(supervisor=supervisor) 
-                    # .annotate(num_voters=Count('answer')) )
-    #FIXME annotate user_voters with has_voted and ended
+    elections   = Election.objects.filter(supervisor=supervisor) \
+                    .annotate(num_voters=Count('voter'),
+                              num_grades=Count('grade'),
+                              num_candidates=Count('candidate'),
+                              num_ratings=Count('rating'),
+                              progress=Count('rating')/Count('voter')/Count('grade') )
+    #FIXME: this is not optimized at all
     user_voters = Voter.objects.filter(user=request.user)
+    votes = [voter.election for voter in user_voters]
+    for v in votes:
+        progress = Rating.objects.filter(election=v).count() /    \
+                     Voter.objects.filter(election=v).count() /     \
+                     Candidate.objects.filter(election=v).count()
+        v.progress = int(progress*100)
+        v.has_voted = Rating.objects.filter(election=v,
+                                            voter__in=user_voters)  \
+                                     .exists()
 
     return render(request, 'election/dashboard.html',
                     {'election_list': elections,
-                     'user_voters': user_voters})
+                     'votes': votes})
 
 
 @login_required

@@ -1,6 +1,11 @@
 {% extends 'base_page.html' %}
 {% load static %}
 
+{% block extra_styles %}
+<style>
+label { color:white!important; }
+</style>
+{% endblock extra_styles %}
 
 {% block panel-header %}
 <div class="panel-header">
@@ -32,28 +37,31 @@
                         {% csrf_token %}
 
 
-                        <table class="table">
-                            <thead class=" text-primary">
-                                <th>Candidats</th>
-                                {% for g in grades %}
-                                <th {% if forloop.last %}class="text-right"{% endif %}>{{ g.name }}</th>
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>Candidats</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            {% for candidate in form %}
+                                <tr>
+                                    <td>{{ candidate.label | title}}</td>
+                                    <td>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                {% for radio in candidate %}
+                                    <label class="btn btn-primary">
+                                      {{ radio.choice_label }}
+                                      {{ radio.tag }}
+                                    </label>
                                 {% endfor %}
-
-                                <!--    <th >
-                                    Salary
-                                </th> -->
-                            </thead>
-                            <tbody>
-                                {% for candidate in form %}
-                                    <tr>
-                                        <td>{{ candidate.label | title}}</td>
-                                    {% for radio in candidate %}
-                                        <td {% if forloop.last %}class="text-right"{% endif %}>{{ radio }}</td>
-                                    {% endfor %}
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
+                                    </div>
+                                </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
                         </table>
+
+
                         <button type=submit class="btn btn-primary" />
                             Voter
                         </button>

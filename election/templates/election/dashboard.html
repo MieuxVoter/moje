@@ -100,28 +100,32 @@
                     <h4 class="card-title">Vote en cours</h4>
                 </div>
                 <div class="card-body">
-                {% if user_voters %}
-                    {% for voter in user_voters %}
-                    <table class="table">
-                        <thead>
-                            <th>    Nom </th>
-                            <th> Statut </th>
-                            <th> Début du vote </th>
-                            <th> Fin du vote </th>
-                            <th class="td-actions text-right"> Action </th>
-                        </thead>
-                      <tbody>
+                {% if votes %}
+                <table class="table">
+                    <thead>
+                        <th>    Nom </th>
+                        <th> Statut </th>
+                        <!-- <th> Début du vote </th>
+                        <th> Fin du vote </th> -->
+                        <th>Candidats</th>
+                        <th>Action</th>
 
-
+                        <th class="text-right"> Avancement </th>
+                    </thead>
+                  <tbody>
+                    {% for election in votes %}
                       <tr>
-                          <td> {{ voter.election.name }}</td>
-                          <td> {{ voter.election.get_state_display }} </td>
-                          <td> {{ voter.election.start }}</td>
-                          <td> {{ voter.election.end }}</td>
-                        <td class="td-actions text-right">
+                          <td> {{ election.name }}</td>
+                          <td> {{ election.get_state_display }} </td>
+                          <!-- <td> {{ voter.election.start }}</td>
+                          <td> {{ voter.election.end }}</td> -->
+
+                        <td>
                             <a href="/candidates/{{ voter.election.pk }}/" rel="tooltip" title=""  data-original-title="Candidats">
-                                  <i class="now-ui-icons business_badge"></i> Candidats
+                                  <i class="now-ui-icons design_bullet-list-67"></i> Voir
                               </a>
+                        </td>
+                        <td>
                             {% if not voter.has_voted %}
                               <a href="/vote/{{ voter.election.pk }}/" rel="tooltip" title="" data-original-title="Voter">
                                   <i class="now-ui-icons ui-1_email-85">Voter</i>
@@ -132,10 +136,16 @@
                             </a>
                             {% endif %}
                           </td>
+                          <td>
+                               <div class="progress">
+                                     <div class="progress-bar bg-success" role="progressbar" style="width: {{ election.progress }}%" aria-valuenow="{{ election.progress }}" aria-valuemin="0" aria-valuemax="100">{{ election.progress }} %</div>
+                               </div>
+                          </td>
                       </tr>
-                      </tbody>
-                    </table>
+
                     {% endfor %}
+                </tbody>
+              </table>
                 {% else %}
                     Vous ne figurez dans la liste électorale d'aucun vote en cours ou terminé.
                 {% endif %}
