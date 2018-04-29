@@ -71,6 +71,7 @@
                     L'élection a déjà commencée, il est trop tard pour modifier les candidats.
                 </div>
                 {% endif %}
+                <div class="table-responsive">
                     <table class="table" id="table">
                         <thead class=" text-primary">
                             <th>Prénom</th>
@@ -116,7 +117,7 @@
                             {% endif %}
                         </tbody>
                     </table>
-
+                </div>
 
                     <a href="/election/manage/voters/{{ election.pk }}" class="btn btn-primary">Gérer les électeurs</a>
                     <a href="/election/manage/general/{{ election.pk }}" class="btn btn-info">Revenir aux options générales</a>

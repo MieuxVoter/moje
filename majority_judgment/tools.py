@@ -34,6 +34,7 @@ def sorted_scores(ratings, Ngrades):
     scores   = [len(np.where(ratings == g)[0])/Nratings for g in grades]
     return scores
 
+
 def plot_scores(scores, grades=[], names=[], height = 0.8, color = [], figure=None, output=True):
     """ scores is a 2D np.array """
 
@@ -81,33 +82,14 @@ def get_scores(election):
     """
     scores = get_ratings(election)
     for i in range(len(scores)):
-        scores[i] /= len(scores[i])
-
-    # grades     = Grade.objects.filter(election=election)
-    # candidates = Candidate.objects.filter(election=election)
-    # scores     = np.zeros( (len(candidates), len(grades)) )
-    # ratings    = Rating.objects.filter(election=election)
-    #
-    # for i in range(len(candidates)):
-    #     for j in range(len(grades)):
-    #         rating = rating.filter(candidate=candidates[i], grade=grades[j])
-    #         ratings[i,j] = len(rating)
-    #     ratings[i] /= len(ratings[i])
-    #
-    # return ratings
-    #
-    # for i in range(len(candidates)):
-    #     ratings   = Rating.objects.filter(candidate=candidates[i], election=election)
-    #     Nratings  = len(ratings)
-    #     rates     = ratings.values('grade').annotate(dcount=Count('grade'))
-    #     scores[i] = [r['dcount'] for r in rates]
-    #     scores[i]/= Nratings
+        scores[i] /= sum(scores[i])
 
     return scores
 
 
 def get_ratings(election):
     """ Compute a 2D array with all the ratings from the candidates
+    #FIXME this can largely be optimized
     """
 
     grades     = Grade.objects.filter(election=election)
