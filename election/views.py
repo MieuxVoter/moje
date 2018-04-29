@@ -176,12 +176,11 @@ def candidates_step(request, election_id=-1):
 @login_required
 def dashboard(request):
     supervisor  = Supervisor.objects.get_or_create(user=request.user)[0]
-    elections   = Election.objects.filter(supervisor=supervisor) \
-                    .annotate(num_voters=Count('voter'),
-                              num_grades=Count('grade'),
-                              num_candidates=Count('candidate'),
-                              num_ratings=Count('rating'),
-                              progress=Count('rating')/Count('voter')/Count('grade') )
+    elections   = Election.objects.filter(supervisor=supervisor) 
+    if elections:
+        elections.annotate(progress=Count('rating')/Count('voter')/Count('grade') )
+    # except ZeroDivisionError:
+
     #FIXME: this is not optimized at all
     user_voters = Voter.objects.filter(user=request.user)
     votes = [voter.election for voter in user_voters]
