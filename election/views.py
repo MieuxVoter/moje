@@ -18,8 +18,8 @@ from utils.mixins import SupervisorTestMixin, SupervisorFetchMixin
 
 @login_required
 def create_election(request):
-    supervisor = Supervisor.objects.get_or_create(user=request.user)[0]
-    election   = Election.objects.create(supervisor=supervisor)
+    election = Election.objects.create()
+    supervisor = Supervisor.objects.create(user=request.user, election=election)
 
     # default grades
     Grade.objects.create(name="Très bien",  election=election, code="tb")
@@ -68,12 +68,13 @@ def general_step(request, election_id=-1):
 
         return HttpResponseRedirect('/election/manage/candidates/{:d}/'.format(election.pk))
 
+    supervisor = Supervisor.objects.get(election=election, user=request.user)
     params =   {'form': form,
                 "election_id": election.pk,
                 "election": election,
                 'grades':Grade.objects.filter(election=election),
                 "state":  election.state,
-                "supervisor": election.supervisor,
+                "supervisor": supervisor,
                 "disabled": disabled
                 }
 
@@ -88,7 +89,8 @@ def launch_election(request, pk=-1):
         return HttpResponseRedirect("/election/success/{:d}".format(pk))
 
     election = find_election(pk, check_user=request.user)
-    params = {"supervisor": election.supervisor,
+    supervisor = Supervisor.objects.get(election=election, user=request.user)
+    params = {"supervisor": supervisor,
               "election": election,
               "form":form}
 
@@ -136,8 +138,8 @@ def confirm_launch_election(request, pk=-1):
 
     election.state = Election.START
     election.save()
-
-    params={'supervisor':election.supervisor,
+    supervisor = Supervisor.objects.get(election=election, user=request.user)
+    params={'supervisor':supervisor,
             "election":election}
 
     return render(request, 'election/success_start.html', params)
@@ -147,8 +149,8 @@ def close_election(request, pk=-1):
     election = find_election(pk, check_user=request.user)
     election.state = Election.OVER
     election.save()
-
-    return render(request, 'election/closed.html', {'supervisor':election.supervisor, 'election':election})
+    supervisor = Supervisor.objects.get(election=election, user=request.user)
+    return render(request, 'election/closed.html', {'supervisor':supervisor, 'election':election})
 
 
 @login_required
@@ -159,13 +161,13 @@ def candidates_step(request, election_id=-1):
 
     # find election given its id or create a new one
     election = find_election(election_id, check_user=request.user)
-
+    supervisor = Supervisor.objects.get(election=election, user=request.user)
     candidates = Candidate.objects.filter(election=election)
     form = CreateCandidateForm()
     params = {
                 "candidates": candidates,
                 "election": election,
-                "supervisor": election.supervisor,
+                "supervisor": supervisor,
                 "form": form
             }
 
@@ -175,10 +177,12 @@ def candidates_step(request, election_id=-1):
 
 @login_required
 def dashboard(request):
-    supervisor  = Supervisor.objects.get_or_create(user=request.user)[0]
-    elections   = Election.objects.filter(supervisor=supervisor)
+    supervisors = Supervisor.objects.filter(user=request.user)
+    elections   = Election.objects.filter(pk__in=supervisors.values('election_id'))
+
     if elections:
         elections.annotate(progress=Count('rating')/Count('voter')/Count('grade') )
+    # supervisors  = Supervisor.objects.filter(election=election, user=request.user)[0]
 
     #FIXME: this is not optimized at all
     user_voters = Voter.objects.filter(user=request.user)
@@ -206,8 +210,8 @@ def election_detail(request, election_id):
 
     try:
         election = Election.objects.get(pk=election_id)
-        if election.supervisor and election.supervisor.user == request.user:
-            supervisor = election.supervisor
+        if Supervisor.objects.filter(election=election, user=request.user):
+            supervisor = supervisor
         else:
             voter = Voter.objects.get(election=election, user=request.user)
 
@@ -241,14 +245,14 @@ def redirect_election(request):
                     "error":"Nous n'avons pas trouvé d'élections pour vous..."})
 
 
-class ElectionList(LoginRequiredMixin, SupervisorFetchMixin, generic.ListView):
+class ElectionList(LoginRequiredMixin, generic.ListView):
     template_name   = "election/dashboard.html"
 
     def get_queryset(self):
-        self.supervisor      = Supervisor.objects.get_or_create(user=self.request.user)[0]
-        elections       = Election.objects.filter(supervisor=self.supervisor)
-        queryset        = elections.annotate(num_voters=Count('voter'),
-                                        num_candidates=Count('candidate'))
+        self.supervisors = Supervisor.objects.filter(user=self.request.user)
+        elections   = Election.objects.filter(pk__in=self.supervisors.values('election_id'))
+        queryset = elections.annotate(num_voters=Count('voter'),
+                                      num_candidates=Count('candidate'))
         return queryset
 
 
@@ -299,7 +303,7 @@ def create_candidate(request):
                 }
         return JsonResponse(data)
 
-    if not election.supervisor or election.supervisor.user != request.user:
+    if not Supervisor.objects.filter(election=election, user=request.user).exists():
         data = {'election':      False,
                 'error': "Vous n'avez pas le droit de modifier cette élection."
                 }
@@ -360,8 +364,7 @@ class CandidateDelete(UserPassesTestMixin, DeleteView):
     def test_func(self):
         candidate_id = self.kwargs['pk']
         self.object = get_object_or_404(Candidate, pk=candidate_id)
-        supervisor = self.object.election.supervisor
-        return supervisor and self.request.user == supervisor.user
+        return Supervisor.objects.filter(election=self.object.election, user=self.request.user).exists()
 
 
 
@@ -381,12 +384,12 @@ def voters_step(request, election_id=-1):
         return HttpResponseRedirect('/election/manage/general/')
 
     voters = Voter.objects.filter(election=election)
-
+    supervisor = Supervisor.objects.get(election=election, user=request.user)
     params = {
                 "election": election,
                 "election_id": election_id,
                 "voters":  voters,
-                "supervisor": election.supervisor
+                "supervisor": supervisor
             }
 
     return render(request, 'election/manage_voters.html', params)
@@ -421,7 +424,7 @@ def create_voter(request):
                 }
         return JsonResponse(data)
 
-    if not election.supervisor or election.supervisor.user != request.user:
+    if not Supervisor.objects.filter(election=election, user=request.user).exists():
         data = {'election':      False,
                 'error': "Vous n'avez pas le droit de modifier cette élection."
                 }
@@ -490,8 +493,8 @@ class VoterDelete(UserPassesTestMixin, DeleteView):
         """ ensure the user is allowed to delete this voter. """
         id_voter = self.kwargs['pk']
         self.object = get_object_or_404(Voter, pk=id_voter)
-        supervisor = self.object.election.supervisor
-        return supervisor and self.request.user == supervisor.user
+        supervisor = Supervisor.objects.filter(election=self.object.election, user=self.request.user)
+        return supervisor.exists()
 
 
 
@@ -521,7 +524,7 @@ def create_grade(request):
                 }
         return JsonResponse(data)
 
-    if not election.supervisor or election.supervisor.user != request.user:
+    if not Supervisor.objects.filter(election=election, user=request.user).exists():
         data = {'election':      False,
                 'error': "Vous n'avez pas le droit de modifier cette élection."
                 }
@@ -569,5 +572,6 @@ class GradeDelete(UserPassesTestMixin, DeleteView):
         """ ensure the user is allowed to delete this grade. """
         id_grade = self.kwargs['pk']
         self.object = get_object_or_404(Grade, pk=id_grade)
-        supervisor = self.object.election.supervisor
-        return supervisor and self.request.user == supervisor.user
+        election = self.object.election
+        supervisor = Supervisor.objects.filter(election=election, user=self.request.user)
+        return supervisor.exists()

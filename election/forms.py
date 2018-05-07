@@ -42,7 +42,7 @@ class GeneralStepForm(forms.Form):
     # disabled=self.disabled
     #                             )
 
-    note    = forms.CharField(label="Description",
+    note = forms.CharField(label="Question",
                         widget=forms.Textarea(attrs={'class': "form-control"}))
 
 
