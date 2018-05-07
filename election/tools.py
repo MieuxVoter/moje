@@ -17,7 +17,7 @@ def find_election(election_id, check_user=None):
 
     election = get_object_or_404(Election, pk=election_id)
 
-    if check_user and (not election.supervisor or election.supervisor.user != check_user):
+    if check_user and not Supervisor.objects.filter(election=election, user= check_user).exists():
         raise PermissionDenied("Vous ne gérez pas ce vote.")
 
     return election
@@ -33,7 +33,7 @@ def send_invite(voter):
     login_link = "http://{}:{:d}/vote/{}/?url_auth_token={}".format(
                             DOMAIN,
                             PORT,
-                            voter.election.id,
+                            voter.election.pk,
                             login_token['url_auth_token']
                           )
     name = voter.user.first_name.title() + " " + voter.user.last_name.title()

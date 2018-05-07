@@ -3,17 +3,7 @@
 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
     <div class="logo">
-        {% if voter.election.supervisor.organisation.name %}
-            {% if voter.election.supervisor.organisation.site %}
-            <a href="{{ voter.election.supervisor.organisation.site }}" class="simple-text logo-mini">
-                {{ voter.election.supervisor.organisation.name }}
-            </a>
-            {% else %}
-            <span class="simple-text logo-mini">
-                {{ voter.election.supervisor.organisation.name }}
-            </span>
-            {% endif %}
-        {% elif voter.user.first_name or voter.user.last_name %}
+        {% if voter.user.first_name or voter.user.last_name %}
             {{ voter.user.first_name | title }} {{ voter.user.last_name | title }}
         {% else %}
         <a href="http://www.mieux-voter.fr" class="simple-text logo-normal">

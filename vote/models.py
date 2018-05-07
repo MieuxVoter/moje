@@ -24,12 +24,6 @@ class User(AbstractUser):
         if self.email == "":
             self.email = None
 
-class Supervisor(models.Model):
-    """
-    A supervisor is an extended user. A supervisor is in charge of one or several elections.
-    """
-    user         = models.OneToOneField(User, on_delete=models.CASCADE)
-    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE, default=None, null=True)
 
 
 class Election(models.Model):
@@ -56,8 +50,16 @@ class Election(models.Model):
                             choices=STATE_ELECTION,
                             default=DRAFT,
                         )
-    supervisor  = models.ForeignKey(Supervisor, on_delete=models.CASCADE, default=None, null=True)
 
+
+class Supervisor(models.Model):
+    """
+    A supervisor is an extended user. A supervisor is in charge of one or several elections.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    election = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
+    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE, default=None, null=True)
+    
 
 class Voter(models.Model):
     """

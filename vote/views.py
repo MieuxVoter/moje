@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import available_attrs, method_decorator
+from django.utils.translation import gettext_lazy as _
 
 from vote.models import *
 from vote.forms import *
@@ -19,7 +20,7 @@ def redirect_vote(request):
         election_id = voter.election.pk
         return HttpResponseRedirect('/vote/{:d}/'.format(election_id))
     except Voter.DoesNotExist:
-        return render(request, 'vote/error.html', {"error":"Nous n'avons pas trouvé d'élections pour vous..."})
+        return render(request, 'vote/error.html', {"error":_("Nous n'avons pas trouvé d'élections pour vous...")})
 
 
 @login_required
@@ -28,7 +29,7 @@ def vote(request, election_id):
         election = Election.objects.get(pk=election_id)
         voter = Voter.objects.get(election=election, user=request.user)
     except Election.DoesNotExist:
-        return render(request, 'vote/error.html', {"error":"L'élection n'existe pas."})
+        return render(request, 'vote/error.html', {"error":_("L'élection n'existe pas.")})
     except Voter.DoesNotExist:
         return render(request, 'vote/error.html', {"error":"Vous n'êtes pas sur les listes électorales de cette élection !", "election":election})
 

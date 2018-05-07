@@ -33,19 +33,22 @@ def results(request, election_id):
     #     election.save()
 
     # check access rights
-    if election.supervisor.user == request.user:
-        supervisor = election.supervisor
+    try:
+        supervisor = Supervisor.objects.get(election=election, user=request.user)
         params["supervisor"] = supervisor
-    elif not Voter.objects.filter(user=request.user,
+    except Supervisor.DoesNotExist:
+        supervisor = None
+
+        if not Voter.objects.filter(user=request.user,
                                   election=election).exists():
-        return render(request, 'vote/error.html',
+            return render(request, 'vote/error.html',
                 {'error': "Vous n'avez pas accès à cette élection.", "election":election})
-    elif election.state != Election.OVER:
-        return render(request, 'vote/error.html',
-                {'error': "L'élection n'est pas terminée", "election":election})
-    else:
-        voter = Voter.objects.get(user=request.user, election=election)
-        params["voter"] = voter
+        elif election.state != Election.OVER:
+            return render(request, 'vote/error.html',
+                    {'error': "L'élection n'est pas terminée", "election":election})
+        else:
+            voter = Voter.objects.get(user=request.user, election=election)
+            params["voter"] = voter
 
 
     # fetch results
