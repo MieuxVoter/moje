@@ -3,3 +3,4 @@ django-extensions
 django-sesame
 numpy
 matplotlib
+selenium
