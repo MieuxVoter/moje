@@ -6,3 +6,4 @@ theme/
 results*.png
 *.swp
 db.sqlite3
+geckodriver.log
