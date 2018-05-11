@@ -28,7 +28,7 @@ urlpatterns = [
 
     # voter
     path(r'manage/voters/<int:election_id>/',
-            views.candidates_step,
+            views.voters_step,
             name="voters"
         ),
     path(r'manage/create/voter/ajax/',
