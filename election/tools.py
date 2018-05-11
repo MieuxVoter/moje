@@ -30,15 +30,24 @@ def send_invite(voter):
 
     email = voter.user.email
     login_token = utils.get_parameters(voter.user)
-    login_link = "http://{}:{:d}/vote/{}/?url_auth_token={}".format(
+
+    if PORT != 80:
+        login_link = "http://{}:{:d}/vote/{}/?url_auth_token={}".format(
                             DOMAIN,
                             PORT,
                             voter.election.pk,
                             login_token['url_auth_token']
                           )
+    else:
+        login_link = "http://{}/vote/{}/?url_auth_token={}".format(
+                            DOMAIN,
+                            voter.election.pk,
+                            login_token['url_auth_token']
+                          )
+                          
     name = voter.user.first_name.title() + " " + voter.user.last_name.title()
     html_message = """
-    <p>Hello {},</p>
+    <p>Bonjour {},</p>
     <p>Vous avez été invité(e) à participer <a href="{}">au vote {}</a>. </p>
     <p>Si le lien ne fonctionne pas, vous pouvez copier-coller le lien suivant :</p>
     <p><a href="{}">{}</a></p>

@@ -546,6 +546,49 @@ def create_grade(request):
     return JsonResponse(data)
 
 
+@login_required
+def delete_grade(request):
+    """
+    Ajax request to create a grade
+    """
+
+    try:
+        name = request.GET.get('name', "")
+        code = name.upper()[:3]
+        election_id = int(request.GET.get('election_id', -1))
+        election = Election.objects.get(pk=election_id)
+    except ValueError:
+        data = {'election':      False,
+                'error':         'Election id is not valid.'
+                }
+        return JsonResponse(data)
+    except Election.DoesNotExist:
+        data = {'election': False,
+                'error': "L'élection n'existe pas."
+                }
+        return JsonResponse(data)
+
+    if not Supervisor.objects.filter(election=election, user=request.user).exists():
+        data = {'election':      False,
+                'error': "Vous n'avez pas le droit de modifier cette élection."
+                }
+        return JsonResponse(data)
+
+    if election.state != Election.DRAFT:
+        data = {'election':      False,
+                'error': "L'élection a déjà commencée."
+                }
+        return JsonResponse(data)
+
+    grade = Grade.objects.create(name=name, code=code, election=election)
+
+    data = {
+        'success': True,
+        'id_grade': grade.pk
+    }
+
+    return JsonResponse(data)
+
 
 class GradeDelete(UserPassesTestMixin, DeleteView):
     """
