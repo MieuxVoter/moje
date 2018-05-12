@@ -78,3 +78,13 @@ class CreateCandidateForm(forms.Form):
                     max_length=200,
                     widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Programme'})
                             )
+
+
+
+class VotersListStepForm(forms.Form):
+    def __init__(self,*args,**kwargs):
+        super(VotersListStepForm,self).__init__(*args,**kwargs)
+
+    list = forms.CharField(
+                    label="Liste des électeurs",
+                    widget=forms.Textarea(attrs={'class': 'form-control'}))
