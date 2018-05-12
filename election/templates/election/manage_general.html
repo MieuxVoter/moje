@@ -89,9 +89,12 @@
                         <label for="electionGrade" class="col-sm-12 col-form-label">Mentions</label>
 
                         <div id="grade-collections" class="col-sm-10">
+                            {% if election.state == "DR" %}
                           <div class="alert alert-info" role="alert">
                             Vous pouvez supprimer une mention en cliquant dessus. Les mentions doivent être classées de la meilleure à la pire.
                           </div>
+                            {% endif %}
+
                             {% for grade in grades %}
                                 <a href="#"  class="btn {% if election.state == "DR" %}btn-info{% else %}btn-secondary{% endif %} btn-round grade" data-id-grade="{{ grade.id }}"><!--{{ forloop.counter}}. -->{{ grade.name }}</a    >
                             {% endfor %}
@@ -111,21 +114,6 @@
                     <button type="submit" class="btn btn-primary">
                         Enregistrer et passer aux candidats
                     </button>
-                    <!-- {% if state == "DR" %}
-                    <a href="/election/launch/{{ election_id }}" class="btn btn-primary">
-                        Lancer l'élection
-                    </a>
-                    {% elif state == "ST" %}
-                    <a href="/election/close/{{ election_id }}" class="btn btn-primary">
-                        Terminer l'élection
-                    </a>
-                    {% endif %}
-                    <a  href="/election/manage/candidates/{{ election_id }}" class="btn btn-info">
-                        Liste des candidats
-                    </a>
-                    <a  href="/election/manage/voters/{{ election_id }}" class="btn btn-info">
-                        Liste des électeurs
-                    </a> -->
 
                     </form>
                 </div>
@@ -148,16 +136,17 @@
 
 
 function delete_grade() {
-  var grade_id = $(this).attr('data-id-grade');
+  var grade_div = $(this);
+  var grade_id = grade_div.attr('data-id-grade');
   $.ajax({
-      url: '/election/manage/delete/grade/' + grade_id + '/',
+      url: '/election/manage/delete/grade/ajax/' + grade_id + '/',
       success: function (data) {
           if (data.error) {
               alert(data.error);
               $("#error").display   = "block";
               $("#error").innerHTML = data.error;
           } else {
-              $(this).display = "none";
+              grade_div.hide();
           }
       }
     });
@@ -177,7 +166,7 @@ function create_grade() {
       success: function (data) {
           if (data.error) {
               alert(data.error);
-              $("#error").display   = "block";
+              $("#error").show();
               $("#error").innerHTML = data.error;
           } else {
               var form = $("#election-id");
@@ -210,7 +199,7 @@ function create_grade() {
     });
 
 
-    $("#form-btn").click(delete_grade);
+    $("#form-btn").click(create_grade);
 
 {% endif %}
 </script>

@@ -31,6 +31,10 @@ urlpatterns = [
             views.voters_step,
             name="voters"
         ),
+    path(r'manage/voters/list/<int:election_id>/',
+            views.voters_list_step,
+            name="voters_list"
+        ),
     path(r'manage/create/voter/ajax/',
             views.create_voter,
             name="create_voter"
@@ -47,7 +51,8 @@ urlpatterns = [
                 views.GradeDelete.as_view(),
                 name="delete_grade"
         ),
-
+    path(r'manage/delete/grade/ajax/<int:grade_id>/', views.delete_grade, name="delete_grade"
+        ),
 
     path(r'dashboard/', views.ElectionList.as_view(), name='dashboard'),
     path(r'manage/delete_election/<int:pk>/',

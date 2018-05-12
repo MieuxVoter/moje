@@ -59,7 +59,7 @@ class Supervisor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     election = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
     organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE, default=None, null=True)
-    
+
 
 class Voter(models.Model):
     """
@@ -67,6 +67,9 @@ class Voter(models.Model):
     """
     user        = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
     election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
+
+    def __str__(self):
+        return '{} {} {} - {}'.format(self.user.first_name, self.user.last_name, self.user.email, self.user.election.pk)
 
 
 

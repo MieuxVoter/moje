@@ -7,7 +7,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Count
 from django.db import IntegrityError
 from django.utils import timezone
+from django.utils.html import escape
 from django.core.validators import validate_email
+
 
 from vote.models import *
 from election.forms import *
@@ -84,7 +86,7 @@ def general_step(request, election_id=-1):
 @login_required
 def launch_election(request, pk=-1):
 
-    form = ConfirmStepForm(request.POST)
+    form = ConfirmStepForm(request.POST or None)
     if form.is_valid():
         return HttpResponseRedirect("/election/success/{:d}".format(pk))
 
@@ -396,6 +398,57 @@ def voters_step(request, election_id=-1):
 
 
 @login_required
+def voters_list_step(request, election_id=-1):
+    """
+    Manage voters pool in the election with a textarea
+    """
+
+    election = find_election(election_id)
+    if not election:
+        return HttpResponseRedirect('/election/manage/general/')
+
+    form = VotersListStepForm(request.POST or None)
+    success = ""
+    error = ""
+    if form.is_valid():
+        list  = form.cleaned_data['list']
+        voters = list.split("\n")
+
+        for detail in voters:
+            try:
+                details = detail.split(", ")
+                first_name = details[0].strip()
+                last_name = details[1].strip()
+                email = details[2].strip()
+                validate_email(email)
+                username = "{}_{:d}".format(email, election_id)
+                defaults = {'last_name': last_name,
+                            'first_name': first_name,
+                            'username': username,
+                            'email': email}
+                user = User.objects.get_or_create(email=details[2],
+                                                  defaults=defaults)[0]
+                voter = Voter.objects.create(election=election, user=user)
+                success += str(voter)
+            except ValidationError:
+                error += "Erreur pour décoder {}.\n".format(encode(detail))
+        return HttpResponseRedirect("/election/manage/voters/list/{:d}/".format(election_id))
+
+    voters = Voter.objects.filter(election=election)
+    supervisor = Supervisor.objects.get(election=election, user=request.user)
+    params = {
+                "election": election,
+                "election_id": election_id,
+                "voters":  voters,
+                "supervisor": supervisor,
+                "form": form,
+                "success": success
+            }
+
+    return render(request, 'election/manage_list_voters.html', params)
+
+
+@login_required
 def create_voter(request):
     """
     Ajax request to create a voter
@@ -547,45 +600,32 @@ def create_grade(request):
 
 
 @login_required
-def delete_grade(request):
+def delete_grade(request, grade_id):
     """
     Ajax request to create a grade
+    #TODO merge this function with class GradeDelete
     """
 
     try:
-        name = request.GET.get('name', "")
-        code = name.upper()[:3]
-        election_id = int(request.GET.get('election_id', -1))
-        election = Election.objects.get(pk=election_id)
-    except ValueError:
-        data = {'election':      False,
-                'error':         'Election id is not valid.'
-                }
-        return JsonResponse(data)
+        grade = Grade.objects.get(pk=grade_id)
+        election = grade.election
+        supervisor = Supervisor.objects.get(election=election, user=request.user)
     except Election.DoesNotExist:
-        data = {'election': False,
-                'error': "L'élection n'existe pas."
-                }
+        data = {'error': "L'élection n'existe pas."}
         return JsonResponse(data)
-
-    if not Supervisor.objects.filter(election=election, user=request.user).exists():
-        data = {'election':      False,
-                'error': "Vous n'avez pas le droit de modifier cette élection."
-                }
+    except Grade.DoesNotExist:
+        data = {'error': "La mention n'existe pas."}
+        return JsonResponse(data)
+    except Supervisor.DoesNotExist:
+        data = {'error': "Vous n'avez pas le droit de modifier cette élection."}
         return JsonResponse(data)
 
     if election.state != Election.DRAFT:
-        data = {'election':      False,
-                'error': "L'élection a déjà commencée."
-                }
+        data = {'error': "L'élection a déjà commencée."}
         return JsonResponse(data)
 
-    grade = Grade.objects.create(name=name, code=code, election=election)
-
-    data = {
-        'success': True,
-        'id_grade': grade.pk
-    }
+    grade.delete()
+    data = {'success': True}
 
     return JsonResponse(data)
 
