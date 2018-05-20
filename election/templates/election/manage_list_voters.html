@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Les électeurs</h4>
+                    <h4 class="card-title">{% trans "Voters" %}</h4>
                     <div class="progress">
                           <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75 %</div>
                     </div>
@@ -32,7 +32,7 @@
 
                     {% if election.state != "DR" %}
                     <div class="alert alert-warning" role="alert">
-                        L'élection a déjà commencée, il est trop tard pour modifier les électeurs.
+                      {% trans "The election has already begun. It is too late to change the voters" %}
                     </div>
                     {% endif %}
                 {% if voters %}
@@ -54,7 +54,7 @@
                                     <td>{{ voter.user.first_name | title}}</td>
                                     <td>{{ voter.user.last_name | title}}</td>
                                     <td>{{ voter.user.email }}</td>
-                                    {% if election.state == "DR" %}<td><a href="/election/manage/delete/voter/{{ voter.id }}/" class="btn btn-info">Supprimer</a></td>{% endif %}
+                                    {% if election.state == "DR" %}<td><a href="/election/manage/delete/voter/{{ voter.id }}/" class="btn btn-info">{% trans "Delete" %}</a></td>{% endif %}
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -63,26 +63,26 @@
                 {% endif %}
                     {% if election.state == "DR" %}
                     <div class="alert alert-info" role="alert">
-                      Ajoutez les électeurs ligne par ligne sous le format: "nom, prénom, email".
+                      {% trans "Add voters line by line with the following format: last name, first name, email" %}
                     </div>
                             <form method="post" novalidate>
                               {% csrf_token %}
                               {{ form }}
-                              <button  class="btn btn-info" type="submit">Ajouter</button>
+                              <button  class="btn btn-info" type="submit">{% trans "Add" %}</button>
                             </form>
                     {% endif %}
 
                 </div>
                     {% if election.state == "DR" %}
                     <a href="/election/launch/{{ election_id }}/" class="btn btn-primary">
-                        Démarrer l'élection
+                        {% trans "Start the election" %}
                     </a>
                     {% endif %}
                     <a href="/election/manage/candidates/{{ election_id }}/" class="btn btn-info">
-                        Revenir à la liste des candidats
+                        {% trans "Return to the candidate page" %}
                     </a>
                     <a href="/election/manage/voters/{{ election_id }}/" class="btn btn-info">
-                        Importer par tableau
+                        {% trans "Add voters from a table" %}
                     </a>
                 </div>
             </div>

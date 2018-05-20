@@ -29,7 +29,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Les candidats</h4>
+                    <h4 class="card-title">{% trans "The candidates" %}</h4>
                     <div class="progress">
                           <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50 %</div>
                     </div>
@@ -38,19 +38,19 @@
 
                 {% if election.state != "DR" %}
                 <div class="alert alert-warning" role="alert">
-                    L'élection a déjà commencée, il est trop tard pour modifier les candidats.
+                  {% trans "The election has already begun. It is too late to change the candidates" %}
                 </div>
                 {% endif %}
                 <div class="table-responsive">
                     <table class="table" id="table">
                         <thead class=" text-primary">
-                            <th>Prénom</th>
-                            <th>Nom</th>
+                            <th>{% trans "First name" %}</th>
+                            <th>{% trans "Last name" %}</th>
                             <th>
-                                Programme
+                                {% trans "Information" %}
                             </th>
                             {% if election.state == "DR" %}
-                            <th> Action </th>
+                            <th> {% trans "Action" %} </th>
                             {% endif %}
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                                     <td> {{ candidate.user.last_name | title}}</td>
                                     <td>{{ candidate.program }}</td>
                                     {% if election.state == "DR" %}
-                                    <td><a href="/election/manage/delete/candidate/{{ candidate.pk }}/" class="btn btn-info">Supprimer</a></td>
+                                    <td><a href="/election/manage/delete/candidate/{{ candidate.pk }}/" class="btn btn-info">{% trans "Delete" %}</a></td>
                                     {% endif %}
                                 </tr>
                             {% endfor %}
@@ -80,7 +80,7 @@
                                         </td>
                                     {% endfor %}
                                 <td>
-                                    <a href="#" id="form-btn" class="btn btn-info">Ajouter</a>
+                                    <a href="#" id="form-btn" class="btn btn-info">{% trans "Add" %}</a>
                                 </td>
                                 </form>
                             </tr>
@@ -89,8 +89,8 @@
                     </table>
                 </div>
 
-                    <a href="/election/manage/voters/{{ election.pk }}" class="btn btn-primary">Gérer les électeurs</a>
-                    <a href="/election/manage/general/{{ election.pk }}" class="btn btn-info">Revenir aux options générales</a>
+                    <a href="/election/manage/voters/{{ election.pk }}" class="btn btn-primary">{% trans "Manage voters" %}</a>
+                    <a href="/election/manage/general/{{ election.pk }}" class="btn btn-info">{% trans "Return to the election options" %}</a>
 
 
 
@@ -129,7 +129,7 @@
                   $("#error").innerHTML = data.error;
               } else {
                   tr = $("#tr-create-candidate");
-                  $("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete/candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">Supprimer</a></td></tr>").insertBefore(tr);
+                  $("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete/candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">{% trans "Delete" %}</a></td></tr>").insertBefore(tr);
                   $("#form-create-candidate").trigger("reset");
               }
           }

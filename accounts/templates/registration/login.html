@@ -10,7 +10,7 @@
         {% block panel-header %}
         <div class="panel-header">
             <div class="header text-center">
-                <h2 class="title">Se connecter</h2>
+                <h2 class="title">{% trans "Log in" %}</h2>
 
             </div>
         </div>
@@ -24,7 +24,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Se connecter</h4>
+                    <h4 class="card-title">{% trans "Log in" %}</h4>
                 </div>
                 <div class="card-body">
 
@@ -34,34 +34,33 @@
                     {% if form.errors %}
                     <p class="alert alert-danger">
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                        Le nom de compte et le mot de passe ne correspondent pas.
+                        {% trans "The name and the password do not match" %}
                     </p>
                     {% endif %}
 
                     {% if next %}
                     {% if user.is_authenticated %}
-                    <p>Vous n'avez pas accès à cette page.
-                    Pour procéder, merci de vous connecter avec un compte ayant droit.</p>
+                    <p>{% trans "You have no permission to acces to this page. Please log in with another account."%}</p>
                     {% else %}
-                    <p>Merci de vous connecter pour accéder à cette page.</p>
+                    <p>{% trans "Thanks to log in to access this page." %}</p>
                     {% endif %}
 
                     {% endif %}
 
                     <div class="form-group">
                         <!-- <a href="#" class="pull-right label-forgot">Email oublié?</a> -->
-                        <label for="inputUsernameEmail">Email</label>
+                        <label for="inputUsernameEmail">{% trans "Email" %}</label>
                         <input type="text" name="username" id="inputUsernameEmail" class="form-control">
                     </div>
                     <div class="form-group">
                         <!-- <a href="" class="pull-right label-forgot">Mot de passe oublié?</a> -->
-                        <label for="inputPassword">Mot de passe</label>
+                        <label for="inputPassword">{% trans "Password" %}</label>
                         <input type="password" name="password" id="inputPassword" class="form-control">
                     </div>
 
         			<div class="form-group">
         		                        <div class="checkbox">
-                        		            <label><input type="checkbox">Se souvenir de moi</label>
+                        		            <label><input type="checkbox">{% trans "Remember me" %}</label>
                                 		</div>
         			</div>
 
@@ -69,13 +68,13 @@
         			<div class="row">
         				<div class="col-md-12 row-block">
                                              <button class="btn btn-block btn-primary" type="submit" type="hidden" name="next" value="{{ next }}">
-                                                   Se connecter
+                                                   {% trans "Log in" %}
                                               </button>
         				</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 row-block">
-                                        <a href="/accounts/signup/" class="btn btn-secondary btn-block">Créer un nouveau compte</a>
+                                        <a href="/accounts/signup/" class="btn btn-secondary btn-block">{% trans "Create a new account" %}</a>
                                     </div>
                                 </div>
                             </div>

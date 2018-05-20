@@ -4,6 +4,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django.forms.fields import DateField
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 from vote.models import *
 
@@ -14,7 +15,7 @@ class FutureDateField(forms.DateField):
     def validate(self, value):
         super().validate(value)
         if value < timezone.now().date():
-            raise ValidationError("La date n'est pas postérieure à aujourd'hui.")
+            raise ValidationError(_("The date is not in the future"))
 
 
 class GeneralStepForm(forms.Form):
@@ -25,7 +26,7 @@ class GeneralStepForm(forms.Form):
         self.fields['note'].disabled = self.disabled
 
     name    = forms.CharField(
-                    label="Nom de l'élection",
+                    label=_("Election name"),
                     max_length=200,
                     widget=forms.TextInput(attrs={'class': 'form-control'}))
 
@@ -42,7 +43,7 @@ class GeneralStepForm(forms.Form):
     # disabled=self.disabled
     #                             )
 
-    note = forms.CharField(label="Question",
+    note = forms.CharField(label=_("Question"),
                         widget=forms.Textarea(attrs={'class': "form-control"}))
 
 
@@ -51,7 +52,7 @@ class GeneralStepForm(forms.Form):
 class ConfigStepForm(forms.Form):
 
     voting_system    = forms.CharField(
-                    label="Système de vote",
+                    label=_("Voting system"),
                     max_length=200,
                     widget=forms.TextInput(attrs={'class': 'form-control'})
                             )
@@ -62,21 +63,21 @@ class ConfirmStepForm(forms.Form):
 
 
 class CreateCandidateForm(forms.Form):
-    first_name    = forms.CharField(label="Prénom",
+    first_name    = forms.CharField(label=_("First name"),
                                     max_length=200,
-                                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Prénom'})
+                                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_("First name")})
                                     )
 
     last_name    = forms.CharField(
-                    label="Nom",
+                    label=_("Name"),
                     max_length=200,
-                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Nom'})
+                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_("Name")})
                             )
 
     program    = forms.CharField(
-                    label="Programme",
+                    label=_("Information"),
                     max_length=200,
-                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Programme'})
+                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_("Information")})
                             )
 
 
@@ -86,5 +87,5 @@ class VotersListStepForm(forms.Form):
         super(VotersListStepForm,self).__init__(*args,**kwargs)
 
     list = forms.CharField(
-                    label="Liste des électeurs",
+                    label=_("Voters list"),
                     widget=forms.Textarea(attrs={'class': 'form-control'}))

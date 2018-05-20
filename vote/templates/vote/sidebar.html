@@ -16,25 +16,25 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
             <li {% if request.resolver_match.url_name == "vote" %}class="active"{% endif %}>
                 <a href="/vote/">
                     <i class="now-ui-icons ui-1_email-85"></i>
-                    <p>Voter</p>
+                    <p>{% trans "Vote" %}</p>
                 </a>
             </li>
             <li {% if request.resolver_match.url_name == "results" %}class="active"{% endif %}>
                 <a href="/results/{{ election.pk }}/">
                     <i class="now-ui-icons sport_trophy"></i>
-                    <p>Résultats</p>
+                    <p>{% trans "Results" %}</p>
                 </a>
             </li>
             <li {% if request.resolver_match.url_name == "candidates" %}class="active"{% endif %}>
                 <a href="/candidates/{{ election.pk }}">
                     <i class="now-ui-icons design_bullet-list-67"></i>
-                    <p>Candidats</p>
+                    <p>{% trans "Candidates" %}</p>
                 </a>
             </li>
             <li {% if request.resolver_match.url_name == "manage" %}class="active"{% endif %}>
                 <a href="/">
                     <i class="now-ui-icons files_box"></i>
-                    <p>Créer une élection</p>
+                    <p>{% trans "Create an election" %}</p>
                 </a>
             </li>
 

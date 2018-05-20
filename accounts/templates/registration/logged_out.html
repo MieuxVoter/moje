@@ -10,8 +10,8 @@
         {% block panel-header %}
         <div class="panel-header">
             <div class="header text-center">
-                <h2 class="title">Se déconnecter</h2>
-    
+                <h2 class="title">{% trans "Log out" %}</h2>
+
             </div>
         </div>
         {% endblock panel-header %}
@@ -24,12 +24,12 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Se déconnecter</h4>
+                    <h4 class="card-title">{% trans "Log out" %}</h4>
                 </div>
                 <div class="card-body">
 
                     <div class="account-box">
-                        <a href="{% url 'login'%}">Cliquer ici pour se reconnecter.</a>
+                        <a href="{% url 'login'%}">{% trans "Click here to login" %}.</a>
                     </div>
 
                 </div>

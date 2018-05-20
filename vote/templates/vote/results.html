@@ -6,7 +6,7 @@
 {% block panel-header %}
 <div class="panel-header">
     <div class="header text-center">
-        <h2 class="title">Résultats du vote</h2>
+        <h2 class="title">{% trans "Election results" %}</h2>
     </div>
 </div>
 {% endblock panel-header %}
@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Les résultats</h4>
+                    <h4 class="card-title">{% trans "Results" %}</h4>
                 </div>
                 <div class="card-body">
                     <div class="alert alert-info alert-with-icon" data-notify="container">
@@ -27,16 +27,9 @@
                             <i class="now-ui-icons ui-1_simple-remove"></i>
                         </button>
                         <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
-                        <span data-notify="message">{{ nvotes }} votes ont été enregistrés !</span>
+                        <span data-notify="message">{{ nvotes }} {% trans "votes have been recorded!" %}</span>
                     </div>
 
-                    <!-- <div class="alert alert-warning">
-                        <button type="button" aria-hidden="true" class="close">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                        </button>
-                        <span>
-                            <b> Attention - </b> Le vote se terminera dans 5 jours !</span>
-                    </div> -->
 
                     <p>
                     <img src="/mj/charts/results-{{ election_id }}.png" alt="Results from Majority Judgment" />
@@ -50,7 +43,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Le détail des votes</h4>
+                    <h4 class="card-title">{% trans "Votes details" %}</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -64,7 +57,7 @@
                                     {{ grade }}
                                 </th>
                                 {% endfor %}
-                                <th class="text-right">Mention majoritaire</th>
+                                <th class="text-right">{% trans "Majority grade" %}</th>
                             </tr></thead>
                             <tbody>
                                 {% for candidate in ranking  %}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load i18n %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
         {% block panel-header %}
         <div class="panel-header">
             <div class="header text-center">
-                <h2 class="title">Créer un compte</h2>
+                <h2 class="title">{% trans "Create an account" %}</h2>
             </div>
         </div>
         {% endblock panel-header %}
@@ -23,7 +23,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Créer un compte</h4>
+                    <h4 class="card-title">{% trans "Create an account" %}</h4>
                 </div>
                 <div class="card-body">
 
@@ -31,7 +31,7 @@
                         <form method="post">
                           {% csrf_token %}
                           {{ form.as_p }}
-                          <button type="submit">Sign up</button>
+                          <button type="submit">{% trans "Sign up" %}</button>
                         </form>
                     </div>
 

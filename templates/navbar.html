@@ -29,7 +29,7 @@
                                 <a class="nav-link" href="/election/manage/general/">
                                     <i class="now-ui-icons ui-1_simple-add"></i>
                                     <p>
-                                        <span class="d-lg-none d-md-block">Créer une élection</span>
+                                        <span class="d-lg-none d-md-block">{% trans "Create an election" %}</span>
                                     </p>
                                 </a>
                             </li>
@@ -37,14 +37,14 @@
                                 <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="now-ui-icons users_single-02"></i>
                                     <p>
-                                        <span class="d-lg-none d-md-block">Compte</span>
+                                        <span class="d-lg-none d-md-block">{% trans "Account" %}</span>
                                     </p>
                                 </a>
                                 {% if request.user %}
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/accounts/profile/{{ request.user.pk }}">Profile</a>
-                                    <a class="dropdown-item" href="/accounts/logout">Se déconnecter</a>
+                                    <a class="dropdown-item" href="/accounts/profile/{{ request.user.pk }}">{% trans "Profile" %}</a>
+                                    <a class="dropdown-item" href="/accounts/logout">{% trans "Log out" %}</a>
                                 </div>
                                 {% endif %}
                             </li>
