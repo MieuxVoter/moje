@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import available_attrs, method_decorator
+from django.utils.translation import gettext_lazy as _
 
 from datetime import datetime
 
@@ -18,7 +19,7 @@ def redirect_results(request):
         election_id = voter.election.pk
         return HttpResponseRedirect('/results/{:d}/'.format(election_id))
     except Voter.DoesNotExist:
-        return render(request, 'error.html', {"error":"Nous n'avons pas trouvé d'élections pour vous..."})
+        return render(request, 'error.html', {"error":"No election has been found for you..."})
 
 
 @login_required
@@ -42,10 +43,10 @@ def results(request, election_id):
         if not Voter.objects.filter(user=request.user,
                                   election=election).exists():
             return render(request, 'vote/error.html',
-                {'error': "Vous n'avez pas accès à cette élection.", "election":election})
+                {'error': "You have no access to this election.", "election":election})
         elif election.state != Election.OVER:
             return render(request, 'vote/error.html',
-                    {'error': "L'élection n'est pas terminée", "election":election})
+                    {'error': "The election is not over", "election":election})
         else:
             voter = Voter.objects.get(user=request.user, election=election)
             params["voter"] = voter
@@ -62,7 +63,7 @@ def results(request, election_id):
     if Nvotes == 0:
         template = "election" if supervisor else "vote"
         return render(request, template + "/error.html",
-                        {'error':"Les urnes sont vides.", "election":election})
+                        {'error':"No vote has already been casted.", "election":election})
 
     for i, candidate in enumerate(candidates):
         result = Result(candidate=candidate,

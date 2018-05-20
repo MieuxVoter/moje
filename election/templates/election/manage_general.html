@@ -39,7 +39,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Gestion de l'élection</h4>
+                    <h4 class="card-title">{% trans "Manage the election" %}</h4>
                     <div class="progress">
                           <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="25" aria-valuemax="100">25 %</div>
                     </div>
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     {% if election.state != "DR" %}
                     <div class="alert alert-warning" role="alert">
-                        L'élection a déjà commencée, il est trop tard pour modifier les paramètres du vote.
+                      {% trans "The election has already begun. It is too late to modify the election settings" %}
                     </div>
                     {% endif %}
 
@@ -71,14 +71,14 @@
 
 
                     <div class="form-group row">
-                        <label for="electionName" class="col-sm-2 col-form-label">Mode de scrutin</label>
+                        <label for="electionName" class="col-sm-2 col-form-label">{% trans "Voting method" %}</label>
                         <div class="col-sm-10">
 
                             <input id="jm" type="radio" name="test" value="1" disabled checked />
-                            <label for="jm"> Jugement majoritaire</label>
+                            <label for="jm"> {% trans "Majority judgment" %}</label>
                             <br/>
                             <input id="jm" type="radio" name="test" value="1" disabled  />
-                            <label for="jm"> Scrutin majoritaire</label>
+                            <label for="jm"> {% trans "Majority voting" %}</label>
                             <!-- {% for radio in voting_system %}
                                 {{ radio }}
                             {% endfor %} -->
@@ -86,12 +86,12 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="electionGrade" class="col-sm-12 col-form-label">Mentions</label>
+                        <label for="electionGrade" class="col-sm-12 col-form-label">{% trans "Grade" %}</label>
 
                         <div id="grade-collections" class="col-sm-10">
                             {% if election.state == "DR" %}
                           <div class="alert alert-info" role="alert">
-                            Vous pouvez supprimer une mention en cliquant dessus. Les mentions doivent être classées de la meilleure à la pire.
+                            {% trans "You can delete a grade by clicking on it. The grades must be ordered from the best to the worst" %}
                           </div>
                             {% endif %}
 
@@ -102,7 +102,7 @@
                             <!-- <form id="form-create-grade" method="post"  data-id-election="{{ election.pk }}"> -->
                                 <input type="hidden" id="election-id" name="election-id" value="{{ election.pk }}">
                                 <!-- {% csrf_token %} -->
-                              <input type="text" class="form-control"  style="width:150px; display: initial;" placeholder="Nouveau jugement" aria-label="Jugement" aria-describedby="basic-addon2" id="name">
+                              <input type="text" class="form-control"  style="width:150px; display: initial;" placeholder="{% trans "New grade" %}" aria-label="{% trans "Grade" %}" aria-describedby="basic-addon2" id="name">
                                 <a href="#" id="form-btn" class="btn btn-success btn-round">
                                     <i class="now-ui-icons ui-1_check"></i>
                                 </a>
@@ -112,7 +112,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">
-                        Enregistrer et passer aux candidats
+                        {% trans "Save and go the candidate page" %}
                     </button>
 
                     </form>

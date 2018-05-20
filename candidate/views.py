@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import available_attrs, method_decorator
+from django.utils.translation import gettext_lazy as _
 
 from vote.models import *
 from majority_judgment.tools import *
@@ -19,7 +20,7 @@ def redirect_candidates(request):
         election_id = voter.election.pk
         return HttpResponseRedirect('/candidates/{:d}/'.format(election_id))
     except Voter.DoesNotExist:
-        return render(request, 'vote/error.html', {"message":"Nous n'avons pas trouvé d'élections pour vous..."})
+        return render(request, 'vote/error.html', {"message":_("No election has been found for you...")})
 
 
 class CandidateList(LoginRequiredMixin, generic.ListView):
@@ -32,9 +33,9 @@ class CandidateList(LoginRequiredMixin, generic.ListView):
             self.voter = Voter.objects.filter(election=self.election,
                                               user=self.request.user)
         except Election.DoesNotExist:
-            return render(request, 'vote/error.html', {"message":"L'élection n'existe pas."})
+            return render(request, 'vote/error.html', {"message":_("The election does not exist")})
         except Voter.DoesNotExist:
-            return render(request, 'vote/error.html', {"message":"Vous n'êtes pas sur les listes électorales de cette élection !"})
+            return render(request, 'vote/error.html', {"message":_("You are not allowed to be here")})
         return Candidate.objects.filter(election=self.election)
 
     def get_context_data(self, **kwargs):

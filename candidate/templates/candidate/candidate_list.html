@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Liste des candidats à l'élection</h4>
+                    <h4 class="card-title"> {% trans "List of candidates to the election" %}</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -26,9 +26,9 @@
 
                         <table class="table">
                             <thead class=" text-primary">
-                                <th>Prénom</th>
-                                <th>Nom</th>
-                                <th>Programme</th>
+                                <th>{% trans "First name" %}</th>
+                                <th>{% trans "Last name" %}</th>
+                                <th>{% trans "Info" %}</th>
                             </thead>
                             <tbody>
                                 {% for candidate in candidate_list %}

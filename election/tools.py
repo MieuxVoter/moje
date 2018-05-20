@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from django.core.exceptions import PermissionDenied
+from django.utils.translation import gettext_lazy as _
+from django.utils.text import format_lazy
 from sesame import utils
 
 from vote.models import *
@@ -18,7 +20,7 @@ def find_election(election_id, check_user=None):
     election = get_object_or_404(Election, pk=election_id)
 
     if check_user and not Supervisor.objects.filter(election=election, user= check_user).exists():
-        raise PermissionDenied("Vous ne gérez pas ce vote.")
+        raise PermissionDenied(_("You are not a supervisor of this election"))
 
     return election
 
@@ -44,16 +46,16 @@ def send_invite(voter):
                             voter.election.pk,
                             login_token['url_auth_token']
                           )
-                          
+
     name = voter.user.first_name.title() + " " + voter.user.last_name.title()
-    html_message = """
-    <p>Bonjour {},</p>
-    <p>Vous avez été invité(e) à participer <a href="{}">au vote {}</a>. </p>
-    <p>Si le lien ne fonctionne pas, vous pouvez copier-coller le lien suivant :</p>
-    <p><a href="{}">{}</a></p>
-    <p>Merci,</p>
+    html_message = format_lazy("""
+    <p>Dear {name},</p>
+    <p>You have been invited to participate to <a href="{login_link}">au vote {election_name}</a>. </p>
+    <p>If this link does not work, you can copy/paste the following link:</p>
+    <p><a href="{login_link}">{login_link}</a></p>
+    <p>Thanks,</p>
     <p>Mieux Voter</p>
-    """.format(name, login_link, voter.election.name, login_link, login_link)
+    """, name=name, login_link=login_link, election_name=voter.election.name)
 
 
     send_mail(

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-20 14:29+0200\n"
+"POT-Creation-Date: 2018-05-20 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,48 +16,48 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: accounts/forms.py:36
 msgid "The two password fields didn't match."
-msgstr ""
+msgstr "Les deux mots de passe ne correspondent pas"
 
 #: accounts/forms.py:38 accounts/templates/registration/login.html:57
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: accounts/forms.py:40
 msgid "Password confirmation"
-msgstr ""
+msgstr "Confirmation du mot de passe"
 
 #: accounts/forms.py:42
 msgid "Enter the same password as above, for verification."
-msgstr ""
+msgstr "Entrer le même mot de passe pour confirmer"
 
 #: accounts/templates/accounts/signup.html:13
 #: accounts/templates/accounts/signup.html:26
 msgid "Create an account"
-msgstr ""
+msgstr "Créer un compte utilisateur"
 
 #: accounts/templates/accounts/signup.html:34
 msgid "Sign up"
-msgstr ""
+msgstr "S'enregistrer"
 
 #: accounts/templates/accounts/user_detail.html:19
 msgid "Edit your user account"
-msgstr ""
+msgstr "Modifier votre compte utilisateur"
 
 #: accounts/templates/accounts/user_detail.html:26
 msgid "Organization"
-msgstr ""
+msgstr "Organisation"
 
 #: accounts/templates/accounts/user_detail.html:32
 msgid "Username"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 #: accounts/templates/accounts/user_detail.html:38
 msgid "Email address"
-msgstr ""
+msgstr "Adresse email"
 
 #: accounts/templates/accounts/user_detail.html:46
 #: candidate/templates/candidate/candidate_list.html:29 election/forms.py:66
@@ -65,488 +65,487 @@ msgstr ""
 #: election/templates/election/manage_voters.html:82
 #: election/templates/election/manage_voters.html:107
 msgid "First name"
-msgstr ""
+msgstr "Prénom"
 
 #: accounts/templates/accounts/user_detail.html:52
 #: candidate/templates/candidate/candidate_list.html:30
 #: election/templates/election/manage_candidates.html:48
 #: election/templates/election/manage_voters.html:83
 msgid "Last name"
-msgstr ""
+msgstr "Nom"
 
 #: accounts/templates/accounts/user_detail.html:60
 msgid "Street"
-msgstr ""
+msgstr "Rue"
 
 #: accounts/templates/accounts/user_detail.html:68
 msgid "City"
-msgstr ""
+msgstr "Ville"
 
 #: accounts/templates/accounts/user_detail.html:74
 msgid "Country"
-msgstr ""
+msgstr "Pays"
 
 #: accounts/templates/accounts/user_detail.html:80
 msgid "ZIP code"
-msgstr ""
+msgstr "Code postal"
 
 #: accounts/templates/accounts/user_detail.html:88
 msgid "Biography"
-msgstr ""
+msgstr "Biographie"
 
 #: accounts/templates/registration/logged_out.html:13
 #: accounts/templates/registration/logged_out.html:27 templates/navbar.html:47
 msgid "Log out"
-msgstr ""
+msgstr "Se déconnecter"
 
 #: accounts/templates/registration/logged_out.html:32
 msgid "Click here to login"
-msgstr ""
+msgstr "Cliquer ici pour se connecter"
 
 #: accounts/templates/registration/login.html:13
 #: accounts/templates/registration/login.html:27
 #: accounts/templates/registration/login.html:71
 msgid "Log in"
-msgstr ""
+msgstr "Se connecter"
 
 #: accounts/templates/registration/login.html:37
 msgid "The name and the password do not match"
-msgstr ""
+msgstr "The nom et le mot de passe ne correspondent pas"
 
 #: accounts/templates/registration/login.html:43
 msgid ""
 "You have no permission to acces to this page. Please log in with another "
 "account."
 msgstr ""
+"Vous n'avez pas le droit d'accèder à cette page. Merci de vous connecteravec "
+"un autre compte"
 
 #: accounts/templates/registration/login.html:45
 msgid "Thanks to log in to access this page."
-msgstr ""
+msgstr "Merci de vous connecter pour accéder à cette page."
 
 #: accounts/templates/registration/login.html:52
 #: election/templates/election/manage_voters.html:85
 #: election/templates/election/manage_voters.html:117
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: accounts/templates/registration/login.html:63
 msgid "Remember me"
-msgstr ""
+msgstr "Se souvenir de moi"
 
 #: accounts/templates/registration/login.html:77
 msgid "Create a new account"
-msgstr ""
+msgstr "Créer un nouveau compte"
 
 #: candidate/templates/candidate/candidate_detail.html:20
 msgid "Detail of the candidate"
-msgstr ""
+msgstr "Détail du candidat"
 
 #: candidate/templates/candidate/candidate_detail.html:25
 msgid "Oops... This page is under construction"
-msgstr ""
+msgstr "Oups, cette page est en cours de construction"
 
 #: candidate/templates/candidate/candidate_list.html:20
 msgid "List of candidates to the election"
-msgstr ""
+msgstr "Liste des candidats à l'élection"
 
 #: candidate/templates/candidate/candidate_list.html:31
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: candidate/views.py:23 vote/views.py:23
 msgid "No election has been found for you..."
-msgstr ""
+msgstr "Aucune élection n'a été trouvée pour vous..."
 
 #: candidate/views.py:36 election/views.py:223 election/views.py:299
 #: election/views.py:476 election/views.py:576 election/views.py:614
 msgid "The election does not exist"
-msgstr ""
+msgstr "L'élection n'exite pas"
 
 #: candidate/views.py:38 election/views.py:310 election/views.py:482
 #: election/views.py:582 election/views.py:620
 msgid "You are not allowed to be here"
-msgstr ""
+msgstr "Vous n'avez pas le droit d'être là"
 
 #: election/forms.py:18
 msgid "The date is not in the future"
-msgstr ""
+msgstr "La date n'est pas postérieure à aujourd'hui"
 
 #: election/forms.py:29
 msgid "Election name"
-msgstr ""
+msgstr "Nom de l'élection"
 
 #: election/forms.py:46
 msgid "Question"
-msgstr ""
+msgstr "Question"
 
 #: election/forms.py:55
 msgid "Voting system"
-msgstr ""
+msgstr "Mode de scrutin"
 
 #: election/forms.py:72 election/forms.py:74
 #: election/templates/election/dashboard.html:41
 #: election/templates/election/dashboard.html:108
 #: election/templates/election/manage_voters.html:112
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: election/forms.py:78 election/forms.py:80
 #: election/templates/election/manage_candidates.html:50
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
 #: election/forms.py:90
 msgid "Voters list"
-msgstr ""
+msgstr "Liste des électeurs"
 
 #: election/templates/election/closed.html:25
 msgid "Election's ending"
-msgstr ""
+msgstr "Fin de l'élection"
 
 #: election/templates/election/closed.html:29
 msgid "The election is over!"
-msgstr ""
+msgstr "L'élection est finie !"
 
 #: election/templates/election/dashboard.html:18
 #: election/templates/election/sidebar.html:57
 msgid "Dashboard"
-msgstr ""
+msgstr "Tableau de bord"
 
 #: election/templates/election/dashboard.html:31
 msgid "Your elections"
-msgstr ""
+msgstr "Vos élections"
 
 #: election/templates/election/dashboard.html:35
 msgid "You have not elections yet"
-msgstr ""
+msgstr "Vous n'avez aucune élection en cours"
 
 #: election/templates/election/dashboard.html:44
 #: election/templates/election/dashboard.html:109
 msgid "State"
-msgstr ""
+msgstr "Statut"
 
 #: election/templates/election/dashboard.html:47
 msgid "Number of voters"
-msgstr ""
+msgstr "Nombre d'électeurs"
 
 #: election/templates/election/dashboard.html:50
 msgid "Number of candidates"
-msgstr ""
+msgstr "Nombre de candidats"
 
 #: election/templates/election/dashboard.html:53
 #: election/templates/election/dashboard.html:113
 #: election/templates/election/manage_candidates.html:53
 #: election/templates/election/manage_voters.html:88
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 #: election/templates/election/dashboard.html:97 templates/navbar.html:32
 #: vote/templates/vote/sidebar.html:37
 msgid "Create an election"
-msgstr ""
+msgstr "Créer une élection"
 
 #: election/templates/election/dashboard.html:102
 msgid "Your votes"
-msgstr ""
+msgstr "Vos votes"
 
 #: election/templates/election/dashboard.html:112
 msgid "Candidates "
-msgstr ""
+msgstr "Candidats"
 
 #: election/templates/election/dashboard.html:115
 msgid "Progress"
-msgstr ""
+msgstr "Avancement"
 
 #: election/templates/election/dashboard.html:127
 msgid "View"
-msgstr ""
+msgstr "Voir"
 
 #: election/templates/election/dashboard.html:133
 #: vote/templates/vote/sidebar.html:19 vote/templates/vote/vote.html:13
 #: vote/templates/vote/vote.html:66
 msgid "Vote"
-msgstr ""
+msgstr "Voter"
 
 #: election/templates/election/dashboard.html:137
 #: election/templates/election/sidebar.html:51
 #: vote/templates/vote/results.html:22 vote/templates/vote/sidebar.html:25
 msgid "Results"
-msgstr ""
+msgstr "Résultats"
 
 #: election/templates/election/dashboard.html:152
 msgid "You are not registered into any election"
-msgstr ""
+msgstr "Vous ne faites pas parti(e) de cette élection"
 
 #: election/templates/election/election_detail.html:21
 msgid "Edit your account"
-msgstr ""
+msgstr "Modifier votre compte utilisateur"
 
 #: election/templates/election/manage_candidates.html:32
 msgid "The candidates"
-msgstr ""
+msgstr "Les candidats"
 
 #: election/templates/election/manage_candidates.html:41
 msgid "The election has already begun. It is too late to change the candidates"
 msgstr ""
+"L'élection a déjà commencé. Il est trop tard pour changer les candidats"
 
 #: election/templates/election/manage_candidates.html:63
 #: election/templates/election/manage_candidates.html:132
 #: election/templates/election/manage_list_voters.html:57
 #: election/templates/election/manage_voters.html:97
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: election/templates/election/manage_candidates.html:83
 #: election/templates/election/manage_list_voters.html:71
 #: election/templates/election/manage_voters.html:121
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: election/templates/election/manage_candidates.html:92
 msgid "Manage voters"
-msgstr ""
+msgstr "Modifier les électeurs"
 
 #: election/templates/election/manage_candidates.html:93
 msgid "Return to the election options"
-msgstr ""
+msgstr "Revenir sur les options de l'élection"
 
 #: election/templates/election/manage_general.html:42
 msgid "Manage the election"
-msgstr ""
+msgstr "Modifier l'élection"
 
 #: election/templates/election/manage_general.html:50
 msgid ""
 "The election has already begun. It is too late to modify the election "
 "settings"
-msgstr ""
+msgstr "L'élection a déjà commencé. Il est trop tard pour modifier l'élection"
 
 #: election/templates/election/manage_general.html:74
 msgid "Voting method"
-msgstr ""
+msgstr "Mode de scrutin"
 
 #: election/templates/election/manage_general.html:78 templates/base.html:7
 msgid "Majority judgment"
-msgstr ""
+msgstr "Jugement majoritaire"
 
 #: election/templates/election/manage_general.html:81
 msgid "Majority voting"
-msgstr ""
+msgstr "Vote majoritaire"
 
 #: election/templates/election/manage_general.html:89
 #: election/templates/election/manage_general.html:105
 msgid "Grade"
-msgstr ""
+msgstr "Mention"
 
 #: election/templates/election/manage_general.html:94
 msgid ""
 "You can delete a grade by clicking on it. The grades must be ordered from "
 "the best to the worst"
 msgstr ""
+"Vous pouvez supprimer une mention en cliquant dessus. Les mentions doivent "
+"être classées de la meilleure à la pire"
 
 #: election/templates/election/manage_general.html:105
 msgid "New grade"
-msgstr ""
+msgstr "Nouvelle mention"
 
 #: election/templates/election/manage_general.html:115
 msgid "Save and go the candidate page"
-msgstr ""
+msgstr "Enregistrer et passer aux candidats"
 
 #: election/templates/election/manage_list_voters.html:26
 #: election/templates/election/manage_voters.html:67
 #: election/templates/election/sidebar.html:30
 msgid "Voters"
-msgstr ""
+msgstr "Electeurs"
 
 #: election/templates/election/manage_list_voters.html:35
 msgid "The election has already begun. It is too late to change the voters"
 msgstr ""
+"L'élection a déjà commencé. Il est trop tard pour modifier les électeurs"
 
 #: election/templates/election/manage_list_voters.html:66
 msgid ""
 "Add voters line by line with the following format: last name, first name, "
 "email"
 msgstr ""
+"Ajouter des électeurs ligne par ligne avec le format suivant : nom, prénom, "
+"email"
 
 #: election/templates/election/manage_list_voters.html:78
 #: election/templates/election/manage_voters.html:131
 #: election/templates/election/start.html:25
 #: election/templates/election/success_start.html:25
 msgid "Start the election"
-msgstr ""
+msgstr "Démarrer l'élection"
 
 #: election/templates/election/manage_list_voters.html:82
 #: election/templates/election/manage_voters.html:135
 msgid "Return to the candidate page"
-msgstr ""
+msgstr "Revenir sur la page des candidats"
 
 #: election/templates/election/manage_list_voters.html:85
 msgid "Add voters from a table"
-msgstr ""
+msgstr "Importer depuis un table"
 
 #: election/templates/election/manage_voters.html:76
 msgid "The election has already begun. It is too late to modify the voters"
 msgstr ""
+"L'élection a déjà commencé. Il est trop tard pour modifier les électeurs"
 
 #: election/templates/election/manage_voters.html:138
 msgid "Import a list"
-msgstr ""
+msgstr "Importer une liste"
 
 #: election/templates/election/sidebar.html:18
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"
 
 #: election/templates/election/sidebar.html:24
 #: vote/templates/vote/sidebar.html:31 vote/templates/vote/vote.html:42
 msgid "Candidates"
-msgstr ""
+msgstr "Candidats"
 
 #: election/templates/election/sidebar.html:37
 msgid "Start"
-msgstr ""
+msgstr "Démarrer"
 
 #: election/templates/election/sidebar.html:44
 msgid "Finish"
-msgstr ""
+msgstr "Terminer"
 
 #: election/templates/election/success_start.html:29
 msgid "The election has begun!"
-msgstr ""
+msgstr "L'élection a commencé !"
 
 #: election/tools.py:23
 msgid "You are not a supervisor of this election"
-msgstr ""
+msgstr "Vous n'êtes pas un superviseur de cette élection"
 
 #: election/views.py:27
 msgid "Very good"
-msgstr ""
+msgstr "Très bien"
 
 #: election/views.py:28
 msgid "Good"
-msgstr ""
+msgstr "Bien"
 
 #: election/views.py:29
 msgid "Fair"
-msgstr ""
+msgstr "Passable"
 
 #: election/views.py:30
 msgid "Poor"
-msgstr ""
+msgstr "Insuffisant"
 
 #: election/views.py:31
 msgid "Defeat"
-msgstr ""
+msgstr "A rejeter"
 
 #: election/views.py:45 vote/views.py:32
 msgid "The election does not exist."
-msgstr ""
+msgstr "L'éléction n'existe pas."
 
 #: election/views.py:116 election/views.py:316 election/views.py:488
-#: election/views.py:624
+#: election/views.py:588 election/views.py:624
 msgid "The election has already begun"
-msgstr ""
+msgstr "L'élection a déjà commencé"
 
 #: election/views.py:120
 msgid "There is not any voter"
-msgstr ""
+msgstr "Il n'y a aucun électeur"
 
 #: election/views.py:124
 msgid "There is not any candidate"
-msgstr ""
+msgstr "Il n'y a aucun candidat"
 
 #: election/views.py:128
 msgid "The election has not set up"
-msgstr ""
+msgstr "L'élection n'est pas été paramétré"
 
 #: election/views.py:294 election/views.py:466 election/views.py:571
 msgid "Election id is not valid."
-msgstr ""
+msgstr "L'identifiant de l'élection n'est pas valide"
 
 #: election/views.py:304
 msgid "The name has already been taken"
-msgstr ""
+msgstr "Le nom a déjà été pris"
 
 #: election/views.py:471
 msgid "Email address is not valid."
-msgstr ""
+msgstr "L'adresse email n'est pas valide."
 
 #: election/views.py:501
 msgid "The voter has already been recorded"
-msgstr ""
-
-#: election/views.py:588
-msgid "The election has alread begun"
-msgstr ""
+msgstr "L'électeur a déjà été enregistré"
 
 #: election/views.py:617
 msgid "The grade does not exist"
-msgstr ""
+msgstr "La mention n'existe pas"
 
 #: jmapp/settings.py:122
 msgid "Français"
-msgstr ""
+msgstr "Français"
 
 #: jmapp/settings.py:123
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: templates/error.html:36
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: templates/footer.html:12
 msgid "About Us"
-msgstr ""
+msgstr "A propos"
 
 #: templates/navbar.html:40
 msgid "Account"
-msgstr ""
+msgstr "Compte"
 
 #: templates/navbar.html:46
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: templates/panel-header.html:3
 msgid "Mieux Voter with Majority Judgment"
-msgstr ""
+msgstr "Mieux Voter avec le Jugement Majoritaire"
 
 #: templates/panel-header.html:6
 msgid "Open source project"
-msgstr ""
+msgstr "Projet open source"
 
 #: templates/panel-header.html:6
 msgid "coded for the majority judgment"
-msgstr ""
+msgstr "développé pour le jugement majoritaire"
 
 #: vote/models.py:18
 msgid "email address"
-msgstr ""
+msgstr "adresse email"
 
 #: vote/templates/vote/results.html:9
 msgid "Election results"
-msgstr ""
+msgstr "Résultats de l'élection"
 
 #: vote/templates/vote/results.html:30
 msgid "votes have been recorded!"
-msgstr ""
+msgstr "votes ont déjà été enregistrés!"
 
 #: vote/templates/vote/results.html:46
 msgid "Votes details"
-msgstr ""
+msgstr "Détails des électeurs"
 
 #: vote/templates/vote/results.html:60
 msgid "Majority grade"
-msgstr ""
+msgstr "Mention majoritaire"
 
 #: vote/templates/vote/success.html:15
 msgid "Congratulations! Your vote has successfully been recorded!"
-msgstr ""
+msgstr "Félicitations ! Votre vote a bien été pris en compte !"
 
 #: vote/templates/vote/vote.html:31
 msgid "Vote with the majority judgment"
-msgstr ""
-
-#~ msgid "L'élection n'existe pas."
-#~ msgstr "The election does not exist."
-
-#~ msgid "test"
-#~ msgstr "ok"
+msgstr "Voter avec le jugement majoritaire"

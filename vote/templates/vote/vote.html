@@ -10,9 +10,9 @@ label { color:white!important; }
 {% block panel-header %}
 <div class="panel-header">
     <div class="header text-center">
-        <h2 class="title">Voter</h2>
+        <h2 class="title">{% trans "Vote" %}</h2>
         <p class="category">
-            Vote initié par <a href="#">Mieux Voter</a> le 1er avril 2018.
+
         </p>
     </div>
 </div>
@@ -28,7 +28,7 @@ label { color:white!important; }
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Voter avec le jugement majoritaire</h4>
+                    <h4 class="card-title"> {% trans "Vote with the majority judgment" %}</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -39,7 +39,7 @@ label { color:white!important; }
 
                     <table class="table">
                         <thead class=" text-primary">
-                            <th>Candidats</th>
+                            <th>{% trans "Candidates" %}</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -63,7 +63,7 @@ label { color:white!important; }
 
 
                         <button type=submit class="btn btn-primary" />
-                            Voter
+                            {% trans "Vote" %}
                         </button>
                         </form>
                     </div>

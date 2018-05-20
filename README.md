@@ -13,7 +13,11 @@ The code is assuming you are using `python > 3.5` and `django > 2.0`.
 
 3. [Connect to your database](https://docs.djangoproject.com/en/2.0/ref/databases/).
 
-4. For deployment to production, always think to the [django checklist](https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/).
+4. Compile translations:
+
+    django-admin compilemessages
+
+For deployment to production, always think to the [django checklist](https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/).
 
 # Run server
 
