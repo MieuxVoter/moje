@@ -9,6 +9,6 @@
             "port": 465,
             "host_user": "",
             "host_password": "",
-            "default_from_email": "Admin<admin@domain.com>"
+            "default_from": "Admin<admin@domain.com>"
         }
 }

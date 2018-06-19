@@ -82,8 +82,8 @@ class FunctionalTest(StaticLiveServerTestCase):
 
 
     @wait
-    def wait_for(self, fn):
-        return fn()
+    def wait_for(self, fn, *args, **kwargs):
+        return fn(*args, **kwargs)
 
 
     def create_pre_authenticated_session(self, email):
