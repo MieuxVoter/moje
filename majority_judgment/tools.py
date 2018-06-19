@@ -1,10 +1,28 @@
 import numpy as np
 from vote.models import *
 from django.db.models import Count
+from django.core.exceptions import EmptyResultSet
+from django.shortcuts import get_object_or_404
+import math
+
+def majority_judgment(results):
+    ''' Return the ranking from results using the majority judgment '''
+    return sorted(results, reverse=True)
+
+
+def arg_median(x):
+    mid = math.ceil(sum(x)/2.0)
+    acc = 0
+    for i, xi in enumerate(x[::-1]):
+        acc += xi
+        if acc >= mid:
+            return len(x) - 1 - i
 
 
 def tie_breaking(A, B):
-    ''' Algorithm to divide out candidates with the same median grade'''
+    ''' Algorithm to divide out candidates with the same median grade.
+    Return True if A < B (or if B has a better ranking than A)'''
+
     Ac   = np.copy(A)
     Bc   = np.copy(B)
     medA = arg_median(Ac)
@@ -18,14 +36,9 @@ def tie_breaking(A, B):
             return False
         medA = arg_median(Ac)
         medB = arg_median(Bc)
-    return medA < medB
+    return medA > medB
 
-def majority_judgment(results):
-    ''' Return the ranking from results using the majority judgment '''
-    return sorted(results)
 
-def arg_median(x):
-    return np.argmin(np.abs(np.median(x) - x))
 
 def sorted_scores(ratings, Ngrades):
     """ Compute the scores of each candidate """
@@ -92,15 +105,15 @@ def get_ratings(election):
     #FIXME this can largely be optimized
     """
 
-    grades     = Grade.objects.filter(election=election)
+    grades = Grade.objects.filter(election=election)
     candidates = Candidate.objects.filter(election=election)
-    scores     = np.zeros( (len(candidates), len(grades)) )
+    scores = np.zeros( (len(candidates), len(grades)) )
 
     # order in the grades is defined by their increasing id
     # could it be better?
 
     # order_grades = [grade.id for grade in grades]
-    ratings    = Rating.objects.filter(election=election)
+    ratings = Rating.objects.filter(election=election)
 
     for i in range(len(candidates)):
         for j in range(len(grades)):
@@ -116,17 +129,16 @@ class Result():
 
     def __init__(self, name = "", ratings = np.array([]), scores = None, grades = [], candidate = None):
 
-        self.name      = name
-        self.ratings   = ratings
-        self.grades    = grades
-        self.scores    = scores
+        self.name = name
+        self.ratings = ratings
+        self.grades = grades
+        self.scores = scores
         self.candidate = candidate
 
         if name == "" and candidate is not None:
             self.name = candidate.user.first_name.title() + " " + candidate.user.last_name.title()
         if not ratings.size and scores is None:
             self.scores    = sorted_scores(ratings, len(grades))
-
 
     def __lt__(self, other):
         return tie_breaking(self.ratings, other.ratings)
@@ -136,3 +148,35 @@ class Result():
 
     def __str__(self):
         return str(self.name)
+
+
+def get_ranking(election_id):
+    election = get_object_or_404(Election, pk=election_id)
+
+    # fetch results
+    grades = [g.name for g in Grade.objects.filter(election=election)]
+    ratings = get_ratings(election)
+    ratings = np.array(ratings, dtype=int)
+    results = []
+    candidates = Candidate.objects.filter(election=election)
+    Nvotes = len(Rating.objects.filter(election=election))
+
+    if Nvotes == 0:
+        raise EmptyResultSet(_("No vote has already been casted."))
+
+    for i, candidate in enumerate(candidates):
+        result = Result(candidate=candidate,
+                        ratings=ratings[i, :],
+                        grades=grades)
+        results.append(result)
+
+    # ranking according to the majority judgment
+    ranking = []
+
+    for r in majority_judgment(results):
+        candidate = r.candidate
+        candidate.ratings = r.ratings
+        candidate.median = grades[arg_median(ratings[i,:])]
+        ranking.append(candidate)
+
+    return ranking

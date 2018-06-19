@@ -8,3 +8,5 @@ results*.png
 db.sqlite3
 geckodriver.log
 *.mo
+screendumps/
+*.bak

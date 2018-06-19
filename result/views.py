@@ -28,11 +28,6 @@ def results(request, election_id):
     supervisor = None
     params = {}
 
-    # close election according to date
-    # if election.end and election.end < datetime.now().date():
-    #     election.state = Election.OVER
-    #     election.save()
-
     # check access rights
     try:
         supervisor = Supervisor.objects.get(election=election, user=request.user)
@@ -43,41 +38,18 @@ def results(request, election_id):
         if not Voter.objects.filter(user=request.user,
                                   election=election).exists():
             return render(request, 'vote/error.html',
-                {'error': "You have no access to this election.", "election":election})
+                {'error': _("You have no access to this election."), "election":election})
         elif election.state != Election.OVER:
             return render(request, 'vote/error.html',
-                    {'error': "The election is not over", "election":election})
+                    {'error': _("The election is not over"), "election":election})
         else:
             voter = Voter.objects.get(user=request.user, election=election)
             params["voter"] = voter
 
 
     # fetch results
+    ranking = get_ranking(election)
     grades = [g.name for g in Grade.objects.filter(election=election)]
-    ratings = get_ratings(election)
-    ratings = np.array(ratings, dtype=int)
-    results = []
-    candidates = Candidate.objects.filter(election=election)
-    Nvotes = len(Rating.objects.filter(election=election))
-
-    if Nvotes == 0:
-        template = "election" if supervisor else "vote"
-        return render(request, template + "/error.html",
-                        {'error':"No vote has already been casted.", "election":election})
-
-    for i, candidate in enumerate(candidates):
-        result = Result(candidate=candidate,
-                        ratings=ratings[i, :],
-                        grades=grades)
-        results.append(result)
-
-    # ranking according to the majority judgment
-    ranking = []
-    for r in majority_judgment(results):
-        candidate = r.candidate
-        candidate.ratings = r.ratings
-        candidate.median = grades[arg_median(ratings[i,:])]
-        ranking.append(candidate)
 
     params['ranking'] = ranking
     params["nvotes"] = Nvotes

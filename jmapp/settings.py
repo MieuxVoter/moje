@@ -14,11 +14,12 @@ import os
 import json
 from django.utils.translation import gettext_lazy as _
 
-with open('keys.local.json', 'r') as json_fid:
-    parameters = json.load(json_fid)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+with open(os.path.join(BASE_DIR, 'keys.local.json'), 'r') as json_fid:
+    parameters = json.load(json_fid)
 
 
 SECRET_KEY = parameters['secret_key']
