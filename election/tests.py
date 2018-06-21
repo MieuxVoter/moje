@@ -20,7 +20,7 @@ SUBJECT = 'Your login link for Superlists'
 class ElectionCreationTest(FunctionalTest):
 
 
-    def test_can_create_an_account(self):
+    def test_a_basic_election(self):
 
         # Edith goes on the website and is automatically connected
         self.client.login(username="edith", password='password1')
