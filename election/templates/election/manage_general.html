@@ -179,7 +179,7 @@ function create_grade() {
                   $(this).unbind('click');
                   $(this).click(delete_grade)
                   $( this ).attr('class', "btn btn-danger btn-round grade");
-                  $( this ).html("Supprimer");
+                  $( this ).html({% trans 'Delete' %});
                   // $( this ).attr("href",);
                 });
           }
@@ -195,7 +195,7 @@ function create_grade() {
       $(this).unbind('click');
       $(this).click(delete_grade);
       $( this ).attr('class', "btn btn-danger btn-round grade");
-      $( this ).html("Supprimer");
+      $( this ).html({% trans 'Delete' %});
       // $( this ).attr("href",);
     });
 
