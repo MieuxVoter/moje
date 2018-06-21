@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import available_attrs, method_decorator
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import EmptyResultSet
 
 from datetime import datetime
 
@@ -48,7 +49,12 @@ def results(request, election_id):
 
 
     # fetch results
-    ranking = get_ranking(election)
+    try:
+        ranking = get_ranking(election_id)
+    except EmptyResultSet:
+        return render(request, 'vote/error.html',
+                {'error': _("No vote has already been casted."), "election":election})
+
     grades = [g.name for g in Grade.objects.filter(election=election)]
 
     params['ranking'] = ranking
