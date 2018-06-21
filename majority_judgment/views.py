@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
+from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import EmptyResultSet
 
 import matplotlib as pl
 pl.use('Agg')
