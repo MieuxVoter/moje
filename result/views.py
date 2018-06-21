@@ -52,10 +52,11 @@ def results(request, election_id):
     try:
         ranking = get_ranking(election_id)
     except EmptyResultSet:
-        return render(request, 'vote/error.html',
+        return render(request, 'election/error.html',
                 {'error': _("No vote has already been casted."), "election":election})
 
     grades = [g.name for g in Grade.objects.filter(election=election)]
+    Nvotes = len([candidate.ratings for candidate in ranking])
 
     params['ranking'] = ranking
     params["nvotes"] = Nvotes

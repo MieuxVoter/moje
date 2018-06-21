@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-20 14:47+0200\n"
+"POT-Creation-Date: 2018-06-21 16:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgid "Biography"
 msgstr "Biographie"
 
 #: accounts/templates/registration/logged_out.html:13
-#: accounts/templates/registration/logged_out.html:27 templates/navbar.html:47
+#: accounts/templates/registration/logged_out.html:27 templates/navbar.html:48
 msgid "Log out"
 msgstr "Se déconnecter"
 
@@ -159,12 +159,12 @@ msgstr "Info"
 msgid "No election has been found for you..."
 msgstr "Aucune élection n'a été trouvée pour vous..."
 
-#: candidate/views.py:36 election/views.py:223 election/views.py:299
+#: candidate/views.py:36 election/views.py:224 election/views.py:300
 #: election/views.py:476 election/views.py:576 election/views.py:614
 msgid "The election does not exist"
 msgstr "L'élection n'exite pas"
 
-#: candidate/views.py:38 election/views.py:310 election/views.py:482
+#: candidate/views.py:38 election/views.py:311 election/views.py:482
 #: election/views.py:582 election/views.py:620
 msgid "You are not allowed to be here"
 msgstr "Vous n'avez pas le droit d'être là"
@@ -210,7 +210,7 @@ msgid "The election is over!"
 msgstr "L'élection est finie !"
 
 #: election/templates/election/dashboard.html:18
-#: election/templates/election/sidebar.html:57
+#: election/templates/election/sidebar.html:58
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
@@ -242,8 +242,8 @@ msgstr "Nombre de candidats"
 msgid "Action"
 msgstr "Action"
 
-#: election/templates/election/dashboard.html:97 templates/navbar.html:32
-#: vote/templates/vote/sidebar.html:37
+#: election/templates/election/dashboard.html:97 templates/navbar.html:33
+#: vote/templates/vote/sidebar.html:38
 msgid "Create an election"
 msgstr "Créer une élection"
 
@@ -264,14 +264,14 @@ msgid "View"
 msgstr "Voir"
 
 #: election/templates/election/dashboard.html:133
-#: vote/templates/vote/sidebar.html:19 vote/templates/vote/vote.html:13
-#: vote/templates/vote/vote.html:66
+#: vote/templates/vote/sidebar.html:20 vote/templates/vote/vote.html:14
+#: vote/templates/vote/vote.html:67
 msgid "Vote"
 msgstr "Voter"
 
 #: election/templates/election/dashboard.html:137
-#: election/templates/election/sidebar.html:51
-#: vote/templates/vote/results.html:22 vote/templates/vote/sidebar.html:25
+#: election/templates/election/sidebar.html:52
+#: vote/templates/vote/results.html:22 vote/templates/vote/sidebar.html:26
 msgid "Results"
 msgstr "Résultats"
 
@@ -294,6 +294,8 @@ msgstr ""
 
 #: election/templates/election/manage_candidates.html:63
 #: election/templates/election/manage_candidates.html:132
+#: election/templates/election/manage_general.html:182
+#: election/templates/election/manage_general.html:198
 #: election/templates/election/manage_list_voters.html:57
 #: election/templates/election/manage_voters.html:97
 msgid "Delete"
@@ -313,34 +315,34 @@ msgstr "Modifier les électeurs"
 msgid "Return to the election options"
 msgstr "Revenir sur les options de l'élection"
 
-#: election/templates/election/manage_general.html:42
+#: election/templates/election/manage_general.html:43
 msgid "Manage the election"
 msgstr "Modifier l'élection"
 
-#: election/templates/election/manage_general.html:50
+#: election/templates/election/manage_general.html:51
 msgid ""
 "The election has already begun. It is too late to modify the election "
 "settings"
 msgstr "L'élection a déjà commencé. Il est trop tard pour modifier l'élection"
 
-#: election/templates/election/manage_general.html:74
+#: election/templates/election/manage_general.html:75
 msgid "Voting method"
 msgstr "Mode de scrutin"
 
-#: election/templates/election/manage_general.html:78 templates/base.html:7
+#: election/templates/election/manage_general.html:79 templates/base.html:8
 msgid "Majority judgment"
 msgstr "Jugement majoritaire"
 
-#: election/templates/election/manage_general.html:81
+#: election/templates/election/manage_general.html:82
 msgid "Majority voting"
 msgstr "Vote majoritaire"
 
-#: election/templates/election/manage_general.html:89
-#: election/templates/election/manage_general.html:105
+#: election/templates/election/manage_general.html:90
+#: election/templates/election/manage_general.html:106
 msgid "Grade"
 msgstr "Mention"
 
-#: election/templates/election/manage_general.html:94
+#: election/templates/election/manage_general.html:95
 msgid ""
 "You can delete a grade by clicking on it. The grades must be ordered from "
 "the best to the worst"
@@ -348,17 +350,17 @@ msgstr ""
 "Vous pouvez supprimer une mention en cliquant dessus. Les mentions doivent "
 "être classées de la meilleure à la pire"
 
-#: election/templates/election/manage_general.html:105
+#: election/templates/election/manage_general.html:106
 msgid "New grade"
 msgstr "Nouvelle mention"
 
-#: election/templates/election/manage_general.html:115
+#: election/templates/election/manage_general.html:116
 msgid "Save and go the candidate page"
 msgstr "Enregistrer et passer aux candidats"
 
 #: election/templates/election/manage_list_voters.html:26
 #: election/templates/election/manage_voters.html:67
-#: election/templates/election/sidebar.html:30
+#: election/templates/election/sidebar.html:31
 msgid "Voters"
 msgstr "Electeurs"
 
@@ -400,20 +402,20 @@ msgstr ""
 msgid "Import a list"
 msgstr "Importer une liste"
 
-#: election/templates/election/sidebar.html:18
+#: election/templates/election/sidebar.html:19
 msgid "Settings"
 msgstr "Paramètres"
 
-#: election/templates/election/sidebar.html:24
-#: vote/templates/vote/sidebar.html:31 vote/templates/vote/vote.html:42
+#: election/templates/election/sidebar.html:25
+#: vote/templates/vote/sidebar.html:32 vote/templates/vote/vote.html:43
 msgid "Candidates"
 msgstr "Candidats"
 
-#: election/templates/election/sidebar.html:37
+#: election/templates/election/sidebar.html:38
 msgid "Start"
 msgstr "Démarrer"
 
-#: election/templates/election/sidebar.html:44
+#: election/templates/election/sidebar.html:45
 msgid "Finish"
 msgstr "Terminer"
 
@@ -426,51 +428,55 @@ msgid "You are not a supervisor of this election"
 msgstr "Vous n'êtes pas un superviseur de cette élection"
 
 #: election/views.py:27
+msgid "Excellent"
+msgstr "Excellent"
+
+#: election/views.py:28
 msgid "Very good"
 msgstr "Très bien"
 
-#: election/views.py:28
+#: election/views.py:29
 msgid "Good"
 msgstr "Bien"
 
-#: election/views.py:29
+#: election/views.py:30
 msgid "Fair"
 msgstr "Passable"
 
-#: election/views.py:30
+#: election/views.py:31
 msgid "Poor"
 msgstr "Insuffisant"
 
-#: election/views.py:31
-msgid "Defeat"
-msgstr "A rejeter"
+#: election/views.py:32
+msgid "To Reject"
+msgstr ""
 
-#: election/views.py:45 vote/views.py:32
+#: election/views.py:46 vote/views.py:32
 msgid "The election does not exist."
 msgstr "L'éléction n'existe pas."
 
-#: election/views.py:116 election/views.py:316 election/views.py:488
+#: election/views.py:117 election/views.py:317 election/views.py:488
 #: election/views.py:588 election/views.py:624
 msgid "The election has already begun"
 msgstr "L'élection a déjà commencé"
 
-#: election/views.py:120
+#: election/views.py:121
 msgid "There is not any voter"
 msgstr "Il n'y a aucun électeur"
 
-#: election/views.py:124
+#: election/views.py:125
 msgid "There is not any candidate"
 msgstr "Il n'y a aucun candidat"
 
-#: election/views.py:128
+#: election/views.py:129
 msgid "The election has not set up"
 msgstr "L'élection n'est pas été paramétré"
 
-#: election/views.py:294 election/views.py:466 election/views.py:571
+#: election/views.py:295 election/views.py:466 election/views.py:571
 msgid "Election id is not valid."
 msgstr "L'identifiant de l'élection n'est pas valide"
 
-#: election/views.py:304
+#: election/views.py:305
 msgid "The name has already been taken"
 msgstr "Le nom a déjà été pris"
 
@@ -486,39 +492,57 @@ msgstr "L'électeur a déjà été enregistré"
 msgid "The grade does not exist"
 msgstr "La mention n'existe pas"
 
-#: jmapp/settings.py:122
+#: jmapp/settings.py:123
 msgid "Français"
 msgstr "Français"
 
-#: jmapp/settings.py:123
+#: jmapp/settings.py:124
 msgid "English"
 msgstr "Anglais"
 
-#: templates/error.html:36
+#: majority_judgment/tools.py:166 result/views.py:56
+#, fuzzy
+#| msgid "The voter has already been recorded"
+msgid "No vote has already been casted."
+msgstr "L'électeur a déjà été enregistré"
+
+#: result/views.py:42
+#, fuzzy
+#| msgid "You are not a supervisor of this election"
+msgid "You have no access to this election."
+msgstr "Vous n'êtes pas un superviseur de cette élection"
+
+#: result/views.py:45
+#, fuzzy
+#| msgid "The election is over!"
+msgid "The election is not over"
+msgstr "L'élection est finie !"
+
+#: templates/error.html:37
 msgid "Error"
 msgstr "Erreur"
 
-#: templates/footer.html:12
+#: templates/footer.html:13
 msgid "About Us"
 msgstr "A propos"
 
-#: templates/navbar.html:40
+#: templates/navbar.html:41
 msgid "Account"
 msgstr "Compte"
 
-#: templates/navbar.html:46
+#: templates/navbar.html:47
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/panel-header.html:3
+#: templates/panel-header.html:4
 msgid "Mieux Voter with Majority Judgment"
 msgstr "Mieux Voter avec le Jugement Majoritaire"
 
-#: templates/panel-header.html:6
+#: templates/panel-header.html:7
 msgid "Open source project"
 msgstr "Projet open source"
 
-#: templates/panel-header.html:6
+#: templates/panel-header.html:7
 msgid "coded for the majority judgment"
 msgstr "développé pour le jugement majoritaire"
 
@@ -546,6 +570,9 @@ msgstr "Mention majoritaire"
 msgid "Congratulations! Your vote has successfully been recorded!"
 msgstr "Félicitations ! Votre vote a bien été pris en compte !"
 
-#: vote/templates/vote/vote.html:31
+#: vote/templates/vote/vote.html:32
 msgid "Vote with the majority judgment"
 msgstr "Voter avec le jugement majoritaire"
+
+#~ msgid "Defeat"
+#~ msgstr "A rejeter"

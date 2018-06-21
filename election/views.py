@@ -24,11 +24,12 @@ def create_election(request):
     supervisor = Supervisor.objects.create(user=request.user, election=election)
 
     # default grades
+    Grade.objects.create(name=_("Excellent"),  election=election, code="exc")
     Grade.objects.create(name=_("Very good"),  election=election, code="tb")
     Grade.objects.create(name=_("Good"),       election=election, code="b")
     Grade.objects.create(name=_("Fair"),   election=election, code="p")
     Grade.objects.create(name=_("Poor"),election=election, code="ins")
-    Grade.objects.create(name=_("Defeat"),  election=election, code="rej")
+    Grade.objects.create(name=_("To Reject"),  election=election, code="rej")
 
     return HttpResponseRedirect('/election/manage/general/{:d}/'.format(election.pk))
 
@@ -424,8 +425,7 @@ def voters_list_step(request, election_id=-1):
                 username = "{}_{:d}".format(email, election_id)
                 defaults = {'last_name': last_name,
                             'first_name': first_name,
-                            'username': username,
-                            'email': email}
+                            'username': username}
                 user = User.objects.get_or_create(email=details[2],
                                                   defaults=defaults)[0]
                 voter = Voter.objects.create(election=election, user=user)
