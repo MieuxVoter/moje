@@ -177,7 +177,7 @@ def get_ranking(election_id):
     for r in majority_judgment(results):
         candidate = r.candidate
         candidate.ratings = r.ratings
-        candidate.majority_grade = grades[majority_grade(ratings[i,:])]
+        candidate.majority_grade = grades[majority_grade(r.ratings)]
         ranking.append(candidate)
 
     return ranking
