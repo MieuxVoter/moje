@@ -63,4 +63,4 @@ def results(request, election_id):
     params["election_id"] = election_id
     params["election"] = election
     params["grades"] = grades
-    return render(request, 'vote/results.html', params)
+    return render(request, 'result/results.html', params)
