@@ -11,7 +11,7 @@ def majority_judgment(results):
     return sorted(results, reverse=True)
 
 
-def arg_median(x):
+def majority_grade(x):
     mid = math.ceil(sum(x)/2.0)
     acc = 0
     for i, xi in enumerate(x[::-1]):
@@ -26,8 +26,8 @@ def tie_breaking(A, B):
 
     Ac   = np.copy(A)
     Bc   = np.copy(B)
-    medA = arg_median(Ac)
-    medB = arg_median(Bc)
+    medA = majority_grade(Ac)
+    medB = majority_grade(Bc)
     while medA == medB:
         Ac[medA] -= 1
         Bc[medB] -= 1
@@ -35,8 +35,8 @@ def tie_breaking(A, B):
             return True
         if Bc[medB] < 0:
             return False
-        medA = arg_median(Ac)
-        medB = arg_median(Bc)
+        medA = majority_grade(Ac)
+        medB = majority_grade(Bc)
     return medA > medB
 
 
@@ -124,7 +124,6 @@ def get_ratings(election):
     return scores
 
 
-
 class Result():
     """ Store a candidate with one's ratings """
 
@@ -135,6 +134,7 @@ class Result():
         self.grades = grades
         self.scores = scores
         self.candidate = candidate
+
 
         if name == "" and candidate is not None:
             self.name = candidate.user.first_name.title() + " " + candidate.user.last_name.title()
@@ -177,7 +177,7 @@ def get_ranking(election_id):
     for r in majority_judgment(results):
         candidate = r.candidate
         candidate.ratings = r.ratings
-        candidate.median = grades[arg_median(ratings[i,:])]
+        candidate.majority_grade = grades[majority_grade(ratings[i,:])]
         ranking.append(candidate)
 
     return ranking
