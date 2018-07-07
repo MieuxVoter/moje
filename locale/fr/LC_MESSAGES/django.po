@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-21 16:05+0200\n"
+"POT-Creation-Date: 2018-07-07 10:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,13 +159,13 @@ msgstr "Info"
 msgid "No election has been found for you..."
 msgstr "Aucune élection n'a été trouvée pour vous..."
 
-#: candidate/views.py:36 election/views.py:224 election/views.py:300
-#: election/views.py:476 election/views.py:576 election/views.py:614
+#: candidate/views.py:36 election/views.py:228 election/views.py:304
+#: election/views.py:480 election/views.py:580 election/views.py:618
 msgid "The election does not exist"
 msgstr "L'élection n'exite pas"
 
-#: candidate/views.py:38 election/views.py:311 election/views.py:482
-#: election/views.py:582 election/views.py:620
+#: candidate/views.py:38 election/views.py:315 election/views.py:486
+#: election/views.py:586 election/views.py:624
 msgid "You are not allowed to be here"
 msgstr "Vous n'avez pas le droit d'être là"
 
@@ -271,7 +271,7 @@ msgstr "Voter"
 
 #: election/templates/election/dashboard.html:137
 #: election/templates/election/sidebar.html:52
-#: vote/templates/vote/results.html:22 vote/templates/vote/sidebar.html:26
+#: result/templates/result/results.html:22 vote/templates/vote/sidebar.html:26
 msgid "Results"
 msgstr "Résultats"
 
@@ -296,13 +296,13 @@ msgstr ""
 #: election/templates/election/manage_candidates.html:132
 #: election/templates/election/manage_general.html:182
 #: election/templates/election/manage_general.html:198
-#: election/templates/election/manage_list_voters.html:57
+#: election/templates/election/manage_list_voters.html:66
 #: election/templates/election/manage_voters.html:97
 msgid "Delete"
 msgstr "Supprimer"
 
 #: election/templates/election/manage_candidates.html:83
-#: election/templates/election/manage_list_voters.html:71
+#: election/templates/election/manage_list_voters.html:80
 #: election/templates/election/manage_voters.html:121
 msgid "Add"
 msgstr "Ajouter"
@@ -364,12 +364,12 @@ msgstr "Enregistrer et passer aux candidats"
 msgid "Voters"
 msgstr "Electeurs"
 
-#: election/templates/election/manage_list_voters.html:35
+#: election/templates/election/manage_list_voters.html:44
 msgid "The election has already begun. It is too late to change the voters"
 msgstr ""
 "L'élection a déjà commencé. Il est trop tard pour modifier les électeurs"
 
-#: election/templates/election/manage_list_voters.html:66
+#: election/templates/election/manage_list_voters.html:75
 msgid ""
 "Add voters line by line with the following format: last name, first name, "
 "email"
@@ -377,19 +377,19 @@ msgstr ""
 "Ajouter des électeurs ligne par ligne avec le format suivant : nom, prénom, "
 "email"
 
-#: election/templates/election/manage_list_voters.html:78
+#: election/templates/election/manage_list_voters.html:87
 #: election/templates/election/manage_voters.html:131
 #: election/templates/election/start.html:25
 #: election/templates/election/success_start.html:25
 msgid "Start the election"
 msgstr "Démarrer l'élection"
 
-#: election/templates/election/manage_list_voters.html:82
+#: election/templates/election/manage_list_voters.html:91
 #: election/templates/election/manage_voters.html:135
 msgid "Return to the candidate page"
 msgstr "Revenir sur la page des candidats"
 
-#: election/templates/election/manage_list_voters.html:85
+#: election/templates/election/manage_list_voters.html:94
 msgid "Add voters from a table"
 msgstr "Importer depuis un table"
 
@@ -427,68 +427,72 @@ msgstr "L'élection a commencé !"
 msgid "You are not a supervisor of this election"
 msgstr "Vous n'êtes pas un superviseur de cette élection"
 
-#: election/views.py:27
+#: election/views.py:31
 msgid "Excellent"
 msgstr "Excellent"
 
-#: election/views.py:28
+#: election/views.py:32
 msgid "Very good"
 msgstr "Très bien"
 
-#: election/views.py:29
+#: election/views.py:33
 msgid "Good"
 msgstr "Bien"
 
-#: election/views.py:30
+#: election/views.py:34
 msgid "Fair"
 msgstr "Passable"
 
-#: election/views.py:31
+#: election/views.py:35
 msgid "Poor"
 msgstr "Insuffisant"
 
-#: election/views.py:32
+#: election/views.py:36
 msgid "To Reject"
-msgstr ""
+msgstr "À rejeter"
 
-#: election/views.py:46 vote/views.py:32
+#: election/views.py:50 vote/views.py:32
 msgid "The election does not exist."
 msgstr "L'éléction n'existe pas."
 
-#: election/views.py:117 election/views.py:317 election/views.py:488
-#: election/views.py:588 election/views.py:624
+#: election/views.py:121 election/views.py:321 election/views.py:492
+#: election/views.py:592 election/views.py:628
 msgid "The election has already begun"
 msgstr "L'élection a déjà commencé"
 
-#: election/views.py:121
+#: election/views.py:125
 msgid "There is not any voter"
 msgstr "Il n'y a aucun électeur"
 
-#: election/views.py:125
+#: election/views.py:129
 msgid "There is not any candidate"
 msgstr "Il n'y a aucun candidat"
 
-#: election/views.py:129
+#: election/views.py:133
 msgid "The election has not set up"
 msgstr "L'élection n'est pas été paramétré"
 
-#: election/views.py:295 election/views.py:466 election/views.py:571
+#: election/views.py:299 election/views.py:470 election/views.py:575
 msgid "Election id is not valid."
 msgstr "L'identifiant de l'élection n'est pas valide"
 
-#: election/views.py:305
+#: election/views.py:309
 msgid "The name has already been taken"
 msgstr "Le nom a déjà été pris"
 
-#: election/views.py:471
+#: election/views.py:438
+msgid "Error to decode"
+msgstr "Erreur dans le décodage de"
+
+#: election/views.py:475
 msgid "Email address is not valid."
 msgstr "L'adresse email n'est pas valide."
 
-#: election/views.py:501
+#: election/views.py:505
 msgid "The voter has already been recorded"
 msgstr "L'électeur a déjà été enregistré"
 
-#: election/views.py:617
+#: election/views.py:621
 msgid "The grade does not exist"
 msgstr "La mention n'existe pas"
 
@@ -505,6 +509,22 @@ msgstr "Anglais"
 #| msgid "The voter has already been recorded"
 msgid "No vote has already been casted."
 msgstr "L'électeur a déjà été enregistré"
+
+#: result/templates/result/results.html:9
+msgid "Election results"
+msgstr "Résultats de l'élection"
+
+#: result/templates/result/results.html:30
+msgid "votes have been recorded!"
+msgstr "votes ont déjà été enregistrés!"
+
+#: result/templates/result/results.html:46
+msgid "Votes details"
+msgstr "Détails des électeurs"
+
+#: result/templates/result/results.html:60
+msgid "Majority grade"
+msgstr "Mention majoritaire"
 
 #: result/views.py:42
 #, fuzzy
@@ -549,22 +569,6 @@ msgstr "développé pour le jugement majoritaire"
 #: vote/models.py:18
 msgid "email address"
 msgstr "adresse email"
-
-#: vote/templates/vote/results.html:9
-msgid "Election results"
-msgstr "Résultats de l'élection"
-
-#: vote/templates/vote/results.html:30
-msgid "votes have been recorded!"
-msgstr "votes ont déjà été enregistrés!"
-
-#: vote/templates/vote/results.html:46
-msgid "Votes details"
-msgstr "Détails des électeurs"
-
-#: vote/templates/vote/results.html:60
-msgid "Majority grade"
-msgstr "Mention majoritaire"
 
 #: vote/templates/vote/success.html:15
 msgid "Congratulations! Your vote has successfully been recorded!"
