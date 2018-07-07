@@ -29,7 +29,16 @@
                     </div>
                 </div>
                 <div class="card-body">
-
+                    {% if success %}
+                    <div class="alert alert-info" role="alert">
+                      {{ success }}
+                    </div>
+                    {% endif %}
+                    {% if error %}
+                    <div class="alert alert-warning" role="alert">
+                      {{ error }}
+                    </div>
+                    {% endif %}
                     {% if election.state != "DR" %}
                     <div class="alert alert-warning" role="alert">
                       {% trans "The election has already begun. It is too late to change the voters" %}
@@ -68,20 +77,20 @@
                             <form method="post" novalidate>
                               {% csrf_token %}
                               {{ form }}
-                              <button  class="btn btn-info" type="submit">{% trans "Add" %}</button>
+                              <button id="form-btn" class="btn btn-info" type="submit">{% trans "Add" %}</button>
                             </form>
                     {% endif %}
 
                 </div>
                     {% if election.state == "DR" %}
-                    <a href="/election/launch/{{ election_id }}/" class="btn btn-primary">
+                    <a href="/election/launch/{{ election_id }}/" class="btn btn-primary" id="go_start">
                         {% trans "Start the election" %}
                     </a>
                     {% endif %}
-                    <a href="/election/manage/candidates/{{ election_id }}/" class="btn btn-info">
+                    <a href="/election/manage/candidates/{{ election_id }}/" class="btn btn-info" id="go_candidates">
                         {% trans "Return to the candidate page" %}
                     </a>
-                    <a href="/election/manage/voters/{{ election_id }}/" class="btn btn-info">
+                    <a href="/election/manage/voters/{{ election_id }}/" class="btn btn-info" id="go_table">
                         {% trans "Add voters from a table" %}
                     </a>
                 </div>

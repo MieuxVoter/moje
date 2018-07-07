@@ -16,6 +16,10 @@ from election.forms import *
 from election.tools import *
 from utils.mixins import SupervisorTestMixin, SupervisorFetchMixin
 
+try:
+    from html import escape  # python 3.x
+except ImportError:
+    from cgi import escape  # python 2.x
 
 
 @login_required
@@ -431,9 +435,8 @@ def voters_list_step(request, election_id=-1):
                 voter = Voter.objects.create(election=election, user=user)
                 success += str(voter)
             except ValidationError:
-                error += "Error to decode {}.\n".format(encode(detail))
-        return HttpResponseRedirect("/election/manage/voters/list/{:d}/".format(election_id))
-
+                error += _("Error to decode") + " " + escape(detail)
+        
     voters = Voter.objects.filter(election=election)
     supervisor = Supervisor.objects.get(election=election, user=request.user)
     params = {
@@ -442,7 +445,8 @@ def voters_list_step(request, election_id=-1):
                 "voters":  voters,
                 "supervisor": supervisor,
                 "form": form,
-                "success": success
+                "success": success,
+                "error": error
             }
 
     return render(request, 'election/manage_list_voters.html', params)
