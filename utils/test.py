@@ -9,6 +9,11 @@ import time
 
 
 MAX_WAIT = 10
+SCREEN_DUMP_LOCATION = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), 'screendumps'
+)
+from vote.models import User
+
 
 
 def wait(fn):
@@ -24,9 +29,6 @@ def wait(fn):
     return modified_fn
 
 
-SCREEN_DUMP_LOCATION = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), 'screendumps'
-)
 
 
 class FunctionalTest(StaticLiveServerTestCase):
@@ -86,17 +88,14 @@ class FunctionalTest(StaticLiveServerTestCase):
         return fn(*args, **kwargs)
 
 
-    def create_pre_authenticated_session(self, email):
-        if self.staging_server:
-            session_key = create_session_on_server(self.staging_server, email)
-        else:
-            session_key = create_pre_authenticated_session(email)
-
-        ## to set a cookie we need to first visit the domain.
-        ## 404 pages load the quickest!
-        self.browser.get(self.live_server_url + "/404_no_such_url/")
+    def auto_login(self, username="edith", email="edith@example.com", password='password1'):
+        edith = User.objects.create_user(username, email, password)
+        self.client.login(username=username, password=password)
+        session = self.client.session.session_key
+        self.browser.get(self.live_server_url)
         self.browser.add_cookie(dict(
             name=settings.SESSION_COOKIE_NAME,
-            value=session_key,
+            value=session,
             path='/',
         ))
+        self.browser.refresh()

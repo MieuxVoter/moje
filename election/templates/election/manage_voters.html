@@ -127,14 +127,14 @@
                     </table>
                 </div>
                     {% if election.state == "DR" %}
-                    <a href="/election/launch/{{ election_id }}/" class="btn btn-primary">
+                    <a href="/election/launch/{{ election_id }}/" class="btn btn-primary" id="go_start">
                         {% trans "Start the election" %}
                     </a>
                     {% endif %}
-                    <a href="/election/manage/candidates/{{ election_id }}/" class="btn btn-info">
+                    <a href="/election/manage/candidates/{{ election_id }}/" class="btn btn-info" id="go_candidate">
                         {% trans "Return to the candidate page" %}
                     </a>
-                    <a href="/election/manage/voters/list/{{ election_id }}/" class="btn btn-info">
+                    <a href="/election/manage/voters/list/{{ election_id }}/" class="btn btn-info" id="go_list">
                         {% trans "Import a list" %}
                     </a>
                 </div>
