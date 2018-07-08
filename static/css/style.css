@@ -1,0 +1,22 @@
+.button-lang {
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+.form-lang {
+    display: inline-block;
+    float: left;
+}
+.flex-container{
+        display: flex;
+    }
+
+#lang-fr{
+    background: url("../img/locale/lang_fr.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+}
+
+#lang-en{
+    background: url("../img/locale/lang_en.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+}

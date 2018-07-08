@@ -70,18 +70,19 @@
                     </table>
                 </div>
                 {% endif %}
-                    {% if election.state == "DR" %}
-                    <div class="alert alert-info" role="alert">
-                      {% trans "Add voters line by line with the following format: last name, first name, email" %}
-                    </div>
-                            <form method="post" novalidate>
-                              {% csrf_token %}
-                              {{ form }}
-                              <button id="form-btn" class="btn btn-info" type="submit">{% trans "Add" %}</button>
-                            </form>
-                    {% endif %}
 
+                {% if election.state == "DR" %}
+                <div class="alert alert-info" role="alert">
+                  {% trans "Add voters line by line with the following format: last name, first name, email" %}
                 </div>
+                        <form method="post" novalidate>
+                          {% csrf_token %}
+                          {{ form }}
+                          <button id="form-btn" class="btn btn-info" type="submit">{% trans "Add" %}</button>
+                        </form>
+                {% endif %}
+
+
                     {% if election.state == "DR" %}
                     <a href="/election/launch/{{ election_id }}/" class="btn btn-primary" id="go_start">
                         {% trans "Start the election" %}
