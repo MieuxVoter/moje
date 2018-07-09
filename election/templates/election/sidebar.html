@@ -1,14 +1,12 @@
 {% load i18n %}
+{% load static %}
 <div class="sidebar" id="sidebar" data-color="red">
     <!--
 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
     <div class="logo">
-        <a href="http://www.mieux-voter.org" class="simple-text logo-mini">
-            MV
-        </a>
-        <a href="http://www.mieux-voter.org" class="simple-text logo-normal">
-            Mieux Voter
+        <a href="http://www.mieuxvoter.fr" class="simple-text logo-normal">
+            <img src="{% static 'img/mieuxvoter.svg' %}" />
         </a>
     </div>
     <div class="sidebar-wrapper">
