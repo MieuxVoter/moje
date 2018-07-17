@@ -50,7 +50,7 @@ def send_invite(voter):
     name = voter.user.first_name.title() + " " + voter.user.last_name.title()
     html_message = format_lazy("""
     <p>Dear {name},</p>
-    <p>You have been invited to participate to <a href="{login_link}">au vote {election_name}</a>. </p>
+    <p>You have been invited to participate to <a href="{login_link}"> {election_name}</a>. </p>
     <p>If this link does not work, you can copy/paste the following link:</p>
     <p><a href="{login_link}">{login_link}</a></p>
     <p>Thanks,</p>
@@ -59,10 +59,10 @@ def send_invite(voter):
 
 
     send_mail(
-        'Mieux Voter',
+        _('Invite to vote at ') + voter.election.name,
         html_message,
         DEFAULT_FROM_EMAIL,
         [email],
         fail_silently=False,
-        html_message = html_message
+        html_message=html_message
     )

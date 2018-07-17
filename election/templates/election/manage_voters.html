@@ -94,7 +94,7 @@
                                     <td>{{ voter.user.first_name | title}}</td>
                                     <td>{{ voter.user.last_name | title}}</td>
                                     <td>{{ voter.user.email }}</td>
-                                    {% if election.state == "DR" %}<td><a href="/election/manage/delete/voter/{{ voter.id }}/" class="btn btn-info">{% trans "Delete" %}</a></td>{% endif %}
+                                    {% if election.state == "DR" %}<td><a href="/election/manage/delete/voter/{{ voter.id }}/" class="btn btn-info del">{% trans "Delete" %}</a></td>{% endif %}
                                 </tr>
                             {% endfor %}
                             {% if election.state == "DR" %}
@@ -132,7 +132,7 @@
                     </a>
                     {% endif %}
                     <a href="/election/manage/candidates/{{ election_id }}/" class="btn btn-info" id="go_candidate">
-                        {% trans "Return to the candidate page" %}
+                        {% trans "Return to the options" %}
                     </a>
                     <a href="/election/manage/voters/list/{{ election_id }}/" class="btn btn-info" id="go_list">
                         {% trans "Import a list" %}

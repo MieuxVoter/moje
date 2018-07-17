@@ -137,7 +137,7 @@ class Result():
 
 
         if name == "" and candidate is not None:
-            self.name = candidate.user.first_name.title() + " " + candidate.user.last_name.title()
+            self.name = candidate.label.title()
         if not ratings.size and scores is None:
             self.scores    = sorted_scores(ratings, len(grades))
 

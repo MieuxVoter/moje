@@ -5,7 +5,7 @@
 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
     <div class="logo">
-        <a href="http://www.mieuxvoter.fr" class="simple-text logo-normal">
+        <a href="/election/dashboard/" class="simple-text logo-normal">
             <img src="{% static 'img/mieuxvoter.svg' %}" />
         </a>
     </div>
@@ -20,7 +20,7 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
             <li {% if request.resolver_match.url_name == "candidates" %}class="active"{% endif %}>
                 <a href="/election/manage/candidates/{{ election.pk }}/">
                     <i class="now-ui-icons design_bullet-list-67"></i>
-                    <p>{% trans "Candidates" %}</p>
+                    <p>{% trans "Options" %}</p>
                 </a>
             </li>
             <li {% if request.resolver_match.url_name == "voters" %}class="active"{% endif %}>
@@ -38,7 +38,7 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
             </li>
             {% elif election.state == "ST" %}
             <li {% if request.resolver_match.url_name == "close_election" %}class="active"{% endif %}>
-                <a href="/election/close/{{ election.pk }}">
+                <a id="go_finish" href="/election/close/{{ election.pk }}">
                     <i class="now-ui-icons ui-1_simple-remove"></i>
                     <p>{% trans "Finish" %}</p>
                 </a>
