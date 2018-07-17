@@ -268,10 +268,14 @@ class ElectionDelete(SupervisorTestMixin, DeleteView):
     model       = Election
     success_url = "/election/dashboard/"
 
-    # Delete the confirmation
-    # It is not good practice : https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template
-    def get(self, *args, **kwargs):
-        return self.post(*args, **kwargs)
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        voters = Voter.objects.filter(election=self.object)
+        for voter in voters:
+            user = voter.user
+            user.delete()
+        return super(DeleteView, self).post(*args, **kwargs)
+
 
 
 @login_required
@@ -286,14 +290,10 @@ def create_candidate(request):
     """
 
     try:
-        first_name = request.GET.get('first_name', "")
-        last_name = request.GET.get('last_name', "")
-        program = request.GET.get('program', "")
+        label = request.GET.get('label', "")
+        description = request.GET.get('description', "")
         election_id = int(request.GET.get('election_id', -1))
         election = Election.objects.get(pk=election_id)
-        username = "{}_{}_{:d}".format(first_name, last_name, election_id)
-        print(username)
-        user = User.objects.create(first_name=first_name, last_name=last_name, username=username)
     except ValueError:
         data = {'election':      False,
                 'error':         _('Election id is not valid.')
@@ -322,12 +322,13 @@ def create_candidate(request):
                 }
         return JsonResponse(data)
 
-    c = Candidate.objects.create(program=program, election=election, user=user)
+    c = Candidate.objects.create(label=label,
+                                 description=description,
+                                 election=election)
 
     data = {
         'success': True,
-        'id_candidate':c.pk,
-        'id_candidate_user':c.user.pk
+        'id_candidate':c.pk
     }
     return JsonResponse(data)
 
@@ -422,8 +423,8 @@ def voters_list_step(request, election_id=-1):
         for detail in voters:
             try:
                 details = detail.split(", ")
-                first_name = details[0].strip()
-                last_name = details[1].strip()
+                first_name = details[1].strip()
+                last_name = details[0].strip()
                 email = details[2].strip()
                 validate_email(email)
                 username = "{}_{:d}".format(email, election_id)
@@ -434,9 +435,9 @@ def voters_list_step(request, election_id=-1):
                                                   defaults=defaults)[0]
                 voter = Voter.objects.create(election=election, user=user)
                 success += str(voter)
-            except ValidationError:
+            except (ValidationError, IndexError) as e:
                 error += _("Error to decode") + " " + escape(detail)
-        
+
     voters = Voter.objects.filter(election=election)
     supervisor = Supervisor.objects.get(election=election, user=request.user)
     params = {
@@ -457,7 +458,7 @@ def create_voter(request):
     """
     Ajax request to create a voter
     """
-    print("foo")
+
     try:
         first_name = request.GET.get('first_name', "")
         last_name = request.GET.get('last_name', "")

@@ -1,1 +1,4530 @@
-[{"model":"vote.election","pk":2,"fields":{"name":"Example election","note":"Question raised for the election","picture":"blank.png","start":null,"end":null,"state":"OV"}},{"model":"vote.grade","pk":11,"fields":{"election":2,"name":"Excellent","code":"EXC"}},{"model":"vote.grade","pk":12,"fields":{"election":2,"name":"Tr\u00e8s Bien","code":"TR\u00c8"}},{"model":"vote.grade","pk":13,"fields":{"election":2,"name":"Bien","code":"BIE"}},{"model":"vote.grade","pk":15,"fields":{"election":2,"name":"Assez Bien","code":"ASS"}},{"model":"vote.grade","pk":16,"fields":{"election":2,"name":"Passable","code":"PAS"}},{"model":"vote.grade","pk":18,"fields":{"election":2,"name":"Insuffisant","code":"INS"}},{"model":"vote.rating","pk":1,"fields":{"candidate":1,"voter":15,"grade":16,"election":2}},{"model":"vote.rating","pk":2,"fields":{"candidate":2,"voter":15,"grade":11,"election":2}},{"model":"vote.rating","pk":3,"fields":{"candidate":3,"voter":15,"grade":11,"election":2}},{"model":"vote.rating","pk":4,"fields":{"candidate":4,"voter":15,"grade":11,"election":2}},{"model":"vote.rating","pk":5,"fields":{"candidate":5,"voter":15,"grade":13,"election":2}},{"model":"vote.rating","pk":6,"fields":{"candidate":6,"voter":15,"grade":12,"election":2}},{"model":"vote.rating","pk":7,"fields":{"candidate":7,"voter":15,"grade":12,"election":2}},{"model":"vote.rating","pk":8,"fields":{"candidate":8,"voter":15,"grade":12,"election":2}},{"model":"vote.rating","pk":9,"fields":{"candidate":9,"voter":15,"grade":16,"election":2}},{"model":"vote.rating","pk":10,"fields":{"candidate":10,"voter":15,"grade":12,"election":2}},{"model":"vote.rating","pk":11,"fields":{"candidate":11,"voter":15,"grade":15,"election":2}},{"model":"vote.rating","pk":12,"fields":{"candidate":12,"voter":15,"grade":12,"election":2}},{"model":"vote.rating","pk":13,"fields":{"candidate":13,"voter":15,"grade":12,"election":2}},{"model":"vote.rating","pk":14,"fields":{"candidate":14,"voter":15,"grade":11,"election":2}},{"model":"vote.rating","pk":15,"fields":{"candidate":15,"voter":15,"grade":11,"election":2}},{"model":"vote.rating","pk":16,"fields":{"candidate":16,"voter":15,"grade":16,"election":2}},{"model":"vote.rating","pk":17,"fields":{"candidate":17,"voter":15,"grade":15,"election":2}},{"model":"vote.rating","pk":18,"fields":{"candidate":1,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":19,"fields":{"candidate":2,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":20,"fields":{"candidate":3,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":21,"fields":{"candidate":4,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":22,"fields":{"candidate":5,"voter":10,"grade":12,"election":2}},{"model":"vote.rating","pk":23,"fields":{"candidate":6,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":24,"fields":{"candidate":7,"voter":10,"grade":12,"election":2}},{"model":"vote.rating","pk":25,"fields":{"candidate":8,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":26,"fields":{"candidate":9,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":27,"fields":{"candidate":10,"voter":10,"grade":13,"election":2}},{"model":"vote.rating","pk":28,"fields":{"candidate":11,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":29,"fields":{"candidate":12,"voter":10,"grade":12,"election":2}},{"model":"vote.rating","pk":30,"fields":{"candidate":13,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":31,"fields":{"candidate":14,"voter":10,"grade":13,"election":2}},{"model":"vote.rating","pk":32,"fields":{"candidate":15,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":33,"fields":{"candidate":16,"voter":10,"grade":11,"election":2}},{"model":"vote.rating","pk":34,"fields":{"candidate":17,"voter":10,"grade":13,"election":2}},{"model":"vote.rating","pk":35,"fields":{"candidate":1,"voter":2,"grade":15,"election":2}},{"model":"vote.rating","pk":36,"fields":{"candidate":2,"voter":2,"grade":11,"election":2}},{"model":"vote.rating","pk":37,"fields":{"candidate":3,"voter":2,"grade":15,"election":2}},{"model":"vote.rating","pk":38,"fields":{"candidate":4,"voter":2,"grade":15,"election":2}},{"model":"vote.rating","pk":39,"fields":{"candidate":5,"voter":2,"grade":13,"election":2}},{"model":"vote.rating","pk":40,"fields":{"candidate":6,"voter":2,"grade":12,"election":2}},{"model":"vote.rating","pk":41,"fields":{"candidate":7,"voter":2,"grade":12,"election":2}},{"model":"vote.rating","pk":42,"fields":{"candidate":8,"voter":2,"grade":13,"election":2}},{"model":"vote.rating","pk":43,"fields":{"candidate":9,"voter":2,"grade":15,"election":2}},{"model":"vote.rating","pk":44,"fields":{"candidate":10,"voter":2,"grade":15,"election":2}},{"model":"vote.rating","pk":45,"fields":{"candidate":11,"voter":2,"grade":15,"election":2}},{"model":"vote.rating","pk":46,"fields":{"candidate":12,"voter":2,"grade":11,"election":2}},{"model":"vote.rating","pk":47,"fields":{"candidate":13,"voter":2,"grade":11,"election":2}},{"model":"vote.rating","pk":48,"fields":{"candidate":14,"voter":2,"grade":13,"election":2}},{"model":"vote.rating","pk":49,"fields":{"candidate":15,"voter":2,"grade":12,"election":2}},{"model":"vote.rating","pk":50,"fields":{"candidate":16,"voter":2,"grade":13,"election":2}},{"model":"vote.rating","pk":51,"fields":{"candidate":17,"voter":2,"grade":12,"election":2}},{"model":"vote.rating","pk":52,"fields":{"candidate":1,"voter":6,"grade":16,"election":2}},{"model":"vote.rating","pk":53,"fields":{"candidate":2,"voter":6,"grade":11,"election":2}},{"model":"vote.rating","pk":54,"fields":{"candidate":3,"voter":6,"grade":11,"election":2}},{"model":"vote.rating","pk":55,"fields":{"candidate":4,"voter":6,"grade":16,"election":2}},{"model":"vote.rating","pk":56,"fields":{"candidate":5,"voter":6,"grade":16,"election":2}},{"model":"vote.rating","pk":57,"fields":{"candidate":6,"voter":6,"grade":12,"election":2}},{"model":"vote.rating","pk":58,"fields":{"candidate":7,"voter":6,"grade":12,"election":2}},{"model":"vote.rating","pk":59,"fields":{"candidate":8,"voter":6,"grade":16,"election":2}},{"model":"vote.rating","pk":60,"fields":{"candidate":9,"voter":6,"grade":16,"election":2}},{"model":"vote.rating","pk":61,"fields":{"candidate":10,"voter":6,"grade":16,"election":2}},{"model":"vote.rating","pk":62,"fields":{"candidate":11,"voter":6,"grade":12,"election":2}},{"model":"vote.rating","pk":63,"fields":{"candidate":12,"voter":6,"grade":18,"election":2}},{"model":"vote.rating","pk":64,"fields":{"candidate":13,"voter":6,"grade":18,"election":2}},{"model":"vote.rating","pk":65,"fields":{"candidate":14,"voter":6,"grade":16,"election":2}},{"model":"vote.rating","pk":66,"fields":{"candidate":15,"voter":6,"grade":11,"election":2}},{"model":"vote.rating","pk":67,"fields":{"candidate":16,"voter":6,"grade":11,"election":2}},{"model":"vote.rating","pk":68,"fields":{"candidate":17,"voter":6,"grade":16,"election":2}},{"model":"vote.rating","pk":69,"fields":{"candidate":1,"voter":1,"grade":11,"election":2}},{"model":"vote.rating","pk":70,"fields":{"candidate":2,"voter":1,"grade":11,"election":2}},{"model":"vote.rating","pk":71,"fields":{"candidate":3,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":72,"fields":{"candidate":4,"voter":1,"grade":11,"election":2}},{"model":"vote.rating","pk":73,"fields":{"candidate":5,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":74,"fields":{"candidate":6,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":75,"fields":{"candidate":7,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":76,"fields":{"candidate":8,"voter":1,"grade":11,"election":2}},{"model":"vote.rating","pk":77,"fields":{"candidate":9,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":78,"fields":{"candidate":10,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":79,"fields":{"candidate":11,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":80,"fields":{"candidate":12,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":81,"fields":{"candidate":13,"voter":1,"grade":11,"election":2}},{"model":"vote.rating","pk":82,"fields":{"candidate":14,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":83,"fields":{"candidate":15,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":84,"fields":{"candidate":16,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":85,"fields":{"candidate":17,"voter":1,"grade":18,"election":2}},{"model":"vote.rating","pk":86,"fields":{"candidate":1,"voter":4,"grade":12,"election":2}},{"model":"vote.rating","pk":87,"fields":{"candidate":2,"voter":4,"grade":11,"election":2}},{"model":"vote.rating","pk":88,"fields":{"candidate":3,"voter":4,"grade":11,"election":2}},{"model":"vote.rating","pk":89,"fields":{"candidate":4,"voter":4,"grade":11,"election":2}},{"model":"vote.rating","pk":90,"fields":{"candidate":5,"voter":4,"grade":12,"election":2}},{"model":"vote.rating","pk":91,"fields":{"candidate":6,"voter":4,"grade":12,"election":2}},{"model":"vote.rating","pk":92,"fields":{"candidate":7,"voter":4,"grade":12,"election":2}},{"model":"vote.rating","pk":93,"fields":{"candidate":8,"voter":4,"grade":12,"election":2}},{"model":"vote.rating","pk":94,"fields":{"candidate":9,"voter":4,"grade":15,"election":2}},{"model":"vote.rating","pk":95,"fields":{"candidate":10,"voter":4,"grade":13,"election":2}},{"model":"vote.rating","pk":96,"fields":{"candidate":11,"voter":4,"grade":11,"election":2}},{"model":"vote.rating","pk":97,"fields":{"candidate":12,"voter":4,"grade":12,"election":2}},{"model":"vote.rating","pk":98,"fields":{"candidate":13,"voter":4,"grade":11,"election":2}},{"model":"vote.rating","pk":99,"fields":{"candidate":14,"voter":4,"grade":12,"election":2}},{"model":"vote.rating","pk":100,"fields":{"candidate":15,"voter":4,"grade":15,"election":2}},{"model":"vote.rating","pk":101,"fields":{"candidate":16,"voter":4,"grade":11,"election":2}},{"model":"vote.rating","pk":102,"fields":{"candidate":17,"voter":4,"grade":12,"election":2}},{"model":"vote.rating","pk":103,"fields":{"candidate":1,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":104,"fields":{"candidate":2,"voter":13,"grade":11,"election":2}},{"model":"vote.rating","pk":105,"fields":{"candidate":3,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":106,"fields":{"candidate":4,"voter":13,"grade":11,"election":2}},{"model":"vote.rating","pk":107,"fields":{"candidate":5,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":108,"fields":{"candidate":6,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":109,"fields":{"candidate":7,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":110,"fields":{"candidate":8,"voter":13,"grade":13,"election":2}},{"model":"vote.rating","pk":111,"fields":{"candidate":9,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":112,"fields":{"candidate":10,"voter":13,"grade":11,"election":2}},{"model":"vote.rating","pk":113,"fields":{"candidate":11,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":114,"fields":{"candidate":12,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":115,"fields":{"candidate":13,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":116,"fields":{"candidate":14,"voter":13,"grade":12,"election":2}},{"model":"vote.rating","pk":117,"fields":{"candidate":15,"voter":13,"grade":11,"election":2}},{"model":"vote.rating","pk":118,"fields":{"candidate":16,"voter":13,"grade":13,"election":2}},{"model":"vote.rating","pk":119,"fields":{"candidate":17,"voter":13,"grade":13,"election":2}},{"model":"vote.rating","pk":120,"fields":{"candidate":1,"voter":7,"grade":15,"election":2}},{"model":"vote.rating","pk":121,"fields":{"candidate":2,"voter":7,"grade":12,"election":2}},{"model":"vote.rating","pk":122,"fields":{"candidate":3,"voter":7,"grade":15,"election":2}},{"model":"vote.rating","pk":123,"fields":{"candidate":4,"voter":7,"grade":12,"election":2}},{"model":"vote.rating","pk":124,"fields":{"candidate":5,"voter":7,"grade":13,"election":2}},{"model":"vote.rating","pk":125,"fields":{"candidate":6,"voter":7,"grade":11,"election":2}},{"model":"vote.rating","pk":126,"fields":{"candidate":7,"voter":7,"grade":12,"election":2}},{"model":"vote.rating","pk":127,"fields":{"candidate":8,"voter":7,"grade":13,"election":2}},{"model":"vote.rating","pk":128,"fields":{"candidate":9,"voter":7,"grade":15,"election":2}},{"model":"vote.rating","pk":129,"fields":{"candidate":10,"voter":7,"grade":13,"election":2}},{"model":"vote.rating","pk":130,"fields":{"candidate":11,"voter":7,"grade":13,"election":2}},{"model":"vote.rating","pk":131,"fields":{"candidate":12,"voter":7,"grade":15,"election":2}},{"model":"vote.rating","pk":132,"fields":{"candidate":13,"voter":7,"grade":15,"election":2}},{"model":"vote.rating","pk":133,"fields":{"candidate":14,"voter":7,"grade":11,"election":2}},{"model":"vote.rating","pk":134,"fields":{"candidate":15,"voter":7,"grade":13,"election":2}},{"model":"vote.rating","pk":135,"fields":{"candidate":16,"voter":7,"grade":13,"election":2}},{"model":"vote.rating","pk":136,"fields":{"candidate":17,"voter":7,"grade":13,"election":2}},{"model":"vote.rating","pk":137,"fields":{"candidate":1,"voter":19,"grade":12,"election":2}},{"model":"vote.rating","pk":138,"fields":{"candidate":2,"voter":19,"grade":11,"election":2}},{"model":"vote.rating","pk":139,"fields":{"candidate":3,"voter":19,"grade":11,"election":2}},{"model":"vote.rating","pk":140,"fields":{"candidate":4,"voter":19,"grade":12,"election":2}},{"model":"vote.rating","pk":141,"fields":{"candidate":5,"voter":19,"grade":13,"election":2}},{"model":"vote.rating","pk":142,"fields":{"candidate":6,"voter":19,"grade":12,"election":2}},{"model":"vote.rating","pk":143,"fields":{"candidate":7,"voter":19,"grade":11,"election":2}},{"model":"vote.rating","pk":144,"fields":{"candidate":8,"voter":19,"grade":12,"election":2}},{"model":"vote.rating","pk":145,"fields":{"candidate":9,"voter":19,"grade":12,"election":2}},{"model":"vote.rating","pk":146,"fields":{"candidate":10,"voter":19,"grade":11,"election":2}},{"model":"vote.rating","pk":147,"fields":{"candidate":11,"voter":19,"grade":13,"election":2}},{"model":"vote.rating","pk":148,"fields":{"candidate":12,"voter":19,"grade":13,"election":2}},{"model":"vote.rating","pk":149,"fields":{"candidate":13,"voter":19,"grade":12,"election":2}},{"model":"vote.rating","pk":150,"fields":{"candidate":14,"voter":19,"grade":11,"election":2}},{"model":"vote.rating","pk":151,"fields":{"candidate":15,"voter":19,"grade":12,"election":2}},{"model":"vote.rating","pk":152,"fields":{"candidate":16,"voter":19,"grade":13,"election":2}},{"model":"vote.rating","pk":153,"fields":{"candidate":17,"voter":19,"grade":13,"election":2}},{"model":"vote.rating","pk":154,"fields":{"candidate":1,"voter":9,"grade":15,"election":2}},{"model":"vote.rating","pk":155,"fields":{"candidate":2,"voter":9,"grade":11,"election":2}},{"model":"vote.rating","pk":156,"fields":{"candidate":3,"voter":9,"grade":11,"election":2}},{"model":"vote.rating","pk":157,"fields":{"candidate":4,"voter":9,"grade":13,"election":2}},{"model":"vote.rating","pk":158,"fields":{"candidate":5,"voter":9,"grade":13,"election":2}},{"model":"vote.rating","pk":159,"fields":{"candidate":6,"voter":9,"grade":12,"election":2}},{"model":"vote.rating","pk":160,"fields":{"candidate":7,"voter":9,"grade":15,"election":2}},{"model":"vote.rating","pk":161,"fields":{"candidate":8,"voter":9,"grade":13,"election":2}},{"model":"vote.rating","pk":162,"fields":{"candidate":9,"voter":9,"grade":13,"election":2}},{"model":"vote.rating","pk":163,"fields":{"candidate":10,"voter":9,"grade":15,"election":2}},{"model":"vote.rating","pk":164,"fields":{"candidate":11,"voter":9,"grade":13,"election":2}},{"model":"vote.rating","pk":165,"fields":{"candidate":12,"voter":9,"grade":15,"election":2}},{"model":"vote.rating","pk":166,"fields":{"candidate":13,"voter":9,"grade":13,"election":2}},{"model":"vote.rating","pk":167,"fields":{"candidate":14,"voter":9,"grade":13,"election":2}},{"model":"vote.rating","pk":168,"fields":{"candidate":15,"voter":9,"grade":13,"election":2}},{"model":"vote.rating","pk":169,"fields":{"candidate":16,"voter":9,"grade":11,"election":2}},{"model":"vote.rating","pk":170,"fields":{"candidate":17,"voter":9,"grade":15,"election":2}},{"model":"vote.rating","pk":171,"fields":{"candidate":1,"voter":21,"grade":13,"election":2}},{"model":"vote.rating","pk":172,"fields":{"candidate":2,"voter":21,"grade":11,"election":2}},{"model":"vote.rating","pk":173,"fields":{"candidate":3,"voter":21,"grade":11,"election":2}},{"model":"vote.rating","pk":174,"fields":{"candidate":4,"voter":21,"grade":12,"election":2}},{"model":"vote.rating","pk":175,"fields":{"candidate":5,"voter":21,"grade":12,"election":2}},{"model":"vote.rating","pk":176,"fields":{"candidate":6,"voter":21,"grade":12,"election":2}},{"model":"vote.rating","pk":177,"fields":{"candidate":7,"voter":21,"grade":13,"election":2}},{"model":"vote.rating","pk":178,"fields":{"candidate":8,"voter":21,"grade":12,"election":2}},{"model":"vote.rating","pk":179,"fields":{"candidate":9,"voter":21,"grade":13,"election":2}},{"model":"vote.rating","pk":180,"fields":{"candidate":10,"voter":21,"grade":15,"election":2}},{"model":"vote.rating","pk":181,"fields":{"candidate":11,"voter":21,"grade":16,"election":2}},{"model":"vote.rating","pk":182,"fields":{"candidate":12,"voter":21,"grade":16,"election":2}},{"model":"vote.rating","pk":183,"fields":{"candidate":13,"voter":21,"grade":15,"election":2}},{"model":"vote.rating","pk":184,"fields":{"candidate":14,"voter":21,"grade":16,"election":2}},{"model":"vote.rating","pk":185,"fields":{"candidate":15,"voter":21,"grade":12,"election":2}},{"model":"vote.rating","pk":186,"fields":{"candidate":16,"voter":21,"grade":15,"election":2}},{"model":"vote.rating","pk":187,"fields":{"candidate":17,"voter":21,"grade":12,"election":2}},{"model":"vote.rating","pk":188,"fields":{"candidate":1,"voter":11,"grade":12,"election":2}},{"model":"vote.rating","pk":189,"fields":{"candidate":2,"voter":11,"grade":11,"election":2}},{"model":"vote.rating","pk":190,"fields":{"candidate":3,"voter":11,"grade":11,"election":2}},{"model":"vote.rating","pk":191,"fields":{"candidate":4,"voter":11,"grade":11,"election":2}},{"model":"vote.rating","pk":192,"fields":{"candidate":5,"voter":11,"grade":13,"election":2}},{"model":"vote.rating","pk":193,"fields":{"candidate":6,"voter":11,"grade":12,"election":2}},{"model":"vote.rating","pk":194,"fields":{"candidate":7,"voter":11,"grade":11,"election":2}},{"model":"vote.rating","pk":195,"fields":{"candidate":8,"voter":11,"grade":13,"election":2}},{"model":"vote.rating","pk":196,"fields":{"candidate":9,"voter":11,"grade":13,"election":2}},{"model":"vote.rating","pk":197,"fields":{"candidate":10,"voter":11,"grade":13,"election":2}},{"model":"vote.rating","pk":198,"fields":{"candidate":11,"voter":11,"grade":12,"election":2}},{"model":"vote.rating","pk":199,"fields":{"candidate":12,"voter":11,"grade":11,"election":2}},{"model":"vote.rating","pk":200,"fields":{"candidate":13,"voter":11,"grade":11,"election":2}},{"model":"vote.rating","pk":201,"fields":{"candidate":14,"voter":11,"grade":13,"election":2}},{"model":"vote.rating","pk":202,"fields":{"candidate":15,"voter":11,"grade":15,"election":2}},{"model":"vote.rating","pk":203,"fields":{"candidate":16,"voter":11,"grade":18,"election":2}},{"model":"vote.rating","pk":204,"fields":{"candidate":17,"voter":11,"grade":13,"election":2}},{"model":"vote.rating","pk":205,"fields":{"candidate":1,"voter":14,"grade":12,"election":2}},{"model":"vote.rating","pk":206,"fields":{"candidate":2,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":207,"fields":{"candidate":3,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":208,"fields":{"candidate":4,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":209,"fields":{"candidate":5,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":210,"fields":{"candidate":6,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":211,"fields":{"candidate":7,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":212,"fields":{"candidate":8,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":213,"fields":{"candidate":9,"voter":14,"grade":15,"election":2}},{"model":"vote.rating","pk":214,"fields":{"candidate":10,"voter":14,"grade":12,"election":2}},{"model":"vote.rating","pk":215,"fields":{"candidate":11,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":216,"fields":{"candidate":12,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":217,"fields":{"candidate":13,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":218,"fields":{"candidate":14,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":219,"fields":{"candidate":15,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":220,"fields":{"candidate":16,"voter":14,"grade":11,"election":2}},{"model":"vote.rating","pk":221,"fields":{"candidate":17,"voter":14,"grade":12,"election":2}},{"model":"vote.rating","pk":222,"fields":{"candidate":1,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":223,"fields":{"candidate":2,"voter":16,"grade":11,"election":2}},{"model":"vote.rating","pk":224,"fields":{"candidate":3,"voter":16,"grade":11,"election":2}},{"model":"vote.rating","pk":225,"fields":{"candidate":4,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":226,"fields":{"candidate":5,"voter":16,"grade":11,"election":2}},{"model":"vote.rating","pk":227,"fields":{"candidate":6,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":228,"fields":{"candidate":7,"voter":16,"grade":11,"election":2}},{"model":"vote.rating","pk":229,"fields":{"candidate":8,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":230,"fields":{"candidate":9,"voter":16,"grade":11,"election":2}},{"model":"vote.rating","pk":231,"fields":{"candidate":10,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":232,"fields":{"candidate":11,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":233,"fields":{"candidate":12,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":234,"fields":{"candidate":13,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":235,"fields":{"candidate":14,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":236,"fields":{"candidate":15,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":237,"fields":{"candidate":16,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":238,"fields":{"candidate":17,"voter":16,"grade":16,"election":2}},{"model":"vote.rating","pk":239,"fields":{"candidate":1,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":240,"fields":{"candidate":2,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":241,"fields":{"candidate":3,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":242,"fields":{"candidate":4,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":243,"fields":{"candidate":5,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":244,"fields":{"candidate":6,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":245,"fields":{"candidate":7,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":246,"fields":{"candidate":8,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":247,"fields":{"candidate":9,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":248,"fields":{"candidate":10,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":249,"fields":{"candidate":11,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":250,"fields":{"candidate":12,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":251,"fields":{"candidate":13,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":252,"fields":{"candidate":14,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":253,"fields":{"candidate":15,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":254,"fields":{"candidate":16,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":255,"fields":{"candidate":17,"voter":8,"grade":11,"election":2}},{"model":"vote.rating","pk":256,"fields":{"candidate":1,"voter":3,"grade":18,"election":2}},{"model":"vote.rating","pk":257,"fields":{"candidate":2,"voter":3,"grade":11,"election":2}},{"model":"vote.rating","pk":258,"fields":{"candidate":3,"voter":3,"grade":12,"election":2}},{"model":"vote.rating","pk":259,"fields":{"candidate":4,"voter":3,"grade":11,"election":2}},{"model":"vote.rating","pk":260,"fields":{"candidate":5,"voter":3,"grade":11,"election":2}},{"model":"vote.rating","pk":261,"fields":{"candidate":6,"voter":3,"grade":12,"election":2}},{"model":"vote.rating","pk":262,"fields":{"candidate":7,"voter":3,"grade":13,"election":2}},{"model":"vote.rating","pk":263,"fields":{"candidate":8,"voter":3,"grade":13,"election":2}},{"model":"vote.rating","pk":264,"fields":{"candidate":9,"voter":3,"grade":13,"election":2}},{"model":"vote.rating","pk":265,"fields":{"candidate":10,"voter":3,"grade":13,"election":2}},{"model":"vote.rating","pk":266,"fields":{"candidate":11,"voter":3,"grade":13,"election":2}},{"model":"vote.rating","pk":267,"fields":{"candidate":12,"voter":3,"grade":16,"election":2}},{"model":"vote.rating","pk":268,"fields":{"candidate":13,"voter":3,"grade":12,"election":2}},{"model":"vote.rating","pk":269,"fields":{"candidate":14,"voter":3,"grade":11,"election":2}},{"model":"vote.rating","pk":270,"fields":{"candidate":15,"voter":3,"grade":13,"election":2}},{"model":"vote.rating","pk":271,"fields":{"candidate":16,"voter":3,"grade":12,"election":2}},{"model":"vote.rating","pk":272,"fields":{"candidate":17,"voter":3,"grade":13,"election":2}},{"model":"vote.rating","pk":273,"fields":{"candidate":1,"voter":20,"grade":16,"election":2}},{"model":"vote.rating","pk":274,"fields":{"candidate":2,"voter":20,"grade":11,"election":2}},{"model":"vote.rating","pk":275,"fields":{"candidate":3,"voter":20,"grade":12,"election":2}},{"model":"vote.rating","pk":276,"fields":{"candidate":4,"voter":20,"grade":12,"election":2}},{"model":"vote.rating","pk":277,"fields":{"candidate":5,"voter":20,"grade":15,"election":2}},{"model":"vote.rating","pk":278,"fields":{"candidate":6,"voter":20,"grade":13,"election":2}},{"model":"vote.rating","pk":279,"fields":{"candidate":7,"voter":20,"grade":15,"election":2}},{"model":"vote.rating","pk":280,"fields":{"candidate":8,"voter":20,"grade":12,"election":2}},{"model":"vote.rating","pk":281,"fields":{"candidate":9,"voter":20,"grade":12,"election":2}},{"model":"vote.rating","pk":282,"fields":{"candidate":10,"voter":20,"grade":13,"election":2}},{"model":"vote.rating","pk":283,"fields":{"candidate":11,"voter":20,"grade":13,"election":2}},{"model":"vote.rating","pk":284,"fields":{"candidate":12,"voter":20,"grade":16,"election":2}},{"model":"vote.rating","pk":285,"fields":{"candidate":13,"voter":20,"grade":15,"election":2}},{"model":"vote.rating","pk":286,"fields":{"candidate":14,"voter":20,"grade":15,"election":2}},{"model":"vote.rating","pk":287,"fields":{"candidate":15,"voter":20,"grade":12,"election":2}},{"model":"vote.rating","pk":288,"fields":{"candidate":16,"voter":20,"grade":13,"election":2}},{"model":"vote.rating","pk":289,"fields":{"candidate":17,"voter":20,"grade":15,"election":2}},{"model":"vote.rating","pk":290,"fields":{"candidate":1,"voter":12,"grade":13,"election":2}},{"model":"vote.rating","pk":291,"fields":{"candidate":2,"voter":12,"grade":11,"election":2}},{"model":"vote.rating","pk":292,"fields":{"candidate":3,"voter":12,"grade":11,"election":2}},{"model":"vote.rating","pk":293,"fields":{"candidate":4,"voter":12,"grade":11,"election":2}},{"model":"vote.rating","pk":294,"fields":{"candidate":5,"voter":12,"grade":13,"election":2}},{"model":"vote.rating","pk":295,"fields":{"candidate":6,"voter":12,"grade":12,"election":2}},{"model":"vote.rating","pk":296,"fields":{"candidate":7,"voter":12,"grade":13,"election":2}},{"model":"vote.rating","pk":297,"fields":{"candidate":8,"voter":12,"grade":13,"election":2}},{"model":"vote.rating","pk":298,"fields":{"candidate":9,"voter":12,"grade":15,"election":2}},{"model":"vote.rating","pk":299,"fields":{"candidate":10,"voter":12,"grade":15,"election":2}},{"model":"vote.rating","pk":300,"fields":{"candidate":11,"voter":12,"grade":13,"election":2}},{"model":"vote.rating","pk":301,"fields":{"candidate":12,"voter":12,"grade":12,"election":2}},{"model":"vote.rating","pk":302,"fields":{"candidate":13,"voter":12,"grade":12,"election":2}},{"model":"vote.rating","pk":303,"fields":{"candidate":14,"voter":12,"grade":12,"election":2}},{"model":"vote.rating","pk":304,"fields":{"candidate":15,"voter":12,"grade":13,"election":2}},{"model":"vote.rating","pk":305,"fields":{"candidate":16,"voter":12,"grade":12,"election":2}},{"model":"vote.rating","pk":306,"fields":{"candidate":17,"voter":12,"grade":12,"election":2}},{"model":"contenttypes.contenttype","pk":1,"fields":{"app_label":"vote","model":"user"}},{"model":"contenttypes.contenttype","pk":2,"fields":{"app_label":"vote","model":"candidate"}},{"model":"contenttypes.contenttype","pk":3,"fields":{"app_label":"vote","model":"election"}},{"model":"contenttypes.contenttype","pk":4,"fields":{"app_label":"vote","model":"grade"}},{"model":"contenttypes.contenttype","pk":5,"fields":{"app_label":"vote","model":"rating"}},{"model":"contenttypes.contenttype","pk":6,"fields":{"app_label":"vote","model":"voter"}},{"model":"contenttypes.contenttype","pk":7,"fields":{"app_label":"vote","model":"supervisor"}},{"model":"contenttypes.contenttype","pk":8,"fields":{"app_label":"vote","model":"organisation"}},{"model":"contenttypes.contenttype","pk":9,"fields":{"app_label":"admin","model":"logentry"}},{"model":"contenttypes.contenttype","pk":10,"fields":{"app_label":"auth","model":"permission"}},{"model":"contenttypes.contenttype","pk":11,"fields":{"app_label":"auth","model":"group"}},{"model":"contenttypes.contenttype","pk":12,"fields":{"app_label":"contenttypes","model":"contenttype"}},{"model":"contenttypes.contenttype","pk":13,"fields":{"app_label":"sessions","model":"session"}},{"model":"auth.permission","pk":1,"fields":{"name":"Can add user","content_type":1,"codename":"add_user"}},{"model":"auth.permission","pk":2,"fields":{"name":"Can change user","content_type":1,"codename":"change_user"}},{"model":"auth.permission","pk":3,"fields":{"name":"Can delete user","content_type":1,"codename":"delete_user"}},{"model":"auth.permission","pk":4,"fields":{"name":"Can add candidate","content_type":2,"codename":"add_candidate"}},{"model":"auth.permission","pk":5,"fields":{"name":"Can change candidate","content_type":2,"codename":"change_candidate"}},{"model":"auth.permission","pk":6,"fields":{"name":"Can delete candidate","content_type":2,"codename":"delete_candidate"}},{"model":"auth.permission","pk":7,"fields":{"name":"Can add election","content_type":3,"codename":"add_election"}},{"model":"auth.permission","pk":8,"fields":{"name":"Can change election","content_type":3,"codename":"change_election"}},{"model":"auth.permission","pk":9,"fields":{"name":"Can delete election","content_type":3,"codename":"delete_election"}},{"model":"auth.permission","pk":10,"fields":{"name":"Can add grade","content_type":4,"codename":"add_grade"}},{"model":"auth.permission","pk":11,"fields":{"name":"Can change grade","content_type":4,"codename":"change_grade"}},{"model":"auth.permission","pk":12,"fields":{"name":"Can delete grade","content_type":4,"codename":"delete_grade"}},{"model":"auth.permission","pk":13,"fields":{"name":"Can add rating","content_type":5,"codename":"add_rating"}},{"model":"auth.permission","pk":14,"fields":{"name":"Can change rating","content_type":5,"codename":"change_rating"}},{"model":"auth.permission","pk":15,"fields":{"name":"Can delete rating","content_type":5,"codename":"delete_rating"}},{"model":"auth.permission","pk":16,"fields":{"name":"Can add voter","content_type":6,"codename":"add_voter"}},{"model":"auth.permission","pk":17,"fields":{"name":"Can change voter","content_type":6,"codename":"change_voter"}},{"model":"auth.permission","pk":18,"fields":{"name":"Can delete voter","content_type":6,"codename":"delete_voter"}},{"model":"auth.permission","pk":19,"fields":{"name":"Can add supervisor","content_type":7,"codename":"add_supervisor"}},{"model":"auth.permission","pk":20,"fields":{"name":"Can change supervisor","content_type":7,"codename":"change_supervisor"}},{"model":"auth.permission","pk":21,"fields":{"name":"Can delete supervisor","content_type":7,"codename":"delete_supervisor"}},{"model":"auth.permission","pk":22,"fields":{"name":"Can add organisation","content_type":8,"codename":"add_organisation"}},{"model":"auth.permission","pk":23,"fields":{"name":"Can change organisation","content_type":8,"codename":"change_organisation"}},{"model":"auth.permission","pk":24,"fields":{"name":"Can delete organisation","content_type":8,"codename":"delete_organisation"}},{"model":"auth.permission","pk":25,"fields":{"name":"Can add log entry","content_type":9,"codename":"add_logentry"}},{"model":"auth.permission","pk":26,"fields":{"name":"Can change log entry","content_type":9,"codename":"change_logentry"}},{"model":"auth.permission","pk":27,"fields":{"name":"Can delete log entry","content_type":9,"codename":"delete_logentry"}},{"model":"auth.permission","pk":28,"fields":{"name":"Can add permission","content_type":10,"codename":"add_permission"}},{"model":"auth.permission","pk":29,"fields":{"name":"Can change permission","content_type":10,"codename":"change_permission"}},{"model":"auth.permission","pk":30,"fields":{"name":"Can delete permission","content_type":10,"codename":"delete_permission"}},{"model":"auth.permission","pk":31,"fields":{"name":"Can add group","content_type":11,"codename":"add_group"}},{"model":"auth.permission","pk":32,"fields":{"name":"Can change group","content_type":11,"codename":"change_group"}},{"model":"auth.permission","pk":33,"fields":{"name":"Can delete group","content_type":11,"codename":"delete_group"}},{"model":"auth.permission","pk":34,"fields":{"name":"Can add content type","content_type":12,"codename":"add_contenttype"}},{"model":"auth.permission","pk":35,"fields":{"name":"Can change content type","content_type":12,"codename":"change_contenttype"}},{"model":"auth.permission","pk":36,"fields":{"name":"Can delete content type","content_type":12,"codename":"delete_contenttype"}},{"model":"auth.permission","pk":37,"fields":{"name":"Can add session","content_type":13,"codename":"add_session"}},{"model":"auth.permission","pk":38,"fields":{"name":"Can change session","content_type":13,"codename":"change_session"}},{"model":"auth.permission","pk":39,"fields":{"name":"Can delete session","content_type":13,"codename":"delete_session"}},{"model":"vote.user","pk":1,"fields":{"password":"pbkdf2_sha256$100000$LRsd0Tk7H7JC$B+TVQkGTricY34SLiuxvThZNzpVn+7JSlhLqxeQAGL0=","last_login":"2018-05-11T15:26:13.460Z","is_superuser":false,"username":"Admin","first_name":"","last_name":"","is_staff":false,"is_active":true,"date_joined":"2018-05-10T09:21:19.101Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":2,"fields":{"password":"pbkdf2_sha256$100000$tGyLgtPJwhyK$EtUA/9cQ/2qHK0NIrxQ+pFH+Hd4dP3Hn3hocbsLah4A=","last_login":"2018-05-10T15:08:39.971Z","is_superuser":false,"username":"Chloe","first_name":"","last_name":"","is_staff":false,"is_active":true,"date_joined":"2018-05-10T15:08:38.934Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":3,"fields":{"password":"pbkdf2_sha256$100000$t2W91noZ2FXG$q4eot/15mu9alHeiRnGAyqkfpP0AgLNJ201wRbF8GZ8=","last_login":"2018-05-22T07:34:26.997Z","is_superuser":false,"username":"Rida","first_name":"","last_name":"","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:45:21.320Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":4,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"votern_2","first_name":"first_name","last_name":"last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:52:20.730Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":5,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter1","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:53:08.958Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":6,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter2","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:53:32.848Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":7,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter3","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:54:05.230Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":8,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter4","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:54:47.503Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":9,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter5","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:55:06.921Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":10,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter6","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:55:30.599Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":11,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter7","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:55:56.823Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":12,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter8","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:56:55.404Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":13,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter9","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:57:22.785Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":14,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter10","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:57:49.517Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":15,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter11","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:58:19.544Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":16,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter12","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T11:58:55.215Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":17,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter13","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:23:54.574Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":18,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter14","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:24:37.288Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":19,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter15","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:25:07.068Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":20,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter16","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:25:31.860Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":21,"fields":{"password":"","last_login":"2018-05-11T20:03:01.569Z","is_superuser":false,"username":"voter17","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:26:11.399Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":22,"fields":{"password":"","last_login":"2018-05-11T17:35:56.891Z","is_superuser":false,"username":"voter18","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:26:36.572Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":"voter18@moje.fr","groups":[],"user_permissions":[]}},{"model":"vote.user","pk":23,"fields":{"password":"","last_login":"2018-05-17T12:23:31.896Z","is_superuser":false,"username":"voter19","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:27:24.564Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":"voter23@moje.fr","groups":[],"user_permissions":[]}},{"model":"vote.user","pk":24,"fields":{"password":"","last_login":"2018-05-11T22:41:48.117Z","is_superuser":false,"username":"voter20","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:27:50.741Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":"voter24@moje.fr","groups":[],"user_permissions":[]}},{"model":"vote.user","pk":25,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter21","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:28:18.713Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":26,"fields":{"password":"","last_login":"2018-05-11T18:00:24.671Z","is_superuser":false,"username":"voter22","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:28:46.539Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":27,"fields":{"password":"","last_login":"2018-05-12T12:56:33.767Z","is_superuser":false,"username":"voter23","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:29:09.531Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":28,"fields":{"password":"","last_login":"2018-05-17T09:10:50.218Z","is_superuser":false,"username":"voter24","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:29:45.023Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":29,"fields":{"password":"","last_login":"2018-05-14T12:05:28.471Z","is_superuser":false,"username":"voter25","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:30:11.770Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":30,"fields":{"password":"","last_login":"2018-05-11T15:13:24.364Z","is_superuser":false,"username":"voter26","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:30:31.612Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":31,"fields":{"password":"","last_login":"2018-05-16T13:21:13.880Z","is_superuser":false,"username":"voter27","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:30:54.583Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":32,"fields":{"password":"","last_login":"2018-05-18T08:02:23.113Z","is_superuser":false,"username":"voter28","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:31:15.895Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":33,"fields":{"password":"","last_login":"2018-05-12T10:28:10.104Z","is_superuser":false,"username":"voter29","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:31:44.020Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":34,"fields":{"password":"","last_login":"2018-05-16T14:38:14.279Z","is_superuser":false,"username":"voter30","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:32:09.849Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":35,"fields":{"password":"","last_login":"2018-05-11T16:45:32.091Z","is_superuser":false,"username":"voter31","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:32:40.473Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":36,"fields":{"password":"","last_login":"2018-05-17T07:25:03.203Z","is_superuser":false,"username":"voter32","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:33:03.052Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":37,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter33","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:33:28.411Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":38,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter34","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:33:52.810Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":39,"fields":{"password":"","last_login":"2018-05-14T06:28:45.888Z","is_superuser":false,"username":"voter35","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:34:20.529Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":40,"fields":{"password":"","last_login":"2018-05-17T13:22:57.780Z","is_superuser":false,"username":"voter36","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:34:41.900Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":41,"fields":{"password":"","last_login":"2018-05-16T07:43:16.060Z","is_superuser":false,"username":"voter37","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:36:00.037Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":42,"fields":{"password":"","last_login":null,"is_superuser":false,"username":"voter38","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-11T14:54:37.170Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.user","pk":43,"fields":{"password":"pbkdf2_sha256$100000$7NMgVZ3hSZco$VnPZ3FS9fGV06WisT8jSCZVVufj0Ivk7D+VabvSFWgY=","last_login":"2018-05-20T12:03:12.985Z","is_superuser":false,"username":"voter39","first_name":"First_name","last_name":"Last_name","is_staff":false,"is_active":true,"date_joined":"2018-05-20T12:03:11.949Z","picture":"blank.png","bio":"","street":"","city":"","state":"","postcode":"","birth_date":null,"email":null,"groups":[],"user_permissions":[]}},{"model":"vote.supervisor","pk":2,"fields":{"user":3,"election":2,"organisation":null}},{"model":"vote.voter","pk":1,"fields":{"user":21,"election":2}},{"model":"vote.voter","pk":2,"fields":{"user":22,"election":2}},{"model":"vote.voter","pk":3,"fields":{"user":23,"election":2}},{"model":"vote.voter","pk":4,"fields":{"user":24,"election":2}},{"model":"vote.voter","pk":5,"fields":{"user":25,"election":2}},{"model":"vote.voter","pk":6,"fields":{"user":26,"election":2}},{"model":"vote.voter","pk":7,"fields":{"user":27,"election":2}},{"model":"vote.voter","pk":8,"fields":{"user":28,"election":2}},{"model":"vote.voter","pk":9,"fields":{"user":29,"election":2}},{"model":"vote.voter","pk":10,"fields":{"user":30,"election":2}},{"model":"vote.voter","pk":11,"fields":{"user":31,"election":2}},{"model":"vote.voter","pk":12,"fields":{"user":32,"election":2}},{"model":"vote.voter","pk":13,"fields":{"user":33,"election":2}},{"model":"vote.voter","pk":14,"fields":{"user":34,"election":2}},{"model":"vote.voter","pk":15,"fields":{"user":35,"election":2}},{"model":"vote.voter","pk":16,"fields":{"user":36,"election":2}},{"model":"vote.voter","pk":17,"fields":{"user":37,"election":2}},{"model":"vote.voter","pk":18,"fields":{"user":38,"election":2}},{"model":"vote.voter","pk":19,"fields":{"user":39,"election":2}},{"model":"vote.voter","pk":20,"fields":{"user":40,"election":2}},{"model":"vote.voter","pk":21,"fields":{"user":41,"election":2}},{"model":"vote.voter","pk":22,"fields":{"user":42,"election":2}},{"model":"vote.candidate","pk":1,"fields":{"election":2,"user":4,"program":"Numerical Algorithms"}},{"model":"vote.candidate","pk":2,"fields":{"election":2,"user":5,"program":"Convex and variational analysis"}},{"model":"vote.candidate","pk":3,"fields":{"election":2,"user":6,"program":"Large: optimization, calcul des variations"}},{"model":"vote.candidate","pk":4,"fields":{"election":2,"user":7,"program":"Numerical methods"}},{"model":"vote.candidate","pk":5,"fields":{"election":2,"user":8,"program":"Th\u00e9orie math\u00e9matique"}},{"model":"vote.candidate","pk":6,"fields":{"election":2,"user":9,"program":"Optimisation globale"}},{"model":"vote.candidate","pk":7,"fields":{"election":2,"user":10,"program":"Tropical algebra"}},{"model":"vote.candidate","pk":8,"fields":{"election":2,"user":11,"program":"Optimization, Variational analysis, Convex Analysis, Gradient flows"}},{"model":"vote.candidate","pk":9,"fields":{"election":2,"user":12,"program":"Optimisation, Analyse Convexe"}},{"model":"vote.candidate","pk":10,"fields":{"election":2,"user":13,"program":"Robust optimization"}},{"model":"vote.candidate","pk":11,"fields":{"election":2,"user":14,"program":"Continuous Optimization"}},{"model":"vote.candidate","pk":12,"fields":{"election":2,"user":15,"program":"Robust Optimization, Health Care Analytics"}},{"model":"vote.candidate","pk":13,"fields":{"election":2,"user":16,"program":"Stochastic programming, nondifferentiable optimization, sensitivity analysis"}},{"model":"vote.candidate","pk":14,"fields":{"election":2,"user":17,"program":"discrete mathematics and polynomial optimization"}},{"model":"vote.candidate","pk":15,"fields":{"election":2,"user":18,"program":"Numerical optimization, nonsmooth algorithms"}},{"model":"vote.candidate","pk":16,"fields":{"election":2,"user":19,"program":"Nonlinear control theory, Deterministic and stochastic optimal control, Differential inclusions"}},{"model":"vote.candidate","pk":17,"fields":{"election":2,"user":20,"program":"Approximation schemes for hard optimization problems (planar graphs, Euclidean problems; probabilistic social networks; SDP; network tomography; scheduling; clustering; algorithmic game theory) https:"}}]
+[{
+    "model": "vote.election",
+    "pk": 2,
+    "fields": {
+        "name": "Example election",
+        "note": "Question raised for the election",
+        "picture": "blank.png",
+        "start": null,
+        "end": null,
+        "state": "OV"
+    }
+}, {
+    "model": "vote.grade",
+    "pk": 11,
+    "fields": {
+        "election": 2,
+        "name": "Excellent",
+        "code": "EXC"
+    }
+}, {
+    "model": "vote.grade",
+    "pk": 12,
+    "fields": {
+        "election": 2,
+        "name": "Tr\u00e8s Bien",
+        "code": "TR\u00c8"
+    }
+}, {
+    "model": "vote.grade",
+    "pk": 13,
+    "fields": {
+        "election": 2,
+        "name": "Bien",
+        "code": "BIE"
+    }
+}, {
+    "model": "vote.grade",
+    "pk": 15,
+    "fields": {
+        "election": 2,
+        "name": "Assez Bien",
+        "code": "ASS"
+    }
+}, {
+    "model": "vote.grade",
+    "pk": 16,
+    "fields": {
+        "election": 2,
+        "name": "Passable",
+        "code": "PAS"
+    }
+}, {
+    "model": "vote.grade",
+    "pk": 18,
+    "fields": {
+        "election": 2,
+        "name": "Insuffisant",
+        "code": "INS"
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 1,
+    "fields": {
+        "candidate": 1,
+        "voter": 15,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 2,
+    "fields": {
+        "candidate": 2,
+        "voter": 15,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 3,
+    "fields": {
+        "candidate": 3,
+        "voter": 15,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 4,
+    "fields": {
+        "candidate": 4,
+        "voter": 15,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 5,
+    "fields": {
+        "candidate": 5,
+        "voter": 15,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 6,
+    "fields": {
+        "candidate": 6,
+        "voter": 15,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 7,
+    "fields": {
+        "candidate": 7,
+        "voter": 15,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 8,
+    "fields": {
+        "candidate": 8,
+        "voter": 15,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 9,
+    "fields": {
+        "candidate": 9,
+        "voter": 15,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 10,
+    "fields": {
+        "candidate": 10,
+        "voter": 15,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 11,
+    "fields": {
+        "candidate": 11,
+        "voter": 15,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 12,
+    "fields": {
+        "candidate": 12,
+        "voter": 15,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 13,
+    "fields": {
+        "candidate": 13,
+        "voter": 15,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 14,
+    "fields": {
+        "candidate": 14,
+        "voter": 15,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 15,
+    "fields": {
+        "candidate": 15,
+        "voter": 15,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 16,
+    "fields": {
+        "candidate": 16,
+        "voter": 15,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 17,
+    "fields": {
+        "candidate": 17,
+        "voter": 15,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 18,
+    "fields": {
+        "candidate": 1,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 19,
+    "fields": {
+        "candidate": 2,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 20,
+    "fields": {
+        "candidate": 3,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 21,
+    "fields": {
+        "candidate": 4,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 22,
+    "fields": {
+        "candidate": 5,
+        "voter": 10,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 23,
+    "fields": {
+        "candidate": 6,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 24,
+    "fields": {
+        "candidate": 7,
+        "voter": 10,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 25,
+    "fields": {
+        "candidate": 8,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 26,
+    "fields": {
+        "candidate": 9,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 27,
+    "fields": {
+        "candidate": 10,
+        "voter": 10,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 28,
+    "fields": {
+        "candidate": 11,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 29,
+    "fields": {
+        "candidate": 12,
+        "voter": 10,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 30,
+    "fields": {
+        "candidate": 13,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 31,
+    "fields": {
+        "candidate": 14,
+        "voter": 10,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 32,
+    "fields": {
+        "candidate": 15,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 33,
+    "fields": {
+        "candidate": 16,
+        "voter": 10,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 34,
+    "fields": {
+        "candidate": 17,
+        "voter": 10,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 35,
+    "fields": {
+        "candidate": 1,
+        "voter": 2,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 36,
+    "fields": {
+        "candidate": 2,
+        "voter": 2,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 37,
+    "fields": {
+        "candidate": 3,
+        "voter": 2,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 38,
+    "fields": {
+        "candidate": 4,
+        "voter": 2,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 39,
+    "fields": {
+        "candidate": 5,
+        "voter": 2,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 40,
+    "fields": {
+        "candidate": 6,
+        "voter": 2,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 41,
+    "fields": {
+        "candidate": 7,
+        "voter": 2,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 42,
+    "fields": {
+        "candidate": 8,
+        "voter": 2,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 43,
+    "fields": {
+        "candidate": 9,
+        "voter": 2,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 44,
+    "fields": {
+        "candidate": 10,
+        "voter": 2,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 45,
+    "fields": {
+        "candidate": 11,
+        "voter": 2,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 46,
+    "fields": {
+        "candidate": 12,
+        "voter": 2,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 47,
+    "fields": {
+        "candidate": 13,
+        "voter": 2,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 48,
+    "fields": {
+        "candidate": 14,
+        "voter": 2,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 49,
+    "fields": {
+        "candidate": 15,
+        "voter": 2,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 50,
+    "fields": {
+        "candidate": 16,
+        "voter": 2,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 51,
+    "fields": {
+        "candidate": 17,
+        "voter": 2,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 52,
+    "fields": {
+        "candidate": 1,
+        "voter": 6,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 53,
+    "fields": {
+        "candidate": 2,
+        "voter": 6,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 54,
+    "fields": {
+        "candidate": 3,
+        "voter": 6,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 55,
+    "fields": {
+        "candidate": 4,
+        "voter": 6,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 56,
+    "fields": {
+        "candidate": 5,
+        "voter": 6,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 57,
+    "fields": {
+        "candidate": 6,
+        "voter": 6,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 58,
+    "fields": {
+        "candidate": 7,
+        "voter": 6,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 59,
+    "fields": {
+        "candidate": 8,
+        "voter": 6,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 60,
+    "fields": {
+        "candidate": 9,
+        "voter": 6,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 61,
+    "fields": {
+        "candidate": 10,
+        "voter": 6,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 62,
+    "fields": {
+        "candidate": 11,
+        "voter": 6,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 63,
+    "fields": {
+        "candidate": 12,
+        "voter": 6,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 64,
+    "fields": {
+        "candidate": 13,
+        "voter": 6,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 65,
+    "fields": {
+        "candidate": 14,
+        "voter": 6,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 66,
+    "fields": {
+        "candidate": 15,
+        "voter": 6,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 67,
+    "fields": {
+        "candidate": 16,
+        "voter": 6,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 68,
+    "fields": {
+        "candidate": 17,
+        "voter": 6,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 69,
+    "fields": {
+        "candidate": 1,
+        "voter": 1,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 70,
+    "fields": {
+        "candidate": 2,
+        "voter": 1,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 71,
+    "fields": {
+        "candidate": 3,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 72,
+    "fields": {
+        "candidate": 4,
+        "voter": 1,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 73,
+    "fields": {
+        "candidate": 5,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 74,
+    "fields": {
+        "candidate": 6,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 75,
+    "fields": {
+        "candidate": 7,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 76,
+    "fields": {
+        "candidate": 8,
+        "voter": 1,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 77,
+    "fields": {
+        "candidate": 9,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 78,
+    "fields": {
+        "candidate": 10,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 79,
+    "fields": {
+        "candidate": 11,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 80,
+    "fields": {
+        "candidate": 12,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 81,
+    "fields": {
+        "candidate": 13,
+        "voter": 1,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 82,
+    "fields": {
+        "candidate": 14,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 83,
+    "fields": {
+        "candidate": 15,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 84,
+    "fields": {
+        "candidate": 16,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 85,
+    "fields": {
+        "candidate": 17,
+        "voter": 1,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 86,
+    "fields": {
+        "candidate": 1,
+        "voter": 4,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 87,
+    "fields": {
+        "candidate": 2,
+        "voter": 4,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 88,
+    "fields": {
+        "candidate": 3,
+        "voter": 4,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 89,
+    "fields": {
+        "candidate": 4,
+        "voter": 4,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 90,
+    "fields": {
+        "candidate": 5,
+        "voter": 4,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 91,
+    "fields": {
+        "candidate": 6,
+        "voter": 4,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 92,
+    "fields": {
+        "candidate": 7,
+        "voter": 4,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 93,
+    "fields": {
+        "candidate": 8,
+        "voter": 4,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 94,
+    "fields": {
+        "candidate": 9,
+        "voter": 4,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 95,
+    "fields": {
+        "candidate": 10,
+        "voter": 4,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 96,
+    "fields": {
+        "candidate": 11,
+        "voter": 4,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 97,
+    "fields": {
+        "candidate": 12,
+        "voter": 4,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 98,
+    "fields": {
+        "candidate": 13,
+        "voter": 4,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 99,
+    "fields": {
+        "candidate": 14,
+        "voter": 4,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 100,
+    "fields": {
+        "candidate": 15,
+        "voter": 4,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 101,
+    "fields": {
+        "candidate": 16,
+        "voter": 4,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 102,
+    "fields": {
+        "candidate": 17,
+        "voter": 4,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 103,
+    "fields": {
+        "candidate": 1,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 104,
+    "fields": {
+        "candidate": 2,
+        "voter": 13,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 105,
+    "fields": {
+        "candidate": 3,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 106,
+    "fields": {
+        "candidate": 4,
+        "voter": 13,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 107,
+    "fields": {
+        "candidate": 5,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 108,
+    "fields": {
+        "candidate": 6,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 109,
+    "fields": {
+        "candidate": 7,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 110,
+    "fields": {
+        "candidate": 8,
+        "voter": 13,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 111,
+    "fields": {
+        "candidate": 9,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 112,
+    "fields": {
+        "candidate": 10,
+        "voter": 13,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 113,
+    "fields": {
+        "candidate": 11,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 114,
+    "fields": {
+        "candidate": 12,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 115,
+    "fields": {
+        "candidate": 13,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 116,
+    "fields": {
+        "candidate": 14,
+        "voter": 13,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 117,
+    "fields": {
+        "candidate": 15,
+        "voter": 13,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 118,
+    "fields": {
+        "candidate": 16,
+        "voter": 13,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 119,
+    "fields": {
+        "candidate": 17,
+        "voter": 13,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 120,
+    "fields": {
+        "candidate": 1,
+        "voter": 7,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 121,
+    "fields": {
+        "candidate": 2,
+        "voter": 7,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 122,
+    "fields": {
+        "candidate": 3,
+        "voter": 7,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 123,
+    "fields": {
+        "candidate": 4,
+        "voter": 7,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 124,
+    "fields": {
+        "candidate": 5,
+        "voter": 7,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 125,
+    "fields": {
+        "candidate": 6,
+        "voter": 7,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 126,
+    "fields": {
+        "candidate": 7,
+        "voter": 7,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 127,
+    "fields": {
+        "candidate": 8,
+        "voter": 7,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 128,
+    "fields": {
+        "candidate": 9,
+        "voter": 7,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 129,
+    "fields": {
+        "candidate": 10,
+        "voter": 7,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 130,
+    "fields": {
+        "candidate": 11,
+        "voter": 7,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 131,
+    "fields": {
+        "candidate": 12,
+        "voter": 7,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 132,
+    "fields": {
+        "candidate": 13,
+        "voter": 7,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 133,
+    "fields": {
+        "candidate": 14,
+        "voter": 7,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 134,
+    "fields": {
+        "candidate": 15,
+        "voter": 7,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 135,
+    "fields": {
+        "candidate": 16,
+        "voter": 7,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 136,
+    "fields": {
+        "candidate": 17,
+        "voter": 7,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 137,
+    "fields": {
+        "candidate": 1,
+        "voter": 19,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 138,
+    "fields": {
+        "candidate": 2,
+        "voter": 19,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 139,
+    "fields": {
+        "candidate": 3,
+        "voter": 19,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 140,
+    "fields": {
+        "candidate": 4,
+        "voter": 19,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 141,
+    "fields": {
+        "candidate": 5,
+        "voter": 19,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 142,
+    "fields": {
+        "candidate": 6,
+        "voter": 19,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 143,
+    "fields": {
+        "candidate": 7,
+        "voter": 19,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 144,
+    "fields": {
+        "candidate": 8,
+        "voter": 19,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 145,
+    "fields": {
+        "candidate": 9,
+        "voter": 19,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 146,
+    "fields": {
+        "candidate": 10,
+        "voter": 19,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 147,
+    "fields": {
+        "candidate": 11,
+        "voter": 19,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 148,
+    "fields": {
+        "candidate": 12,
+        "voter": 19,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 149,
+    "fields": {
+        "candidate": 13,
+        "voter": 19,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 150,
+    "fields": {
+        "candidate": 14,
+        "voter": 19,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 151,
+    "fields": {
+        "candidate": 15,
+        "voter": 19,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 152,
+    "fields": {
+        "candidate": 16,
+        "voter": 19,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 153,
+    "fields": {
+        "candidate": 17,
+        "voter": 19,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 154,
+    "fields": {
+        "candidate": 1,
+        "voter": 9,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 155,
+    "fields": {
+        "candidate": 2,
+        "voter": 9,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 156,
+    "fields": {
+        "candidate": 3,
+        "voter": 9,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 157,
+    "fields": {
+        "candidate": 4,
+        "voter": 9,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 158,
+    "fields": {
+        "candidate": 5,
+        "voter": 9,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 159,
+    "fields": {
+        "candidate": 6,
+        "voter": 9,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 160,
+    "fields": {
+        "candidate": 7,
+        "voter": 9,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 161,
+    "fields": {
+        "candidate": 8,
+        "voter": 9,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 162,
+    "fields": {
+        "candidate": 9,
+        "voter": 9,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 163,
+    "fields": {
+        "candidate": 10,
+        "voter": 9,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 164,
+    "fields": {
+        "candidate": 11,
+        "voter": 9,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 165,
+    "fields": {
+        "candidate": 12,
+        "voter": 9,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 166,
+    "fields": {
+        "candidate": 13,
+        "voter": 9,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 167,
+    "fields": {
+        "candidate": 14,
+        "voter": 9,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 168,
+    "fields": {
+        "candidate": 15,
+        "voter": 9,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 169,
+    "fields": {
+        "candidate": 16,
+        "voter": 9,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 170,
+    "fields": {
+        "candidate": 17,
+        "voter": 9,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 171,
+    "fields": {
+        "candidate": 1,
+        "voter": 21,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 172,
+    "fields": {
+        "candidate": 2,
+        "voter": 21,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 173,
+    "fields": {
+        "candidate": 3,
+        "voter": 21,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 174,
+    "fields": {
+        "candidate": 4,
+        "voter": 21,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 175,
+    "fields": {
+        "candidate": 5,
+        "voter": 21,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 176,
+    "fields": {
+        "candidate": 6,
+        "voter": 21,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 177,
+    "fields": {
+        "candidate": 7,
+        "voter": 21,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 178,
+    "fields": {
+        "candidate": 8,
+        "voter": 21,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 179,
+    "fields": {
+        "candidate": 9,
+        "voter": 21,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 180,
+    "fields": {
+        "candidate": 10,
+        "voter": 21,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 181,
+    "fields": {
+        "candidate": 11,
+        "voter": 21,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 182,
+    "fields": {
+        "candidate": 12,
+        "voter": 21,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 183,
+    "fields": {
+        "candidate": 13,
+        "voter": 21,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 184,
+    "fields": {
+        "candidate": 14,
+        "voter": 21,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 185,
+    "fields": {
+        "candidate": 15,
+        "voter": 21,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 186,
+    "fields": {
+        "candidate": 16,
+        "voter": 21,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 187,
+    "fields": {
+        "candidate": 17,
+        "voter": 21,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 188,
+    "fields": {
+        "candidate": 1,
+        "voter": 11,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 189,
+    "fields": {
+        "candidate": 2,
+        "voter": 11,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 190,
+    "fields": {
+        "candidate": 3,
+        "voter": 11,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 191,
+    "fields": {
+        "candidate": 4,
+        "voter": 11,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 192,
+    "fields": {
+        "candidate": 5,
+        "voter": 11,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 193,
+    "fields": {
+        "candidate": 6,
+        "voter": 11,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 194,
+    "fields": {
+        "candidate": 7,
+        "voter": 11,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 195,
+    "fields": {
+        "candidate": 8,
+        "voter": 11,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 196,
+    "fields": {
+        "candidate": 9,
+        "voter": 11,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 197,
+    "fields": {
+        "candidate": 10,
+        "voter": 11,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 198,
+    "fields": {
+        "candidate": 11,
+        "voter": 11,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 199,
+    "fields": {
+        "candidate": 12,
+        "voter": 11,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 200,
+    "fields": {
+        "candidate": 13,
+        "voter": 11,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 201,
+    "fields": {
+        "candidate": 14,
+        "voter": 11,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 202,
+    "fields": {
+        "candidate": 15,
+        "voter": 11,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 203,
+    "fields": {
+        "candidate": 16,
+        "voter": 11,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 204,
+    "fields": {
+        "candidate": 17,
+        "voter": 11,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 205,
+    "fields": {
+        "candidate": 1,
+        "voter": 14,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 206,
+    "fields": {
+        "candidate": 2,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 207,
+    "fields": {
+        "candidate": 3,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 208,
+    "fields": {
+        "candidate": 4,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 209,
+    "fields": {
+        "candidate": 5,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 210,
+    "fields": {
+        "candidate": 6,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 211,
+    "fields": {
+        "candidate": 7,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 212,
+    "fields": {
+        "candidate": 8,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 213,
+    "fields": {
+        "candidate": 9,
+        "voter": 14,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 214,
+    "fields": {
+        "candidate": 10,
+        "voter": 14,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 215,
+    "fields": {
+        "candidate": 11,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 216,
+    "fields": {
+        "candidate": 12,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 217,
+    "fields": {
+        "candidate": 13,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 218,
+    "fields": {
+        "candidate": 14,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 219,
+    "fields": {
+        "candidate": 15,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 220,
+    "fields": {
+        "candidate": 16,
+        "voter": 14,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 221,
+    "fields": {
+        "candidate": 17,
+        "voter": 14,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 222,
+    "fields": {
+        "candidate": 1,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 223,
+    "fields": {
+        "candidate": 2,
+        "voter": 16,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 224,
+    "fields": {
+        "candidate": 3,
+        "voter": 16,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 225,
+    "fields": {
+        "candidate": 4,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 226,
+    "fields": {
+        "candidate": 5,
+        "voter": 16,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 227,
+    "fields": {
+        "candidate": 6,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 228,
+    "fields": {
+        "candidate": 7,
+        "voter": 16,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 229,
+    "fields": {
+        "candidate": 8,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 230,
+    "fields": {
+        "candidate": 9,
+        "voter": 16,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 231,
+    "fields": {
+        "candidate": 10,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 232,
+    "fields": {
+        "candidate": 11,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 233,
+    "fields": {
+        "candidate": 12,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 234,
+    "fields": {
+        "candidate": 13,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 235,
+    "fields": {
+        "candidate": 14,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 236,
+    "fields": {
+        "candidate": 15,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 237,
+    "fields": {
+        "candidate": 16,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 238,
+    "fields": {
+        "candidate": 17,
+        "voter": 16,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 239,
+    "fields": {
+        "candidate": 1,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 240,
+    "fields": {
+        "candidate": 2,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 241,
+    "fields": {
+        "candidate": 3,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 242,
+    "fields": {
+        "candidate": 4,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 243,
+    "fields": {
+        "candidate": 5,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 244,
+    "fields": {
+        "candidate": 6,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 245,
+    "fields": {
+        "candidate": 7,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 246,
+    "fields": {
+        "candidate": 8,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 247,
+    "fields": {
+        "candidate": 9,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 248,
+    "fields": {
+        "candidate": 10,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 249,
+    "fields": {
+        "candidate": 11,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 250,
+    "fields": {
+        "candidate": 12,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 251,
+    "fields": {
+        "candidate": 13,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 252,
+    "fields": {
+        "candidate": 14,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 253,
+    "fields": {
+        "candidate": 15,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 254,
+    "fields": {
+        "candidate": 16,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 255,
+    "fields": {
+        "candidate": 17,
+        "voter": 8,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 256,
+    "fields": {
+        "candidate": 1,
+        "voter": 3,
+        "grade": 18,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 257,
+    "fields": {
+        "candidate": 2,
+        "voter": 3,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 258,
+    "fields": {
+        "candidate": 3,
+        "voter": 3,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 259,
+    "fields": {
+        "candidate": 4,
+        "voter": 3,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 260,
+    "fields": {
+        "candidate": 5,
+        "voter": 3,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 261,
+    "fields": {
+        "candidate": 6,
+        "voter": 3,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 262,
+    "fields": {
+        "candidate": 7,
+        "voter": 3,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 263,
+    "fields": {
+        "candidate": 8,
+        "voter": 3,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 264,
+    "fields": {
+        "candidate": 9,
+        "voter": 3,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 265,
+    "fields": {
+        "candidate": 10,
+        "voter": 3,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 266,
+    "fields": {
+        "candidate": 11,
+        "voter": 3,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 267,
+    "fields": {
+        "candidate": 12,
+        "voter": 3,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 268,
+    "fields": {
+        "candidate": 13,
+        "voter": 3,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 269,
+    "fields": {
+        "candidate": 14,
+        "voter": 3,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 270,
+    "fields": {
+        "candidate": 15,
+        "voter": 3,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 271,
+    "fields": {
+        "candidate": 16,
+        "voter": 3,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 272,
+    "fields": {
+        "candidate": 17,
+        "voter": 3,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 273,
+    "fields": {
+        "candidate": 1,
+        "voter": 20,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 274,
+    "fields": {
+        "candidate": 2,
+        "voter": 20,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 275,
+    "fields": {
+        "candidate": 3,
+        "voter": 20,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 276,
+    "fields": {
+        "candidate": 4,
+        "voter": 20,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 277,
+    "fields": {
+        "candidate": 5,
+        "voter": 20,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 278,
+    "fields": {
+        "candidate": 6,
+        "voter": 20,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 279,
+    "fields": {
+        "candidate": 7,
+        "voter": 20,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 280,
+    "fields": {
+        "candidate": 8,
+        "voter": 20,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 281,
+    "fields": {
+        "candidate": 9,
+        "voter": 20,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 282,
+    "fields": {
+        "candidate": 10,
+        "voter": 20,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 283,
+    "fields": {
+        "candidate": 11,
+        "voter": 20,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 284,
+    "fields": {
+        "candidate": 12,
+        "voter": 20,
+        "grade": 16,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 285,
+    "fields": {
+        "candidate": 13,
+        "voter": 20,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 286,
+    "fields": {
+        "candidate": 14,
+        "voter": 20,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 287,
+    "fields": {
+        "candidate": 15,
+        "voter": 20,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 288,
+    "fields": {
+        "candidate": 16,
+        "voter": 20,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 289,
+    "fields": {
+        "candidate": 17,
+        "voter": 20,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 290,
+    "fields": {
+        "candidate": 1,
+        "voter": 12,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 291,
+    "fields": {
+        "candidate": 2,
+        "voter": 12,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 292,
+    "fields": {
+        "candidate": 3,
+        "voter": 12,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 293,
+    "fields": {
+        "candidate": 4,
+        "voter": 12,
+        "grade": 11,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 294,
+    "fields": {
+        "candidate": 5,
+        "voter": 12,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 295,
+    "fields": {
+        "candidate": 6,
+        "voter": 12,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 296,
+    "fields": {
+        "candidate": 7,
+        "voter": 12,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 297,
+    "fields": {
+        "candidate": 8,
+        "voter": 12,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 298,
+    "fields": {
+        "candidate": 9,
+        "voter": 12,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 299,
+    "fields": {
+        "candidate": 10,
+        "voter": 12,
+        "grade": 15,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 300,
+    "fields": {
+        "candidate": 11,
+        "voter": 12,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 301,
+    "fields": {
+        "candidate": 12,
+        "voter": 12,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 302,
+    "fields": {
+        "candidate": 13,
+        "voter": 12,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 303,
+    "fields": {
+        "candidate": 14,
+        "voter": 12,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 304,
+    "fields": {
+        "candidate": 15,
+        "voter": 12,
+        "grade": 13,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 305,
+    "fields": {
+        "candidate": 16,
+        "voter": 12,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "vote.rating",
+    "pk": 306,
+    "fields": {
+        "candidate": 17,
+        "voter": 12,
+        "grade": 12,
+        "election": 2
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "vote",
+        "model": "user"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "vote",
+        "model": "candidate"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "vote",
+        "model": "election"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "vote",
+        "model": "grade"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "vote",
+        "model": "rating"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "vote",
+        "model": "voter"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "vote",
+        "model": "supervisor"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "vote",
+        "model": "organisation"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+}, {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 1,
+        "codename": "add_user"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 1,
+        "codename": "change_user"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 1,
+        "codename": "delete_user"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can add candidate",
+        "content_type": 2,
+        "codename": "add_candidate"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can change candidate",
+        "content_type": 2,
+        "codename": "change_candidate"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can delete candidate",
+        "content_type": 2,
+        "codename": "delete_candidate"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can add election",
+        "content_type": 3,
+        "codename": "add_election"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can change election",
+        "content_type": 3,
+        "codename": "change_election"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can delete election",
+        "content_type": 3,
+        "codename": "delete_election"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can add grade",
+        "content_type": 4,
+        "codename": "add_grade"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can change grade",
+        "content_type": 4,
+        "codename": "change_grade"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can delete grade",
+        "content_type": 4,
+        "codename": "delete_grade"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add rating",
+        "content_type": 5,
+        "codename": "add_rating"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change rating",
+        "content_type": 5,
+        "codename": "change_rating"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete rating",
+        "content_type": 5,
+        "codename": "delete_rating"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can add voter",
+        "content_type": 6,
+        "codename": "add_voter"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can change voter",
+        "content_type": 6,
+        "codename": "change_voter"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can delete voter",
+        "content_type": 6,
+        "codename": "delete_voter"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can add supervisor",
+        "content_type": 7,
+        "codename": "add_supervisor"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can change supervisor",
+        "content_type": 7,
+        "codename": "change_supervisor"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can delete supervisor",
+        "content_type": 7,
+        "codename": "delete_supervisor"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can add organisation",
+        "content_type": 8,
+        "codename": "add_organisation"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can change organisation",
+        "content_type": 8,
+        "codename": "change_organisation"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can delete organisation",
+        "content_type": 8,
+        "codename": "delete_organisation"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 9,
+        "codename": "add_logentry"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 9,
+        "codename": "change_logentry"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 9,
+        "codename": "delete_logentry"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 10,
+        "codename": "add_permission"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 10,
+        "codename": "change_permission"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 10,
+        "codename": "delete_permission"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 11,
+        "codename": "add_group"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 11,
+        "codename": "change_group"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 11,
+        "codename": "delete_group"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 12,
+        "codename": "add_contenttype"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 12,
+        "codename": "change_contenttype"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 12,
+        "codename": "delete_contenttype"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 13,
+        "codename": "add_session"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 13,
+        "codename": "change_session"
+    }
+}, {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 13,
+        "codename": "delete_session"
+    }
+}, {
+    "model": "vote.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$LRsd0Tk7H7JC$B+TVQkGTricY34SLiuxvThZNzpVn+7JSlhLqxeQAGL0=",
+        "last_login": "2018-05-11T15:26:13.460Z",
+        "is_superuser": false,
+        "username": "Admin",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-10T09:21:19.101Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$tGyLgtPJwhyK$EtUA/9cQ/2qHK0NIrxQ+pFH+Hd4dP3Hn3hocbsLah4A=",
+        "last_login": "2018-05-10T15:08:39.971Z",
+        "is_superuser": false,
+        "username": "Chloe",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-10T15:08:38.934Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$t2W91noZ2FXG$q4eot/15mu9alHeiRnGAyqkfpP0AgLNJ201wRbF8GZ8=",
+        "last_login": "2018-05-22T07:34:26.997Z",
+        "is_superuser": false,
+        "username": "Rida",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:45:21.320Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 4,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "votern_2",
+        "first_name": "first_name",
+        "last_name": "last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:52:20.730Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 5,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter1",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:53:08.958Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 6,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter2",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:53:32.848Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 7,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter3",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:54:05.230Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 8,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter4",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:54:47.503Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 9,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter5",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:55:06.921Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 10,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter6",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:55:30.599Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 11,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter7",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:55:56.823Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 12,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter8",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:56:55.404Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 13,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter9",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:57:22.785Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 14,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter10",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:57:49.517Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 15,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter11",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:58:19.544Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 16,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter12",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T11:58:55.215Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 17,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter13",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:23:54.574Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 18,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter14",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:24:37.288Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 19,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter15",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:25:07.068Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 20,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter16",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:25:31.860Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 21,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-11T20:03:01.569Z",
+        "is_superuser": false,
+        "username": "voter17",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:26:11.399Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 22,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-11T17:35:56.891Z",
+        "is_superuser": false,
+        "username": "voter18",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:26:36.572Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": "voter18@moje.fr",
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 23,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-17T12:23:31.896Z",
+        "is_superuser": false,
+        "username": "voter19",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:27:24.564Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": "voter23@moje.fr",
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 24,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-11T22:41:48.117Z",
+        "is_superuser": false,
+        "username": "voter20",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:27:50.741Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": "voter24@moje.fr",
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 25,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter21",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:28:18.713Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 26,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-11T18:00:24.671Z",
+        "is_superuser": false,
+        "username": "voter22",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:28:46.539Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 27,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-12T12:56:33.767Z",
+        "is_superuser": false,
+        "username": "voter23",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:29:09.531Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 28,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-17T09:10:50.218Z",
+        "is_superuser": false,
+        "username": "voter24",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:29:45.023Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 29,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-14T12:05:28.471Z",
+        "is_superuser": false,
+        "username": "voter25",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:30:11.770Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 30,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-11T15:13:24.364Z",
+        "is_superuser": false,
+        "username": "voter26",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:30:31.612Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 31,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-16T13:21:13.880Z",
+        "is_superuser": false,
+        "username": "voter27",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:30:54.583Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 32,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-18T08:02:23.113Z",
+        "is_superuser": false,
+        "username": "voter28",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:31:15.895Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 33,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-12T10:28:10.104Z",
+        "is_superuser": false,
+        "username": "voter29",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:31:44.020Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 34,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-16T14:38:14.279Z",
+        "is_superuser": false,
+        "username": "voter30",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:32:09.849Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 35,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-11T16:45:32.091Z",
+        "is_superuser": false,
+        "username": "voter31",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:32:40.473Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 36,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-17T07:25:03.203Z",
+        "is_superuser": false,
+        "username": "voter32",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:33:03.052Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 37,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter33",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:33:28.411Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 38,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter34",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:33:52.810Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 39,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-14T06:28:45.888Z",
+        "is_superuser": false,
+        "username": "voter35",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:34:20.529Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 40,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-17T13:22:57.780Z",
+        "is_superuser": false,
+        "username": "voter36",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:34:41.900Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 41,
+    "fields": {
+        "password": "",
+        "last_login": "2018-05-16T07:43:16.060Z",
+        "is_superuser": false,
+        "username": "voter37",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:36:00.037Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 42,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "voter38",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-11T14:54:37.170Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.user",
+    "pk": 43,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$7NMgVZ3hSZco$VnPZ3FS9fGV06WisT8jSCZVVufj0Ivk7D+VabvSFWgY=",
+        "last_login": "2018-05-20T12:03:12.985Z",
+        "is_superuser": false,
+        "username": "voter39",
+        "first_name": "First_name",
+        "last_name": "Last_name",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-05-20T12:03:11.949Z",
+        "picture": "blank.png",
+        "bio": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "birth_date": null,
+        "email": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "vote.supervisor",
+    "pk": 2,
+    "fields": {
+        "user": 3,
+        "election": 2,
+        "organisation": null
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 1,
+    "fields": {
+        "user": 21,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 2,
+    "fields": {
+        "user": 22,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 3,
+    "fields": {
+        "user": 23,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 4,
+    "fields": {
+        "user": 24,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 5,
+    "fields": {
+        "user": 25,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 6,
+    "fields": {
+        "user": 26,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 7,
+    "fields": {
+        "user": 27,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 8,
+    "fields": {
+        "user": 28,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 9,
+    "fields": {
+        "user": 29,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 10,
+    "fields": {
+        "user": 30,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 11,
+    "fields": {
+        "user": 31,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 12,
+    "fields": {
+        "user": 32,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 13,
+    "fields": {
+        "user": 33,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 14,
+    "fields": {
+        "user": 34,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 15,
+    "fields": {
+        "user": 35,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 16,
+    "fields": {
+        "user": 36,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 17,
+    "fields": {
+        "user": 37,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 18,
+    "fields": {
+        "user": 38,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 19,
+    "fields": {
+        "user": 39,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 20,
+    "fields": {
+        "user": 40,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 21,
+    "fields": {
+        "user": 41,
+        "election": 2
+    }
+}, {
+    "model": "vote.voter",
+    "pk": 22,
+    "fields": {
+        "user": 42,
+        "election": 2
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 1,
+    "fields": {
+        "election": 2,
+        "program": "Numerical Algorithms"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 2,
+    "fields": {
+        "election": 2,
+        "program": "Convex and variational analysis"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 3,
+    "fields": {
+        "election": 2,
+        "program": "Large: optimization, calcul des variations"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 4,
+    "fields": {
+        "election": 2,
+        "program": "Numerical methods"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 5,
+    "fields": {
+        "election": 2,
+        "program": "Th\u00e9orie math\u00e9matique"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 6,
+    "fields": {
+        "election": 2,
+        "program": "Optimisation globale"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 7,
+    "fields": {
+        "election": 2,
+        "program": "Tropical algebra"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 8,
+    "fields": {
+        "election": 2,
+        "program": "Optimization, Variational analysis, Convex Analysis, Gradient flows"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 9,
+    "fields": {
+        "election": 2,
+        "program": "Optimisation, Analyse Convexe"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 10,
+    "fields": {
+        "election": 2,
+        "program": "Robust optimization"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 11,
+    "fields": {
+        "election": 2,
+        "program": "Continuous Optimization"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 12,
+    "fields": {
+        "election": 2,
+        "program": "Robust Optimization, Health Care Analytics"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 13,
+    "fields": {
+        "election": 2,
+        "program": "Stochastic programming, nondifferentiable optimization, sensitivity analysis"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 14,
+    "fields": {
+        "election": 2,
+        "program": "discrete mathematics and polynomial optimization"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 15,
+    "fields": {
+        "election": 2,
+        "program": "Numerical optimization, nonsmooth algorithms"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 16,
+    "fields": {
+        "election": 2,
+        "program": "Nonlinear control theory, Deterministic and stochastic optimal control, Differential inclusions"
+    }
+}, {
+    "model": "vote.candidate",
+    "pk": 17,
+    "fields": {
+        "election": 2,
+        "program": "Approximation schemes for hard optimization problems (planar graphs, Euclidean problems; probabilistic social networks; SDP; network tomography; scheduling; clustering; algorithmic game theory) https:"
+    }
+}]

@@ -44,11 +44,8 @@
                 <div class="table-responsive">
                     <table class="table" id="table">
                         <thead class=" text-primary">
-                            <th>{% trans "First name" %}</th>
-                            <th>{% trans "Last name" %}</th>
-                            <th>
-                                {% trans "Information" %}
-                            </th>
+                            <th>{% trans "Label" %}</th>
+                            <th>{% trans "Description" %}</th>
                             {% if election.state == "DR" %}
                             <th> {% trans "Action" %} </th>
                             {% endif %}
@@ -56,9 +53,8 @@
                         <tbody>
                             {% for candidate in candidates %}
                                 <tr>
-                                    <td>{{ candidate.user.first_name | title}}</td>
-                                    <td> {{ candidate.user.last_name | title}}</td>
-                                    <td>{{ candidate.program }}</td>
+                                    <td>{{ candidate.label | title }}</td>
+                                    <td> {{ candidate.description }}</td>
                                     {% if election.state == "DR" %}
                                     <td><a href="/election/manage/delete/candidate/{{ candidate.pk }}/" class="btn btn-info">{% trans "Delete" %}</a></td>
                                     {% endif %}
@@ -108,17 +104,15 @@
 
 <script>
   $("#form-btn").click(function () {
-      var first_name        = $("#id_first_name").val();
-      var last_name         = $("#id_last_name").val();
-      var program           = $("#id_program").val();
+      var label             = $("#id_label").val();
+      var description       = $("#id_description").val();
       var election_id       = $("#election-id").val();
 
       $.ajax({
           url: '/election/manage/create/candidate/ajax/',
           data: {
-              'first_name':     first_name,
-              'last_name':      last_name,
-              'program':        program,
+              'label':          label,
+              'description':    description,
               'election_id':    election_id
               },
           dataType: 'json',
@@ -129,7 +123,7 @@
                   $("#error").innerHTML = data.error;
               } else {
                   tr = $("#tr-create-candidate");
-                  $("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+program+"</td><td><a href=\"/election/manage/delete/candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">{% trans "Delete" %}</a></td></tr>").insertBefore(tr);
+                  $("<tr><td>"+label+"</td><td>"+description+"</td><td><a href=\"/election/manage/delete/candidate/" + data.id_candidate + "/\" class=\"btn btn-info\">{% trans "Delete" %}</a></td></tr>").insertBefore(tr);
                   $("#form-create-candidate").trigger("reset");
               }
           }

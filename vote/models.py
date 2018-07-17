@@ -78,7 +78,8 @@ class Candidate(models.Model):
     This model represents a candidate in the election.
     """
     election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
-    user        = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
+    label       = models.TextField(default="")
+    description = models.TextField(default="")
     program     = models.TextField(default="")
 
 

@@ -63,22 +63,17 @@ class ConfirmStepForm(forms.Form):
 
 
 class CreateCandidateForm(forms.Form):
-    first_name    = forms.CharField(label=_("First name"),
+    label = forms.CharField(label=_("Label"),
                                     max_length=200,
-                                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_("First name")})
+                                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_("Label")})
                                     )
 
-    last_name    = forms.CharField(
-                    label=_("Name"),
+    description = forms.CharField(
+                    label=_("Description"),
                     max_length=200,
-                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_("Name")})
+                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_("Description")})
                             )
 
-    program    = forms.CharField(
-                    label=_("Information"),
-                    max_length=200,
-                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':_("Information")})
-                            )
 
 
 

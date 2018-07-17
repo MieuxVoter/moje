@@ -27,7 +27,7 @@ SECRET_KEY = parameters['secret_key']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if parameters['debug'] == "true" else False
 
-ALLOWED_HOSTS = parameters['allowed_hosts']
+ALLOWED_HOSTS = ['localhost', 'testserver'] + parameters['allowed_hosts']
 PORT = parameters['port']
 DOMAIN = parameters['domain']
 
@@ -165,6 +165,8 @@ SESAME_TOKEN_NAME = "url_auth_token"
 SESAME_MAX_AGE = 7 * 24 * 60 * 60
 
 # Sending mail with a SMTP server
+#EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+#EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 EMAIL_HOST = parameters['email']['host']
 EMAIL_PORT = parameters['email']['port'] if "port" in parameters['email'] else 465
 EMAIL_HOST_USER = parameters['email']['host_user']

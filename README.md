@@ -28,18 +28,9 @@ For deployment to production, always think to the [django checklist](https://doc
 # Roadmap
 
 
-1) Langue Français par défaut, avec le choix de la langue sur le côté (anglais), ce qui est super :-)
 
-2) le language par défaut en Français (7 mentions):
-Excellent, Très bien, Bien, Assez bien, Passable, Insuffisant, A Rejeter
+- La question doit paraitre sur le bulletin moment de voter
 
-3) Le language par défaut en anglais (7 mentions):
-Outstanding, Excellent, Very Good, Good, Fair, Poor, To Reject
+- quand on vote, à défaut c’est en blanc, et quand on clique sur une mention, ca se colorie avec la couleur de la mention
 
-4) La question doit paraitre sur le bulletin moment de voter (j’ai pas vérifier si c’est le cas)
-
-5) quand on vote, à défaut c’est en blanc, et quand on clique sur une mention, ca se colorie avec la couleur de la mention
-
-6) les résultats affichent la mention majoritaire (coloré avec sa couleur), le total des notes au dessus, et le total en dessous
-
-7) le logo de mieux voter (sur le coté gauche) et le lien vers MieuxVoter.fr activé!
+- les résultats affichent la mention majoritaire (coloré avec sa couleur), le total des notes au dessus, et le total en dessous
