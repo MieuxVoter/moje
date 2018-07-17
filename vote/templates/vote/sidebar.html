@@ -1,16 +1,13 @@
 {% load i18n %}
+{% load static %}
 <div class="sidebar" data-color="blue">
     <!--
 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
     <div class="logo">
-        {% if voter.user.first_name or voter.user.last_name %}
-            {{ voter.user.first_name | title }} {{ voter.user.last_name | title }}
-        {% else %}
-        <a href="http://www.mieux-voter.fr" class="simple-text logo-normal">
-            Mieux Voter
+        <a href="/election/dashboard/" class="simple-text logo-normal">
+            <img src="{% static 'img/mieuxvoter.svg' %}" />
         </a>
-        {% endif %}
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
@@ -21,7 +18,7 @@ Tip 1: You can change the color of the sidebar using: data-color="blue | green |
                 </a>
             </li>
             <li {% if request.resolver_match.url_name == "results" %}class="active"{% endif %}>
-                <a href="/results/{{ election.pk }}/">
+                <a href="/results/{{ election.pk }}/" id="go_results">
                     <i class="now-ui-icons sport_trophy"></i>
                     <p>{% trans "Results" %}</p>
                 </a>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-07 10:31+0200\n"
+"POT-Creation-Date: 2018-07-17 21:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,7 @@ msgid "The two password fields didn't match."
 msgstr "Les deux mots de passe ne correspondent pas"
 
 #: accounts/forms.py:38 accounts/templates/registration/login.html:57
+#: accounts/templates/registration/password_reset_email.html:57
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -60,8 +61,7 @@ msgid "Email address"
 msgstr "Adresse email"
 
 #: accounts/templates/accounts/user_detail.html:46
-#: candidate/templates/candidate/candidate_list.html:29 election/forms.py:66
-#: election/forms.py:68 election/templates/election/manage_candidates.html:47
+#: candidate/templates/candidate/candidate_list.html:29
 #: election/templates/election/manage_voters.html:82
 #: election/templates/election/manage_voters.html:107
 msgid "First name"
@@ -69,7 +69,6 @@ msgstr "Prénom"
 
 #: accounts/templates/accounts/user_detail.html:52
 #: candidate/templates/candidate/candidate_list.html:30
-#: election/templates/election/manage_candidates.html:48
 #: election/templates/election/manage_voters.html:83
 msgid "Last name"
 msgstr "Nom"
@@ -95,7 +94,10 @@ msgid "Biography"
 msgstr "Biographie"
 
 #: accounts/templates/registration/logged_out.html:13
-#: accounts/templates/registration/logged_out.html:27 templates/navbar.html:48
+#: accounts/templates/registration/logged_out.html:27
+#: accounts/templates/registration/password_change_done.html:3
+#: accounts/templates/registration/password_change_form.html:4
+#: templates/navbar.html:50
 msgid "Log out"
 msgstr "Se déconnecter"
 
@@ -103,17 +105,41 @@ msgstr "Se déconnecter"
 msgid "Click here to login"
 msgstr "Cliquer ici pour se connecter"
 
+#: accounts/templates/registration/logged_out0.html:4
+#: accounts/templates/registration/password_change_done.html:6
+#: accounts/templates/registration/password_change_form.html:7
+#: accounts/templates/registration/password_reset_complete.html:6
+#: accounts/templates/registration/password_reset_confirm.html:7
+#: accounts/templates/registration/password_reset_done.html:6
+#: accounts/templates/registration/password_reset_form.html:7
+msgid "Home"
+msgstr ""
+
+#: accounts/templates/registration/logged_out0.html:8
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+
+#: accounts/templates/registration/logged_out0.html:10
+msgid "Log in again"
+msgstr "Se connecter"
+
 #: accounts/templates/registration/login.html:13
 #: accounts/templates/registration/login.html:27
 #: accounts/templates/registration/login.html:71
+#: accounts/templates/registration/password_reset_complete.html:18
+#: accounts/templates/registration/password_reset_email.html:13
+#: accounts/templates/registration/password_reset_email.html:27
+#: accounts/templates/registration/password_reset_email.html:71
 msgid "Log in"
 msgstr "Se connecter"
 
 #: accounts/templates/registration/login.html:37
+#: accounts/templates/registration/password_reset_email.html:37
 msgid "The name and the password do not match"
 msgstr "The nom et le mot de passe ne correspondent pas"
 
 #: accounts/templates/registration/login.html:43
+#: accounts/templates/registration/password_reset_email.html:43
 msgid ""
 "You have no permission to acces to this page. Please log in with another "
 "account."
@@ -122,22 +148,156 @@ msgstr ""
 "un autre compte"
 
 #: accounts/templates/registration/login.html:45
+#: accounts/templates/registration/password_reset_email.html:45
 msgid "Thanks to log in to access this page."
 msgstr "Merci de vous connecter pour accéder à cette page."
 
 #: accounts/templates/registration/login.html:52
+#: accounts/templates/registration/password_reset_email.html:52
 #: election/templates/election/manage_voters.html:85
 #: election/templates/election/manage_voters.html:117
 msgid "Email"
 msgstr "Email"
 
 #: accounts/templates/registration/login.html:63
+#: accounts/templates/registration/password_reset_email.html:63
 msgid "Remember me"
 msgstr "Se souvenir de moi"
 
 #: accounts/templates/registration/login.html:77
+#: accounts/templates/registration/password_reset_email.html:77
 msgid "Create a new account"
 msgstr "Créer un nouveau compte"
+
+#: accounts/templates/registration/password_change_done.html:3
+#: accounts/templates/registration/password_change_form.html:4
+msgid "Documentation"
+msgstr ""
+
+#: accounts/templates/registration/password_change_done.html:3
+#: accounts/templates/registration/password_change_form.html:4
+msgid "Change password"
+msgstr "Mot de passe"
+
+#: accounts/templates/registration/password_change_done.html:7
+#: accounts/templates/registration/password_change_form.html:8
+msgid "Password change"
+msgstr "Mot de passe"
+
+#: accounts/templates/registration/password_change_done.html:14
+msgid "Your password was changed."
+msgstr ""
+
+#: accounts/templates/registration/password_change_form.html:21
+msgid "Please correct the error below."
+msgstr ""
+
+#: accounts/templates/registration/password_change_form.html:21
+msgid "Please correct the errors below."
+msgstr ""
+
+#: accounts/templates/registration/password_change_form.html:26
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: accounts/templates/registration/password_change_form.html:54
+#: accounts/templates/registration/password_reset_confirm.html:32
+msgid "Change my password"
+msgstr ""
+
+#: accounts/templates/registration/password_reset_complete.html:7
+#: accounts/templates/registration/password_reset_done.html:7
+#: accounts/templates/registration/password_reset_form.html:8
+#, fuzzy
+#| msgid "Password"
+msgid "Password reset"
+msgstr "Mot de passe"
+
+#: accounts/templates/registration/password_reset_complete.html:16
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: accounts/templates/registration/password_reset_confirm.html:8
+#, fuzzy
+#| msgid "Password confirmation"
+msgid "Password reset confirmation"
+msgstr "Confirmation du mot de passe"
+
+#: accounts/templates/registration/password_reset_confirm.html:18
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: accounts/templates/registration/password_reset_confirm.html:24
+#, fuzzy
+#| msgid "Password"
+msgid "New password:"
+msgstr "Mot de passe"
+
+#: accounts/templates/registration/password_reset_confirm.html:29
+msgid "Confirm password:"
+msgstr ""
+
+#: accounts/templates/registration/password_reset_confirm.html:38
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: accounts/templates/registration/password_reset_done.html:15
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: accounts/templates/registration/password_reset_done.html:17
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: accounts/templates/registration/password_reset_email0.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: accounts/templates/registration/password_reset_email0.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: accounts/templates/registration/password_reset_email0.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: accounts/templates/registration/password_reset_email0.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: accounts/templates/registration/password_reset_email0.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: accounts/templates/registration/password_reset_form.html:16
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+
+#: accounts/templates/registration/password_reset_form.html:22
+#, fuzzy
+#| msgid "Email address"
+msgid "Email address:"
+msgstr "Adresse email"
+
+#: accounts/templates/registration/password_reset_form.html:25
+msgid "Reset my password"
+msgstr ""
 
 #: candidate/templates/candidate/candidate_detail.html:20
 msgid "Detail of the candidate"
@@ -160,12 +320,12 @@ msgid "No election has been found for you..."
 msgstr "Aucune élection n'a été trouvée pour vous..."
 
 #: candidate/views.py:36 election/views.py:228 election/views.py:304
-#: election/views.py:480 election/views.py:580 election/views.py:618
+#: election/views.py:475 election/views.py:571 election/views.py:609
 msgid "The election does not exist"
 msgstr "L'élection n'exite pas"
 
-#: candidate/views.py:38 election/views.py:315 election/views.py:486
-#: election/views.py:586 election/views.py:624
+#: candidate/views.py:38 election/views.py:315 election/views.py:481
+#: election/views.py:577 election/views.py:615
 msgid "You are not allowed to be here"
 msgstr "Vous n'avez pas le droit d'être là"
 
@@ -185,19 +345,19 @@ msgstr "Question"
 msgid "Voting system"
 msgstr "Mode de scrutin"
 
+#: election/forms.py:66 election/forms.py:68
+#: election/templates/election/manage_candidates.html:47
+msgid "Label"
+msgstr ""
+
 #: election/forms.py:72 election/forms.py:74
-#: election/templates/election/dashboard.html:41
-#: election/templates/election/dashboard.html:108
-#: election/templates/election/manage_voters.html:112
-msgid "Name"
-msgstr "Nom"
+#: election/templates/election/manage_candidates.html:48
+#, fuzzy
+#| msgid "Question"
+msgid "Description"
+msgstr "Question"
 
-#: election/forms.py:78 election/forms.py:80
-#: election/templates/election/manage_candidates.html:50
-msgid "Information"
-msgstr "Information"
-
-#: election/forms.py:90
+#: election/forms.py:85
 msgid "Voters list"
 msgstr "Liste des électeurs"
 
@@ -210,7 +370,7 @@ msgid "The election is over!"
 msgstr "L'élection est finie !"
 
 #: election/templates/election/dashboard.html:18
-#: election/templates/election/sidebar.html:58
+#: election/templates/election/sidebar.html:56 templates/navbar.html:49
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
@@ -222,8 +382,14 @@ msgstr "Vos élections"
 msgid "You have not elections yet"
 msgstr "Vous n'avez aucune élection en cours"
 
+#: election/templates/election/dashboard.html:41
+#: election/templates/election/dashboard.html:112
+#: election/templates/election/manage_voters.html:112
+msgid "Name"
+msgstr "Nom"
+
 #: election/templates/election/dashboard.html:44
-#: election/templates/election/dashboard.html:109
+#: election/templates/election/dashboard.html:113
 msgid "State"
 msgstr "Statut"
 
@@ -236,46 +402,46 @@ msgid "Number of candidates"
 msgstr "Nombre de candidats"
 
 #: election/templates/election/dashboard.html:53
-#: election/templates/election/dashboard.html:113
-#: election/templates/election/manage_candidates.html:53
+#: election/templates/election/dashboard.html:115
+#: election/templates/election/manage_candidates.html:50
 #: election/templates/election/manage_voters.html:88
 msgid "Action"
 msgstr "Action"
 
-#: election/templates/election/dashboard.html:97 templates/navbar.html:33
-#: vote/templates/vote/sidebar.html:38
+#: election/templates/election/dashboard.html:101 templates/navbar.html:35
+#: vote/templates/vote/sidebar.html:35
 msgid "Create an election"
 msgstr "Créer une élection"
 
-#: election/templates/election/dashboard.html:102
+#: election/templates/election/dashboard.html:106
 msgid "Your votes"
 msgstr "Vos votes"
 
-#: election/templates/election/dashboard.html:112
+#: election/templates/election/dashboard.html:114
 msgid "Candidates "
 msgstr "Candidats"
 
-#: election/templates/election/dashboard.html:115
+#: election/templates/election/dashboard.html:117
 msgid "Progress"
 msgstr "Avancement"
 
-#: election/templates/election/dashboard.html:127
+#: election/templates/election/dashboard.html:128
 msgid "View"
 msgstr "Voir"
 
-#: election/templates/election/dashboard.html:133
-#: vote/templates/vote/sidebar.html:20 vote/templates/vote/vote.html:14
+#: election/templates/election/dashboard.html:134
+#: vote/templates/vote/sidebar.html:17 vote/templates/vote/vote.html:14
 #: vote/templates/vote/vote.html:67
 msgid "Vote"
 msgstr "Voter"
 
-#: election/templates/election/dashboard.html:137
-#: election/templates/election/sidebar.html:52
-#: result/templates/result/results.html:22 vote/templates/vote/sidebar.html:26
+#: election/templates/election/dashboard.html:138
+#: election/templates/election/sidebar.html:50
+#: result/templates/result/results.html:22 vote/templates/vote/sidebar.html:23
 msgid "Results"
 msgstr "Résultats"
 
-#: election/templates/election/dashboard.html:152
+#: election/templates/election/dashboard.html:153
 msgid "You are not registered into any election"
 msgstr "Vous ne faites pas parti(e) de cette élection"
 
@@ -284,40 +450,46 @@ msgid "Edit your account"
 msgstr "Modifier votre compte utilisateur"
 
 #: election/templates/election/manage_candidates.html:32
-msgid "The candidates"
-msgstr "Les candidats"
+msgid "The options"
+msgstr "Les options"
 
 #: election/templates/election/manage_candidates.html:41
-msgid "The election has already begun. It is too late to change the candidates"
+#, fuzzy
+#| msgid "The election has already begun. It is too late to change the voters"
+msgid "The election has already begun. It is too late to change the options"
 msgstr ""
-"L'élection a déjà commencé. Il est trop tard pour changer les candidats"
+"L'élection a déjà commencé. Il est trop tard pour modifier les électeurs"
 
-#: election/templates/election/manage_candidates.html:63
-#: election/templates/election/manage_candidates.html:132
-#: election/templates/election/manage_general.html:182
-#: election/templates/election/manage_general.html:198
+#: election/templates/election/manage_candidates.html:59
+#: election/templates/election/manage_candidates.html:126
+#: election/templates/election/manage_general.html:179
+#: election/templates/election/manage_general.html:195
 #: election/templates/election/manage_list_voters.html:66
 #: election/templates/election/manage_voters.html:97
 msgid "Delete"
 msgstr "Supprimer"
 
-#: election/templates/election/manage_candidates.html:83
-#: election/templates/election/manage_list_voters.html:80
+#: election/templates/election/manage_candidates.html:79
+#: election/templates/election/manage_list_voters.html:81
 #: election/templates/election/manage_voters.html:121
 msgid "Add"
 msgstr "Ajouter"
 
-#: election/templates/election/manage_candidates.html:92
+#: election/templates/election/manage_candidates.html:88
 msgid "Manage voters"
 msgstr "Modifier les électeurs"
 
-#: election/templates/election/manage_candidates.html:93
-msgid "Return to the election options"
-msgstr "Revenir sur les options de l'élection"
+#: election/templates/election/manage_candidates.html:89
+#, fuzzy
+#| msgid "Return to the election options"
+msgid "Return to settings"
+msgstr "Revenir aux paramètres"
 
 #: election/templates/election/manage_general.html:43
-msgid "Manage the election"
-msgstr "Modifier l'élection"
+#, fuzzy
+#| msgid "Manage voters"
+msgid "Manage the vote"
+msgstr "Modifier les électeurs"
 
 #: election/templates/election/manage_general.html:51
 msgid ""
@@ -337,12 +509,12 @@ msgstr "Jugement majoritaire"
 msgid "Majority voting"
 msgstr "Vote majoritaire"
 
-#: election/templates/election/manage_general.html:90
-#: election/templates/election/manage_general.html:106
+#: election/templates/election/manage_general.html:87
+#: election/templates/election/manage_general.html:103
 msgid "Grade"
 msgstr "Mention"
 
-#: election/templates/election/manage_general.html:95
+#: election/templates/election/manage_general.html:92
 msgid ""
 "You can delete a grade by clicking on it. The grades must be ordered from "
 "the best to the worst"
@@ -350,17 +522,17 @@ msgstr ""
 "Vous pouvez supprimer une mention en cliquant dessus. Les mentions doivent "
 "être classées de la meilleure à la pire"
 
-#: election/templates/election/manage_general.html:106
+#: election/templates/election/manage_general.html:103
 msgid "New grade"
 msgstr "Nouvelle mention"
 
-#: election/templates/election/manage_general.html:116
-msgid "Save and go the candidate page"
-msgstr "Enregistrer et passer aux candidats"
+#: election/templates/election/manage_general.html:113
+msgid "Save and set the options"
+msgstr "Sauver et modifier les options"
 
 #: election/templates/election/manage_list_voters.html:26
 #: election/templates/election/manage_voters.html:67
-#: election/templates/election/sidebar.html:31
+#: election/templates/election/sidebar.html:29
 msgid "Voters"
 msgstr "Electeurs"
 
@@ -369,7 +541,7 @@ msgid "The election has already begun. It is too late to change the voters"
 msgstr ""
 "L'élection a déjà commencé. Il est trop tard pour modifier les électeurs"
 
-#: election/templates/election/manage_list_voters.html:75
+#: election/templates/election/manage_list_voters.html:76
 msgid ""
 "Add voters line by line with the following format: last name, first name, "
 "email"
@@ -377,21 +549,21 @@ msgstr ""
 "Ajouter des électeurs ligne par ligne avec le format suivant : nom, prénom, "
 "email"
 
-#: election/templates/election/manage_list_voters.html:87
+#: election/templates/election/manage_list_voters.html:88
 #: election/templates/election/manage_voters.html:131
 #: election/templates/election/start.html:25
 #: election/templates/election/success_start.html:25
 msgid "Start the election"
 msgstr "Démarrer l'élection"
 
-#: election/templates/election/manage_list_voters.html:91
+#: election/templates/election/manage_list_voters.html:92
 #: election/templates/election/manage_voters.html:135
-msgid "Return to the candidate page"
-msgstr "Revenir sur la page des candidats"
+msgid "Return to the options"
+msgstr "Revenir aux options"
 
-#: election/templates/election/manage_list_voters.html:94
+#: election/templates/election/manage_list_voters.html:95
 msgid "Add voters from a table"
-msgstr "Importer depuis un table"
+msgstr "Importer depuis un tableau"
 
 #: election/templates/election/manage_voters.html:76
 msgid "The election has already begun. It is too late to modify the voters"
@@ -402,22 +574,21 @@ msgstr ""
 msgid "Import a list"
 msgstr "Importer une liste"
 
-#: election/templates/election/sidebar.html:19
+#: election/templates/election/sidebar.html:17
 msgid "Settings"
 msgstr "Paramètres"
 
-#: election/templates/election/sidebar.html:25
-#: vote/templates/vote/sidebar.html:32 vote/templates/vote/vote.html:43
-msgid "Candidates"
-msgstr "Candidats"
+#: election/templates/election/sidebar.html:23
+msgid "Options"
+msgstr "Action"
 
-#: election/templates/election/sidebar.html:38
+#: election/templates/election/sidebar.html:36
 msgid "Start"
 msgstr "Démarrer"
 
-#: election/templates/election/sidebar.html:45
+#: election/templates/election/sidebar.html:43
 msgid "Finish"
-msgstr "Terminer"
+msgstr "Clore le vote"
 
 #: election/templates/election/success_start.html:29
 msgid "The election has begun!"
@@ -426,6 +597,10 @@ msgstr "L'élection a commencé !"
 #: election/tools.py:23
 msgid "You are not a supervisor of this election"
 msgstr "Vous n'êtes pas un superviseur de cette élection"
+
+#: election/tools.py:62
+msgid "Invite to vote at "
+msgstr ""
 
 #: election/views.py:31
 msgid "Excellent"
@@ -455,8 +630,8 @@ msgstr "À rejeter"
 msgid "The election does not exist."
 msgstr "L'éléction n'existe pas."
 
-#: election/views.py:121 election/views.py:321 election/views.py:492
-#: election/views.py:592 election/views.py:628
+#: election/views.py:121 election/views.py:321 election/views.py:487
+#: election/views.py:583 election/views.py:619
 msgid "The election has already begun"
 msgstr "L'élection a déjà commencé"
 
@@ -472,7 +647,7 @@ msgstr "Il n'y a aucun candidat"
 msgid "The election has not set up"
 msgstr "L'élection n'est pas été paramétré"
 
-#: election/views.py:299 election/views.py:470 election/views.py:575
+#: election/views.py:299 election/views.py:465 election/views.py:566
 msgid "Election id is not valid."
 msgstr "L'identifiant de l'élection n'est pas valide"
 
@@ -480,19 +655,19 @@ msgstr "L'identifiant de l'élection n'est pas valide"
 msgid "The name has already been taken"
 msgstr "Le nom a déjà été pris"
 
-#: election/views.py:438
+#: election/views.py:433
 msgid "Error to decode"
 msgstr "Erreur dans le décodage de"
 
-#: election/views.py:475
+#: election/views.py:470
 msgid "Email address is not valid."
 msgstr "L'adresse email n'est pas valide."
 
-#: election/views.py:505
+#: election/views.py:500
 msgid "The voter has already been recorded"
 msgstr "L'électeur a déjà été enregistré"
 
-#: election/views.py:621
+#: election/views.py:612
 msgid "The grade does not exist"
 msgstr "La mention n'existe pas"
 
@@ -505,8 +680,6 @@ msgid "English"
 msgstr "Anglais"
 
 #: majority_judgment/tools.py:166 result/views.py:56
-#, fuzzy
-#| msgid "The voter has already been recorded"
 msgid "No vote has already been casted."
 msgstr "L'électeur a déjà été enregistré"
 
@@ -527,14 +700,10 @@ msgid "Majority grade"
 msgstr "Mention majoritaire"
 
 #: result/views.py:42
-#, fuzzy
-#| msgid "You are not a supervisor of this election"
 msgid "You have no access to this election."
 msgstr "Vous n'êtes pas un superviseur de cette élection"
 
 #: result/views.py:45
-#, fuzzy
-#| msgid "The election is over!"
 msgid "The election is not over"
 msgstr "L'élection est finie !"
 
@@ -546,13 +715,9 @@ msgstr "Erreur"
 msgid "About Us"
 msgstr "A propos"
 
-#: templates/navbar.html:41
+#: templates/navbar.html:43
 msgid "Account"
 msgstr "Compte"
-
-#: templates/navbar.html:47
-msgid "Profile"
-msgstr "Profil"
 
 #: templates/panel-header.html:4
 msgid "Mieux Voter with Majority Judgment"
@@ -566,9 +731,17 @@ msgstr "Projet open source"
 msgid "coded for the majority judgment"
 msgstr "développé pour le jugement majoritaire"
 
-#: vote/models.py:18
+#: vote/models.py:20
 msgid "email address"
 msgstr "adresse email"
+
+#: vote/templates/vote/sidebar.html:29
+msgid "Candidates"
+msgstr "Candidats"
+
+#: vote/templates/vote/success.html:12
+msgid "Vote cast"
+msgstr "Vote pris en compte"
 
 #: vote/templates/vote/success.html:15
 msgid "Congratulations! Your vote has successfully been recorded!"
@@ -577,6 +750,38 @@ msgstr "Félicitations ! Votre vote a bien été pris en compte !"
 #: vote/templates/vote/vote.html:32
 msgid "Vote with the majority judgment"
 msgstr "Voter avec le jugement majoritaire"
+
+#: vote/templates/vote/vote.html:43
+#, fuzzy
+#| msgid "Options"
+msgid "Option"
+msgstr "Action"
+
+#~ msgid "Return to the election options"
+#~ msgstr "Revenir sur les options de l'élection"
+
+#~ msgid "Information"
+#~ msgstr "Information"
+
+#~ msgid "The candidates"
+#~ msgstr "Les candidats"
+
+#~ msgid ""
+#~ "The election has already begun. It is too late to change the candidates"
+#~ msgstr ""
+#~ "L'élection a déjà commencé. Il est trop tard pour changer les candidats"
+
+#~ msgid "Manage the election"
+#~ msgstr "Modifier l'élection"
+
+#~ msgid "Save and go the candidate page"
+#~ msgstr "Enregistrer et passer aux candidats"
+
+#~ msgid "Return to the candidate page"
+#~ msgstr "Revenir sur la page des candidats"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
 
 #~ msgid "Defeat"
 #~ msgstr "A rejeter"

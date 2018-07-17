@@ -359,13 +359,7 @@ class CandidateDelete(UserPassesTestMixin, DeleteView):
         if self.object.election.state != Election.DRAFT:
             return HttpResponseRedirect(success_url)
 
-        user = self.object.user
         self.object.delete()
-
-        if not Candidate.objects.filter(user=user).exists() and \
-             not Voter.objects.filter(user=user).exists() and \
-             not Supervisor.objects.filter(user=user).exists():
-            user.delete()
 
         return HttpResponseRedirect(success_url)
 
@@ -422,7 +416,7 @@ def voters_list_step(request, election_id=-1):
 
         for detail in voters:
             try:
-                details = detail.split(", ")
+                details = detail.rstrip().split(", ")
                 first_name = details[1].strip()
                 last_name = details[0].strip()
                 email = details[2].strip()
@@ -462,7 +456,7 @@ def create_voter(request):
     try:
         first_name = request.GET.get('first_name', "")
         last_name = request.GET.get('last_name', "")
-        email = request.GET.get('email', "")
+        email = request.GET.get('email', "").rstrip()
         election_id = int(request.GET.get('election_id', -1))
         validate_email(email)
         election = Election.objects.get(pk=election_id)
@@ -534,11 +528,7 @@ class VoterDelete(UserPassesTestMixin, DeleteView):
 
         user = self.object.user
         self.object.delete()
-
-        if not Candidate.objects.filter(user=user).exists() and \
-             not Voter.objects.filter(user=user).exists() and \
-             not Supervisor.objects.filter(user=user).exists():
-            user.delete()
+        user.delete()
 
         return HttpResponseRedirect(success_url)
 

@@ -40,7 +40,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{% trans "Manage the election" %}</h4>
+                    <h4 class="card-title">{% trans "Manage the vote" %}</h4>
                     <div class="progress">
                           <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="25" aria-valuemax="100">25 %</div>
                     </div>
@@ -71,7 +71,7 @@
                     </div>
 
 
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="electionName" class="col-sm-2 col-form-label">{% trans "Voting method" %}</label>
                         <div class="col-sm-10">
 
@@ -80,11 +80,8 @@
                             <br/>
                             <input id="jm" type="radio" name="test" value="1" disabled  />
                             <label for="jm"> {% trans "Majority voting" %}</label>
-                            <!-- {% for radio in voting_system %}
-                                {{ radio }}
-                            {% endfor %} -->
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group row">
                         <label for="electionGrade" class="col-sm-12 col-form-label">{% trans "Grade" %}</label>
@@ -113,7 +110,7 @@
                     </div>
 
                     <button id="submit" type="submit" class="btn btn-primary">
-                        {% trans "Save and go the candidate page" %}
+                        {% trans "Save and set the options" %}
                     </button>
 
                     </form>

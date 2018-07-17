@@ -102,7 +102,7 @@
                 <!-- END CARD BODY -->
                 </div>
 
-                <div class="card-header">
+                <!-- <div class="card-header">
                     <h4 class="card-title">{% trans "Your votes" %}</h4>
                 </div>
                 <div class="card-body">
@@ -111,8 +111,6 @@
                     <thead>
                         <th>    {% trans "Name" %} </th>
                         <th> {% trans "State" %} </th>
-                        <!-- <th> Début du vote </th>
-                        <th> Fin du vote </th> -->
                         <th>{% trans "Candidates "%}</th>
                         <th>{% trans "Action" %}</th>
 
@@ -123,8 +121,7 @@
                       <tr>
                           <td> {{ election.name }}</td>
                           <td> {{ election.get_state_display }} </td>
-                          <!-- <td> {{ voter.election.start }}</td>
-                          <td> {{ voter.election.end }}</td> -->
+
 
                         <td>
                             <a href="/candidates/{{ election.pk }}/" rel="tooltip" title=""  data-original-title="Candidats">
@@ -156,8 +153,7 @@
                     {% trans "You are not registered into any election" %}
                 {% endif %}
 
-                <!-- END CARD BODY -->
-                </div>
+                </div> -->
 
             </div>
         </div>

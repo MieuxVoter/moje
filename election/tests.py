@@ -16,8 +16,10 @@ from utils.test import FunctionalTest
 from vote.models import User, Election, Candidate, Voter, Supervisor
 from election import views
 
+from django.test.utils import override_settings
 
 
+@override_settings(DEBUG=True)
 class ElectionCreationTest(FunctionalTest):
 
     def test_a_basic_election(self):
@@ -41,14 +43,25 @@ class ElectionCreationTest(FunctionalTest):
         # She adds some candidates
         for i in range(5):
             inputbox = self.browser.find_element_by_id('id_label')
-            self.wait_for(inputbox.send_keys, 'Fakecandidate')
+            self.wait_for(inputbox.send_keys, 'Label ' + str(i))
             inputbox = self.browser.find_element_by_id('id_description')
             self.wait_for(inputbox.send_keys, 'Fake program')
             btn = self.wait_for(self.browser.find_element_by_id, 'form-btn')
             btn.click()
             inputvalue = inputbox.get_attribute('value')
             self.assertEqual(inputvalue, "")
-            text = self.wait_for(self.browser.find_elements_by_xpath, "//*[contains(text(), 'Number"+str(i)+"')]")
+            text = self.wait_for(self.browser.find_elements_by_xpath, "//*[contains(text(),  'Label "+ str(i) + "')]")[0].text
+            self.assertEqual(text, "Label "+ str(i))
+
+        # She refreshes the page and checks that it is still there
+        self.browser.refresh()
+        time.sleep(1)
+        text = self.wait_for(self.browser.find_elements_by_xpath, "//*[contains(text(), 'Label 0')]")[0].text
+        self.assertEqual(text, "Label 0")
+
+        # But she deletes one of them
+        del_btn = self.wait_for(self.browser.find_element_by_class_name,'del')
+        del_btn.click()
 
         # She adds some voters
         self.browser.find_element_by_id('go_voters').click()
@@ -71,9 +84,23 @@ class ElectionCreationTest(FunctionalTest):
             self.wait_for(inputbox.send_keys, voter)
         self.browser.find_element_by_id('form-btn').click()
 
-        # Finally she starts the election
+        # But she deletes one of them
+        del_btn = self.wait_for(self.browser.find_element_by_class_name,'del')
+        del_btn.click()
+
+        # The election is set up, she starts the election
         start = self.wait_for(self.browser.find_element_by_id, 'go_start')
         start.click()
+
+        # Now she ends the election
+        finish = self.wait_for(self.browser.find_element_by_id, 'go_finish')
+        finish.click()
+
+        # Finally, she logs out
+        self.wait_for(self.browser.find_element_by_id, 'navbarDropdownMenuLink').click()
+        logout = self.wait_for(self.browser.find_element_by_id, 'logout')
+        logout.click()
+
 
 
 class ElectionDeleteTest(TestCase):

@@ -48,8 +48,8 @@ class VoteForm(forms.Form):
         candidates = Candidate.objects.filter(election=self.election)
 
         for c in candidates:
-            name = c.user.first_name + " " + c.user.last_name
+            name = c.label
             form = forms.ChoiceField(label=name,
-                                    choices=grades,
-                                    widget=RadioSelect())
+                                     choices=grades,
+                                     widget=RadioSelect())
             self.fields["c." + str(c.id)] = form

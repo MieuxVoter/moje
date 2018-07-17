@@ -4,39 +4,20 @@
         <nav>
             <ul>
                 <li>
-                    <a href="https://www.mieuxvoter.fr">
+                    <a href="http://www.mieuxvoter.fr">
                         Mieux Voter
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="http://www.mieuxvote.fr/apropos/">
                         {% trans "About Us" %}
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://github.com/plguhur/moje">
                         <i class="fab fa-github"></i> open-source
                     </a>
                 </li>
-                <li>
-
-
-
-                        {% get_current_language as LANGUAGE_CODE %}
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES as languages %}
-
-                        {% for language in languages %}
-                        <form class="form-lang" action="{% url 'set_language' %}" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="next" value="{{ request.path_info }}" />
-                            <input type="hidden" name="language" value="{{ language.code }}" />
-                            <div class="flex-container">
-                            <button type"submit" class="button-lang" id="lang-{{  language.code }}" />
-                        </div>
-                        </form>
-                        {% endfor %}
-                    </li>
             </ul>
         </nav>
         <div class="copyright">

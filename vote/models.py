@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 
+
+
 class Organisation(models.Model):
     name        = models.CharField(max_length=200, blank=True)
     site        = models.URLField(max_length=200, blank=True)
@@ -77,26 +79,26 @@ class Candidate(models.Model):
     """
     This model represents a candidate in the election.
     """
-    election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
-    label       = models.TextField(default="")
+    election = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
+    label = models.TextField(default="")
     description = models.TextField(default="")
-    program     = models.TextField(default="")
+    program = models.TextField(default="")
 
 
 class Grade(models.Model):
     """
     A grade is a judgment
     """
-    election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
-    name        = models.CharField(max_length=200, default="")
-    code        = models.CharField(max_length=10, default="")
+    election = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
+    name = models.CharField(max_length=200, default="")
+    code = models.CharField(max_length=10, default="")
 
 
 class Rating(models.Model):
     """
     Record a Grade given from a Voter to a Candidate
     """
-    candidate   = models.ForeignKey(Candidate, on_delete=models.CASCADE, default=None)
-    voter       = models.ForeignKey(Voter, on_delete=models.CASCADE, default=None)
-    grade       = models.ForeignKey(Grade, on_delete=models.CASCADE, default=None)
-    election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE, default=None)
+    voter = models.ForeignKey(Voter, on_delete=models.CASCADE, default=None)
+    grade = models.ForeignKey(Grade, on_delete=models.CASCADE, default=None)
+    election = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
