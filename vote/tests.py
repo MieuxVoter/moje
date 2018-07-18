@@ -44,14 +44,14 @@ class VotingTest(FunctionalTest):
         self.browser.get(self.live_server_url + login_link)
 
         # Fred always chooses excellent
-        # time.sleep(60)
+        # time.sleep(600)
         for i in range(5):
-            radio = self.wait_for(self.browser.find_element_by_id, 'id_c.{:d}_0'.format(i+1))
-            self.browser.execute_script("arguments[0].click();", radio)
+            radio = self.wait_for(self.browser.find_element_by_id, 'id_c.{:d}_1'.format(i+1))
+            self.browser.execute_script("arguments[0].checked = true;", radio)
 
         # Fred validates his votes and is redirected
         self.browser.find_element_by_id("cast").click()
-        url = self.live_server_url + "/vote/{:d}/success/".format(election.pk)
+        url = self.live_server_url + "/vote/success/{:d}".format(election.pk)
         self.wait_for(self.assertEqual, url, self.browser.current_url)
 
         # Fred tries to access to the result, but the vote is still opened
