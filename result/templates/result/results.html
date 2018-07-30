@@ -64,7 +64,7 @@
                                 <tr>
                                     <td>{{ forloop.counter }}. </td>
                                     <td>
-                                        {{ candidate.user.first_name | title}} {{ candidate.user.last_name | title}}
+                                        {{ candidate.label }}
                                     </td>
                                     {% for rating in candidate.ratings %}
                                     <td>
