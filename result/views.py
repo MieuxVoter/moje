@@ -56,7 +56,7 @@ def results(request, election_id):
                 {'error': _("No vote has already been casted."), "election":election})
 
     grades = [g.name for g in Grade.objects.filter(election=election)]
-    Nvotes = sum([len(candidate.ratings) for candidate in ranking])
+    Nvotes = sum([sum(candidate.ratings) for candidate in ranking])
 
     params['ranking'] = ranking
     params["nvotes"] = Nvotes
