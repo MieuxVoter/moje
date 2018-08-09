@@ -162,7 +162,7 @@ LOGIN_REDIRECT_URL = "/election/dashboard/"
 
 # token to log with mail link
 SESAME_TOKEN_NAME = "url_auth_token"
-SESAME_MAX_AGE = 7 * 24 * 60 * 60
+#SESAME_MAX_AGE = 30 * 24 * 60 * 60
 
 # Sending mail with a SMTP server
 #EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"

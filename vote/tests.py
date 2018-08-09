@@ -14,6 +14,7 @@ from utils.test import FunctionalTest
 from vote.models import User, Election, Candidate, Voter, Grade
 from election import views
 from sesame import utils
+from jmapp.settings import DEFAULT_FROM_EMAIL, PORT, DOMAIN
 
 
 @override_settings(DEBUG=True)
@@ -23,17 +24,13 @@ class VotingTest(FunctionalTest):
     def test_a_vote(self):
         # creating a fake election
         election = Election.objects.create(name="lion", state=Election.START)
-        [Candidate.objects.create(
+        candidates = [Candidate.objects.create(
                             label="Opt %d"%i,
                             election=election)  for i in range(5)]
         user = User.objects.create_user("Fred", "fred@polo.fr", "secret")
         Voter.objects.create(user=user, election=election)
-        Grade.objects.create(name="Excellent", election=election, code="ex")
-        Grade.objects.create(name="Very good", election=election, code="tb")
-        Grade.objects.create(name="Good", election=election, code="b")
-        Grade.objects.create(name="Fair", election=election, code="p")
-        Grade.objects.create(name="Poor", election=election, code="ins")
-        Grade.objects.create(name="To Reject", election=election, code="rej")
+        names = ["Excellent", "Very good", "Good", "To reject"]
+        grade = [Grade.objects.create(name=n, election=election) for n in names]
 
 
         # Fred clicks on the link on his mail invitation.
@@ -44,9 +41,9 @@ class VotingTest(FunctionalTest):
         self.browser.get(self.live_server_url + login_link)
 
         # Fred always chooses excellent
-        # time.sleep(600)
+        offset = candidates[0].pk
         for i in range(5):
-            radio = self.wait_for(self.browser.find_element_by_id, 'id_c.{:d}_1'.format(i+1))
+            radio = self.wait_for(self.browser.find_element_by_id, 'id_c.{:d}_1'.format(i+offset))
             self.browser.execute_script("arguments[0].checked = true;", radio)
 
         # Fred validates his votes and is redirected
