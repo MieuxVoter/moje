@@ -1,14 +1,29 @@
 {
-    "allowed_hosts":["localhost", "127.0.0.1", "[::1]"],
-    "debug":"true",
-    "secret_key":"execute ./new_private_key.py",
-    "domain":"",
-    "port":80,
-    "email": {
-            "host": "",
-            "port": 465,
-            "host_user": "",
-            "host_password": "",
-            "default_from": "Admin<admin@domain.com>"
-        }
+  "allowed_hosts": [
+    "localhost",
+    "127.0.0.1",
+    "[::1]"
+  ],
+  "debug": "true",
+  "secret_key": "execute ./new_private_key.py",
+  "domain": "",
+  "port": 80,
+  "email": {
+    "host": "",
+    "port": 465,
+    "host_user": "",
+    "host_password": "",
+    "default_from": "Admin<admin@domain.com>"
+  },
+  "belenios": {
+    "path": "/var/www/belenios_moje/",
+    "email_contact": "personne@contacter.com"
+  },
+  "url": {
+    "ballot": "URL_WS/vote/",
+    "new_password": "URL_WS/new_password/",
+    "election_detail": "URL_WS/election_detail/",
+    "election_result": "URL_WS/election_result/"
+  }
 }
+

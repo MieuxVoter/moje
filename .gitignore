@@ -10,3 +10,4 @@ geckodriver.log
 *.mo
 screendumps/
 *.bak
+.idea

@@ -4,3 +4,6 @@ django-sesame
 numpy
 matplotlib
 selenium
+slugify
+djangorestframework
+django-cors-headers

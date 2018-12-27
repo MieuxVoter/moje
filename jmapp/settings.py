@@ -14,13 +14,11 @@ import os
 import json
 from django.utils.translation import gettext_lazy as _
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 with open(os.path.join(BASE_DIR, 'keys.local.json'), 'r') as json_fid:
     parameters = json.load(json_fid)
-
 
 SECRET_KEY = parameters['secret_key']
 
@@ -30,7 +28,6 @@ DEBUG = True if parameters['debug'] == "true" else False
 ALLOWED_HOSTS = ['localhost', 'testserver'] + parameters['allowed_hosts']
 PORT = parameters['port']
 DOMAIN = parameters['domain']
-
 
 # Application definition
 
@@ -47,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -58,15 +56,23 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'sesame.middleware.AuthenticationMiddleware'
+    'sesame.middleware.AuthenticationMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'demo.mieuxvoter.fr',
+    'demo.mieuxvoter.fr:8081',
+    'mieuxvoter.fr'
+)
 
 ROOT_URLCONF = 'jmapp.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [(os.path.join(BASE_DIR, 'templates')),],
+        'DIRS': [(os.path.join(BASE_DIR, 'templates')), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,7 +101,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -114,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -128,7 +132,6 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -136,7 +139,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -152,9 +154,9 @@ INSTALLED_APPS += ['django_extensions']
 AUTH_USER_MODEL = 'vote.User'
 
 AUTHENTICATION_BACKENDS = [
-        'django.contrib.auth.backends.ModelBackend',
-        'sesame.backends.ModelBackend'
-    ]
+    'django.contrib.auth.backends.ModelBackend',
+    'sesame.backends.ModelBackend'
+]
 
 APPEND_SLASH = True
 
@@ -162,14 +164,22 @@ LOGIN_REDIRECT_URL = "/election/dashboard/"
 
 # token to log with mail link
 SESAME_TOKEN_NAME = "url_auth_token"
-#SESAME_MAX_AGE = 30 * 24 * 60 * 60
+# SESAME_MAX_AGE = 30 * 24 * 60 * 60
 
 # Sending mail with a SMTP server
-#EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-#EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+# EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 EMAIL_HOST = parameters['email']['host']
 EMAIL_PORT = parameters['email']['port'] if "port" in parameters['email'] else 465
 EMAIL_HOST_USER = parameters['email']['host_user']
 EMAIL_HOST_PASSWORD = parameters['email']['host_password']
 EMAIL_USE_SSL = parameters['email']['use_tls'] if "use_tls" in parameters['email'] else True
 DEFAULT_FROM_EMAIL = parameters['email']['default_from']
+
+BELENIOS_PATH = parameters['belenios']['path']
+BELENIOS_MAIL_CONTACT = parameters['belenios']['email_contact']
+
+URL_BALLOT = parameters['url']['ballot']
+URL_NEW_PASSWORD = parameters['url']['new_password']
+URL_ELECTION_DETAIL = parameters['url']['election_detail']
+URL_ELECTION_RESULT = parameters['url']['election_result']

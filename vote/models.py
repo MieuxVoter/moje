@@ -18,6 +18,8 @@ class User(AbstractUser):
     postcode = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     email = models.EmailField(_('email address'), blank=True, null=True, unique=True)
+    password_token = models.CharField(max_length=100, blank=True)
+    password_token_validity = models.DateTimeField(null=True, blank=True)
 
     def clean(self):
         """
@@ -52,6 +54,8 @@ class Election(models.Model):
                             choices=STATE_ELECTION,
                             default=DRAFT,
                         )
+    belenios_uuid = models.CharField(null=False, max_length=50)
+    is_anonymous = models.BooleanField(null=False)
 
 
 class Supervisor(models.Model):
@@ -69,6 +73,7 @@ class Voter(models.Model):
     """
     user        = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
     election    = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
+    ballot      = models.CharField(null=True, max_length=200)
 
     def __str__(self):
         return '{} {} {}'.format(self.user.first_name, self.user.last_name, self.user.email)
@@ -92,6 +97,19 @@ class Grade(models.Model):
     election = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
     name = models.CharField(max_length=200, default="")
     code = models.CharField(max_length=10, default="")
+
+
+class GradeResult(models.Model):
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE, default=None)
+    election = models.ForeignKey(Election, on_delete=models.CASCADE, default=None, null=True)
+    grade = models.ForeignKey(Grade, on_delete=models.CASCADE, default=None, null=True)
+    result = models.FloatField(null=True, blank=True)
+
+    def grade_str(self):
+        return self.grade.name
+
+    def candidate_str(self):
+        return self.candidate.label
 
 
 class Rating(models.Model):
