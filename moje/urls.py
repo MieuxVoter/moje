@@ -1,4 +1,4 @@
-"""jmapp URL Configuration
+"""moje URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -28,7 +28,5 @@ urlpatterns = [
     path('mj/', include('majority_judgment.urls')),
     path('election/', include('election.urls')),
     path('', election_views.dashboard, name='dashboard'),
-    path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('i18n/',include('django.conf.urls.i18n')),
 ]

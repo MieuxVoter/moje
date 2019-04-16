@@ -8,7 +8,7 @@ from sesame import utils
 
 from vote.models import *
 from election.forms import *
-from jmapp.settings import DEFAULT_FROM_EMAIL, PORT, DOMAIN
+from moje.settings import DEFAULT_FROM_EMAIL, PORT, DOMAIN
 
 
 

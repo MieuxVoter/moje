@@ -1,6 +1,8 @@
 django
 django-extensions
 django-sesame
+djangorestframework
 numpy
 matplotlib
 selenium
+

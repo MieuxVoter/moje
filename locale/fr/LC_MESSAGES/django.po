@@ -671,11 +671,11 @@ msgstr "L'électeur a déjà été enregistré"
 msgid "The grade does not exist"
 msgstr "La mention n'existe pas"
 
-#: jmapp/settings.py:123
+#: moje/settings.py:123
 msgid "Français"
 msgstr "Français"
 
-#: jmapp/settings.py:124
+#: moje/settings.py:124
 msgid "English"
 msgstr "Anglais"
 

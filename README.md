@@ -1,15 +1,19 @@
-This is a VoTe with [Majority Judgment](https://en.wikipedia.org/wiki/Majority_judgment).
+Moje is an application for [MajOrity JudgmEnt](https://en.wikipedia.org/wiki/Majority_judgment).
+It is supposed to be used as a middleware between a front-end and a server used for storing votes.
+It can also serve a basic front-end.
+
 
 
 # Installation
 
-The code is assuming you are using `python > 3.5` and `django > 2.0`.
+The code is assuming you are using `python >= 3.6` and `django > 2.0`.
 
 1. Install dependancies:
 
     pip install -r requirements.txt
 
-2. Copy `keys.json` to `keys.local.json` and update parameters. To create a secret key, you can execute the script `./new_private_key.py` and copy the given key.
+2. Update parameters by creating a new configuration file. In `config/`, the YAML file with the highest number is used in priority.
+To create a secret key, you can execute the script `./scripts/new_private_key.py` and copy the given key.
 
 3. [Connect to your database](https://docs.djangoproject.com/en/2.0/ref/databases/).
 
@@ -24,13 +28,3 @@ For deployment to production, always think to the [django checklist](https://doc
 `./manage.py runserver`
 
 
-
-# Roadmap
-
-
-
-- La question doit paraitre sur le bulletin moment de voter
-
-- quand on vote, à défaut c’est en blanc, et quand on clique sur une mention, ca se colorie avec la couleur de la mention
-
-- les résultats affichent la mention majoritaire (coloré avec sa couleur), le total des notes au dessus, et le total en dessous

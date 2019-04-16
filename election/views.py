@@ -14,7 +14,7 @@ from django.utils.translation import gettext_lazy as _
 from vote.models import *
 from election.forms import *
 from election.tools import *
-from utils.mixins import SupervisorTestMixin, SupervisorFetchMixin
+from moje.mixins import SupervisorTestMixin, SupervisorFetchMixin
 
 try:
     from html import escape  # python 3.x

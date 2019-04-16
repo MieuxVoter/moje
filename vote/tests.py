@@ -14,7 +14,7 @@ from utils.test import FunctionalTest
 from vote.models import User, Election, Candidate, Voter, Grade
 from election import views
 from sesame import utils
-from jmapp.settings import DEFAULT_FROM_EMAIL, PORT, DOMAIN
+from moje.settings import DEFAULT_FROM_EMAIL, PORT, DOMAIN
 
 
 @override_settings(DEBUG=True)

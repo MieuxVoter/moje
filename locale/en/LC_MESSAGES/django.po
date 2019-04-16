@@ -18,280 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/forms.py:36
-msgid "The two password fields didn't match."
-msgstr ""
-
-#: accounts/forms.py:38 accounts/templates/registration/login.html:57
-#: accounts/templates/registration/password_reset_email.html:57
-msgid "Password"
-msgstr ""
-
-#: accounts/forms.py:40
-msgid "Password confirmation"
-msgstr ""
-
-#: accounts/forms.py:42
-msgid "Enter the same password as above, for verification."
-msgstr ""
-
-#: accounts/templates/accounts/signup.html:13
-#: accounts/templates/accounts/signup.html:26
-msgid "Create an account"
-msgstr ""
-
-#: accounts/templates/accounts/signup.html:34
-msgid "Sign up"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:19
-msgid "Edit your user account"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:26
-msgid "Organization"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:32
-msgid "Username"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:38
-msgid "Email address"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:46
 #: candidate/templates/candidate/candidate_list.html:29
 #: election/templates/election/manage_voters.html:82
 #: election/templates/election/manage_voters.html:107
 msgid "First name"
 msgstr ""
 
-#: accounts/templates/accounts/user_detail.html:52
 #: candidate/templates/candidate/candidate_list.html:30
 #: election/templates/election/manage_voters.html:83
 msgid "Last name"
 msgstr ""
 
-#: accounts/templates/accounts/user_detail.html:60
-msgid "Street"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:68
-msgid "City"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:74
-msgid "Country"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:80
-msgid "ZIP code"
-msgstr ""
-
-#: accounts/templates/accounts/user_detail.html:88
-msgid "Biography"
-msgstr ""
-
-#: accounts/templates/registration/logged_out.html:13
-#: accounts/templates/registration/logged_out.html:27
-#: accounts/templates/registration/password_change_done.html:3
-#: accounts/templates/registration/password_change_form.html:4
 #: templates/navbar.html:50
 msgid "Log out"
 msgstr ""
 
-#: accounts/templates/registration/logged_out.html:32
-msgid "Click here to login"
-msgstr ""
-
-#: accounts/templates/registration/logged_out0.html:4
-#: accounts/templates/registration/password_change_done.html:6
-#: accounts/templates/registration/password_change_form.html:7
-#: accounts/templates/registration/password_reset_complete.html:6
-#: accounts/templates/registration/password_reset_confirm.html:7
-#: accounts/templates/registration/password_reset_done.html:6
-#: accounts/templates/registration/password_reset_form.html:7
-msgid "Home"
-msgstr ""
-
-#: accounts/templates/registration/logged_out0.html:8
-msgid "Thanks for spending some quality time with the Web site today."
-msgstr ""
-
-#: accounts/templates/registration/logged_out0.html:10
-msgid "Log in again"
-msgstr ""
-
-#: accounts/templates/registration/login.html:13
-#: accounts/templates/registration/login.html:27
-#: accounts/templates/registration/login.html:71
-#: accounts/templates/registration/password_reset_complete.html:18
-#: accounts/templates/registration/password_reset_email.html:13
-#: accounts/templates/registration/password_reset_email.html:27
-#: accounts/templates/registration/password_reset_email.html:71
-msgid "Log in"
-msgstr ""
-
-#: accounts/templates/registration/login.html:37
-#: accounts/templates/registration/password_reset_email.html:37
-msgid "The name and the password do not match"
-msgstr ""
-
-#: accounts/templates/registration/login.html:43
-#: accounts/templates/registration/password_reset_email.html:43
-msgid ""
-"You have no permission to acces to this page. Please log in with another "
-"account."
-msgstr ""
-
-#: accounts/templates/registration/login.html:45
-#: accounts/templates/registration/password_reset_email.html:45
-msgid "Thanks to log in to access this page."
-msgstr ""
-
-#: accounts/templates/registration/login.html:52
-#: accounts/templates/registration/password_reset_email.html:52
 #: election/templates/election/manage_voters.html:85
 #: election/templates/election/manage_voters.html:117
 msgid "Email"
 msgstr ""
 
-#: accounts/templates/registration/login.html:63
-#: accounts/templates/registration/password_reset_email.html:63
-msgid "Remember me"
-msgstr ""
-
-#: accounts/templates/registration/login.html:77
-#: accounts/templates/registration/password_reset_email.html:77
-msgid "Create a new account"
-msgstr ""
-
-#: accounts/templates/registration/password_change_done.html:3
-#: accounts/templates/registration/password_change_form.html:4
-msgid "Documentation"
-msgstr ""
-
-#: accounts/templates/registration/password_change_done.html:3
-#: accounts/templates/registration/password_change_form.html:4
-msgid "Change password"
-msgstr ""
-
-#: accounts/templates/registration/password_change_done.html:7
-#: accounts/templates/registration/password_change_form.html:8
-msgid "Password change"
-msgstr ""
-
-#: accounts/templates/registration/password_change_done.html:14
-msgid "Your password was changed."
-msgstr ""
-
-#: accounts/templates/registration/password_change_form.html:21
-msgid "Please correct the error below."
-msgstr ""
-
-#: accounts/templates/registration/password_change_form.html:21
-msgid "Please correct the errors below."
-msgstr ""
-
-#: accounts/templates/registration/password_change_form.html:26
-msgid ""
-"Please enter your old password, for security's sake, and then enter your new "
-"password twice so we can verify you typed it in correctly."
-msgstr ""
-
-#: accounts/templates/registration/password_change_form.html:54
-#: accounts/templates/registration/password_reset_confirm.html:32
-msgid "Change my password"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_complete.html:7
-#: accounts/templates/registration/password_reset_done.html:7
-#: accounts/templates/registration/password_reset_form.html:8
-msgid "Password reset"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_complete.html:16
-msgid "Your password has been set.  You may go ahead and log in now."
-msgstr ""
-
-#: accounts/templates/registration/password_reset_confirm.html:8
-msgid "Password reset confirmation"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_confirm.html:18
-msgid ""
-"Please enter your new password twice so we can verify you typed it in "
-"correctly."
-msgstr ""
-
-#: accounts/templates/registration/password_reset_confirm.html:24
-msgid "New password:"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_confirm.html:29
-msgid "Confirm password:"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_confirm.html:38
-msgid ""
-"The password reset link was invalid, possibly because it has already been "
-"used.  Please request a new password reset."
-msgstr ""
-
-#: accounts/templates/registration/password_reset_done.html:15
-msgid ""
-"We've emailed you instructions for setting your password, if an account "
-"exists with the email you entered. You should receive them shortly."
-msgstr ""
-
-#: accounts/templates/registration/password_reset_done.html:17
-msgid ""
-"If you don't receive an email, please make sure you've entered the address "
-"you registered with, and check your spam folder."
-msgstr ""
-
-#: accounts/templates/registration/password_reset_email0.html:2
-#, python-format
-msgid ""
-"You're receiving this email because you requested a password reset for your "
-"user account at %(site_name)s."
-msgstr ""
-
-#: accounts/templates/registration/password_reset_email0.html:4
-msgid "Please go to the following page and choose a new password:"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_email0.html:8
-msgid "Your username, in case you've forgotten:"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_email0.html:10
-msgid "Thanks for using our site!"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_email0.html:12
-#, python-format
-msgid "The %(site_name)s team"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_form.html:16
-msgid ""
-"Forgotten your password? Enter your email address below, and we'll email "
-"instructions for setting a new one."
-msgstr ""
-
-#: accounts/templates/registration/password_reset_form.html:22
-msgid "Email address:"
-msgstr ""
-
-#: accounts/templates/registration/password_reset_form.html:25
-msgid "Reset my password"
-msgstr ""
-
-#: candidate/templates/candidate/candidate_detail.html:20
-msgid "Detail of the candidate"
-msgstr ""
 
 #: candidate/templates/candidate/candidate_detail.html:25
 msgid "Oops... This page is under construction"
@@ -646,11 +392,11 @@ msgstr ""
 msgid "The grade does not exist"
 msgstr ""
 
-#: jmapp/settings.py:123
+#: moje/settings.py:123
 msgid "Français"
 msgstr ""
 
-#: jmapp/settings.py:124
+#: moje/settings.py:124
 msgid "English"
 msgstr ""
 
