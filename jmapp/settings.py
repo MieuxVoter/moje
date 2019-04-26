@@ -160,6 +160,25 @@ APPEND_SLASH = True
 
 LOGIN_REDIRECT_URL = "/election/dashboard/"
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'server.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 # token to log with mail link
 SESAME_TOKEN_NAME = "url_auth_token"
 #SESAME_MAX_AGE = 30 * 24 * 60 * 60
