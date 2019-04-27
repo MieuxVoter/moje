@@ -22,10 +22,10 @@ except ImportError:
     from cgi import escape  # python 2.x
 
 
-@login_required
 def create_election(request):
     election = Election.objects.create()
-    supervisor = Supervisor.objects.create(user=request.user, election=election)
+    if request.user.is_authenticated:
+        supervisor = Supervisor.objects.create(user=request.user, election=election)
 
     # default grades
     Grade.objects.create(name=_("Excellent"),  election=election, code="exc")
@@ -38,14 +38,14 @@ def create_election(request):
     return HttpResponseRedirect('/election/manage/general/{:d}/'.format(election.pk))
 
 
-@login_required
 def general_step(request, election_id=-1):
     """
     General parameters of an election.
     """
 
+    user = request.user if request.user.is_authenticated else None
     try:
-        election = find_election(election_id, check_user=request.user)
+        election = find_election(election_id, check_user=user)
     except (Election.DoesNotExist, PermissionDenied) as e:
         return render(request, "error.html", {"error":_("The election does not exist.")})
 
@@ -61,21 +61,18 @@ def general_step(request, election_id=-1):
                            disabled=disabled)
 
     if form.is_valid():
-        # start = form.cleaned_data['start']
-        # end   = form.cleaned_data['end']
         name  = form.cleaned_data['name']
         note  = form.cleaned_data['note']
 
         # record the election
-        # election.start  = start
-        # election.end    = end
         election.name   = name
         election.note   = note
         election.save()
 
         return HttpResponseRedirect('/election/manage/candidates/{:d}/'.format(election.pk))
 
-    supervisor = Supervisor.objects.get(election=election, user=request.user)
+    supervisor = Supervisor.objects.get(election=election, user=user) if user is not None \
+            else None
     params =   {'form': form,
                 "election_id": election.pk,
                 "election": election,
@@ -88,7 +85,6 @@ def general_step(request, election_id=-1):
     return render(request, 'election/manage_general.html', params)
 
 
-@login_required
 def launch_election(request, pk=-1):
 
     form = ConfirmStepForm(request.POST or None)
@@ -104,13 +100,13 @@ def launch_election(request, pk=-1):
     return render(request, 'election/start.html', params)
 
 
-@login_required
 def confirm_launch_election(request, pk=-1):
     """
     Launch an election: send mail to all voters and change the state of the election
     """
 
-    election    = find_election(pk, check_user=request.user)
+    user = request.user if request.user.is_authenticated else None
+    election    = find_election(pk, check_user=user)
     voters      = Voter.objects.filter(election=election)
     Ncandidates = Candidate.objects.filter(election=election).count()
     Nvoters     = voters.count()
@@ -131,27 +127,20 @@ def confirm_launch_election(request, pk=-1):
         return render(request, 'election/error.html', {
             "election": election,
             "error": _("The election has not set up")})
-    # if election.start < timezone.now().date():
-    #     return render(request, 'election/error.html', {
-    #         "election": election,
-    #         "error": "Le début de l'élection est déjà passé."})
-    # if election.end < timezone.now().date():
-    #     return render(request, 'election/error.html', {
-    #         "election": election,
-    #         "error": "La fin de l'élection est déjà passée."})
 
     for v in voters:
         send_invite(v)
 
     election.state = Election.START
     election.save()
-    supervisor = Supervisor.objects.get(election=election, user=request.user)
+    supervisor = Supervisor.objects.get(election=election, user=user)
     params={'supervisor':supervisor,
             "election":election}
 
     return render(request, 'election/success_start.html', params)
 
 
+@login_required
 def close_election(request, pk=-1):
     election = find_election(pk, check_user=request.user)
     election.state = Election.OVER
@@ -160,15 +149,15 @@ def close_election(request, pk=-1):
     return render(request, 'election/closed.html', {'supervisor':supervisor, 'election':election})
 
 
-@login_required
 def candidates_step(request, election_id=-1):
     """
     Manage candidates pool in the election
     """
 
     # find election given its id or create a new one
-    election = find_election(election_id, check_user=request.user)
-    supervisor = Supervisor.objects.get(election=election, user=request.user)
+    user = request.user if request.user.is_authenticated else None
+    election = find_election(election_id, check_user=user)
+    supervisor = Supervisor.objects.get(election=election, user=user)
     candidates = Candidate.objects.filter(election=election)
     form = CreateCandidateForm()
     params = {
@@ -184,14 +173,15 @@ def candidates_step(request, election_id=-1):
 
 @login_required
 def dashboard(request):
-    supervisors = Supervisor.objects.filter(user=request.user)
-    elections   = Election.objects.filter(pk__in=supervisors.values('election_id'))
+    user = request.user 
+    supervisors = Supervisor.objects.filter(user=user)
+    elections = Election.objects.filter(pk__in=supervisors.values('election_id'))
 
     if elections:
         elections.annotate(progress=Count('rating')/Count('voter')/Count('grade') )
     # supervisors  = Supervisor.objects.filter(election=election, user=request.user)[0]
 
-    #FIXME: this is not optimized at all
+    #TODO: this is not optimized at all
     user_voters = Voter.objects.filter(user=request.user)
     votes = [voter.election for voter in user_voters]
     for v in votes:
@@ -212,8 +202,8 @@ def dashboard(request):
 @login_required
 def election_detail(request, election_id):
     template_name = "election/election_detail.html"
-    supervisor    = None
-    voter         = None
+    supervisor = None
+    voter = None
 
     try:
         election = Election.objects.get(pk=election_id)
@@ -240,8 +230,10 @@ def election_detail(request, election_id):
 
 
 
-@login_required
 def redirect_election(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/election/manage/general/')
+
     try:
         voter       = Voter.objects.get(user=request.user)
         election_id = voter.election.pk
@@ -250,6 +242,7 @@ def redirect_election(request):
         return render(request, 'election/error.html', {
                     "election": election,
                     "error":"No election has been found for you..."})
+
 
 
 class ElectionList(LoginRequiredMixin, generic.ListView):
@@ -278,7 +271,6 @@ class ElectionDelete(SupervisorTestMixin, DeleteView):
 
 
 
-@login_required
 def create_candidate(request):
     """
     Ajax request to create a candidate
@@ -288,6 +280,8 @@ def create_candidate(request):
 
     https://stackoverflow.com/questions/10382838/how-to-set-foreignkey-in-createview
     """
+
+    user = request.user if request.user.is_authenticated else None
 
     try:
         label = request.GET.get('label', "")
@@ -310,7 +304,7 @@ def create_candidate(request):
                 }
         return JsonResponse(data)
 
-    if not Supervisor.objects.filter(election=election, user=request.user).exists():
+    if not Supervisor.objects.filter(election=election, user=user).exists():
         data = {'election':      False,
                 'error': _("You are not allowed to be here")
                 }

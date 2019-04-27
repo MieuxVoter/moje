@@ -19,11 +19,10 @@ from moje import get_config
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 config = get_config()
-
 SECRET_KEY = config['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if config['debug'] == "true" else False
+DEBUG = True if config['debug'] == True else False
 
 ALLOWED_HOSTS = ['localhost', 'testserver'] + config['allowed_hosts']
 PORT = config['port']

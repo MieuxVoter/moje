@@ -18,9 +18,10 @@ def find_election(election_id, check_user=None):
     """
 
     election = get_object_or_404(Election, pk=election_id)
-
-    if check_user and not Supervisor.objects.filter(election=election, user= check_user).exists():
-        raise PermissionDenied(_("You are not a supervisor of this election"))
+    supervisor = Supervisor.objects.filter(election=election)
+    if (supervisor.exists() and check_user is None) or \
+       (check_user is not None and not supervisor.filter(user=check_user).exists()):
+        raise PermissionDenied(_("This election is private and you are not a supervisor of this election"))
 
     return election
 
